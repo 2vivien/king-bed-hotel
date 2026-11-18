@@ -2,55 +2,55 @@ import type { HotelServiceItem } from "@/types/hotel.types";
 
 export const servicesMock: readonly HotelServiceItem[] = [
   {
-    id: "concierge",
-    title: "Concierge Service",
-    subtitle: "Personalized 24/7 assistance for every moment of your journey.",
+    id: "dining",
+    title: "Petit-Déjeuner & Restauration",
+    subtitle: "Formule Bed & Breakfast artisanale servie en salle ou en chambre.",
     description:
-      "From last-minute private dining tables to bespoke cultural itineraries, our dedicated hosts anticipate every detail quietly and effortlessly.",
-    hours: "Available 24/7 via suite tablet or direct WhatsApp line",
+      "Chaque matin au King's Bed Hotel, profitez d'un buffet gourmand de viennoiseries chaudes, fruits frais, œufs préparés à la minute et jus pressés, complété le soir par une cuisine de saison.",
+    hours: "Petit-déjeuner 06h30 – 10h30 · Dîner 18h30 – 23h00",
     highlights: [
-      "Tailored multi-day local discovery itineraries",
-      "Priority reservations at Michelin & hidden local tables",
-      "Private yacht, helicopter & cultural guide access",
+      "Buffet petit-déjeuner complet ou plateau servi en chambre",
+      "Pauses café, viennoiseries & déjeuners d'affaires pour séminaires",
+      "Carte de saison et cave sélectionnée par notre sommelier",
+    ],
+  },
+  {
+    id: "conferences",
+    title: "Salles de Réunion & Conférences",
+    subtitle: "Espaces modulables équipés pour séminaires, conseils et congrès.",
+    description:
+      "King's Bed Hotel met à disposition des salles de réunion acoustiques et un auditorium jusqu'à 180 personnes, dotés d'écrans 4K, visioconférence, fibre dédiée et restauration sur mesure.",
+    hours: "Disponible de 07h00 à 22h00 · Privatisation journée ou demi-journée",
+    highlights: [
+      "3 salles de réunion exécutives (8 à 25 pers.) & 1 grand salon conférence (180 pers.)",
+      "Équipement audiovisuel 4K, micros sans fil et Wi-Fi fibre symétrique",
+      "Forfaits journée d'étude avec petit-déjeuner d'accueil et pauses gourmandes",
     ],
   },
   {
     id: "spa",
-    title: "Spa & Wellness",
-    subtitle: "Relax and rejuvenate with holistic botanical rituals.",
+    title: "Spa & Espace Bien-Être",
+    subtitle: "Détente et soins relaxants après vos journées de séjour ou de travail.",
     description:
-      "Set inside sunlit stone pavilions, our sanctuary combines warm volcanic stone therapies, organic essential oils, and mindful breathwork.",
-    hours: "Daily 08:00 – 21:00 · In-villa rituals available",
+      "Installé dans nos pavillons en pierre naturelle, notre espace bien-être associe bassin chauffé, sauna, massages aux huiles essentielles bio et soins du corps.",
+    hours: "Tous les jours 08h00 – 21h00 · Soins en chambre sur demande",
     highlights: [
-      "90-minute signature warm stone & botanical oil ritual",
-      "Private herbal steam & cold plunge courtyard",
-      "Sunrise breathwork and guided mobility sessions",
-    ],
-  },
-  {
-    id: "dining",
-    title: "Fine Dining",
-    subtitle: "Seasonal gourmet cuisine crafted from regional harvests.",
-    description:
-      "Our culinary team celebrates local coastal seafood, heirloom orchard produce, and wood-fired craftsmanship served beneath the open sky.",
-    hours: "Breakfast 07:00 – 11:00 · Dinner 18:30 – 23:00",
-    highlights: [
-      "7-course seasonal chef tasting menu",
-      "Organic morning breakfast served on your private terrace",
-      "Curated biodynamic cellar pairings",
+      "Massages signature aux pierres chaudes et huiles botaniques",
+      "Sauna, hammam et bassin de relaxation chauffé",
+      "Séances de remise en forme et réveil musculaire matinal",
     ],
   },
   {
     id: "transfers",
-    title: "Private Transfers",
-    subtitle: "Travel in seamless comfort from tarmac to suite doorstep.",
+    title: "Conciergerie & Transferts Privés",
+    subtitle: "Accueil personnalisé 24h/24, voiturier et navettes gare ou aéroport.",
     description:
-      "Enjoy VIP meet-and-greet arrival assistance, chilled organic towels, and whisper-quiet electric or luxury hybrid sedans directly to your sanctuary.",
-    hours: "Coordinated 24/7 with live flight tracking",
+      "Notre réception assure un accueil fluide 24h/24 pour nos voyageurs individuels et nos délégations d'entreprise, avec voiturier, bornes de recharge électrique et navettes privées.",
+    hours: "Réception & conciergerie 24h/24 · Suivi des vols en temps réel",
     highlights: [
-      "VIP tarmac & fast-track customs greeting",
-      "Chauffeured luxury fleet with Wi-Fi & refreshments",
-      "Seaplane & private speedboat connections",
+      "Accueil personnalisé en gare ou à l'aéroport avec chauffeur",
+      "Parking privé sécurisé avec service voiturier et bornes électriques",
+      "Gestion complète des groupes, séminaires et check-in prioritaire",
     ],
   },
 ];

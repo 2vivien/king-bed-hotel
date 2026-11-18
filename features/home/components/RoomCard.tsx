@@ -36,13 +36,13 @@ export function RoomCard({ room, variant = "overlay" }: RoomCardProps) {
               </Link>
               <p className="text-[16px] font-medium tabular-nums text-[#111111]">
                 {priceLabel}
-                <span className="text-[13px] font-normal text-[#5F5F5A]"> / night</span>
+                <span className="text-[13px] font-normal text-[#5F5F5A]"> / nuit</span>
               </p>
             </div>
             <div className="mt-2.5 flex items-center gap-3 text-[13px] text-[#5F5F5A]">
               <span className="inline-flex items-center gap-1.5">
                 <Users className="w-3.5 h-3.5" strokeWidth={1.5} />
-                {room.maxGuests} guests
+                {room.maxGuests} pers.
               </span>
               <span aria-hidden="true">·</span>
               <span className="inline-flex items-center gap-1.5">
@@ -56,7 +56,7 @@ export function RoomCard({ room, variant = "overlay" }: RoomCardProps) {
             href={`/reservation?room=${room.slug}`}
             className="h-11 rounded-full bg-[#111111] text-white text-[14px] font-medium flex items-center justify-center hover:bg-[#2A2A28] transition-colors"
           >
-            Book Now
+            Réserver
           </Link>
         </div>
       </article>
@@ -84,7 +84,7 @@ export function RoomCard({ room, variant = "overlay" }: RoomCardProps) {
             {room.name}
           </h3>
           <p className="mt-1 text-[15px] text-white/85 tabular-nums">
-            {priceLabel} <span className="text-white/70">/ night</span>
+            {priceLabel} <span className="text-white/70">/ nuit</span>
           </p>
         </div>
         <span className="w-11 h-11 rounded-full bg-white text-[#111111] flex items-center justify-center shrink-0 group-hover:translate-x-0.5 transition-transform">

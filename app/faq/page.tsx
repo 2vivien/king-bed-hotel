@@ -4,9 +4,9 @@ import { FaqAccordion } from "@/features/faq/components/FaqAccordion";
 import { faqMock } from "@/mocks/testimonials";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  title: "Foire Aux Questions",
   description:
-    "Answers regarding SuiteSavvy check-in, flexible cancellation, private airport transfers, and payment options.",
+    "Réponses concernant les arrivées au King's Bed Hotel, le petit-déjeuner, nos salles de réunion et conférences, ainsi que l'annulation flexible.",
 };
 
 const faqJsonLd = {
@@ -31,9 +31,9 @@ export default function FaqPage() {
       />
       <SectionHeading
         as="h1"
-        eyebrow="Guest Information"
-        title="Frequently Asked Questions"
-        subtitle="Everything you need to know before arriving at your SuiteSavvy sanctuary."
+        eyebrow="Informations Pratiques"
+        title="Questions Fréquentes"
+        subtitle="Tout ce qu'il faut savoir avant votre arrivée pour votre séjour, petit-déjeuner ou conférence au King's Bed Hotel."
       />
       <FaqAccordion />
     </section>

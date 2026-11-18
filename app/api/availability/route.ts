@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const rate = checkRateLimit(`avail:${ip}`, 40);
   if (!rate.allowed) {
     return NextResponse.json(
-      { code: "RATE_LIMITED", message: "Too many availability requests. Please pause briefly." },
+      { code: "RATE_LIMITED", message: "Trop de demandes de disponibilité. Veuillez patienter un instant." },
       { status: 429 }
     );
   }
@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { code: "INVALID_QUERY", message: parsed.error.issues[0]?.message ?? "Invalid dates." },
+      { code: "INVALID_QUERY", message: parsed.error.issues[0]?.message ?? "Dates invalides." },
       { status: 400 }
     );
   }

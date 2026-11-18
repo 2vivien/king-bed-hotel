@@ -23,7 +23,7 @@ export function NewsletterBanner() {
     } catch (err) {
       setStatus("error");
       setFeedback(
-        err instanceof Error ? err.message : "Unable to subscribe right now."
+        err instanceof Error ? err.message : "Inscription impossible pour le moment."
       );
     }
   };
@@ -35,7 +35,7 @@ export function NewsletterBanner() {
           <div className="absolute inset-0 opacity-25 pointer-events-none">
             <SuiteImage
               src="/images/textures/leaf-dark.jpg"
-              alt="Tropical botanical foliage texture"
+              alt="Texture végétale du King's Bed Hotel"
               sizes="(max-width: 1280px) 100vw, 1280px"
             />
           </div>
@@ -46,10 +46,10 @@ export function NewsletterBanner() {
 
           <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
             <h2 className="text-[clamp(2rem,3.6vw,2.75rem)] font-light leading-[1.1] tracking-[-0.025em]">
-              Stay Inspired
+              Restez Informé
             </h2>
             <p className="text-[16px] sm:text-[18px] text-white/80 leading-[1.55]">
-              Get the latest offers, travel tips and exclusive seasonal invitations.
+              Recevez nos offres séjours avec petit-déjeuner et nos disponibilités pour vos séminaires.
             </p>
 
             <form
@@ -57,7 +57,7 @@ export function NewsletterBanner() {
               className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 rounded-[28px] sm:rounded-full bg-white p-2 max-w-lg mx-auto shadow-[0_12px_36px_rgba(0,0,0,0.2)]"
             >
               <label htmlFor="newsletter-email" className="sr-only">
-                Email address
+                Adresse e-mail
               </label>
               <input
                 id="newsletter-email"
@@ -65,7 +65,7 @@ export function NewsletterBanner() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder="Votre adresse e-mail"
                 autoComplete="email"
                 className="flex-1 h-11 px-4 rounded-full bg-transparent text-[15px] text-[#111111] placeholder:text-[#9A9A93] outline-none"
               />
@@ -85,7 +85,7 @@ export function NewsletterBanner() {
                 disabled={status === "loading"}
                 className="h-11 px-6 rounded-full bg-[#111111] text-white text-[14px] font-medium hover:bg-[#2A2A28] transition-colors whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-60"
               >
-                {status === "loading" ? "Subscribing..." : "Subscribe"}
+                {status === "loading" ? "Envoi..." : "S'inscrire"}
               </button>
             </form>
 

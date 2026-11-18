@@ -24,7 +24,7 @@ export function RoomBookingWidget({ room }: { room: Room }) {
   const handleProceed = (e: React.FormEvent) => {
     e.preventDefault();
     if (nights <= 0) {
-      setError("Check-out must be after check-in.");
+      setError("La date de départ doit être postérieure à l'arrivée.");
       return;
     }
     setError("");
@@ -51,22 +51,22 @@ export function RoomBookingWidget({ room }: { room: Room }) {
           <p className="text-[28px] font-light tracking-[-0.02em] tabular-nums text-[#111111]">
             {formatMoney(room.pricePerNight)}
           </p>
-          <p className="text-[13px] text-[#5F5F5A]">per night · taxes calculated below</p>
+          <p className="text-[13px] text-[#5F5F5A]">par nuit · taxes calculées ci-dessous</p>
         </div>
-        <span className="text-[13px] text-[#5F5F5A]">Max {room.maxGuests} guests</span>
+        <span className="text-[13px] text-[#5F5F5A]">Max {room.maxGuests} pers.</span>
       </div>
 
       <form onSubmit={handleProceed} className="mt-6 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Input
-            label="Check In"
+            label="Arrivée"
             type="date"
             value={checkIn}
             onChange={(e) => setCheckIn(e.target.value)}
             required
           />
           <Input
-            label="Check Out"
+            label="Départ"
             type="date"
             value={checkOut}
             onChange={(e) => setCheckOut(e.target.value)}
@@ -76,7 +76,7 @@ export function RoomBookingWidget({ room }: { room: Room }) {
 
         <div className="flex flex-col gap-1.5">
           <label htmlFor="suite-guests" className="text-[13px] font-medium text-[#5F5F5A]">
-            Guests
+            Voyageurs
           </label>
           <select
             id="suite-guests"
@@ -86,7 +86,7 @@ export function RoomBookingWidget({ room }: { room: Room }) {
           >
             {Array.from({ length: room.maxGuests }, (_, idx) => idx + 1).map((n) => (
               <option key={n} value={n}>
-                {n} {n === 1 ? "Guest" : "Guests"}
+                {n} {n === 1 ? "Personne" : "Personnes"}
               </option>
             ))}
           </select>
@@ -102,23 +102,23 @@ export function RoomBookingWidget({ room }: { room: Room }) {
           <div className="pt-4 border-t border-[#111111]/8 space-y-2 text-[14px]">
             <div className="flex justify-between text-[#5F5F5A]">
               <span>
-                {formatMoney(room.pricePerNight)} × {nights} nights
+                {formatMoney(room.pricePerNight)} × {nights} {nights === 1 ? "nuit" : "nuits"}
               </span>
               <span className="tabular-nums">{formatMoney(pricing.subtotal)}</span>
             </div>
             <div className="flex justify-between text-[#5F5F5A]">
-              <span>Sanctuary taxes (12%)</span>
+              <span>Taxes de séjour (12 %)</span>
               <span className="tabular-nums">{formatMoney(pricing.taxes)}</span>
             </div>
             <div className="flex justify-between pt-2 border-t border-[#111111]/8 font-medium text-[16px] text-[#111111]">
-              <span>Estimated Total</span>
+              <span>Total Estimé</span>
               <span className="tabular-nums">{formatMoney(pricing.total)}</span>
             </div>
           </div>
         ) : null}
 
         <Button type="submit" variant="sand" size="lg" className="w-full mt-2">
-          Reserve Suite
+          Réserver cette Chambre
           <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
         </Button>
       </form>

@@ -5,10 +5,10 @@ export type SupportedCurrency = "USD" | "EUR" | "XOF";
  */
 export function formatMoney(
   amountMinor: number,
-  currency: SupportedCurrency = "USD"
+  currency: SupportedCurrency = "EUR"
 ): string {
   const value = currency === "XOF" ? amountMinor : amountMinor / 100;
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency,
     maximumFractionDigits: amountMinor % 100 === 0 ? 0 : 2,

@@ -14,15 +14,15 @@ export function SuitesShowcase() {
       <Reveal>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <SectionHeading
-            eyebrow="Our Suites"
-            title="Experience Luxury in Every Detail"
-            subtitle="Thoughtfully composed architecture, serene natural stone, and timeless comfort across every sanctuary."
+            eyebrow="Nos Chambres & Suites"
+            title="L'Excellence dans Chaque Détail"
+            subtitle="Chambres spacieuses, literie King Size, petit-déjeuner gastronomique et accès aux espaces de conférence."
           />
           <Link
             href="/rooms"
             className="h-11 px-6 rounded-full bg-white border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center gap-2 hover:bg-[#EFE6D6] transition-colors whitespace-nowrap shrink-0 self-start md:self-auto"
           >
-            View All Rooms
+            Voir toutes les chambres
             <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
           </Link>
         </div>

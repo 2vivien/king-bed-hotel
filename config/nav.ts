@@ -4,21 +4,21 @@ export interface NavItem {
 }
 
 export const primaryNavItems: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Rooms", href: "/rooms" },
+  { label: "Accueil", href: "/" },
+  { label: "À propos", href: "/about" },
+  { label: "Chambres", href: "/rooms" },
   { label: "Services", href: "/services" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Galerie", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export const footerNavItems: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Rooms", href: "/rooms" },
+  { label: "Accueil", href: "/" },
+  { label: "À propos", href: "/about" },
+  { label: "Chambres", href: "/rooms" },
   { label: "Services", href: "/services" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Galerie", href: "/gallery" },
   { label: "Contact", href: "/contact" },
-  { label: "My Booking", href: "/my-booking" },
+  { label: "Ma réservation", href: "/my-booking" },
   { label: "FAQ", href: "/faq" },
 ] as const;

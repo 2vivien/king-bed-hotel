@@ -9,38 +9,38 @@ import Link from "next/link";
 
 const pillars = [
   {
-    code: "Pillar 01",
-    title: "Architectural Purity",
+    code: "Pilier 01",
+    title: "Chambres & Literie King Size",
     description:
-      "Organic structures bridging warm Japandi restraint and timeless regional vernaculars. Our suites breathe naturally, inviting external landscapes directly indoors.",
-    cta: "Explore design codes",
+      "Des chambres et suites pensées pour la détente absolue : matelas King Size haute densité, linge en coton égyptien et insonorisation optimale.",
+    cta: "Découvrir les chambres",
     href: "/rooms",
     Icon: Compass,
   },
   {
-    code: "Pillar 02",
-    title: "Tailored Solitude",
+    code: "Pilier 02",
+    title: "Salles de Réunion & Conférences",
     description:
-      "Radical privacy engineered into master floorplans. Private access paths, sheltered terraces, and uninterrupted visual horizons preserve sacred decompression.",
-    cta: "Spatial seclusion",
-    href: "/rooms",
+      "Des salons modulables baignés de lumière naturelle, équipés d'écrans 4K, fibre dédiée, visioconférence et pauses café gastronomiques.",
+    cta: "Espaces professionnels",
+    href: "/services",
     Icon: Shield,
   },
   {
-    code: "Pillar 03",
-    title: "Gastronomic Soul",
+    code: "Pilier 03",
+    title: "Petit-Déjeuner Artisanal",
     description:
-      "Direct partnerships with biodynamic family vineyards and artisan foragers. Bespoke in-suite chef tastings inspired by centuries-old regional cooking traditions.",
-    cta: "Culinary manifests",
+      "Chaque matin, un buffet généreux et un service à la carte composé de viennoiseries tièdes, œufs fermiers, fruits frais et cafés de spécialité.",
+    cta: "La carte du matin",
     href: "/services",
     Icon: UtensilsCrossed,
   },
   {
-    code: "Pillar 04",
-    title: "Invisible Precision",
+    code: "Pilier 04",
+    title: "Accueil & Conciergerie 24/7",
     description:
-      "Attentive hosts who anticipate needs before they are voiced, operating with discreet grace so guests never feel observed, only effortlessly supported.",
-    cta: "Concierge standards",
+      "Une équipe attentive anticipe chacun de vos besoins : transfert privé, organisation de séminaire, réservation de table ou départ tardif.",
+    cta: "Contacter la réception",
     href: "/contact",
     Icon: BellRing,
   },
@@ -51,14 +51,14 @@ export function AboutPillarsSection() {
     <section className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-14">
       <div className="text-center max-w-2xl mx-auto mb-14">
         <span className="text-[12px] font-medium text-[#3d6659] tracking-widest uppercase">
-          The SuiteSavvy Standard
+          Le Standard King&apos;s Bed Hotel
         </span>
         <h2 className="text-[32px] sm:text-[40px] font-medium text-[#001510] tracking-[-0.02em] mt-1">
-          Our Four Cornerstones of Hospitality
+          Nos Quatre Piliers d&apos;Hospitalité
         </h2>
         <p className="text-[15px] text-[#414846] mt-2">
-          Every encounter, architectural contour, and morning scent is calibrated around
-          four non-negotiable principles.
+          Chaque séjour, chaque petit-déjeuner et chaque journée d&apos;étude repose sur
+          quatre engagements essentiels.
         </p>
       </div>
 
@@ -69,10 +69,10 @@ export function AboutPillarsSection() {
             <Link
               key={pillar.code}
               href={pillar.href}
-              className="p-8 rounded-2xl bg-[#f4f3f0] hover:bg-[#efeeeb] transition-colors duration-200 flex flex-col justify-between group"
+              className="p-8 rounded-2xl bg-white border border-[#EDEDEA] hover:border-[#111111]/20 shadow-sm transition-colors duration-200 flex flex-col justify-between group"
             >
               <div>
-                <div className="w-12 h-12 rounded-full bg-[#faf9f6] flex items-center justify-center text-[#001510] shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-full bg-[#e9e8e5] flex items-center justify-center text-[#001510] shadow-sm mb-6 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" strokeWidth={1.5} />
                 </div>
                 <span className="text-[11px] font-semibold text-[#3d6659] uppercase tracking-widest">

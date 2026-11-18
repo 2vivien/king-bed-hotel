@@ -4,39 +4,39 @@ import { BrandMark } from "./BrandMark";
 import { FooterGazetteForm } from "./FooterGazetteForm";
 
 const portfolioLinks = [
-  { label: "Private Island Villas", href: "/rooms?type=villas" },
-  { label: "Architectural Penthouses", href: "/rooms?type=penthouses" },
-  { label: "Alpine Sky Chalets", href: "/rooms?type=suites" },
-  { label: "Historic Country Manors", href: "/rooms?type=villas" },
-  { label: "Secluded Desert Retreats", href: "/rooms?type=deluxe" },
+  { label: "Chambres Deluxe & Confort", href: "/rooms?type=rooms" },
+  { label: "Suites Exécutives", href: "/rooms?type=suites" },
+  { label: "Suites Royales & Jardins", href: "/rooms?type=villas" },
+  { label: "Salles de Réunion", href: "/services" },
+  { label: "Espaces de Conférence", href: "/services" },
 ] as const;
 
 const conciergeLinks = [
-  { label: "24/7 Bespoke Concierge", href: "/services" },
-  { label: "Private Aviation Charter", href: "/contact" },
-  { label: "In-Suite Michelin Dining", href: "/services" },
-  { label: "Yacht & Tender Access", href: "/gallery" },
-  { label: "Bespoke Itinerary Planning", href: "/reservation" },
+  { label: "Réception & Conciergerie 24h/24", href: "/services" },
+  { label: "Petit-Déjeuner Gastronomique", href: "/services" },
+  { label: "Séminaires & Événements Pro", href: "/contact" },
+  { label: "Transferts & Voiturier", href: "/services" },
+  { label: "Réservation en Ligne", href: "/reservation" },
 ] as const;
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#f4f3f0] mt-14 pt-14 pb-8 shadow-[0_-1px_12px_rgba(13,43,36,0.03)]">
+    <footer className="w-full bg-white border-t border-[#EDEDEA] mt-14 pt-14 pb-8">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-14">
           {/* Column 1: Brand & Portfolio Trust */}
           <div className="space-y-5">
             <BrandMark />
             <p className="text-[15px] leading-[1.6] text-[#414846]">
-              Curating unmatched private sanctuaries, premier penthouses, and bespoke
-              coastal estates for the world&apos;s most discerning travelers.
+              Hôtel d&apos;exception alliant chambres et suites élégantes,
+              petit-déjeuner artisanal et salles de réunion et de conférence équipées.
             </p>
             <div className="flex items-center gap-2.5 pt-1 text-[#414846]">
               <BadgeCheck className="w-5 h-5 text-[#3d6659]" strokeWidth={1.5} />
               <span className="text-[12px] font-medium tracking-[0.02em]">
-                Verified Global Luxury Portfolio
+                Hôtel Certifié Séjour &amp; Conférences
               </span>
             </div>
           </div>
@@ -44,7 +44,7 @@ export function Footer() {
           {/* Column 2: Explore Portfolios */}
           <div className="space-y-4">
             <span className="block text-[20px] font-semibold text-[#001510]">
-              Explore Portfolios
+              Nos Espaces
             </span>
             <ul className="space-y-2.5">
               {portfolioLinks.map((item) => (
@@ -63,7 +63,7 @@ export function Footer() {
           {/* Column 3: Concierge & Guest */}
           <div className="space-y-4">
             <span className="block text-[20px] font-semibold text-[#001510]">
-              Concierge &amp; Guest
+              Hôtel &amp; Services
             </span>
             <ul className="space-y-2.5">
               {conciergeLinks.map((item) => (
@@ -82,20 +82,20 @@ export function Footer() {
           {/* Column 4: Private Gazette */}
           <div className="space-y-4">
             <span className="block text-[20px] font-semibold text-[#001510]">
-              Private Gazette
+              Gazette Privée
             </span>
             <p className="text-[13px] leading-[1.55] text-[#414846]">
-              Receive confidential access to newly debuted suites and seasonal retreats.
+              Recevez nos offres séjours, formules petit-déjeuner et disponibilités de salles de conférence.
             </p>
             <FooterGazetteForm />
             <div className="pt-1 space-y-1.5 text-[13px] text-[#414846]">
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-                inquiries@suitesavvy.luxury
+                concierge@kingsbedhotel.com
               </p>
               <p className="flex items-center gap-2 tabular-nums">
                 <Phone className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-                +41 22 819 9000
+                +33 1 42 68 90 00
               </p>
             </div>
           </div>
@@ -103,26 +103,26 @@ export function Footer() {
 
         <div className="pt-6 border-t border-[#111111]/8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-medium tracking-[0.02em] text-[#414846]">
           <p>
-            © {year} SuiteSavvy International Hospitality Ltd. All rights reserved.
+            © {year} King&apos;s Bed Hotel. Tous droits réservés.
           </p>
           <div className="flex flex-wrap items-center gap-5">
             <Link
               href="/legal/privacy"
               className="hover:text-[#1a1c1a] transition-colors"
             >
-              Privacy Policy
+              Confidentialité
             </Link>
             <Link
               href="/legal/terms"
               className="hover:text-[#1a1c1a] transition-colors"
             >
-              Terms of Service
+              Conditions Générales
             </Link>
             <Link href="/my-booking" className="hover:text-[#1a1c1a] transition-colors">
-              Manage Booking
+              Gérer ma réservation
             </Link>
             <Link href="/faq" className="hover:text-[#1a1c1a] transition-colors">
-              Guest Protocol &amp; FAQ
+              FAQ &amp; Protocole
             </Link>
           </div>
         </div>

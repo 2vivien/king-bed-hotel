@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ArrowDown,
   ArrowDownRight,
   ArrowRight,
   Asterisk,
@@ -38,12 +37,12 @@ export function HeroSection() {
   };
 
   return (
-    <section className="px-4 sm:px-6 lg:px-10 pt-4">
+    <section className="px-4 sm:px-6 lg:px-10 pt-6">
       <div className="max-w-[1280px] mx-auto relative">
         <div className="relative rounded-[36px] overflow-hidden min-h-[640px] lg:min-h-[690px] bg-[#1F3A2C]">
           <SuiteImage
             src="/images/hero/hero-pool.jpg"
-            alt="SuiteSavvy luxury stepped stone tropical infinity pool"
+            alt="Piscine et terrasses architecturales du King's Bed Hotel"
             sizes="(max-width: 768px) 100vw, 1280px"
             priority
             className="object-cover"
@@ -70,20 +69,20 @@ export function HeroSection() {
                     onClick={handleCycleDestination}
                     className="ml-2 text-[11px] font-medium underline underline-offset-2 text-[#111111] hover:text-[#5F5F5A] cursor-pointer"
                   >
-                    Edit
+                    Changer
                   </button>
                 </div>
 
                 <Link
                   href="/reservation"
-                  aria-label="Select dates"
+                  aria-label="Choisir vos dates"
                   className="w-11 h-11 rounded-full glass-surface-subtle border border-white/30 text-white flex items-center justify-center hover:bg-white/25 transition-colors"
                 >
                   <Calendar className="w-4 h-4" strokeWidth={1.5} />
                 </Link>
                 <Link
                   href="/rooms"
-                  aria-label="Browse suites"
+                  aria-label="Découvrir les chambres"
                   className="w-11 h-11 rounded-full glass-surface-subtle border border-white/30 text-white flex items-center justify-center hover:bg-white/25 transition-colors"
                 >
                   <Home className="w-4 h-4" strokeWidth={1.5} />
@@ -92,26 +91,26 @@ export function HeroSection() {
 
               <div className="hidden md:flex flex-col items-end gap-2.5 text-white">
                 <p className="text-[12px] text-white/85 text-right max-w-[180px] leading-snug">
-                  Your Passport to Unforgettable Suites
+                  Chambres, Petit-Déjeuner &amp; Salles de Conférence
                 </p>
                 <div className="flex items-center gap-2">
                   <Link
                     href="/rooms"
-                    aria-label="Explore sanctuaries and suites"
+                    aria-label="Chambres et suites"
                     className="w-9 h-9 rounded-full bg-white text-[#111111] flex items-center justify-center hover:bg-[#EFE6D6] transition-colors"
                   >
                     <Globe className="w-4 h-4" strokeWidth={1.5} />
                   </Link>
                   <Link
-                    href="/rooms"
-                    aria-label="Curated suites"
+                    href="/services"
+                    aria-label="Petit-déjeuner et séminaires"
                     className="w-9 h-9 rounded-full bg-white text-[#111111] flex items-center justify-center hover:bg-[#EFE6D6] transition-colors"
                   >
                     <Heart className="w-4 h-4" strokeWidth={1.5} />
                   </Link>
                   <Link
                     href="/my-booking"
-                    aria-label="Retrieve reservation"
+                    aria-label="Retrouver ma réservation"
                     className="w-9 h-9 rounded-full bg-white text-[#111111] flex items-center justify-center hover:bg-[#EFE6D6] transition-colors"
                   >
                     <KeyRound className="w-4 h-4" strokeWidth={1.5} />
@@ -124,8 +123,8 @@ export function HeroSection() {
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-6 text-white space-y-6">
                 <p className="text-[13px] text-white/85 max-w-xs leading-relaxed">
-                  We are a premier hotel booking service tailored for the discerning
-                  traveler in search of calm luxury and architectural beauty.
+                  King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec
+                  petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
                 </p>
 
                 <div className="flex items-start gap-3">
@@ -135,7 +134,7 @@ export function HeroSection() {
                     aria-hidden="true"
                   />
                   <h1 className="text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance">
-                    Book Perfect Stay For Your Vacation
+                    Réservez Votre Séjour au King&apos;s Bed Hotel
                   </h1>
                 </div>
 
@@ -144,7 +143,7 @@ export function HeroSection() {
                     href="/rooms"
                     className="h-11 px-6 rounded-full bg-white text-[#111111] text-[14px] font-medium inline-flex items-center gap-2 hover:bg-[#EFE6D6] transition-colors whitespace-nowrap"
                   >
-                    Explore More
+                    Découvrir
                     <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                   </Link>
                   <button
@@ -152,7 +151,7 @@ export function HeroSection() {
                     onClick={() => setVideoOpen(true)}
                     className="h-11 px-6 rounded-full glass-surface-subtle border border-white/30 text-white text-[14px] font-medium inline-flex items-center gap-2 hover:bg-white/25 transition-colors whitespace-nowrap cursor-pointer"
                   >
-                    View Video
+                    Voir la vidéo
                     <Play className="w-3.5 h-3.5 fill-current" strokeWidth={1.5} />
                   </button>
                 </div>
@@ -165,7 +164,7 @@ export function HeroSection() {
                   className="w-28 h-28 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
                 >
                   <span className="text-[12px] font-medium leading-tight">
-                    Book your stay
+                    Réserver votre séjour
                   </span>
                   <ArrowDownRight className="w-4 h-4 mt-1.5" strokeWidth={1.5} />
                 </Link>
@@ -179,35 +178,23 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-
-        {/* ScrollCue straddling hero bottom edge */}
-        <div className="hidden sm:flex flex-col items-center -mt-7 relative z-20 lg:ml-[38%]">
-          <a
-            href="#destinations-teaser"
-            className="w-14 h-14 rounded-full bg-white border border-[#111111]/10 shadow-[0_8px_24px_rgba(0,0,0,0.08)] flex items-center justify-center text-[#111111] hover:translate-y-0.5 transition-transform"
-            aria-label="Scroll to explore destinations"
-          >
-            <ArrowDown className="w-5 h-5" strokeWidth={1.5} />
-          </a>
-          <span className="mt-1.5 text-[12px] text-[#5F5F5A]">Learn more</span>
-        </div>
       </div>
 
       <DialogModal
         open={videoOpen}
         onClose={() => setVideoOpen(false)}
-        title="Inside the SuiteSavvy Sanctuary"
+        title="Au cœur du King's Bed Hotel"
       >
         <div className="relative aspect-video rounded-[20px] overflow-hidden bg-[#1F3A2C]">
           <SuiteImage
             src="/images/about/about-lounge.jpg"
-            alt="SuiteSavvy sanctuary architecture walkthrough"
+            alt="Visite des salons et chambres du King's Bed Hotel"
             sizes="(max-width: 768px) 95vw, 760px"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-            <p className="text-[13px] text-white/80 mb-1">Architectural Film</p>
+            <p className="text-[13px] text-white/80 mb-1">Film de Présentation</p>
             <p className="text-[20px] font-light tracking-[-0.02em]">
-              Calm materials, natural daylight, and effortless stillness across 5 destinations.
+              Chambres King Size, petit-déjeuner artisanal et salles de conférence lumineuses.
             </p>
           </div>
         </div>

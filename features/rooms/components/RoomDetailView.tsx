@@ -110,23 +110,23 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
   const bottomSidePhoto = room.gallery[2] ?? "/images/rooms/stone-spa-bath.jpg";
 
   return (
-    <div className="bg-[#faf9f6] text-[#1a1c1a]">
+    <div className="bg-white text-[#1a1c1a]">
       {/* Top Breadcrumb & Page Meta Anchor */}
       <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-6 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <nav
-            aria-label="Breadcrumb"
+            aria-label="Fil d'Ariane"
             className="flex items-center gap-2 text-[12px] font-medium text-[#414846]"
           >
             <Link href="/" className="hover:text-[#001510] transition-colors">
-              Home
+              Accueil
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <Link
               href="/rooms"
               className="hover:text-[#001510] transition-colors"
             >
-              Rooms &amp; Suites
+              Chambres &amp; Suites
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-[#001510] font-semibold">{room.name}</span>
@@ -139,7 +139,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f4f3f0] hover:bg-[#efeeeb] text-[#414846] hover:text-[#1a1c1a] text-[12px] font-medium transition-all shadow-sm cursor-pointer"
             >
               <Share2 className="w-3.5 h-3.5" />
-              <span>{copied ? "Link Copied" : "Share"}</span>
+              <span>{copied ? "Lien Copié" : "Partager"}</span>
             </button>
             <button
               type="button"
@@ -151,7 +151,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   saved ? "text-[#3d6659] fill-current" : ""
                 }`}
               />
-              <span>{saved ? "Saved to Portfolio" : "Save Sanctuary"}</span>
+              <span>{saved ? "Enregistrée" : "Sauvegarder"}</span>
             </button>
           </div>
         </div>
@@ -159,16 +159,16 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
         {/* Title and Sub-header Line */}
         <div className="mt-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#bce9d9] text-[#244e42] text-[11px] font-semibold mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#3d6659]" />
-              <span>Rare Horizon Collection • Villa 04B</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e9e8e5] text-[#001510] text-[12px] font-medium tracking-[0.02em] mb-2">
+              <BedDouble className="w-3.5 h-3.5 text-[#3d6659]" strokeWidth={1.75} />
+              <span>Collection King&apos;s Bed Hotel • Chambre 04B</span>
             </div>
             <h1 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium tracking-[-0.02em] text-[#001510]">
               {room.name}
             </h1>
             <p className="text-[15px] text-[#414846] mt-1 flex items-center gap-1.5">
               <MapPin className="w-4 h-4 text-[#3d6659] shrink-0" />
-              <span>{room.destinationName} • Available Immediately</span>
+              <span>{room.destinationName} • Disponible Immédiatement</span>
             </p>
           </div>
 
@@ -179,11 +179,11 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 {(room.rating ?? 4.98).toFixed(2).replace(/\.00$/, ".0")}
               </span>
               <span className="text-[13px] text-[#414846]">
-                ({room.reviewCount ?? 124} verified reviews)
+                ({room.reviewCount ?? 124} avis vérifiés)
               </span>
             </div>
             <span className="text-[#414846] text-[11px] font-semibold px-3.5 py-2 rounded-full bg-[#e9e8e5]">
-              Curated Masterwork
+              Petit-Déjeuner Inclus
             </span>
           </div>
         </div>
@@ -211,14 +211,14 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-[#001510]/65 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
               <div className="absolute bottom-6 left-6 text-white">
                 <span className="text-[11px] font-semibold uppercase tracking-widest text-[#c9eade] block mb-1">
-                  Master Living Wing
+                  Aile Prestige
                 </span>
                 <h2 className="text-[22px] sm:text-[24px] font-semibold text-white">
-                  Open Horizon Master Chamber
+                  Chambre Principale Lumineuse
                 </h2>
                 <p className="text-[13px] text-white/85 max-w-md mt-1">
-                  Seamless glass facades opening directly toward the ocean
-                  infinity deck.
+                  Baies vitrées à isolation acoustique donnant sur la terrasse
+                  privée et les jardins de l&apos;hôtel.
                 </p>
               </div>
             </div>
@@ -234,7 +234,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               >
                 <SuiteImage
                   src={topSidePhoto}
-                  alt="Cliff Edge Plunge Pool"
+                  alt="Bassin & Terrasse Chauffée"
                   sizes="(max-width: 1024px) 50vw, 400px"
                   className="transition-transform duration-700 group-hover:scale-105"
                 />
@@ -242,10 +242,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                   <div>
                     <p className="text-[12px] font-semibold text-white">
-                      Cliff Edge Plunge Pool
+                      Bassin &amp; Détente
                     </p>
                     <p className="text-[12px] text-[#bce9d9]">
-                      Heated private mineral water
+                      Eau minérale chauffée toute l&apos;année
                     </p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
@@ -263,7 +263,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               >
                 <SuiteImage
                   src={bottomSidePhoto}
-                  alt="Sunken Volcanic Stone Spa"
+                  alt="Espace Spa en Pierre Naturelle"
                   sizes="(max-width: 1024px) 50vw, 400px"
                   className="transition-transform duration-700 group-hover:scale-105"
                 />
@@ -271,10 +271,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                   <div>
                     <p className="text-[12px] font-semibold text-white">
-                      Sunken Volcanic Stone Spa
+                      Salle de Bain &amp; Spa
                     </p>
                     <p className="text-[12px] text-[#bce9d9]">
-                      Daily artisanal floral bath rituals
+                      Soins botaniques &amp; douche pluie
                     </p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
@@ -294,7 +294,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               className="absolute bottom-5 right-5 z-20 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md text-[#001510] text-[12px] font-semibold hover:bg-white transition-all shadow-md cursor-pointer"
             >
               <Images className="w-4 h-4" />
-              <span>View all {room.gallery.length} suite photos</span>
+              <span>Voir les {room.gallery.length} photos</span>
             </button>
           </div>
         </Reveal>
@@ -313,7 +313,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold text-[#414846]">
-                    Interior Space
+                    Surface Intérieure
                   </span>
                   <span className="text-[13px] font-semibold text-[#001510]">
                     {room.sizeSqm} m² ({sqft} sq ft)
@@ -327,10 +327,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold text-[#414846]">
-                    Capacity
+                    Capacité
                   </span>
                   <span className="text-[13px] font-semibold text-[#001510]">
-                    {room.maxGuests} Adults Max
+                    {room.maxGuests} Hôtes Max
                   </span>
                 </div>
               </div>
@@ -341,7 +341,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold text-[#414846]">
-                    Master Bed
+                    Literie
                   </span>
                   <span className="text-[13px] font-semibold text-[#001510]">
                     {room.bedType.split("·")[0].trim()}
@@ -355,10 +355,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold text-[#414846]">
-                    Vista
+                    Exposition
                   </span>
                   <span className="text-[13px] font-semibold text-[#001510]">
-                    {room.horizonView ?? "180° Ocean Edge"}
+                    {room.horizonView ?? "Vue Panoramique"}
                   </span>
                 </div>
               </div>
@@ -372,7 +372,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     Service
                   </span>
                   <span className="text-[13px] font-semibold text-[#001510]">
-                    Dedicated Butler
+                    Conciergerie 24/7
                   </span>
                 </div>
               </div>
@@ -382,10 +382,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
             <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-[#1a1c1a]/5 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="text-[20px] font-semibold text-[#001510]">
-                  Architectural &amp; Interior Narrative
+                  Architecture &amp; Art de Vivre
                 </h3>
                 <span className="text-[11px] font-semibold text-[#3d6659] uppercase tracking-widest">
-                  Designed by Studio Kayan
+                  Signé King&apos;s Bed Design
                 </span>
               </div>
 
@@ -393,12 +393,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 {room.description}
               </p>
               <p className="text-[15px] leading-[1.6] text-[#414846]">
-                Acoustic isolation glass slides fully into hidden wall pockets,
-                merging the master bedroom with an expansive ironwood sun deck
-                and private mineral plunge pool. Morning brings gentle offshore
-                breezes and golden reflections; dusk envelops the residence in
-                the soft glow of concealed bronze luminaires and candlelit
-                garden paths.
+                Conçue pour allier repos profond et efficacité professionnelle,
+                cette chambre dispose d&apos;un matelas King Size sur mesure, d&apos;un
+                espace bureau calme et d&apos;un accès prioritaire au salon
+                petit-déjeuner ainsi qu&apos;aux salles de réunion de l&apos;hôtel.
               </p>
 
               <div className="pt-2 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -406,12 +404,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <div className="flex items-center gap-2 text-[#3d6659] mb-2">
                     <Trees className="w-4 h-4" />
                     <span className="text-[11px] font-semibold">
-                      Natural Materiality
+                      Matériaux Nobles
                     </span>
                   </div>
                   <p className="text-[13px] text-[#414846]">
-                    Teak, untreated lime plaster, and hand-loomed jute woven by
-                    local master artisans.
+                    Boiseries en chêne, enduits naturels à la chaux et linge en
+                    lin tissé avec soin.
                   </p>
                 </div>
 
@@ -419,12 +417,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <div className="flex items-center gap-2 text-[#3d6659] mb-2">
                     <AudioLines className="w-4 h-4" />
                     <span className="text-[11px] font-semibold">
-                      Acoustic Shielding
+                      Silence Acoustique
                     </span>
                   </div>
                   <p className="text-[13px] text-[#414846]">
-                    42dB sound dampening for complete auditory rest amidst
-                    soothing ocean waves.
+                    Isolation phonique renforcée 42 dB pour un sommeil réparateur
+                    à toute heure.
                   </p>
                 </div>
 
@@ -432,12 +430,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <div className="flex items-center gap-2 text-[#3d6659] mb-2">
                     <Leaf className="w-4 h-4" />
                     <span className="text-[11px] font-semibold">
-                      Climate Passive
+                      Confort Thermique
                     </span>
                   </div>
                   <p className="text-[13px] text-[#414846]">
-                    Cross-ventilation layout with whisper-quiet geothermal
-                    eco-cooling technology.
+                    Climatisation silencieuse et régulation naturelle de la
+                    lumière du jour.
                   </p>
                 </div>
               </div>
@@ -448,16 +446,16 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <h3 className="text-[20px] font-semibold text-[#001510]">
-                    In-Suite Curations &amp; Amenities
+                    Prestations &amp; Équipements Inclus
                   </h3>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Every fixture and sensory element has been selected without
-                    compromise.
+                    Chaque détail est préparé pour votre confort nocturne, vos
+                    matinées gourmandes et vos réunions.
                   </p>
                 </div>
                 <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#3d6659] bg-[#bce9d9]/50 px-3 py-1.5 rounded-full shrink-0">
                   <BadgeCheck className="w-4 h-4" />
-                  100% Complimentary Inclusions
+                  100 % Prestations Incluses
                 </span>
               </div>
 
@@ -465,27 +463,25 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="p-5 rounded-2xl bg-[#f4f3f0] space-y-3">
                   <div className="flex items-center gap-2 text-[#001510] font-semibold text-[16px]">
                     <BedDouble className="w-5 h-5 text-[#3d6659]" />
-                    <span>Sleep &amp; Comfort</span>
+                    <span>Sommeil &amp; Literie Royale</span>
                   </div>
                   <ul className="space-y-2 text-[13px] text-[#414846]">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Siberian goose down pillow menu with 8 personalized
-                        firmness options
+                        Carte d&apos;oreillers sur mesure avec 8 fermetés au choix
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Giza Egyptian cotton 600-thread count bespoke bedding
+                        Draps en satin de coton égyptien 600 fils repassés chaque jour
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Silent motorized blackout woven screens with circadian
-                        wake cycle
+                        Occultation totale motorisée et matelas King Size haute densité
                       </span>
                     </li>
                   </ul>
@@ -494,28 +490,25 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="p-5 rounded-2xl bg-[#f4f3f0] space-y-3">
                   <div className="flex items-center gap-2 text-[#001510] font-semibold text-[16px]">
                     <Waves className="w-5 h-5 text-[#3d6659]" />
-                    <span>Wellness &amp; Bathing</span>
+                    <span>Bien-Être &amp; Salle de Bain</span>
                   </div>
                   <ul className="space-y-2 text-[13px] text-[#414846]">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Dyson Supersonic grooming station &amp; copper thermal
-                        tools
+                        Sèche-cheveux Dyson Supersonic &amp; peignoirs en coton peigné
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Monolithic freestanding volcanic stone soaking tub
-                        overlooking gorge
+                        Baignoire en pierre naturelle et douche effet pluie tropicale
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Aesop botanical hair, hand, and body therapies
-                        (replenished daily)
+                        Cosmétiques botaniques Aesop renouvelés quotidiennement
                       </span>
                     </li>
                   </ul>
@@ -524,28 +517,25 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="p-5 rounded-2xl bg-[#f4f3f0] space-y-3">
                   <div className="flex items-center gap-2 text-[#001510] font-semibold text-[16px]">
                     <Wine className="w-5 h-5 text-[#3d6659]" />
-                    <span>Gastronomy &amp; Cellar</span>
+                    <span>Petit-Déjeuner &amp; Cave</span>
                   </div>
                   <ul className="space-y-2 text-[13px] text-[#414846]">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Private espresso atelier featuring single-origin
-                        Balinese roast
+                        Machine espresso privée avec cafés de spécialité fraîchement torréfiés
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Complimentary climate-controlled vintage mini-cellar
-                        wines
+                        Petit-déjeuner artisanal inclus au salon Orangerie ou en chambre
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Daily morning rare tropical fruit presentation &amp;
-                        artisan pastries
+                        Corbeille de fruits frais et viennoiseries maison chaque matin
                       </span>
                     </li>
                   </ul>
@@ -554,28 +544,25 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="p-5 rounded-2xl bg-[#f4f3f0] space-y-3">
                   <div className="flex items-center gap-2 text-[#001510] font-semibold text-[16px]">
                     <Wifi className="w-5 h-5 text-[#3d6659]" />
-                    <span>Technology &amp; Discretion</span>
+                    <span>Travail, Réunions &amp; Technologie</span>
                   </div>
                   <ul className="space-y-2 text-[13px] text-[#414846]">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        High-speed dedicated Starlink VIP mesh connection (350
-                        Mbps)
+                        Fibre optique dédiée très haut débit (1 Gbps) &amp; espace bureau
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Bang &amp; Olufsen Beosound acoustic nodes across room
-                        and deck
+                        Accès préférentiel aux salles de réunion et conférences de l&apos;hôtel
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />
                       <span>
-                        Keyless biometric &amp; encrypted mobile digital key
-                        entry system
+                        Clé mobile digitale sécurisée et système audio Bang &amp; Olufsen
                       </span>
                     </li>
                   </ul>
@@ -588,11 +575,11 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h3 className="text-[20px] font-semibold text-[#001510]">
-                    Floor Plan &amp; Spatial Flow
+                    Plan &amp; Distribution des Espaces
                   </h3>
                   <p className="text-[13px] text-[#414846]">
-                    Single-level pavilion layout with private access ramp and
-                    secluded plunge pool.
+                    Agencement de plain-pied offrant espace nuit King Size, salle
+                    de bain spa et terrasse privée.
                   </p>
                 </div>
                 <button
@@ -601,7 +588,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   className="px-4 py-2 rounded-full bg-[#e9e8e5] hover:bg-[#efeeeb] text-[12px] font-semibold text-[#001510] transition-colors flex items-center gap-2 cursor-pointer"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Full Scale Vector Blueprint</span>
+                  <span>Voir le Plan Détaillé</span>
                 </button>
               </div>
 
@@ -609,16 +596,16 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 {/* Clean Architectural Schematic */}
                 <div className="w-full max-w-xl space-y-2">
                   <div className="flex items-center justify-center text-[10px] font-mono tracking-widest text-[#414846] uppercase border-b border-[#414846]/30 pb-1">
-                    14.2 Meters Frontage
+                    Façade 14,2 Mètres
                   </div>
                   <div className="border-2 border-dashed border-[#414846]/35 rounded-xl p-3 grid grid-cols-12 gap-3 bg-white/40">
                     {/* Stone Spa */}
                     <div className="col-span-4 border border-[#414846]/40 rounded-lg p-3 flex flex-col items-center justify-between min-h-[160px]">
                       <div className="w-16 h-24 rounded-full border border-[#414846]/45 flex items-center justify-center text-[9px] font-mono text-[#414846] text-center px-1">
-                        STONE SPA
+                        BAIN &amp; SPA
                       </div>
                       <span className="text-[9px] font-mono tracking-wider text-[#414846] uppercase">
-                        Bath &amp; Dressing
+                        Bain &amp; Dressing
                       </span>
                     </div>
 
@@ -630,21 +617,21 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                           <span className="w-7 h-4 rounded-sm border border-[#414846]/45" />
                         </div>
                         <span className="text-[9px] font-mono text-[#414846] tracking-wider">
-                          KING CHAMBER
+                          CHAMBRE KING
                         </span>
                       </div>
                       <span className="text-[9px] font-mono tracking-wider text-[#414846] uppercase">
-                        42 m² Pavilion
+                        Espace 42 m²
                       </span>
                     </div>
 
                     {/* Plunge Pool & Open Deck */}
                     <div className="col-span-4 border border-[#414846]/40 rounded-lg p-3 flex flex-col items-center justify-between min-h-[160px] bg-[#bce9d9]/20">
                       <div className="w-full h-20 rounded-lg border border-[#3d6659]/45 bg-[#bce9d9]/30 flex items-center justify-center text-[9px] font-mono text-[#244e42] tracking-wider text-center px-1">
-                        PLUNGE POOL
+                        TERRASSE &amp; BASSIN
                       </div>
                       <span className="text-[9px] font-mono tracking-wider text-[#414846] uppercase">
-                        Open Deck 32 m²
+                        Terrasse 32 m²
                       </span>
                     </div>
                   </div>
@@ -653,15 +640,15 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="mt-4 flex flex-wrap gap-4 justify-center text-[11px] font-semibold text-[#414846]">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#3d6659]" />
-                    Master Suite (42 m²)
+                    Chambre King Size (42 m²)
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#bce9d9]" />
-                    Open Sunken Spa (18 m²)
+                    Salle de Bain &amp; Spa (18 m²)
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#c1c8c4]" />
-                    Teak Sun Deck &amp; Plunge Pool (25 m²)
+                    Terrasse &amp; Espace Détente (25 m²)
                   </span>
                 </div>
               </div>
@@ -689,8 +676,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                       Julian Von Berg
                     </h4>
                     <p className="text-[11px] font-semibold text-[#414846]">
-                      Sanctuary Curator &amp; Master Sommelier • SuiteSavvy
-                      Fellow
+                      Directeur d&apos;Accueil &amp; Conférences • King&apos;s Bed Hotel
                     </p>
                   </div>
                   <Link
@@ -698,15 +684,14 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     className="px-4 py-2 rounded-full bg-[#f4f3f0] hover:bg-[#efeeeb] text-[#001510] text-[12px] font-semibold transition-colors inline-flex items-center justify-center gap-1.5"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>Inquire With Julian</span>
+                    <span>Écrire à Julian</span>
                   </Link>
                 </div>
                 <p className="text-[15px] text-[#414846] leading-relaxed">
-                  &ldquo;Every sunset at Villa 04B carries its own signature hue
-                  over the cliffside. Before your arrival, my team will curate
-                  your bath botanicals, configure your preferred pillow
-                  densities, and ensure your vintage wine cellar matches your
-                  palate.&rdquo;
+                  &laquo;&nbsp;Avant votre arrivée au King&apos;s Bed Hotel, notre
+                  équipe ajuste votre literie selon vos préférences, prépare votre
+                  table de petit-déjeuner et peut réserver une salle de réunion
+                  privative pour vos échanges.&nbsp;&raquo;
                 </p>
               </div>
             </div>
@@ -714,48 +699,46 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
             {/* House Guidelines & Protocol */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-[#1a1c1a]/5 space-y-4">
               <h4 className="text-[20px] font-semibold text-[#001510]">
-                Sanctuary Guidelines &amp; Protocol
+                Informations Pratiques &amp; Accueil
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 rounded-2xl bg-[#f4f3f0]">
                   <div className="flex items-center gap-2 text-[#001510] text-[14px] font-semibold mb-1">
                     <LogIn className="w-4 h-4 text-[#3d6659]" />
-                    <span>Check-in</span>
+                    <span>Arrivée</span>
                   </div>
                   <p className="text-[20px] font-semibold text-[#001510]">
-                    15:00
+                    15h00
                   </p>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Discreet in-villa reception. Private butler orientation
-                    included.
+                    Accueil personnalisé 24h/24 et boisson de bienvenue offerte.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#f4f3f0]">
                   <div className="flex items-center gap-2 text-[#001510] text-[14px] font-semibold mb-1">
                     <LogOut className="w-4 h-4 text-[#3d6659]" />
-                    <span>Check-out</span>
+                    <span>Départ</span>
                   </div>
                   <p className="text-[20px] font-semibold text-[#001510]">
-                    12:00
+                    12h00
                   </p>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Complimentary extended departure up to 14:00 upon
-                    availability.
+                    Départ tardif offert jusqu&apos;à 14h00 selon disponibilité.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#f4f3f0]">
                   <div className="flex items-center gap-2 text-[#001510] text-[14px] font-semibold mb-1">
                     <PawPrint className="w-4 h-4 text-[#3d6659]" />
-                    <span>Companion Animals</span>
+                    <span>Animaux de Compagnie</span>
                   </div>
                   <p className="text-[20px] font-semibold text-[#001510]">
-                    Upon Request
+                    Sur Demande
                   </p>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Small pets up to 12kg welcomed with bespoke bedding and
-                    meals.
+                    Petits compagnons jusqu&apos;à 12 kg bienvenus avec coussin
+                    dédié.
                   </p>
                 </div>
               </div>
@@ -769,15 +752,15 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <span className="text-[#414846] line-through text-[13px] mr-1.5">
-                    ${originalUsd.toLocaleString()}
+                    {originalUsd.toLocaleString("fr-FR")} €
                   </span>
                   <span className="text-[36px] font-bold tracking-tight text-[#001510]">
-                    ${nightlyUsd.toLocaleString()}
+                    {nightlyUsd.toLocaleString("fr-FR")} €
                   </span>
-                  <span className="text-[13px] text-[#414846]"> / night</span>
+                  <span className="text-[13px] text-[#414846]"> / nuit</span>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-[#bce9d9] text-[#244e42] text-[11px] font-semibold">
-                  Member Benefit
+                  Tarif Direct
                 </span>
               </div>
 
@@ -786,7 +769,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="grid grid-cols-2 gap-2">
                   <label className="p-2.5 rounded-xl bg-white hover:bg-[#faf9f6] transition-colors cursor-pointer block">
                     <span className="block text-[10px] font-semibold text-[#414846] uppercase tracking-wider">
-                      Check-in
+                      Arrivée
                     </span>
                     <div className="flex items-center gap-1.5 mt-1 text-[#001510]">
                       <Calendar className="w-3.5 h-3.5 text-[#3d6659] shrink-0" />
@@ -801,7 +784,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
 
                   <label className="p-2.5 rounded-xl bg-white hover:bg-[#faf9f6] transition-colors cursor-pointer block">
                     <span className="block text-[10px] font-semibold text-[#414846] uppercase tracking-wider">
-                      Check-out
+                      Départ
                     </span>
                     <div className="flex items-center gap-1.5 mt-1 text-[#001510]">
                       <Calendar className="w-3.5 h-3.5 text-[#3d6659] shrink-0" />
@@ -818,14 +801,14 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
 
                 <div className="text-center py-1.5 bg-[#e3e2e0]/60 rounded-lg">
                   <span className="text-[11px] font-medium text-[#001510]">
-                    Selected Duration: {nights} Nights Sanctuary Stay
+                    Durée sélectionnée : {nights} {nights === 1 ? "Nuit" : "Nuits"}
                   </span>
                 </div>
 
                 <label className="p-2.5 rounded-xl bg-white hover:bg-[#faf9f6] transition-colors flex items-center justify-between cursor-pointer">
                   <div className="w-full">
                     <span className="block text-[10px] font-semibold text-[#414846] uppercase tracking-wider">
-                      Occupancy
+                      Occupation
                     </span>
                     <div className="flex items-center gap-1.5 mt-0.5 text-[#001510]">
                       <Users className="w-3.5 h-3.5 text-[#3d6659] shrink-0" />
@@ -839,7 +822,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                           (_, i) => i + 1
                         ).map((count) => (
                           <option key={count} value={count}>
-                            {count} {count === 1 ? "Adult" : "Adults"}, 0 Children
+                            {count} {count === 1 ? "Adulte" : "Adultes"}, 0 Enfant
                           </option>
                         ))}
                       </select>
@@ -852,43 +835,43 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="space-y-2.5 pt-1">
                 <div className="flex justify-between text-[13px] text-[#414846]">
                   <span>
-                    ${nightlyUsd.toLocaleString()} × {nights} Nights
+                    {nightlyUsd.toLocaleString("fr-FR")} € × {nights} {nights === 1 ? "Nuit" : "Nuits"}
                   </span>
                   <span className="font-medium text-[#001510]">
-                    ${roomSubtotal.toLocaleString()}
+                    {roomSubtotal.toLocaleString("fr-FR")} €
                   </span>
                 </div>
                 <div className="flex justify-between text-[13px] text-[#414846]">
                   <span className="flex items-center gap-1">
-                    Airport Chauffeur (Mercedes EQS)
+                    Petit-Déjeuner &amp; Literie King
                     <Info className="w-3.5 h-3.5 text-[#3d6659]" />
                   </span>
                   <span className="font-medium text-[#3d6659]">
-                    Complimentary
+                    Inclus
                   </span>
                 </div>
                 <div className="flex justify-between text-[13px] text-[#414846]">
-                  <span>Local Eco-Tourism &amp; Forest Tax (10%)</span>
+                  <span>Taxes de séjour &amp; éco-taxe (10 %)</span>
                   <span className="font-medium text-[#001510]">
-                    ${ecoTax.toLocaleString()}
+                    {ecoTax.toLocaleString("fr-FR")} €
                   </span>
                 </div>
                 <div className="flex justify-between text-[13px] text-[#3d6659]">
-                  <span>Direct Member Privilege</span>
-                  <span className="font-medium">-${memberPrivilege}</span>
+                  <span>Avantage Réservation Directe</span>
+                  <span className="font-medium">-{memberPrivilege} €</span>
                 </div>
                 <div className="h-[1px] bg-[#e3e2e0] my-1" />
                 <div className="flex justify-between items-baseline pt-1">
                   <div>
                     <span className="text-[18px] font-semibold text-[#001510]">
-                      Total Investment
+                      Total du Séjour
                     </span>
                     <p className="text-[11px] text-[#414846]">
-                      Includes all taxes &amp; butler charges
+                      Toutes taxes &amp; petits-déjeuners inclus
                     </p>
                   </div>
                   <span className="text-[24px] font-bold text-[#001510]">
-                    ${totalInvestment.toLocaleString()}
+                    {totalInvestment.toLocaleString("fr-FR")} €
                   </span>
                 </div>
               </div>
@@ -900,7 +883,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   onClick={handleReserve}
                   className="w-full py-4 rounded-full bg-[#0d2b24] hover:bg-[#001510] text-white text-[14px] font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer"
                 >
-                  <span>Reserve This Sanctuary</span>
+                  <span>Réserver Cette Chambre</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button
@@ -915,8 +898,8 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <Clock className="w-4 h-4" />
                   <span>
                     {held
-                      ? "48h Courtesy Hold Active"
-                      : "Hold for 48h (No Commitment)"}
+                      ? "Option 48h Activée"
+                      : "Poser une Option 48h (Sans Engagement)"}
                   </span>
                 </button>
               </div>
@@ -925,15 +908,15 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="space-y-2 pt-1">
                 <div className="flex items-center gap-2.5 text-[#414846] text-[13px]">
                   <CheckCircle2 className="w-4 h-4 text-[#3d6659] shrink-0" />
-                  <span>Free cancellation up to 48h prior to arrival</span>
+                  <span>Annulation gratuite jusqu&apos;à 48h avant l&apos;arrivée</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-[#414846] text-[13px]">
                   <Leaf className="w-4 h-4 text-[#3d6659] shrink-0" />
-                  <span>100% Carbon-Neutral Stay certification included</span>
+                  <span>Séjour certifié 100 % éco-responsable</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-[#414846] text-[13px]">
                   <BadgeCheck className="w-4 h-4 text-[#3d6659] shrink-0" />
-                  <span>Direct Sanctuary Privileges &amp; Priority Dining</span>
+                  <span>Accès prioritaire petit-déjeuner &amp; salons d&apos;affaires</span>
                 </div>
               </div>
 
@@ -941,8 +924,8 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="p-3.5 rounded-xl bg-[#f4f3f0] flex items-center gap-3">
                 <Shield className="w-5 h-5 text-[#3d6659] shrink-0" />
                 <p className="text-[11px] font-medium text-[#414846] leading-tight">
-                  SuiteSavvy Escrow Protection: Funds released to estate only
-                  upon verified guest check-in.
+                  Garantie King&apos;s Bed Hotel : réservation sécurisée et
+                  modification flexible sans frais cachés.
                 </p>
               </div>
             </div>
@@ -955,10 +938,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 </div>
                 <div>
                   <p className="text-[12px] font-semibold text-[#001510]">
-                    Need Bespoke Arrangements?
+                    Besoin d&apos;une Salle ou d&apos;un Devis ?
                   </p>
                   <p className="text-[12px] text-[#414846]">
-                    Helicopter transfers &amp; chef diets
+                    Réunions, séminaires &amp; transferts
                   </p>
                 </div>
               </div>
@@ -974,24 +957,24 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       </section>
 
       {/* Similar Sanctuaries Carousel Section */}
-      <section className="w-full bg-[#f4f3f0] py-14">
+      <section className="w-full bg-white border-t border-[#EDEDEA] py-14">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-widest text-[#3d6659] block mb-1">
-                Curated Alternatives
+                Suggestions de l&apos;Hôtel
               </span>
               <h3 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium tracking-[-0.02em] text-[#001510]">
-                Other Sanctuaries You May Cherish
+                Autres Chambres &amp; Suites à Découvrir
               </h3>
             </div>
             <div className="flex items-center gap-2">
               <Link
                 href="/rooms"
-                aria-label="Browse all retreats"
+                aria-label="Voir toutes les chambres"
                 className="px-5 py-2.5 rounded-full bg-white hover:bg-[#e9e8e5] text-[#001510] text-[13px] font-semibold shadow-sm transition-colors inline-flex items-center gap-1.5"
               >
-                <span>All Sanctuaries</span>
+                <span>Toutes les Chambres</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -1039,13 +1022,13 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <div className="flex items-center justify-between pt-2">
                     <div>
                       <span className="text-[20px] font-semibold text-[#001510]">
-                        ${Math.round(item.pricePerNight / 100).toLocaleString()}
+                        {Math.round(item.pricePerNight / 100).toLocaleString("fr-FR")} €
                       </span>
-                      <span className="text-[13px] text-[#414846]"> / night</span>
+                      <span className="text-[13px] text-[#414846]"> / nuit</span>
                     </div>
                     <Link
                       href={`/rooms/${item.slug}`}
-                      aria-label={`View ${item.name}`}
+                      aria-label={`Voir ${item.name}`}
                       className="w-10 h-10 rounded-full bg-[#f4f3f0] group-hover:bg-[#001510] group-hover:text-white text-[#001510] flex items-center justify-center transition-colors"
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -1062,12 +1045,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       <DialogModal
         open={galleryOpen}
         onClose={() => setGalleryOpen(false)}
-        title={`${room.name} — Suite Gallery`}
+        title={`${room.name} — Galerie Photos`}
         maxWidthClass="max-w-4xl"
       >
         <div className="space-y-4">
           <p className="text-[13px] text-[#414846] -mt-2">
-            {activePhoto + 1} of {room.gallery.length} curated interior &amp; horizon views
+            {activePhoto + 1} sur {room.gallery.length} vues intérieures et extérieures
           </p>
           <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-[#efeeeb]">
             <SuiteImage
@@ -1087,7 +1070,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               className="px-4 py-2 rounded-full bg-[#f4f3f0] hover:bg-[#e9e8e5] text-[#001510] text-[13px] font-medium inline-flex items-center gap-1.5 cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
-              Previous
+              Précédente
             </button>
             <div className="flex gap-2">
               {room.gallery.map((img, i) => (
@@ -1099,7 +1082,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     activePhoto === i ? "border-[#001510]" : "border-transparent opacity-60"
                   }`}
                 >
-                  <SuiteImage src={img} alt={`Thumb ${i + 1}`} sizes="64px" />
+                  <SuiteImage src={img} alt={`Aperçu ${i + 1}`} sizes="64px" />
                 </button>
               ))}
             </div>
@@ -1110,7 +1093,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               }
               className="px-4 py-2 rounded-full bg-[#f4f3f0] hover:bg-[#e9e8e5] text-[#001510] text-[13px] font-medium inline-flex items-center gap-1.5 cursor-pointer"
             >
-              Next
+              Suivante
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
@@ -1121,12 +1104,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       <DialogModal
         open={blueprintOpen}
         onClose={() => setBlueprintOpen(false)}
-        title={`${room.name} — Architectural Blueprint`}
+        title={`${room.name} — Plan Architectural`}
         maxWidthClass="max-w-4xl"
       >
         <div className="bg-[#f4f3f0] rounded-2xl p-6 space-y-5">
           <p className="text-[13px] text-[#414846]">
-            Single-level {room.sizeSqm} m² ({sqft} sq ft) spatial layout · 14.2m oceanfront frontage
+            Agencement de plain-pied {room.sizeSqm} m² ({sqft} sq ft) · Façade 14,2 m
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded-xl bg-white border border-[#414846]/15 space-y-2">
@@ -1134,11 +1117,11 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 Zone 01 · 18 m²
               </p>
               <h4 className="text-[16px] font-semibold text-[#001510]">
-                Open Sunken Stone Spa
+                Salle de Bain &amp; Spa en Pierre
               </h4>
               <p className="text-[13px] text-[#414846]">
-                Freestanding monolithic basalt tub, double travertine vanity,
-                outdoor rainforest shower, and cedar walk-in dressing gallery.
+                Baignoire îlot en pierre naturelle, double vasque travertin,
+                douche effet pluie et dressing en cèdre.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-white border border-[#414846]/15 space-y-2">
@@ -1146,11 +1129,11 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 Zone 02 · 42 m²
               </p>
               <h4 className="text-[16px] font-semibold text-[#001510]">
-                Master King Chamber
+                Chambre Principale King Size
               </h4>
               <p className="text-[13px] text-[#414846]">
-                Acoustic-shielded sleeping sanctuary with woven cane joinery,
-                espresso atelier, and recessed 3-panel pocket glass doors.
+                Espace nuit insonorisé avec lit King Size, coin bureau
+                exécutif, machine espresso et baies vitrées ouvrantes.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-white border border-[#414846]/15 space-y-2">
@@ -1158,11 +1141,11 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 Zone 03 · 25 m²
               </p>
               <h4 className="text-[16px] font-semibold text-[#001510]">
-                Teak Sun Deck &amp; Plunge Pool
+                Terrasse Privée &amp; Bassin
               </h4>
               <p className="text-[13px] text-[#414846]">
-                Cantilevered ironwood veranda with heated infinity-edge mineral
-                plunge pool and shaded linen daybed loungers.
+                Terrasse aménagée avec bains de soleil en lin et bassin chauffé
+                à l&apos;abri des regards.
               </p>
             </div>
           </div>
@@ -1172,7 +1155,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               onClick={() => setBlueprintOpen(false)}
               className="px-5 py-2 rounded-full bg-[#001510] text-white text-[13px] font-semibold cursor-pointer"
             >
-              Close Blueprint
+              Fermer le Plan
             </button>
           </div>
         </div>

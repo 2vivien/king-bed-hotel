@@ -46,7 +46,7 @@ export function MyBookingLookup() {
       saveConfirmedBooking(fetched);
     } catch (err) {
       setBooking(null);
-      setError(err instanceof Error ? err.message : "No matching reservation found.");
+      setError(err instanceof Error ? err.message : "Aucune réservation correspondante n'a été trouvée.");
     } finally {
       setLoading(false);
     }
@@ -82,7 +82,7 @@ export function MyBookingLookup() {
       .catch((err) => {
         if (!active) return;
         setBooking(null);
-        setError(err instanceof Error ? err.message : "No matching reservation found.");
+        setError(err instanceof Error ? err.message : "Aucune réservation correspondante n'a été trouvée.");
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -108,7 +108,7 @@ export function MyBookingLookup() {
       setBooking(updated);
       saveConfirmedBooking(updated);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to cancel booking.");
+      setError(err instanceof Error ? err.message : "Impossible d'annuler cette réservation.");
     } finally {
       setCancelling(false);
     }
@@ -127,7 +127,7 @@ export function MyBookingLookup() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `suitesavvy-${booking.id}.ics`;
+    link.download = `kingsbed-${booking.id}.ics`;
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -136,24 +136,24 @@ export function MyBookingLookup() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
       <div className="lg:col-span-5 rounded-[28px] bg-white border border-[#111111]/8 p-7 shadow-[0_8px_30px_rgba(0,0,0,0.05)] space-y-5">
         <h2 className="text-[20px] font-normal tracking-[-0.015em] text-[#111111]">
-          Retrieve Your Stay
+          Retrouver Votre Séjour
         </h2>
         <p className="text-[14px] text-[#5F5F5A] leading-relaxed">
-          Enter both your booking reference and the email address used during checkout.
+          Saisissez votre référence de réservation et l&apos;adresse e-mail utilisée lors de votre commande.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Booking Reference"
-            placeholder="SS-8K2F9A"
+            label="Référence de Réservation"
+            placeholder="KB-8K2F9A"
             value={reference}
             onChange={(e) => setReference(e.target.value)}
             required
           />
           <Input
-            label="Guest Email"
+            label="E-mail du Client"
             type="email"
-            placeholder="sarah.johnson@example.com"
+            placeholder="sarah.martin@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -165,20 +165,20 @@ export function MyBookingLookup() {
           ) : null}
           <Button type="submit" variant="primary" disabled={loading} className="w-full">
             <Search className="w-4 h-4" strokeWidth={1.5} />
-            {loading ? "Searching..." : "Find Reservation"}
+            {loading ? "Recherche..." : "Trouver Ma Réservation"}
           </Button>
         </form>
 
         <button
           type="button"
           onClick={() => {
-            setReference("SS-8K2F9A");
-            setEmail("sarah.johnson@example.com");
-            void performLookup("SS-8K2F9A", "sarah.johnson@example.com");
+            setReference("KB-8K2F9A");
+            setEmail("sarah.martin@example.com");
+            void performLookup("KB-8K2F9A", "sarah.martin@example.com");
           }}
           className="text-[13px] text-[#5F5F5A] underline underline-offset-2 hover:text-[#111111] cursor-pointer"
         >
-          Try sample booking (SS-8K2F9A)
+          Essayer avec l&apos;exemple (KB-8K2F9A)
         </button>
       </div>
 
@@ -202,7 +202,7 @@ export function MyBookingLookup() {
                     : "bg-[#D8EBDD] text-[#1F3A2C]"
                 }`}
               >
-                {booking.status === "cancelled" ? "Cancelled" : "Confirmed"}
+                {booking.status === "cancelled" ? "Annulée" : "Confirmée"}
               </span>
             </div>
 
@@ -212,23 +212,25 @@ export function MyBookingLookup() {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 flex-1 text-[14px]">
                 <div>
-                  <p className="text-[#5F5F5A]">Check In</p>
+                  <p className="text-[#5F5F5A]">Arrivée</p>
                   <p className="font-medium tabular-nums">
                     {formatReadableDate(booking.checkIn)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[#5F5F5A]">Check Out</p>
+                  <p className="text-[#5F5F5A]">Départ</p>
                   <p className="font-medium tabular-nums">
                     {formatReadableDate(booking.checkOut)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[#5F5F5A]">Guests</p>
-                  <p className="font-medium tabular-nums">{booking.guests} guests</p>
+                  <p className="text-[#5F5F5A]">Hôtes</p>
+                  <p className="font-medium tabular-nums">
+                    {booking.guests} {booking.guests > 1 ? "personnes" : "personne"}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-[#5F5F5A]">Guest Name</p>
+                  <p className="text-[#5F5F5A]">Client</p>
                   <p className="font-medium">
                     {booking.guest.firstName} {booking.guest.lastName}
                   </p>
@@ -246,7 +248,7 @@ export function MyBookingLookup() {
               <div className="flex flex-wrap items-center gap-2.5">
                 <Button type="button" variant="secondary" onClick={handleDownloadIcs}>
                   <Calendar className="w-4 h-4" strokeWidth={1.5} />
-                  Download .ics
+                  Télécharger .ics
                 </Button>
                 <a
                   href={buildGoogleCalendarUrl({
@@ -260,7 +262,7 @@ export function MyBookingLookup() {
                   rel="noreferrer"
                   className="h-11 px-5 rounded-full bg-white border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center hover:bg-[#F4F1EA] transition-colors"
                 >
-                  Google Calendar
+                  Google Agenda
                 </a>
               </div>
 
@@ -271,7 +273,7 @@ export function MyBookingLookup() {
                   disabled={cancelling}
                   onClick={handleCancel}
                 >
-                  {cancelling ? "Cancelling..." : "Cancel Reservation"}
+                  {cancelling ? "Annulation..." : "Annuler la Réservation"}
                 </Button>
               ) : null}
             </div>
@@ -279,10 +281,10 @@ export function MyBookingLookup() {
         ) : (
           <div className="rounded-[28px] bg-white border border-[#111111]/8 p-10 text-center space-y-2">
             <p className="text-[18px] font-light text-[#111111]">
-              Your itinerary will appear here
+              Votre réservation s&apos;affichera ici
             </p>
             <p className="text-[14px] text-[#5F5F5A]">
-              Look up any SuiteSavvy confirmation to export calendar invites or manage your stay.
+              Recherchez une confirmation King&apos;s Bed Hotel pour exporter l&apos;agenda ou gérer votre séjour.
             </p>
           </div>
         )}

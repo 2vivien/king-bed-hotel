@@ -16,7 +16,7 @@ export async function POST(
 
   if (!parsed.success) {
     return NextResponse.json(
-      { code: "INVALID_EMAIL", message: "A valid reservation email is required." },
+      { code: "INVALID_EMAIL", message: "Une adresse e-mail de réservation valide est requise." },
       { status: 400 }
     );
   }
@@ -24,7 +24,7 @@ export async function POST(
   const cancelled = cancelBookingServer(id, parsed.data.email);
   if (!cancelled) {
     return NextResponse.json(
-      { code: "NOT_FOUND", message: "No matching reservation found." },
+      { code: "NOT_FOUND", message: "Aucune réservation correspondante n'a été trouvée." },
       { status: 404 }
     );
   }

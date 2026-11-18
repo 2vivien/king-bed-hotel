@@ -10,12 +10,20 @@ import { galleryMock } from "@/mocks/gallery";
 import type { GalleryCategory } from "@/types/hotel.types";
 
 const categoryOptions: readonly SegmentedOption<GalleryCategory>[] = [
-  { value: "All", label: "All" },
-  { value: "Rooms", label: "Rooms" },
-  { value: "Pool", label: "Pool" },
-  { value: "Dining", label: "Dining" },
-  { value: "Wellness", label: "Wellness" },
+  { value: "All", label: "Tout" },
+  { value: "Rooms", label: "Chambres" },
+  { value: "Pool", label: "Piscine & Détente" },
+  { value: "Dining", label: "Petit-Déjeuner" },
+  { value: "Wellness", label: "Conférences & Spa" },
 ];
+
+const categoryLabels: Record<GalleryCategory, string> = {
+  All: "Tout",
+  Rooms: "Chambres",
+  Pool: "Piscine & Détente",
+  Dining: "Petit-Déjeuner",
+  Wellness: "Conférences & Spa",
+};
 
 export function GalleryGrid() {
   const [category, setCategory] = useState<GalleryCategory>("All");
@@ -73,10 +81,10 @@ export function GalleryGrid() {
             setVisibleCount(6);
             setActiveIndex(null);
           }}
-          ariaLabel="Filter gallery images by category"
+          ariaLabel="Filtrer la galerie par catégorie"
         />
         <span className="text-[14px] text-[#5F5F5A] tabular-nums">
-          Showing {displayed.length} of {filtered.length}
+          {displayed.length} sur {filtered.length} affichés
         </span>
       </div>
 
@@ -99,7 +107,7 @@ export function GalleryGrid() {
               aria-hidden="true"
             />
             <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-              <p className="text-[12px] text-white/75">{item.category}</p>
+              <p className="text-[12px] text-white/75">{categoryLabels[item.category]}</p>
               <p className="text-[18px] font-normal tracking-[-0.015em]">{item.title}</p>
             </div>
           </button>
@@ -113,7 +121,7 @@ export function GalleryGrid() {
             size="lg"
             onClick={() => setVisibleCount((prev) => prev + 6)}
           >
-            View More
+            Voir Plus
             <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
           </Button>
         </div>
@@ -122,7 +130,7 @@ export function GalleryGrid() {
       <DialogModal
         open={Boolean(activeItem)}
         onClose={() => setActiveIndex(null)}
-        title={activeItem ? activeItem.title : "Gallery Preview"}
+        title={activeItem ? activeItem.title : "Aperçu Galerie"}
         maxWidthClass="max-w-4xl"
       >
         {activeItem ? (
@@ -136,14 +144,14 @@ export function GalleryGrid() {
             </div>
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-[13px] text-[#5F5F5A]">{activeItem.category}</p>
+                <p className="text-[13px] text-[#5F5F5A]">{categoryLabels[activeItem.category]}</p>
                 <p className="text-[15px] text-[#111111] mt-0.5">{activeItem.caption}</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={handlePrev}
-                  aria-label="Previous photo"
+                  aria-label="Photo précédente"
                   className="w-10 h-10 rounded-full bg-white border border-[#111111]/10 flex items-center justify-center hover:bg-[#EFE6D6] cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
@@ -151,7 +159,7 @@ export function GalleryGrid() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  aria-label="Next photo"
+                  aria-label="Photo suivante"
                   className="w-10 h-10 rounded-full bg-white border border-[#111111]/10 flex items-center justify-center hover:bg-[#EFE6D6] cursor-pointer"
                 >
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />

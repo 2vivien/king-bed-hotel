@@ -8,10 +8,10 @@ export function ContactFormCard() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phonePrefix, setPhonePrefix] = useState("+41");
+  const [phonePrefix, setPhonePrefix] = useState("+33");
   const [phone, setPhone] = useState("");
-  const [privilegeType, setPrivilegeType] = useState("Private Villa Booking");
-  const [destination, setDestination] = useState("Ubud Sanctuary, Bali");
+  const [privilegeType, setPrivilegeType] = useState("Réservation Chambre & Petit-Déjeuner");
+  const [destination, setDestination] = useState("Chambre King Size & Petit-Déjeuner");
   const [notes, setNotes] = useState("");
   const [gazetteOptIn, setGazetteOptIn] = useState(true);
   const [website, setWebsite] = useState("");
@@ -28,11 +28,11 @@ export function ContactFormCard() {
 
     const fullName = `${firstName.trim()} ${lastName.trim()}`.trim();
     const composedMessage = [
-      `Privilege: ${privilegeType}`,
-      `Destination: ${destination}`,
-      `Telephone: ${phonePrefix} ${phone.trim()}`,
-      `Gazette Opt-In: ${gazetteOptIn ? "Yes" : "No"}`,
-      `Notes: ${notes.trim() || "General private concierge inquiry"}`,
+      `Objet: ${privilegeType}`,
+      `Espace souhaité: ${destination}`,
+      `Téléphone: ${phonePrefix} ${phone.trim()}`,
+      `Gazette King's Bed Hotel: ${gazetteOptIn ? "Oui" : "Non"}`,
+      `Précisions: ${notes.trim() || "Demande générale d'information"}`,
     ].join(" | ");
 
     try {
@@ -52,7 +52,7 @@ export function ContactFormCard() {
       setError(
         err instanceof Error
           ? err.message
-          : "Unable to transmit inquiry. Please verify your details."
+          : "Impossible d'envoyer votre demande. Veuillez vérifier vos coordonnées."
       );
     } finally {
       setSubmitting(false);
@@ -63,14 +63,14 @@ export function ContactFormCard() {
     <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-[0_6px_24px_-4px_rgba(13,43,36,0.05)]">
       <div className="mb-5">
         <span className="text-[11px] font-semibold text-[#3d6659] uppercase tracking-wider block mb-1">
-          Direct Private Transmission
+          Transmission Directe
         </span>
         <h2 className="text-[32px] sm:text-[40px] font-medium leading-[1.2] tracking-[-0.02em] text-[#001510]">
-          Send a Confidential Inquiry
+          Envoyer une Demande Dédiée
         </h2>
         <p className="text-[15px] text-[#414846] mt-1">
-          Our Senior Hospitality Partners will evaluate your dates and requirements
-          personally.
+          Notre équipe réception et séminaires étudie vos dates, besoins en chambres ou
+          configurations de salle personnellement.
         </p>
       </div>
 
@@ -81,7 +81,7 @@ export function ContactFormCard() {
               htmlFor="contact-first-name"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              First Name *
+              Prénom *
             </label>
             <input
               id="contact-first-name"
@@ -89,7 +89,7 @@ export function ContactFormCard() {
               required
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="Lord, Lady, Dr., or First Name"
+              placeholder="Prénom ou civilité"
               autoComplete="given-name"
               className="w-full px-4 py-3 rounded-full bg-[#f4f3f0] text-[15px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:bg-[#e3e2e0] transition-colors"
             />
@@ -100,7 +100,7 @@ export function ContactFormCard() {
               htmlFor="contact-last-name"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              Last Name *
+              Nom *
             </label>
             <input
               id="contact-last-name"
@@ -108,7 +108,7 @@ export function ContactFormCard() {
               required
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Surname or Family Office"
+              placeholder="Nom ou entreprise"
               autoComplete="family-name"
               className="w-full px-4 py-3 rounded-full bg-[#f4f3f0] text-[15px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:bg-[#e3e2e0] transition-colors"
             />
@@ -121,7 +121,7 @@ export function ContactFormCard() {
               htmlFor="contact-email"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              Confidential Email *
+              E-mail *
             </label>
             <input
               id="contact-email"
@@ -129,7 +129,7 @@ export function ContactFormCard() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="principal@domain.com"
+              placeholder="vous@exemple.com"
               autoComplete="email"
               className="w-full px-4 py-3 rounded-full bg-[#f4f3f0] text-[15px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:bg-[#e3e2e0] transition-colors"
             />
@@ -140,20 +140,20 @@ export function ContactFormCard() {
               htmlFor="contact-phone"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              Direct Telephone *
+              Téléphone Direct *
             </label>
             <div className="flex items-center bg-[#f4f3f0] rounded-full px-3 py-1">
               <select
-                aria-label="Country calling code"
+                aria-label="Indicatif téléphonique"
                 value={phonePrefix}
                 onChange={(e) => setPhonePrefix(e.target.value)}
                 className="bg-transparent text-[15px] text-[#1a1c1a] focus:outline-none pr-1 cursor-pointer"
               >
-                <option value="+41">+41 (CH)</option>
                 <option value="+33">+33 (FR)</option>
+                <option value="+41">+41 (CH)</option>
+                <option value="+32">+32 (BE)</option>
                 <option value="+44">+44 (UK)</option>
                 <option value="+1">+1 (US)</option>
-                <option value="+62">+62 (ID)</option>
               </select>
               <div className="w-px h-6 bg-[#c1c8c4] mx-2" />
               <input
@@ -162,7 +162,7 @@ export function ContactFormCard() {
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="79 000 0000"
+                placeholder="6 12 34 56 78"
                 autoComplete="tel"
                 className="w-full bg-transparent py-2 text-[15px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none"
               />
@@ -176,7 +176,7 @@ export function ContactFormCard() {
               htmlFor="contact-privilege"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              Nature of Privileges
+              Objet de Votre Demande
             </label>
             <select
               id="contact-privilege"
@@ -184,15 +184,19 @@ export function ContactFormCard() {
               onChange={(e) => setPrivilegeType(e.target.value)}
               className="w-full px-4 py-3 rounded-full bg-[#f4f3f0] text-[15px] text-[#1a1c1a] focus:outline-none cursor-pointer"
             >
-              <option value="Private Villa Booking">Private Villa Booking</option>
-              <option value="Bespoke Itinerary Curation">
-                Bespoke Itinerary Curation
+              <option value="Réservation Chambre & Petit-Déjeuner">
+                Réservation Chambre &amp; Petit-Déjeuner
               </option>
-              <option value="Yacht & Aviation Charter">
-                Yacht &amp; Aviation Charter
+              <option value="Salle de Réunion / Séminaire">
+                Salle de Réunion / Séminaire
               </option>
-              <option value="Private Estate Buyout">Private Estate Buyout</option>
-              <option value="Press & Media Liaison">Press &amp; Media Liaison</option>
+              <option value="Conférence & Congrès">
+                Conférence &amp; Congrès
+              </option>
+              <option value="Privatisation Étage / Événement">
+                Privatisation Étage / Événement
+              </option>
+              <option value="Presse & Partenariats">Presse &amp; Partenariats</option>
             </select>
           </div>
 
@@ -201,7 +205,7 @@ export function ContactFormCard() {
               htmlFor="contact-destination"
               className="text-[11px] font-semibold text-[#414846]"
             >
-              Destination of Interest
+              Espace Souhaité
             </label>
             <select
               id="contact-destination"
@@ -209,21 +213,23 @@ export function ContactFormCard() {
               onChange={(e) => setDestination(e.target.value)}
               className="w-full px-4 py-3 rounded-full bg-[#f4f3f0] text-[15px] text-[#1a1c1a] focus:outline-none cursor-pointer"
             >
-              <option value="Ubud Sanctuary, Bali">Ubud Sanctuary, Bali</option>
-              <option value="Cliffside Villas, Positano">
-                Cliffside Villas, Positano
+              <option value="Chambre King Size & Petit-Déjeuner">
+                Chambre King Size &amp; Petit-Déjeuner
               </option>
-              <option value="Overwater Residence, Maldives">
-                Overwater Residence, Maldives
+              <option value="Suite Exécutive & Salon Privé">
+                Suite Exécutive &amp; Salon Privé
               </option>
-              <option value="Heritage Penthouse, Lisbon">
-                Heritage Penthouse, Lisbon
+              <option value="Salle de Réunion Conseil (12 pers.)">
+                Salle de Réunion Conseil (12 pers.)
               </option>
-              <option value="Multiple Sanctuaries Itinerary">
-                Multiple Sanctuaries Itinerary
+              <option value="Grande Salle de Conférence (140 pers.)">
+                Grande Salle de Conférence (140 pers.)
               </option>
-              <option value="Undisclosed / Custom Request">
-                Undisclosed / Custom Request
+              <option value="Forfait Séminaire Résidentiel">
+                Forfait Séminaire Résidentiel
+              </option>
+              <option value="Demande sur Mesure">
+                Demande sur Mesure
               </option>
             </select>
           </div>
@@ -234,14 +240,14 @@ export function ContactFormCard() {
             htmlFor="contact-notes"
             className="text-[11px] font-semibold text-[#414846]"
           >
-            Bespoke Specifications &amp; Requirements
+            Précisions &amp; Besoins Spécifiques
           </label>
           <textarea
             id="contact-notes"
             rows={4}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            placeholder="Detail dates, guest count, dietary preferences, private hangar liaison, or personal security protocols..."
+            placeholder="Précisez vos dates, nombre de participants ou d'hôtes, disposition de salle souhaitée, préférences de petit-déjeuner ou transferts..."
             className="w-full px-4 py-3 rounded-2xl bg-[#f4f3f0] text-[15px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:bg-[#e3e2e0] transition-colors resize-none"
           />
         </div>
@@ -254,8 +260,8 @@ export function ContactFormCard() {
             className="mt-1 w-4 h-4 rounded accent-[#0d2b24] cursor-pointer"
           />
           <span className="text-[13px] text-[#414846] group-hover:text-[#1a1c1a] transition-colors">
-            I wish to receive discreet, seasonal communications and confidential preview
-            keys from the SuiteSavvy Private Gazette.
+            Je souhaite recevoir les offres saisonnières et invitations privées de la
+            Gazette King&apos;s Bed Hotel.
           </span>
         </label>
 
@@ -278,14 +284,14 @@ export function ContactFormCard() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0d2b24] text-white text-[14px] font-semibold shadow-md hover:bg-[#001510] transition-all duration-200 cursor-pointer disabled:opacity-60"
           >
             <span>
-              {submitting ? "Transmitting..." : "Transmit Confidential Message"}
+              {submitting ? "Envoi en cours..." : "Envoyer Votre Demande"}
             </span>
             <ArrowRight className="w-[18px] h-[18px]" strokeWidth={1.5} />
           </button>
 
           <span className="text-[11px] font-semibold text-[#727975] flex items-center gap-1.5">
             <Lock className="w-4 h-4 text-[#3d6659]" strokeWidth={1.5} />
-            256-Bit SSL Concierge Protocol
+            Protocole Conciergerie Sécurisé SSL
           </span>
         </div>
 
@@ -300,8 +306,8 @@ export function ContactFormCard() {
             role="status"
             className="p-4 rounded-xl bg-[#bce9d9] text-[#416b5d] text-[12px] font-medium"
           >
-            Your inquiry has been encrypted and assigned to the Senior Regional Concierge.
-            Expect immediate contact within 15 minutes.
+            Votre demande a bien été transmise à la réception du King&apos;s Bed Hotel.
+            Un conseiller vous répondra sous 15 minutes.
           </div>
         ) : null}
       </form>

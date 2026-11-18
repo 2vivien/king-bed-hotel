@@ -3,8 +3,8 @@ import { SuiteImage } from "@/components/shared/SuiteImage";
 import { ConfirmationView } from "@/features/booking/components/ConfirmationView";
 
 export const metadata: Metadata = {
-  title: "Booking Confirmed",
-  description: "Your SuiteSavvy sanctuary reservation is confirmed.",
+  title: "Réservation Confirmée",
+  description: "Votre réservation au King's Bed Hotel est confirmée.",
 };
 
 export default async function ConfirmationPage({
@@ -21,7 +21,7 @@ export default async function ConfirmationPage({
           <div className="absolute inset-0 opacity-15 pointer-events-none">
             <SuiteImage
               src="/images/textures/leaf-dark.jpg"
-              alt="Botanical leaf border"
+              alt="Motif végétal décoratif"
               sizes="1280px"
             />
           </div>

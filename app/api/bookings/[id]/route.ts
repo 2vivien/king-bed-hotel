@@ -10,7 +10,7 @@ export async function GET(
   const rate = checkRateLimit(`lookup:${ip}`, 20);
   if (!rate.allowed) {
     return NextResponse.json(
-      { code: "RATE_LIMITED", message: "Too many lookup attempts. Please wait briefly." },
+      { code: "RATE_LIMITED", message: "Trop de tentatives de recherche. Veuillez patienter un instant." },
       { status: 429 }
     );
   }
@@ -20,7 +20,7 @@ export async function GET(
 
   if (!email.trim()) {
     return NextResponse.json(
-      { code: "NOT_FOUND", message: "No matching reservation found." },
+      { code: "NOT_FOUND", message: "Aucune réservation correspondante n'a été trouvée." },
       { status: 404 }
     );
   }
@@ -28,7 +28,7 @@ export async function GET(
   const booking = findBookingServer(id, email);
   if (!booking) {
     return NextResponse.json(
-      { code: "NOT_FOUND", message: "No matching reservation found." },
+      { code: "NOT_FOUND", message: "Aucune réservation correspondante n'a été trouvée." },
       { status: 404 }
     );
   }

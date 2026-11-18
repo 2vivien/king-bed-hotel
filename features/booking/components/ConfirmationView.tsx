@@ -25,7 +25,7 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `suitesavvy-${booking.id}.ics`;
+    link.download = `kingsbed-${booking.id}.ics`;
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -43,14 +43,14 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
       </div>
 
       <p className="mt-6 text-[13px] font-mono tracking-wider text-[#5F5F5A] tabular-nums">
-        Reference · {bookingId.toUpperCase()}
+        Référence · {bookingId.toUpperCase()}
       </p>
       <h1 className="mt-2 text-[clamp(2rem,4vw,3rem)] font-light leading-[1.08] tracking-[-0.03em] text-[#111111]">
-        Your Booking is Confirmed!
+        Votre Réservation est Confirmée !
       </h1>
       <p className="mt-3 text-[16px] text-[#5F5F5A] max-w-md mx-auto leading-[1.6]">
-        Thank you for choosing SuiteSavvy. A confirmation email has been sent to you with
-        your itinerary and concierge contact.
+        Merci d&apos;avoir choisi King&apos;s Bed Hotel. Un e-mail de confirmation vient de vous
+        être envoyé avec votre itinéraire et les coordonnées de notre réception.
       </p>
 
       {booking ? (
@@ -67,19 +67,19 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3 border-t border-[#111111]/8 text-[13px]">
             <div>
-              <p className="text-[#5F5F5A]">Check In</p>
+              <p className="text-[#5F5F5A]">Arrivée</p>
               <p className="font-medium text-[#111111] mt-0.5 tabular-nums">
                 {formatReadableDate(booking.checkIn)}
               </p>
             </div>
             <div>
-              <p className="text-[#5F5F5A]">Check Out</p>
+              <p className="text-[#5F5F5A]">Départ</p>
               <p className="font-medium text-[#111111] mt-0.5 tabular-nums">
                 {formatReadableDate(booking.checkOut)}
               </p>
             </div>
             <div>
-              <p className="text-[#5F5F5A]">Total Paid</p>
+              <p className="text-[#5F5F5A]">Total Réglé</p>
               <p className="font-medium text-[#111111] mt-0.5 tabular-nums">
                 {formatMoney(booking.total, booking.currency)}
               </p>
@@ -93,7 +93,7 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
           href={myBookingHref}
           className="h-11 px-7 rounded-full bg-[#111111] text-white text-[14px] font-medium inline-flex items-center justify-center hover:bg-[#2A2A28] transition-colors"
         >
-          View My Booking
+          Voir Ma Réservation
         </Link>
 
         {booking ? (
@@ -104,7 +104,7 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
               className="h-11 px-5 rounded-full bg-[#FAF9F6] border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center gap-2 hover:bg-[#EFE6D6] transition-colors cursor-pointer"
             >
               <Calendar className="w-4 h-4" strokeWidth={1.5} />
-              Download .ics
+              Télécharger .ics
             </button>
             <a
               href={buildGoogleCalendarUrl({
@@ -118,7 +118,7 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
               rel="noreferrer"
               className="h-11 px-5 rounded-full bg-[#FAF9F6] border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center hover:bg-[#EFE6D6] transition-colors"
             >
-              Google Calendar
+              Google Agenda
             </a>
           </>
         ) : null}

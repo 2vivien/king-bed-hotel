@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-surface": "#1a1c1a", "surface-container-highest": "#e3e2e0", "on-tertiary": "#ffffff", "on-primary-fixed": "#02201a", "primary": "#001510", "on-primary": "#ffffff", "surface-dim": "#dbdad7", "surface-bright": "#faf9f6", "on-surface-variant": "#414846", "on-secondary-fixed": "#002018", "on-secondary-fixed-variant": "#244e42", "on-secondary": "#ffffff", "surface-container-low": "#f4f3f0", "on-error": "#ffffff", "error": "#ba1a1a", "on-tertiary-fixed-variant": "#623f18", "error-container": "#ffdad6", "outline": "#727975", "on-tertiary-container": "#b18456", "on-secondary-container": "#416b5d", "inverse-surface": "#2f312f", "on-primary-fixed-variant": "#2f4c44", "surface-container": "#efeeeb", "primary-fixed-dim": "#adcdc3", "surface-variant": "#e3e2e0", "surface": "#faf9f6", "tertiary-fixed-dim": "#f0bd8b", "surface-tint": "#47645c", "tertiary": "#1d0d00", "on-error-container": "#93000a", "secondary-container": "#bce9d9", "primary-container": "#0d2b24", "secondary-fixed-dim": "#a3d0c0", "inverse-primary": "#adcdc3", "secondary-fixed": "#bfecdc", "tertiary-container": "#3b1f00", "background": "#faf9f6", "surface-container-lowest": "#ffffff", "primary-fixed": "#c9eade", "on-primary-container": "#75948a", "outline-variant": "#c1c8c4", "secondary": "#3d6659", "inverse-on-surface": "#f2f1ee", "on-tertiary-fixed": "#2c1600", "tertiary-fixed": "#ffdcbd", "on-background": "#1a1c1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1.25rem", "gutter": "1.5rem", "margin-mobile": "1.25rem", "margin": "2.5rem", "space-sm": "0.75rem", "space-lg": "2rem", "space-xl": "3.5rem", "space-xs": "0.375rem", "gutter-sm": "1rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(13,43,36,0.04)]"><div class="h-20 max-w-[1440px] mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-sm"><img alt="SuiteSavvy Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOryGiamU7ALxsrtqc6MwcZlh95F-_f5hQRoXrbB8gpinqmVwfrP-psU51PfW40FTbyys_h_curx1IEWPSR0isU7O7-LLypwf6wH_ECBjiHn-opgqd6Ce0baV1Ft2qTWtxaLGlkDpOzJ9Cs1VUSh-HuoL070JNGijze38zhK5mhbW6iXOQXOXaxAY14-dPjHC_ZbeEY4LllBr1Zpj7nuonmv92p07b0_ipCQAz_Qg"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">SuiteSavvy</span></div><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="text-primary font-bold"><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="about-us" href="#">About Us</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="rooms" href="#">Rooms</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="destinations" href="#">Destinations</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="services" href="#">Services</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="gallery" href="#">Gallery</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-sm"><button aria-label="Search Suites" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button aria-label="Guest Settings" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">tune</span></button><a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary transition-all duration-200" data-path="booking" href="#">Booking</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-[1440px] w-full mx-auto px-margin-mobile md:px-margin py-space-md">
+<!-- Atmospheric Concierge Hero Banner -->
+<div class="relative w-full rounded-xl overflow-hidden shadow-sm bg-primary mb-space-lg">
+<div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" data-alt="Grand classic hotel concierge lobby desk crafted with polished mahogany, marble counter, elegant brass desk lamps, fresh exotic floral bouquets in large porcelain vases, warm golden interior lighting, five star luxury hospitality atmosphere" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdqsICoyycCf4x8fbG2zqWem52pY55drYujUqaHhJzfjueMBwgO9gFihAnp_kg1cv4x7Jd0fpBcQ9xPrLnGODG4rt9J51yxC3pZnWpJ-4g0nyuaOMUIOCPQkdrtYVhIYEcMWVsJWfOVWIYLZeV1yBzY7c24MTiHsJdY0nlWojWC8Xejbqdh6b9OAUDa4N5fEiBPc1xMG4dE2aW90x7ywvh7wM721CeytKLZM2Xdyk')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary-container/80"></div>
+<div class="relative z-10 p-space-md md:p-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md text-on-primary">
+<div class="space-y-space-xs">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/20 text-secondary-fixed text-label-sm font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+<span>Poste Conciergerie • Terminal Privé Actif</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-primary tracking-tight">Bureau de Conciergerie &amp; Réservations</h1>
+<p class="font-body-md text-body-md text-on-primary-container max-w-2xl">
+            Gestion exclusive des demandes de séjour, affectation des majordomes et coordination des services de prestige.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest/10 backdrop-blur-md px-4 py-2.5 rounded-full shadow-inner">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-primary-container flex items-center justify-center font-label-lg font-bold">
+            SC
+          </div>
+<div>
+<p class="font-label-md text-label-md text-on-primary">Sophie Castiglione</p>
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim">Chef Concierge Clefs d'Or</p>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed ml-2 text-[20px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Quick Stat Indicators -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-lg">
+<!-- Card 1: Pending -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Demandes en attente</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-tertiary">3</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed">Validation requise</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Temps de réponse moyen : 14 min</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed/60 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">hourglass_top</span>
+</div>
+</div>
+<!-- Card 2: Confirmed This Month -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Séjours confirmés ce mois</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-primary">18</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +22% vs oct.
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">100% avec majordome désigné</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+</div>
+</div>
+<!-- Card 3: Managed Volume -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Volume géré (Novembre)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-primary">$84,200</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> Séquestre garanti Stripe Private
+          </p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+</div>
+</div>
+</div>
+<!-- Interactive Filters & Search Pill Strip -->
+<div class="bg-surface-container-low p-space-sm rounded-xl mb-space-lg flex flex-col lg:flex-row items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-2 w-full lg:w-auto" id="filter-container">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm" id="btn-filter-all" onclick="setFilter('all')">
+          Toutes les demandes <span class="ml-1 opacity-70">(24)</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" id="btn-filter-pending" onclick="setFilter('pending')">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+          À valider (Pending - Urgent) <span class="ml-1 px-1.5 py-0.2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-label-sm">3</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" id="btn-filter-confirmed" onclick="setFilter('confirmed')">
+          Confirmées <span class="ml-1 opacity-70">(18)</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" id="btn-filter-declined" onclick="setFilter('declined')">
+          Refusées / Annulées <span class="ml-1 opacity-70">(3)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs w-full lg:w-auto">
+<div class="relative flex-1 lg:w-64">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest text-on-surface placeholder:text-outline rounded-full font-body-sm text-body-sm focus:outline-none focus:ring-0 shadow-sm" placeholder="Rechercher invité, villa, folio..." type="text"/>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-sm hover:bg-surface-container-high transition-colors" title="Télécharger export audit">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+<!-- Main Operational Workspace: Split Grid (List 8 Cols / Quick Sheet 4 Cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Reservations Ledger (8 Cols) -->
+<div class="lg:col-span-8 space-y-space-md">
+<!-- Reservation Item 1 (Pending - Lady Eleanor Vance) -->
+<div class="cursor-pointer bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 border-l-tertiary-fixed-dim relative group" id="card-res-1" onclick="selectReservation('eleanor')">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-headline-sm font-semibold">
+                EV
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Lady Eleanor Vance</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">VIP Privilège</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">travel_explore</span> 6 séjours précédents • Profil vérifié
+                </p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              En attente d'approbation
+            </span>
+</div>
+<!-- Stay Details Specs -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm py-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Propriété</span>
+<span class="font-headline-sm text-headline-sm text-primary block text-base truncate">The Oceanfront Sanctuary</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ubud, Bali</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Dates &amp; Convives</span>
+<span class="font-body-md text-body-md text-on-surface block font-medium">18 — 23 Nov 2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">5 nuits • 2 personnes</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Montant Séjour</span>
+<span class="font-headline-sm text-headline-sm text-primary block">$3,040 USD</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> Séquestre vérifié
+              </span>
+</div>
+</div>
+<!-- Instant Executive Action Bar -->
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low/50 -mx-space-md -mb-space-md p-space-sm px-space-md rounded-b-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">alarm</span> Décision attendue sous 2h
+            </span>
+<div class="flex items-center gap-space-xs">
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface hover:bg-error-container hover:text-on-error-container font-label-md text-label-md transition-colors" onclick="event.stopPropagation(); triggerDeclineModal('Lady Eleanor Vance')">
+                Refuser / Proposer alternative
+              </button>
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5" onclick="event.stopPropagation(); triggerConfirmModal('Lady Eleanor Vance', 'The Oceanfront Sanctuary Suite')">
+<span class="material-symbols-outlined text-[18px]">room_service</span>
+                Confirmer &amp; Assigner Majordome
+              </button>
+</div>
+</div>
+</div>
+<!-- Reservation Item 2 (Pending - Jean-Marc de la Tour) -->
+<div class="cursor-pointer bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 border-l-tertiary-fixed-dim relative group" id="card-res-2" onclick="selectReservation('jeanmarc')">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-headline-sm font-semibold">
+                JT
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Jean-Marc de la Tour</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Membre Private</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">flight_takeoff</span> Demande transfert hélicoptère Nice &gt; Positano
+                </p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              En attente d'approbation
+            </span>
+</div>
+<!-- Stay Details Specs -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm py-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Propriété</span>
+<span class="font-headline-sm text-headline-sm text-primary block text-base truncate">Positano Heights Villa</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Côte Amalfitaine, Italie</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Dates &amp; Convives</span>
+<span class="font-body-md text-body-md text-on-surface block font-medium">02 — 07 Déc 2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">5 nuits • 4 personnes</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Montant Séjour</span>
+<span class="font-headline-sm text-headline-sm text-primary block">$5,750 USD</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> Carte American Express Centurion
+              </span>
+</div>
+</div>
+<!-- Instant Executive Action Bar -->
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low/50 -mx-space-md -mb-space-md p-space-sm px-space-md rounded-b-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Reçu il y a 42 min</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface hover:bg-error-container hover:text-on-error-container font-label-md text-label-md transition-colors" onclick="event.stopPropagation(); triggerDeclineModal('Jean-Marc de la Tour')">
+                Décliner
+              </button>
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5" onclick="event.stopPropagation(); triggerConfirmModal('Jean-Marc de la Tour', 'Positano Heights Villa')">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                Confirmer
+              </button>
+</div>
+</div>
+</div>
+<!-- Reservation Item 3 (CONFIRMED - Lord & Lady Sterling) -->
+<div class="cursor-pointer bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 border-l-secondary relative group" id="card-res-3" onclick="selectReservation('sterling')">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary-container flex items-center justify-center font-headline-sm font-semibold">
+                LS
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Lord &amp; Lady Sterling</h3>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">Hôtes d'Honneur</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Protocole d'arrivée VIP activé • Prise en charge salon privé</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Confirmé • Majordome Julian V.
+            </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm py-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Propriété</span>
+<span class="font-headline-sm text-headline-sm text-primary block text-base truncate">Royal Forest Pavilion Villa</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bali Valley, Indonésie</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Période du Séjour</span>
+<span class="font-body-md text-body-md text-on-surface block font-medium">24 — 30 Nov 2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">6 nuits • 2 invités</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Règlement Effectué</span>
+<span class="font-headline-sm text-headline-sm text-primary block">$8,900 USD</span>
+<span class="font-label-sm text-label-sm text-secondary">Payé en totalité • Concierge rattaché</span>
+</div>
+</div>
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low/50 -mx-space-md -mb-space-md p-space-sm px-space-md rounded-b-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">contact_phone</span> Majordome Julian joignable sur ligne directe #104
+            </span>
+<div class="flex items-center gap-space-xs">
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors">
+                Modifier dates
+              </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary font-label-md text-label-md transition-colors flex items-center gap-1">
+<span>Voir fiche complète</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Reservation Item 4 (DECLINED / REFUNDED - Marcus Thorne) -->
+<div class="cursor-pointer bg-surface-container-lowest/80 p-space-md rounded-xl shadow-sm hover:shadow-md transition-all border-l-4 border-l-outline-variant opacity-80 hover:opacity-100" id="card-res-4" onclick="selectReservation('marcus')">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container text-outline flex items-center justify-center font-headline-sm font-semibold">
+                MT
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant">Marcus Thorne</h3>
+<p class="font-body-sm text-body-sm text-outline">Demande initiale transmise via Agence Signature London</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">do_not_disturb_on</span>
+              Refusée (Capacité max atteinte) • Remboursé
+            </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm py-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline block uppercase">Villa</span>
+<span class="font-body-md text-body-md text-on-surface-variant block font-medium truncate">Maldives Overwater Suite</span>
+<span class="font-body-sm text-body-sm text-outline">Atoll Nord, Maldives</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline block uppercase">Dates</span>
+<span class="font-body-md text-body-md text-on-surface-variant block font-medium">10 — 15 Déc 2025</span>
+<span class="font-body-sm text-body-sm text-outline">5 nuits</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline block uppercase">Remboursement</span>
+<span class="font-body-md text-body-md text-on-surface-variant block font-medium">$4,200 USD</span>
+<span class="font-label-sm text-label-sm text-outline">Fonds restitués sous 24h</span>
+</div>
+</div>
+<div class="pt-space-xs text-right">
+<span class="font-body-sm text-body-sm text-outline cursor-pointer hover:text-on-surface">Consulter l'historique d'échange</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Quick-Sheet / Concierge Dossier (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-md md:p-space-lg rounded-xl shadow-md sticky top-28 space-y-space-md">
+<!-- Dossier Header -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Dossier Concierge Actif</span>
+<h2 class="font-headline-sm text-headline-sm text-primary" id="sheet-guest-name">Lady Eleanor Vance</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold" id="sheet-status-tag">
+            En attente
+          </span>
+</div>
+<!-- Property Thumbnail & Location -->
+<div class="relative rounded-lg overflow-hidden h-36 bg-cover bg-center" data-alt="Stunning tropical luxury oceanfront infinity pool sanctuary suite in Ubud Bali, lush palm greenery, private wooden sun deck, tranquil mist and serene morning atmosphere" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXV2Dej6Ufz0i7ahmUHtPuKglssRSAh5GqTN-wVoVIYE11pewvOnbpnA1Z7C7cQ1iNGP2qFXaRnvsGkua9iIQ6P0GM6bx40jo8DIkMfjuM4hpBIKg82LLOkpC490u6WOkiJgdMWarqSPUHJJKucohd_DR0tcdPaI3Tww7Hr80b5v1smfGyZA6D6A5xRvJ2ERyCKLDEv22KpPySYUzIeOaYXF0Sav84rp8IT10O0gQ')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 text-on-primary">
+<p class="font-label-lg text-label-lg font-semibold truncate" id="sheet-property-title">The Oceanfront Sanctuary Suite</p>
+<p class="font-body-sm text-body-sm text-secondary-fixed" id="sheet-property-loc">Ubud, Bali • 18 - 23 Nov 2025</p>
+</div>
+</div>
+<!-- VIP Guest Coordinates -->
+<div class="space-y-space-xs bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Coordonnées de l'hôte</span>
+<div class="space-y-1">
+<p class="font-body-sm text-body-sm text-on-surface flex items-center gap-2" id="sheet-guest-phone">
+<span class="material-symbols-outlined text-[16px] text-secondary">phone_iphone</span> +44 7911 123456 (Ligne directe)
+            </p>
+<p class="font-body-sm text-body-sm text-on-surface flex items-center gap-2" id="sheet-guest-mail">
+<span class="material-symbols-outlined text-[16px] text-secondary">mail</span> e.vance@vanceholding.co.uk
+            </p>
+<p class="font-body-sm text-body-sm text-on-surface flex items-center gap-2" id="sheet-guest-tier">
+<span class="material-symbols-outlined text-[16px] text-secondary">badge</span> Statut VIP SuiteSavvy Privilège #4088
+            </p>
+</div>
+</div>
+<!-- Bespoke Requests & Dietary Preferences -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Demandes particulières</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">3 spécifications</span>
+</div>
+<div class="space-y-2" id="sheet-requests-list">
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">wine_bar</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Champagne Dom Pérignon Vintage 2012</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tempéré à 9°C à l'arrivée dans la suite.</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">helicopter</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Transfert Héliport Denpasar &gt; Resort</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prévu le 18 Nov à 14h20, 2 bagages cabine + 2 malles.</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">bed</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Préférences de literie</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oreillers en duvet d'oie fermes hypoallergéniques.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Concierge Internal Staff Notes -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Note interne équipe conciergerie</label>
+<textarea class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-secondary" id="concierge-note" placeholder="Ajouter une instruction confidentielle pour les majordomes..." rows="3">Allergie aux fruits à coque notée lors du séjour 2024. Le chef exécutif a été briefé pour les amuse-bouches de bienvenue.</textarea>
+</div>
+<!-- Butler Assignment Selector -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Majordome dédié assigné</label>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-label-sm font-bold">
+                JV
+              </div>
+<span class="font-label-md text-label-md text-on-surface">Julian Vance-Vernet (Dispo)</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary">Changer</button>
+</div>
+</div>
+<!-- Action Trigger inside sheet -->
+<div class="pt-space-xs space-y-2">
+<button class="w-full py-3 rounded-full bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md shadow-md transition-all flex items-center justify-center gap-2" onclick="triggerConfirmModal('Lady Eleanor Vance', 'The Oceanfront Sanctuary Suite')">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+            Valider et Notifier l'Hôte VIP
+          </button>
+<button class="w-full py-2.5 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors flex items-center justify-center gap-1.5" onclick="triggerPrintFolio()">
+<span class="material-symbols-outlined text-[16px]">print</span>
+            Générer Feuille de Route &amp; Vouchers
+          </button>
+</div>
+</div>
+</div>
+<!-- Modals & Feedback Notifications -->
+<!-- Action Toast Notification (Bottom Right) -->
+<div class="fixed bottom-6 right-6 z-50 bg-primary text-on-primary px-5 py-3.5 rounded-xl shadow-xl flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4" id="status-toast">
+<span class="material-symbols-outlined text-secondary-fixed text-[22px]">check_circle</span>
+<div>
+<p class="font-label-md text-label-md font-semibold" id="toast-title">Réservation Confirmée</p>
+<p class="font-body-sm text-body-sm text-on-primary-container" id="toast-subtitle">Le majordome et le client ont été informés.</p>
+</div>
+</div>
+<!-- Confirm Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="confirm-modal">
+<div class="bg-surface-container-lowest max-w-lg w-full rounded-xl p-space-lg shadow-2xl space-y-space-md">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Confirmation du Séjour</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high" onclick="closeConfirmModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="space-y-space-xs">
+<p class="font-body-md text-body-md text-on-surface">
+            Vous vous apprêtez à valider formellement la réservation de <strong id="modal-guest-name">Lady Eleanor Vance</strong> pour la villa <strong id="modal-suite-name">The Oceanfront Sanctuary Suite</strong>.
+          </p>
+<div class="p-3 bg-surface-container-low rounded-lg space-y-1">
+<p class="font-label-sm text-label-sm text-secondary font-semibold">Actions automatiques déclenchées :</p>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1 list-disc list-inside">
+<li>Débit définitif du séquestre bancaire ($3,040 USD).</li>
+<li>Transmission de la lettre de bienvenue signée du Chef Concierge.</li>
+<li>Affectation du majordome au planning de service avec transmission des préférences.</li>
+</ul>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-xs pt-space-xs">
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" onclick="closeConfirmModal()">
+            Annuler
+          </button>
+<button class="px-6 py-2.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-md" onclick="executeConfirmAction()">
+            Confirmer &amp; Envoyer Accréditations
+          </button>
+</div>
+</div>
+</div>
+<!-- Decline Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="decline-modal">
+<div class="bg-surface-container-lowest max-w-lg w-full rounded-xl p-space-lg shadow-2xl space-y-space-md">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-sm">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[24px]">cancel</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Décliner ou Proposer une Alternative</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high" onclick="closeDeclineModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="space-y-space-xs">
+<p class="font-body-md text-body-md text-on-surface">
+            Indiquez le motif adressé avec diplomatie au client <strong id="decline-guest-name">Lady Eleanor Vance</strong> :
+          </p>
+<select class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none">
+<option>Dates complètes • Proposer la Penthouse Sunset Villa</option>
+<option>Période de maintenance préventive programmée</option>
+<option>Capacité d'accueil non conforme à la suite</option>
+<option>Refus avec remboursement immédiat sans alternative</option>
+</select>
+<textarea class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none" placeholder="Message personnalisé rédigé au nom de la direction de conciergerie..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-xs pt-space-xs">
+<button class="px-5 py-2.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" onclick="closeDeclineModal()">
+            Fermer
+          </button>
+<button class="px-6 py-2.5 rounded-full bg-error text-on-error font-label-md text-label-md hover:opacity-90 transition-all shadow-md" onclick="executeDeclineAction()">
+            Envoyer Notification de Déclin
+          </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Data store for responsive quick-sheet switching
+    const reservationsData = {
+      eleanor: {
+        name: "Lady Eleanor Vance",
+        status: "En attente",
+        statusClass: "bg-tertiary-fixed text-on-tertiary-fixed",
+        property: "The Oceanfront Sanctuary Suite",
+        location: "Ubud, Bali • 18 - 23 Nov 2025",
+        phone: "+44 7911 123456 (Ligne directe)",
+        mail: "e.vance@vanceholding.co.uk",
+        tier: "Statut VIP SuiteSavvy Privilège #4088",
+        requests: [
+          { icon: "wine_bar", title: "Champagne Dom Pérignon Vintage 2012", desc: "Tempéré à 9°C à l'arrivée dans la suite." },
+          { icon: "helicopter", title: "Transfert Héliport Denpasar > Resort", desc: "Prévu le 18 Nov à 14h20, 2 bagages cabine + 2 malles." },
+          { icon: "bed", title: "Préférences de literie", desc: "Oreillers en duvet d'oie fermes hypoallergéniques." }
+        ],
+        note: "Allergie aux fruits à coque notée lors du séjour 2024. Le chef exécutif a été briefé pour les amuse-bouches de bienvenue."
+      },
+      jeanmarc: {
+        name: "Jean-Marc de la Tour",
+        status: "En attente",
+        statusClass: "bg-tertiary-fixed text-on-tertiary-fixed",
+        property: "Positano Heights Villa",
+        location: "Côte Amalfitaine, Italie • 02 - 07 Déc 2025",
+        phone: "+33 6 88 44 21 00",
+        mail: "jmdelatour@gestion-patrimoine.fr",
+        tier: "Membre Private #9012",
+        requests: [
+          { icon: "flight_takeoff", title: "Hélicoptère Nice Aéroport > Héliport Ravello", desc: "Arrivée du vol d'affaires à 11h15." },
+          { icon: "sailing", title: "Réservation Riva 56 Rivale pour journée Capri", desc: "Skipper bilingue et sommelier à bord." }
+        ],
+        note: "Grand amateur de vins italiens. Réserver table privilégiée à la Trattoria da Adolfo."
+      },
+      sterling: {
+        name: "Lord & Lady Sterling",
+        status: "Confirmé",
+        statusClass: "bg-secondary-container text-on-secondary-container",
+        property: "Royal Forest Pavilion Villa",
+        location: "Bali Valley, Indonésie • 24 - 30 Nov 2025",
+        phone: "+44 20 7946 0991",
+        mail: "sterling.household@chambers.co.uk",
+        tier: "Hôtes d'Honneur",
+        requests: [
+          { icon: "room_service", title: "Service de thé quotidien Earl Grey Imperial", desc: "Servi à 16h30 précises sur la terrasse ouest." },
+          { icon: "spa", title: "Session privée de yoga balinais à l'aube", desc: "Maître Yogi chaque matin à 06h45." }
+        ],
+        note: "Séjour d'anniversaire de mariage (30 ans). Bouquet d'orchidées blanches fraîches renouvelé tous les deux jours."
+      },
+      marcus: {
+        name: "Marcus Thorne",
+        status: "Refusé & Remboursé",
+        statusClass: "bg-surface-container-high text-on-surface-variant",
+        property: "Maldives Overwater Suite",
+        location: "Atoll Nord, Maldives • 10 - 15 Déc 2025",
+        phone: "+1 (415) 555-0199",
+        mail: "marcus@thornecap.com",
+        tier: "Client Agence Signature London",
+        requests: [
+          { icon: "do_not_disturb", title: "Demande non satisfaite", desc: "Propriété complète aux dates demandées." }
+        ],
+        note: "Proposition alternative envoyée pour la villa de Rangali Island avec surclassement offert."
+      }
+    };
+
+    function selectReservation(id) {
+      const data = reservationsData[id];
+      if (!data) return;
+
+      document.getElementById('sheet-guest-name').innerText = data.name;
+      const statusTag = document.getElementById('sheet-status-tag');
+      statusTag.innerText = data.status;
+      statusTag.className = "px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold " + data.statusClass;
+
+      document.getElementById('sheet-property-title').innerText = data.property;
+      document.getElementById('sheet-property-loc').innerText = data.location;
+      document.getElementById('sheet-guest-phone').innerHTML = '<span class="material-symbols-outlined text-[16px] text-secondary">phone_iphone</span> ' + data.phone;
+      document.getElementById('sheet-guest-mail').innerHTML = '<span class="material-symbols-outlined text-[16px] text-secondary">mail</span> ' + data.mail;
+      document.getElementById('sheet-guest-tier').innerHTML = '<span class="material-symbols-outlined text-[16px] text-secondary">badge</span> ' + data.tier;
+      document.getElementById('concierge-note').value = data.note;
+
+      const reqContainer = document.getElementById('sheet-requests-list');
+      reqContainer.innerHTML = '';
+      data.requests.forEach(function(r) {
+        const item = document.createElement('div');
+        item.className = "flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low";
+        item.innerHTML = '<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">' + r.icon + '</span><div><p class="font-label-md text-label-md text-on-surface font-semibold">' + r.title + '</p><p class="font-body-sm text-body-sm text-on-surface-variant">' + r.desc + '</p></div>';
+        reqContainer.appendChild(item);
+      });
+    }
+
+    function setFilter(type) {
+      const allBtns = ['btn-filter-all', 'btn-filter-pending', 'btn-filter-confirmed', 'btn-filter-declined'];
+      allBtns.forEach(function(btnId) {
+        const b = document.getElementById(btnId);
+        if (b) {
+          b.className = "px-5 py-2 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all";
+        }
+      });
+
+      const activeBtn = document.getElementById('btn-filter-' + type);
+      if (activeBtn) {
+        activeBtn.className = "px-5 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm";
+      }
+
+      const card1 = document.getElementById('card-res-1');
+      const card2 = document.getElementById('card-res-2');
+      const card3 = document.getElementById('card-res-3');
+      const card4 = document.getElementById('card-res-4');
+
+      if (type === 'all') {
+        card1.style.display = 'block';
+        card2.style.display = 'block';
+        card3.style.display = 'block';
+        card4.style.display = 'block';
+      } else if (type === 'pending') {
+        card1.style.display = 'block';
+        card2.style.display = 'block';
+        card3.style.display = 'none';
+        card4.style.display = 'none';
+      } else if (type === 'confirmed') {
+        card1.style.display = 'none';
+        card2.style.display = 'none';
+        card3.style.display = 'block';
+        card4.style.display = 'none';
+      } else if (type === 'declined') {
+        card1.style.display = 'none';
+        card2.style.display = 'none';
+        card3.style.display = 'none';
+        card4.style.display = 'block';
+      }
+    }
+
+    let activeGuest = "";
+    function triggerConfirmModal(guest, suite) {
+      activeGuest = guest;
+      document.getElementById('modal-guest-name').innerText = guest;
+      document.getElementById('modal-suite-name').innerText = suite;
+      document.getElementById('confirm-modal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirm-modal').classList.add('hidden');
+    }
+
+    function executeConfirmAction() {
+      closeConfirmModal();
+      showToast("Séjour validé pour " + activeGuest, "Majordome attitré, protocole d'arrivée transmis par courriel.");
+    }
+
+    function triggerDeclineModal(guest) {
+      activeGuest = guest;
+      document.getElementById('decline-guest-name').innerText = guest;
+      document.getElementById('decline-modal').classList.remove('hidden');
+    }
+
+    function closeDeclineModal() {
+      document.getElementById('decline-modal').classList.add('hidden');
+    }
+
+    function executeDeclineAction() {
+      closeDeclineModal();
+      showToast("Demande déclinée avec courtoisie", "Notification et propositions alternatives transmises.");
+    }
+
+    function triggerPrintFolio() {
+      showToast("Impression du dossier", "Téléchargement de l'itinéraire VIP au format PDF certifié.");
+    }
+
+    function showToast(title, subtitle) {
+      const toast = document.getElementById('status-toast');
+      document.getElementById('toast-title').innerText = title;
+      document.getElementById('toast-subtitle').innerText = subtitle;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(function() {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3500);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl pt-space-xl pb-space-lg shadow-[0_-1px_12px_rgba(13,43,36,0.03)]"><div class="max-w-[1440px] mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="SuiteSavvy Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFwVOFG40tPIZGs7MD_FBQUlDoGrRp6HvMVhKU_WP6Q2v4fvfsytNZ6BpbjvSG0qq_unaHdGc5UGb-ytFNlqSH1KwUo2nOgQ08f0WVfA59Od5UDuewqymkSQ5EocX9c6cLNjJbKAAtFbjoOdgsb25Okd2_4M4cf4Mj0mZjnft_jOEZm3si_t17ytqPbyGcZPWf5a0DSX1diDKx2SCwp4CRZMolrTvU570wQ6e0sVU"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">SuiteSavvy</span></div><p class="font-body-md text-body-md text-on-surface-variant">Curating unmatched private sanctuaries, premier penthouses, and bespoke coastal estates for the world's most discerning travelers.</p><div class="flex items-center gap-space-sm pt-space-xs"><span class="material-symbols-outlined text-on-surface-variant text-[20px]">verified</span><span class="font-label-md text-label-md text-on-surface-variant">Verified Global Luxury Portfolio</span></div></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Explore Portfolios</span><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Private Island Villas</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Architectural Penthouses</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Alpine Sky Chalets</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Historic Country Manors</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Secluded Desert Retreats</li></ul></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Concierge &amp; Guest</span><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">24/7 Bespoke Concierge</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Private Aviation Charter</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">In-Suite Michelin Dining</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Yacht &amp; Tender Access</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Bespoke Itinerary Planning</li></ul></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Private Gazette</span><p class="font-body-sm text-body-sm text-on-surface-variant">Receive confidential access to newly debuted suites and seasonal retreats.</p><form class="flex items-center bg-surface-container-highest rounded-full p-1 pl-4 shadow-inner"><input class="w-full bg-transparent border-0 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Enter your email" type="email"/><button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors" type="button">Join</button></form><div class="pt-space-xs space-y-1"><p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">mail</span> inquiries@suitesavvy.luxury</p><p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">call</span> +41 22 819 9000</p></div></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-label-sm text-label-sm text-on-surface-variant">© 2025 SuiteSavvy International Hospitality Ltd. All rights reserved.</p><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Privacy Policy</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Terms of Service</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Security &amp; Integrity</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Cookie Preferences</span></div></div></div></footer></body></html>

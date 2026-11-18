@@ -13,6 +13,7 @@ import {
   startOfMonth,
   subMonths,
 } from "date-fns";
+import { fr } from "date-fns/locale";
 import {
   ArrowRight,
   BadgeCheck,
@@ -67,27 +68,27 @@ type AddOnKey = "chauffeur" | "breakfast" | "spa";
 const DESTINATION_OPTIONS = [
   {
     slug: "bali",
-    label: "Ubud Sanctuary, Bali",
-    address: "Ubud No. 25, Gianyar Regency",
-    shortLabel: "Bali Ubud, No. 25",
+    label: "Chambres & Petit-Déjeuner · King's Bed Hotel",
+    address: "25 Avenue Royale, 75008 Paris",
+    shortLabel: "King's Bed · Aile Royale",
   },
   {
     slug: "positano",
-    label: "Cliffside Heights, Positano",
-    address: "Via Laurito 42, Amalfi Coast",
-    shortLabel: "Positano, Via Laurito 42",
+    label: "Suite Exécutive & Salon Privé",
+    address: "25 Avenue Royale, Niveau Panorama",
+    shortLabel: "Niveau Panorama · Paris",
   },
   {
     slug: "lisbon",
-    label: "Heritage Palacete, Lisbon",
-    address: "Príncipe Real 18, Lisbon",
-    shortLabel: "Lisbon, Príncipe Real 18",
+    label: "Forfait Séminaire & Réunion (8–30 pers.)",
+    address: "Centre d'Affaires, 1er Étage",
+    shortLabel: "Espace Réunion · 1er Étage",
   },
   {
     slug: "maldives",
-    label: "Overwater Residence, Maldives",
-    address: "North Malé Lagoon Atoll",
-    shortLabel: "Maldives, Lagoon Atoll",
+    label: "Conférence & Congrès (40–180 pers.)",
+    address: "Grand Auditorium, Aile Est",
+    shortLabel: "Auditorium · Aile Est",
   },
 ] as const;
 
@@ -101,32 +102,32 @@ const FEATURED_BOOKING_SLUGS = [
 const GLOBAL_SANCTUARIES = [
   {
     slug: "lisbon",
-    country: "Portugal",
-    title: "Lisbon Palacete",
-    price: "From $350 / night",
+    country: "Chambres & Suites",
+    title: "Literie King Size",
+    price: "À partir de 299 € / nuit",
     image: "/images/destinations/lisbon.jpg",
   },
   {
     slug: "positano",
-    country: "Amalfi Coast, Italy",
-    title: "Positano Heights",
-    price: "From $890 / night",
+    country: "Petit-Déjeuner",
+    title: "Buffet & En Chambre",
+    price: "Formule artisanale chaque matin",
     image: "/images/destinations/positano.jpg",
   },
   {
     slug: "maldives",
-    country: "Indian Ocean",
-    title: "Maldives Overwater",
-    price: "From $1,250 / night",
+    country: "Affaires & Événements",
+    title: "Réunions & Conférences",
+    price: "Salles équipées de 8 à 180 pers.",
     image: "/images/destinations/maldives.jpg",
   },
 ] as const;
 
-function formatCurrencyUsd(cents: number): string {
-  return `$${(cents / 100).toLocaleString("en-US", {
+function formatCurrencyEur(cents: number): string {
+  return `${(cents / 100).toLocaleString("fr-FR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  })}`;
+  })} €`;
 }
 
 export function ReservationFlow() {
@@ -247,7 +248,9 @@ export function ReservationFlow() {
   const addOnsTotalCents = chauffeurCents + breakfastCents + spaCents;
   const taxCents = Math.round((roomSubtotalCents + addOnsTotalCents) * 0.1);
   const discountCents =
-    appliedPromo === "SAVVYVIP" || appliedPromo === "PRIVILEGE" ? 20000 : 0;
+    appliedPromo === "KINGSBED" || appliedPromo === "SAVVYVIP" || appliedPromo === "PRIVILEGE"
+      ? 20000
+      : 0;
   const grandTotalCents = Math.max(
     0,
     roomSubtotalCents + addOnsTotalCents + taxCents - discountCents
@@ -303,15 +306,15 @@ export function ReservationFlow() {
 
   const handleApplyPromo = () => {
     const code = promoInput.trim().toUpperCase();
-    if (code === "SAVVYVIP" || code === "PRIVILEGE") {
+    if (code === "KINGSBED" || code === "SAVVYVIP" || code === "PRIVILEGE") {
       setAppliedPromo(code);
-      setPromoFeedback("Privilege Member Benefit applied (-$200.00)");
+      setPromoFeedback("Avantage Membre appliqué (-200,00 €)");
     } else if (!code) {
       setAppliedPromo("");
       setPromoFeedback("");
     } else {
       setAppliedPromo("");
-      setPromoFeedback("Invalid code — try SAVVYVIP for -$200.00 privilege.");
+      setPromoFeedback("Code invalide — essayez KINGSBED pour -200,00 € d'avantage.");
     }
   };
 
@@ -329,7 +332,7 @@ export function ReservationFlow() {
   };
 
   const calendarPayload = {
-    bookingId: "SS-DRAFT",
+    bookingId: "KB-PROJET",
     roomName: selectedRoom.name,
     location: destinationMeta.label,
     checkIn,
@@ -344,7 +347,7 @@ export function ReservationFlow() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `SuiteSavvy-${selectedRoom.slug}.ics`;
+    link.download = `KingsBedHotel-${selectedRoom.slug}.ics`;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -356,12 +359,12 @@ export function ReservationFlow() {
   const onConfirmBooking = async (guestValues: GuestDetails) => {
     setBookingError("");
     if (calculateNights(checkIn, checkOut) <= 0) {
-      setBookingError("Check-out date must be after check-in date.");
+      setBookingError("La date de départ doit être postérieure à la date d'arrivée.");
       return;
     }
     if (!isSelectedAvailable) {
       setBookingError(
-        `${selectedRoom.name} accommodates up to ${selectedRoom.maxGuests} guests or is unavailable for these dates.`
+        `${selectedRoom.name} accueille jusqu'à ${selectedRoom.maxGuests} personnes ou est indisponible pour ces dates.`
       );
       return;
     }
@@ -396,39 +399,39 @@ export function ReservationFlow() {
       setBookingError(
         err instanceof Error
           ? err.message
-          : "Unable to complete reservation right now."
+          : "Impossible de finaliser la réservation pour le moment."
       );
     }
   };
 
-  const formattedCheckIn = format(parseISO(checkIn), "d MMM");
-  const formattedCheckOut = format(parseISO(checkOut), "d MMM");
+  const formattedCheckIn = format(parseISO(checkIn), "d MMM", { locale: fr });
+  const formattedCheckOut = format(parseISO(checkOut), "d MMM", { locale: fr });
   const formattedYear = format(parseISO(checkOut), "yyyy");
 
   return (
-    <div className="bg-[#faf9f6] text-[#1a1c1a]">
+    <div className="bg-white text-[#1a1c1a]">
       {/* Top Progress Indicator Bar */}
-      <section className="w-full bg-[#f4f3f0] py-5 border-b border-[#e9e8e5]">
+      <section className="w-full bg-white py-5 border-b border-[#EDEDEA]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
               <span className="text-[11px] uppercase tracking-widest text-[#3d6659] font-semibold">
-                Sanctuary Reservation
+                Réservation King&apos;s Bed Hotel
               </span>
               <h1 className="text-[22px] sm:text-[24px] font-semibold text-[#001510] tracking-tight">
-                Complete Your Private Stay
+                Finalisez Votre Séjour ou Réunion
               </h1>
             </div>
 
             <nav
-              aria-label="Booking Progress"
+              aria-label="Progression de la réservation"
               className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1"
             >
               {[
-                { num: 1 as const, label: "Dates & Sanctuary", target: "step-1" },
-                { num: 2 as const, label: "Suite Selection", target: "step-2" },
-                { num: 3 as const, label: "Guest Details", target: "step-3" },
-                { num: 4 as const, label: "Curated Concierge", target: "step-4" },
+                { num: 1 as const, label: "Dates & Formule", target: "step-1" },
+                { num: 2 as const, label: "Choix de la Chambre", target: "step-2" },
+                { num: 3 as const, label: "Coordonnées", target: "step-3" },
+                { num: 4 as const, label: "Options & Affaires", target: "step-4" },
               ].map((step) => {
                 const isPrimary = activeStep === step.num;
                 const isHighlighted = step.num === 2 && activeStep === 1;
@@ -491,15 +494,15 @@ export function ReservationFlow() {
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-2">
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
-                      Step 1 of 5
+                      Étape 1 sur 5
                     </span>
                     <h2 className="text-[24px] font-semibold text-[#001510]">
-                      Refine Your Itinerary
+                      Affinez Votre Programme
                     </h2>
                   </div>
                   <span className="px-3 py-1.5 rounded-full bg-[#bce9d9] text-[#244e42] text-[11px] font-semibold flex items-center gap-1.5">
                     <Zap className="w-3.5 h-3.5" />
-                    {checking ? "Checking Live Dates..." : "Real-time Availability"}
+                    {checking ? "Vérification en cours..." : "Disponibilité en Temps Réel"}
                   </span>
                 </div>
 
@@ -509,10 +512,10 @@ export function ReservationFlow() {
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[11px] uppercase text-[#414846] flex items-center gap-1.5 font-semibold">
                         <MapPin className="w-3.5 h-3.5 text-[#3d6659]" />
-                        Destination
+                        Formule / Aile
                       </span>
                       <span className="text-[11px] text-[#3d6659] font-semibold">
-                        Change
+                        Modifier
                       </span>
                     </div>
                     <select
@@ -535,10 +538,10 @@ export function ReservationFlow() {
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[11px] uppercase text-[#414846] flex items-center gap-1.5 font-semibold">
                         <Calendar className="w-3.5 h-3.5 text-[#3d6659]" />
-                        Stay Duration
+                        Durée du Séjour
                       </span>
                       <span className="text-[11px] bg-[#e3e2e0] px-2.5 py-0.5 rounded-full text-[#1a1c1a] font-semibold">
-                        {nights} {nights === 1 ? "Night" : "Nights"}
+                        {nights} {nights === 1 ? "Nuit" : "Nuits"}
                       </span>
                     </div>
                     <div className="flex items-baseline gap-2">
@@ -550,7 +553,7 @@ export function ReservationFlow() {
                       </span>
                     </div>
                     <span className="text-[12px] text-[#414846] mt-1">
-                      Flexible check-in: 15:00 onwards
+                      Arrivée flexible : à partir de 15h00
                     </span>
                   </div>
                 </div>
@@ -560,13 +563,13 @@ export function ReservationFlow() {
                   {/* Interactive Calendar Visualizer */}
                   <div className="md:col-span-7 bg-[#f4f3f0] rounded-2xl p-5">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-[14px] font-bold text-[#001510]">
-                        {format(calendarMonth, "MMMM yyyy")}
+                      <span className="text-[14px] font-bold text-[#001510] capitalize">
+                        {format(calendarMonth, "MMMM yyyy", { locale: fr })}
                       </span>
                       <div className="flex items-center gap-1">
                         <button
                           type="button"
-                          aria-label="Previous Month"
+                          aria-label="Mois précédent"
                           onClick={() =>
                             setCalendarMonth((m) => subMonths(m, 1))
                           }
@@ -576,7 +579,7 @@ export function ReservationFlow() {
                         </button>
                         <button
                           type="button"
-                          aria-label="Next Month"
+                          aria-label="Mois suivant"
                           onClick={() =>
                             setCalendarMonth((m) => addMonths(m, 1))
                           }
@@ -588,13 +591,13 @@ export function ReservationFlow() {
                     </div>
 
                     <div className="grid grid-cols-7 text-center text-[11px] text-[#414846] mb-2 font-medium">
-                      <span>Mo</span>
-                      <span>Tu</span>
-                      <span>We</span>
-                      <span>Th</span>
-                      <span>Fr</span>
+                      <span>Lu</span>
+                      <span>Ma</span>
+                      <span>Me</span>
+                      <span>Je</span>
+                      <span>Ve</span>
                       <span>Sa</span>
-                      <span>Su</span>
+                      <span>Di</span>
                     </div>
 
                     <div className="grid grid-cols-7 gap-y-1 text-center text-[12px]">
@@ -638,20 +641,20 @@ export function ReservationFlow() {
                   {/* Guest Configuration */}
                   <div className="md:col-span-5 bg-[#f4f3f0] rounded-2xl p-5 flex flex-col justify-between space-y-4">
                     <span className="text-[14px] font-bold text-[#001510]">
-                      Guest Configuration
+                      Nombre de Voyageurs
                     </span>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
-                          Adults
+                          Adultes
                         </p>
-                        <p className="text-[12px] text-[#414846]">Age 13+</p>
+                        <p className="text-[12px] text-[#414846]">13 ans et +</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
-                          aria-label="Decrease Adults"
+                          aria-label="Diminuer le nombre d'adultes"
                           onClick={() => setAdults((a) => Math.max(1, a - 1))}
                           className="w-8 h-8 rounded-full bg-[#efeeeb] flex items-center justify-center text-[#1a1c1a] hover:bg-[#e3e2e0] transition-colors cursor-pointer"
                         >
@@ -662,7 +665,7 @@ export function ReservationFlow() {
                         </span>
                         <button
                           type="button"
-                          aria-label="Increase Adults"
+                          aria-label="Augmenter le nombre d'adultes"
                           onClick={() =>
                             setAdults((a) => (adults + children < 8 ? a + 1 : a))
                           }
@@ -676,14 +679,14 @@ export function ReservationFlow() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
-                          Children
+                          Enfants
                         </p>
-                        <p className="text-[12px] text-[#414846]">Ages 0-12</p>
+                        <p className="text-[12px] text-[#414846]">0 à 12 ans</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
-                          aria-label="Decrease Children"
+                          aria-label="Diminuer le nombre d'enfants"
                           onClick={() =>
                             setChildren((c) => Math.max(0, c - 1))
                           }
@@ -696,7 +699,7 @@ export function ReservationFlow() {
                         </span>
                         <button
                           type="button"
-                          aria-label="Increase Children"
+                          aria-label="Augmenter le nombre d'enfants"
                           onClick={() =>
                             setChildren((c) =>
                               adults + children < 8 ? c + 1 : c
@@ -712,16 +715,16 @@ export function ReservationFlow() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
-                          Villas / Suites
+                          Chambres / Suites
                         </p>
                         <p className="text-[12px] text-[#414846]">
-                          Private compound
+                          Espaces réservés
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
-                          aria-label="Decrease Suites"
+                          aria-label="Diminuer le nombre de chambres"
                           onClick={() =>
                             setSuitesCount((s) => Math.max(1, s - 1))
                           }
@@ -734,7 +737,7 @@ export function ReservationFlow() {
                         </span>
                         <button
                           type="button"
-                          aria-label="Increase Suites"
+                          aria-label="Augmenter le nombre de chambres"
                           onClick={() =>
                             setSuitesCount((s) => Math.min(4, s + 1))
                           }
@@ -756,7 +759,7 @@ export function ReservationFlow() {
                         type="text"
                         value={promoInput}
                         onChange={(e) => setPromoInput(e.target.value)}
-                        placeholder="Enter VIP Patron or Concierge Pass Code (e.g. SAVVYVIP)"
+                        placeholder="Code privilège ou tarif entreprise (ex. KINGSBED)"
                         className="w-full bg-[#f4f3f0] pl-11 pr-4 py-3 rounded-full text-[14px] text-[#1a1c1a] placeholder:text-[#414846]/70 focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40 transition-all"
                       />
                     </div>
@@ -765,7 +768,7 @@ export function ReservationFlow() {
                       onClick={handleApplyPromo}
                       className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#e9e8e5] text-[#001510] text-[14px] font-semibold hover:bg-[#001510] hover:text-white transition-all shrink-0 cursor-pointer"
                     >
-                      Apply Code
+                      Appliquer
                     </button>
                   </div>
                   {promoFeedback && (
@@ -785,14 +788,14 @@ export function ReservationFlow() {
                 <div className="flex items-end justify-between">
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
-                      Step 2 of 5
+                      Étape 2 sur 5
                     </span>
                     <h2 className="text-[24px] font-semibold text-[#001510]">
-                      Select Your Private Sanctuary
+                      Choisissez Votre Chambre ou Suite
                     </h2>
                   </div>
                   <span className="text-[13px] text-[#414846]">
-                    Showing {displayedRooms.length} luxury estates
+                    {displayedRooms.length} hébergements affichés
                   </span>
                 </div>
 
@@ -824,7 +827,7 @@ export function ReservationFlow() {
                         {isSelected && (
                           <div className="absolute top-0 right-0 bg-[#0d2b24] text-white px-5 py-1.5 rounded-bl-2xl text-[11px] font-semibold flex items-center gap-1.5 z-10">
                             <CheckCircle2 className="w-3.5 h-3.5" />
-                            Active Choice
+                            Choix Actif
                           </div>
                         )}
 
@@ -846,7 +849,7 @@ export function ReservationFlow() {
                             <div>
                               <div className="flex items-center gap-2 mb-1">
                                 <span className="text-[11px] uppercase text-[#3d6659] font-semibold">
-                                  {room.badgeLabel ?? "Signature Reserve"}
+                                  {room.badgeLabel ?? "Suite Signature"}
                                 </span>
                                 <div className="flex items-center text-amber-500 text-[12px]">
                                   <Star className="w-3.5 h-3.5 fill-current" />
@@ -854,7 +857,7 @@ export function ReservationFlow() {
                                     {(room.rating ?? 4.95)
                                       .toFixed(2)
                                       .replace(/\.00$/, ".0")}{" "}
-                                    ({room.reviewCount ?? 84} reviews)
+                                    ({room.reviewCount ?? 84} avis)
                                   </span>
                                 </div>
                               </div>
@@ -887,8 +890,8 @@ export function ReservationFlow() {
                             {!available && (
                               <p className="text-[12px] font-medium text-[#ba1a1a]">
                                 {!canFitGuests
-                                  ? `Max capacity is ${room.maxGuests} guests.`
-                                  : "Unavailable for these dates."}
+                                  ? `Capacité maximale : ${room.maxGuests} personnes.`
+                                  : "Indisponible pour ces dates."}
                               </p>
                             )}
 
@@ -896,14 +899,14 @@ export function ReservationFlow() {
                               <div>
                                 <div className="flex items-baseline gap-1">
                                   <span className="text-[24px] text-[#001510] font-bold">
-                                    ${nightlyUsd.toLocaleString()}
+                                    {nightlyUsd.toLocaleString("fr-FR")} €
                                   </span>
                                   <span className="text-[13px] text-[#414846]">
-                                    / night
+                                    / nuit
                                   </span>
                                 </div>
                                 <p className="text-[11px] text-[#3d6659] font-semibold">
-                                  Complimentary afternoon high tea included
+                                  Accueil chaleureux &amp; Wi-Fi fibre pro inclus
                                 </p>
                               </div>
 
@@ -922,10 +925,10 @@ export function ReservationFlow() {
                               >
                                 {isSelected ? (
                                   <>
-                                    Selected <Check className="w-4 h-4" />
+                                    Sélectionnée <Check className="w-4 h-4" />
                                   </>
                                 ) : (
-                                  "Select Suite"
+                                  "Choisir"
                                 )}
                               </button>
                             </div>
@@ -944,14 +947,14 @@ export function ReservationFlow() {
               >
                 <div>
                   <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
-                    Step 3 of 5
+                    Étape 3 sur 5
                   </span>
                   <h2 className="text-[24px] font-semibold text-[#001510]">
-                    Guest Details &amp; Arrival Contact
+                    Coordonnées &amp; Informations d&apos;Arrivée
                   </h2>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Your booking confirmation and private concierge dispatch
-                    will be sent here.
+                    Votre confirmation de réservation et votre accès digital
+                    seront envoyés à cette adresse.
                   </p>
                 </div>
 
@@ -961,7 +964,7 @@ export function ReservationFlow() {
                       htmlFor="guest-first-name"
                       className="text-[12px] font-medium text-[#414846] block ml-1"
                     >
-                      First Name *
+                      Prénom *
                     </label>
                     <input
                       id="guest-first-name"
@@ -983,7 +986,7 @@ export function ReservationFlow() {
                       htmlFor="guest-last-name"
                       className="text-[12px] font-medium text-[#414846] block ml-1"
                     >
-                      Last Name *
+                      Nom *
                     </label>
                     <input
                       id="guest-last-name"
@@ -1005,12 +1008,12 @@ export function ReservationFlow() {
                       htmlFor="guest-email"
                       className="text-[12px] font-medium text-[#414846] block ml-1"
                     >
-                      Email Address *
+                      Adresse E-mail *
                     </label>
                     <input
                       id="guest-email"
                       type="email"
-                      placeholder="camille@domain.com"
+                      placeholder="camille@exemple.fr"
                       onFocus={() => setActiveStep(3)}
                       className="w-full h-12 rounded-2xl bg-[#f4f3f0] px-4 text-[14px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40"
                       {...register("email")}
@@ -1027,12 +1030,12 @@ export function ReservationFlow() {
                       htmlFor="guest-phone"
                       className="text-[12px] font-medium text-[#414846] block ml-1"
                     >
-                      Direct Telephone *
+                      Téléphone Direct *
                     </label>
                     <input
                       id="guest-phone"
                       type="tel"
-                      placeholder="+41 79 000 0000"
+                      placeholder="+33 6 12 34 56 78"
                       onFocus={() => setActiveStep(3)}
                       className="w-full h-12 rounded-2xl bg-[#f4f3f0] px-4 text-[14px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40"
                       {...register("phone")}
@@ -1050,12 +1053,12 @@ export function ReservationFlow() {
                     htmlFor="guest-notes"
                     className="text-[12px] font-medium text-[#414846] block ml-1"
                   >
-                    Bespoke Preferences &amp; Arrival Notes (Optional)
+                    Préférences &amp; Demandes Spéciales (Optionnel)
                   </label>
                   <textarea
                     id="guest-notes"
                     rows={3}
-                    placeholder="Pillow firmness preferences, flight arrival time, dietary considerations..."
+                    placeholder="Préférence d'oreillers, heure d'arrivée, allergies petit-déjeuner ou besoins de salle de réunion..."
                     onFocus={() => setActiveStep(3)}
                     className="w-full rounded-2xl bg-[#f4f3f0] p-4 text-[14px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40"
                     {...register("notes")}
@@ -1069,21 +1072,21 @@ export function ReservationFlow() {
                     {...register("acceptTerms")}
                   />
                   <span className="text-[13px] text-[#414846] leading-relaxed">
-                    I agree to the{" "}
+                    J&apos;accepte les{" "}
                     <Link
                       href="/legal/terms"
                       className="text-[#001510] underline font-medium"
                     >
-                      booking conditions
+                      conditions de réservation
                     </Link>{" "}
-                    and{" "}
+                    et la{" "}
                     <Link
                       href="/legal/privacy"
                       className="text-[#001510] underline font-medium"
                     >
-                      confidentiality &amp; cancellation policy
+                      politique de confidentialité et d&apos;annulation
                     </Link>{" "}
-                    (free cancellation up to 48 hours prior to arrival).
+                    (annulation gratuite jusqu&apos;à 48 heures avant l&apos;arrivée).
                   </span>
                 </label>
                 {errors.acceptTerms && (
@@ -1100,13 +1103,13 @@ export function ReservationFlow() {
               >
                 <div>
                   <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
-                    Step 4 of 5
+                    Étape 4 sur 5
                   </span>
                   <h2 className="text-[24px] font-semibold text-[#001510]">
-                    Elevate Your Itinerary
+                    Personnalisez Votre Séjour
                   </h2>
                   <p className="text-[13px] text-[#414846] mt-1">
-                    Curated amenities prepared prior to your arrival.
+                    Options de petit-déjeuner, transfert et espaces professionnels préparés avant votre arrivée.
                   </p>
                 </div>
 
@@ -1130,20 +1133,19 @@ export function ReservationFlow() {
                       </div>
                       <div>
                         <h4 className="text-[14px] font-bold text-[#001510]">
-                          Private Chauffeur Airport Transfer
+                          Transfert Privé avec Chauffeur
                         </h4>
                         <p className="text-[13px] text-[#414846]">
-                          Mercedes EQS transfer with iced towels and bespoke
-                          refreshments
+                          Berline Mercedes avec accueil VIP à la gare ou à l&apos;aéroport
                         </p>
                       </div>
                     </div>
                     <div className="text-right pl-4 shrink-0">
                       <span className="text-[18px] text-[#001510] font-bold">
-                        +$120
+                        +120 €
                       </span>
                       <span className="block text-[11px] text-[#414846]">
-                        One way
+                        Trajet simple
                       </span>
                     </div>
                   </label>
@@ -1167,20 +1169,19 @@ export function ReservationFlow() {
                       </div>
                       <div>
                         <h4 className="text-[14px] font-bold text-[#001510]">
-                          Organic Artisan Breakfast Daily
+                          Petit-Déjeuner Artisanal Quotidien
                         </h4>
                         <p className="text-[13px] text-[#414846]">
-                          Cold-pressed tropical juices, farm-fresh eggs, and
-                          pastry selection served in villa
+                          Viennoiseries chaudes, œufs à la minute et jus frais servis en salle ou en chambre
                         </p>
                       </div>
                     </div>
                     <div className="text-right pl-4 shrink-0">
                       <span className="text-[18px] text-[#001510] font-bold">
-                        +$45
+                        +45 €
                       </span>
                       <span className="block text-[11px] text-[#414846]">
-                        per guest / day
+                        par pers. / jour
                       </span>
                     </div>
                   </label>
@@ -1204,20 +1205,19 @@ export function ReservationFlow() {
                       </div>
                       <div>
                         <h4 className="text-[14px] font-bold text-[#001510]">
-                          Rejuvenating In-Villa Balinese Spa
+                          Accès Spa &amp; Salon de Réunion Privé
                         </h4>
                         <p className="text-[13px] text-[#414846]">
-                          90-minute couples holistic herbal therapy with organic
-                          essential oils
+                          Soin bien-être 90 min ou accès demi-journée à un salon de réunion équipé 4K
                         </p>
                       </div>
                     </div>
                     <div className="text-right pl-4 shrink-0">
                       <span className="text-[18px] text-[#001510] font-bold">
-                        +$220
+                        +220 €
                       </span>
                       <span className="block text-[11px] text-[#414846]">
-                        per session
+                        par prestation
                       </span>
                     </div>
                   </label>
@@ -1236,10 +1236,10 @@ export function ReservationFlow() {
                     </div>
                     <div>
                       <h3 className="text-[20px] font-bold text-[#001510] leading-tight">
-                        Booking Summary
+                        Récapitulatif
                       </h3>
                       <span className="text-[11px] text-[#3d6659] font-medium">
-                        Pending Final Confirmation
+                        En attente de validation
                       </span>
                     </div>
                   </div>
@@ -1256,37 +1256,37 @@ export function ReservationFlow() {
                 <div className="space-y-2.5 bg-[#f4f3f0] rounded-2xl p-4">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[13px] text-[#414846]">
-                      Destination
+                      Formule
                     </span>
                     <span className="text-[12px] font-bold text-[#001510]">
                       {destinationMeta.shortLabel}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[13px] text-[#414846]">Check In</span>
+                    <span className="text-[13px] text-[#414846]">Arrivée</span>
                     <span className="text-[12px] font-bold text-[#001510]">
                       {format(parseISO(checkIn), "dd.MM.yyyy")}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[13px] text-[#414846]">
-                      Check Out
+                      Départ
                     </span>
                     <span className="text-[12px] font-bold text-[#001510]">
                       {format(parseISO(checkOut), "dd.MM.yyyy")}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[13px] text-[#414846]">Guests</span>
+                    <span className="text-[13px] text-[#414846]">Hôtes</span>
                     <span className="text-[12px] font-bold text-[#001510]">
-                      {adults} Adults
-                      {children > 0 ? `, ${children} Children` : ""} •{" "}
-                      {suitesCount} {suitesCount > 1 ? "Suites" : "Suite"}
+                      {adults} {adults > 1 ? "Adultes" : "Adulte"}
+                      {children > 0 ? `, ${children} ${children > 1 ? "Enfants" : "Enfant"}` : ""} •{" "}
+                      {suitesCount} {suitesCount > 1 ? "Chambres" : "Chambre"}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[13px] text-[#414846]">
-                      Sanctuary Type
+                      Hébergement
                     </span>
                     <span className="text-[12px] font-bold text-[#3d6659] text-right">
                       {selectedRoom.name}
@@ -1298,63 +1298,63 @@ export function ReservationFlow() {
                 <div className="space-y-2 pt-1">
                   <div className="flex justify-between items-center text-[13px] text-[#414846]">
                     <span>
-                      ${Math.round(selectedRoom.pricePerNight / 100)} × {nights}{" "}
-                      Nights{suitesCount > 1 ? ` × ${suitesCount}` : ""}
+                      {Math.round(selectedRoom.pricePerNight / 100)} € × {nights}{" "}
+                      {nights > 1 ? "Nuits" : "Nuit"}{suitesCount > 1 ? ` × ${suitesCount}` : ""}
                     </span>
                     <span className="font-semibold text-[#001510]">
-                      {formatCurrencyUsd(roomSubtotalCents)}
+                      {formatCurrencyEur(roomSubtotalCents)}
                     </span>
                   </div>
                   {addOns.chauffeur && (
                     <div className="flex justify-between items-center text-[13px] text-[#414846]">
-                      <span>Airport Chauffeur Transfer</span>
+                      <span>Transfert avec Chauffeur</span>
                       <span className="font-semibold text-[#001510]">
-                        {formatCurrencyUsd(chauffeurCents)}
+                        {formatCurrencyEur(chauffeurCents)}
                       </span>
                     </div>
                   )}
                   {addOns.breakfast && (
                     <div className="flex justify-between items-center text-[13px] text-[#414846]">
                       <span>
-                        Artisan Breakfast ({totalGuests} guests × {nights} days)
+                        Petit-Déjeuner ({totalGuests} pers. × {nights} j.)
                       </span>
                       <span className="font-semibold text-[#001510]">
-                        {formatCurrencyUsd(breakfastCents)}
+                        {formatCurrencyEur(breakfastCents)}
                       </span>
                     </div>
                   )}
                   {addOns.spa && (
                     <div className="flex justify-between items-center text-[13px] text-[#414846]">
-                      <span>In-Villa Balinese Spa</span>
+                      <span>Spa &amp; Salon Réunion Privé</span>
                       <span className="font-semibold text-[#001510]">
-                        {formatCurrencyUsd(spaCents)}
+                        {formatCurrencyEur(spaCents)}
                       </span>
                     </div>
                   )}
                   <div className="flex justify-between items-center text-[13px] text-[#414846]">
-                    <span>Local Hospitality &amp; Eco Tax (10%)</span>
+                    <span>Taxes de séjour &amp; Services (10%)</span>
                     <span className="font-semibold text-[#001510]">
-                      {formatCurrencyUsd(taxCents)}
+                      {formatCurrencyEur(taxCents)}
                     </span>
                   </div>
                   {discountCents > 0 && (
                     <div className="flex justify-between items-center text-[13px] text-[#3d6659] font-medium">
-                      <span>Privilege Member Benefit</span>
-                      <span>-{formatCurrencyUsd(discountCents)}</span>
+                      <span>Avantage Membre</span>
+                      <span>-{formatCurrencyEur(discountCents)}</span>
                     </div>
                   )}
 
                   <div className="pt-3 mt-2 border-t border-[#e9e8e5] flex items-baseline justify-between">
                     <div>
                       <span className="text-[11px] uppercase tracking-wide text-[#414846]">
-                        Total Investment
+                        Montant Total
                       </span>
                       <p className="text-[11px] text-[#3d6659]">
-                        Taxes and concierge fees included
+                        Taxes et frais de dossier inclus
                       </p>
                     </div>
                     <span className="text-[24px] text-[#001510] font-bold">
-                      {formatCurrencyUsd(grandTotalCents)}
+                      {formatCurrencyEur(grandTotalCents)}
                     </span>
                   </div>
                 </div>
@@ -1362,7 +1362,7 @@ export function ReservationFlow() {
                 {/* Add to Calendar Bar */}
                 <div className="space-y-2">
                   <span className="text-[11px] text-[#414846] block">
-                    Sync reservation to:
+                    Ajouter à votre agenda :
                   </span>
                   <div className="grid grid-cols-3 gap-2">
                     <button
@@ -1409,8 +1409,8 @@ export function ReservationFlow() {
                     <Lock className="w-4 h-4" />
                     <span>
                       {isSubmitting
-                        ? "Confirming Sanctuary..."
-                        : `Proceed to Checkout • ${formatCurrencyUsd(grandTotalCents)}`}
+                        ? "Confirmation en cours..."
+                        : `Confirmer la Réservation • ${formatCurrencyEur(grandTotalCents)}`}
                     </span>
                   </button>
 
@@ -1437,7 +1437,7 @@ export function ReservationFlow() {
                       }`}
                     >
                       <CreditCard className="w-3.5 h-3.5" />
-                      Credit Card
+                      Carte Bancaire
                     </button>
                   </div>
                 </div>
@@ -1448,27 +1448,27 @@ export function ReservationFlow() {
                     <BadgeCheck className="w-4 h-4 text-[#3d6659] shrink-0" />
                     <span className="text-[12px] text-[#414846]">
                       <strong className="text-[#001510] font-semibold">
-                        Best Rate Guaranteed
+                        Meilleur Tarif Garanti
                       </strong>{" "}
-                      — Direct sanctuary reservation
+                      — Réservation directe à l&apos;hôtel
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <RefreshCw className="w-4 h-4 text-[#3d6659] shrink-0" />
                     <span className="text-[12px] text-[#414846]">
                       <strong className="text-[#001510] font-semibold">
-                        Flexible Cancellation
+                        Annulation Flexible
                       </strong>{" "}
-                      — 100% refund up to 48h prior
+                      — Remboursement à 100% jusqu&apos;à 48h avant
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Shield className="w-4 h-4 text-[#3d6659] shrink-0" />
                     <span className="text-[12px] text-[#414846]">
                       <strong className="text-[#001510] font-semibold">
-                        Concierge Escort
+                        Accueil &amp; Suivi VIP
                       </strong>{" "}
-                      — Instant VIP arrival coordination
+                      — Coordination immédiate à la réception
                     </span>
                   </div>
                 </div>
@@ -1481,16 +1481,16 @@ export function ReservationFlow() {
                 </div>
                 <div>
                   <h4 className="text-[14px] font-bold text-[#001510]">
-                    Need bespoke arrangements?
+                    Besoin d&apos;une organisation sur mesure ?
                   </h4>
                   <p className="text-[13px] text-[#414846]">
-                    Speak directly to our Bali stay curator.
+                    Échangez avec notre équipe séjour &amp; séminaires.
                   </p>
                   <Link
                     href="/contact"
                     className="text-[12px] text-[#3d6659] font-bold inline-flex items-center gap-1 mt-1 hover:underline"
                   >
-                    Call +41 22 819 9000
+                    Appeler le +33 1 42 68 90 00
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1501,20 +1501,20 @@ export function ReservationFlow() {
       </form>
 
       {/* Destination Quick Switch Strip */}
-      <section className="w-full py-14 bg-[#f4f3f0]">
+      <section className="w-full py-14 bg-white border-t border-[#EDEDEA]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 space-y-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span className="text-[11px] uppercase tracking-widest text-[#3d6659] font-semibold">
-                Alternative Escapes
+                Tout en Un Lieu
               </span>
               <h3 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium text-[#001510] tracking-tight">
-                Explore Other Global Sanctuaries
+                L&apos;Expérience Complète King&apos;s Bed Hotel
               </h3>
             </div>
             <p className="text-[15px] text-[#414846] max-w-md">
-              Seamlessly migrate your reservation dates to our exclusive estates
-              across Europe and the Indian Ocean.
+              Combinez votre chambre avec nos petits-déjeuners artisanaux et nos
+              salles de réunion ou de conférence dédiées.
             </p>
           </div>
 
@@ -1522,7 +1522,13 @@ export function ReservationFlow() {
             {GLOBAL_SANCTUARIES.map((item) => (
               <Link
                 key={item.slug}
-                href={`/rooms?region=${item.slug}`}
+                href={
+                  item.slug === "lisbon"
+                    ? "/rooms"
+                    : item.slug === "positano"
+                      ? "/services"
+                      : "/contact"
+                }
                 className="group relative h-80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block"
               >
                 <SuiteImage
@@ -1534,7 +1540,7 @@ export function ReservationFlow() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#001510]/85 via-[#001510]/20 to-transparent" />
                 <div className="absolute top-4 right-4">
                   <span className="px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[12px] font-bold text-[#001510] shadow-sm">
-                    View Estate
+                    Découvrir
                   </span>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">

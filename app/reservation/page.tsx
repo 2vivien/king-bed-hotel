@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import { ReservationFlow } from "@/features/booking/components/ReservationFlow";
 
 export const metadata: Metadata = {
-  title: "Reservation",
+  title: "Réservation",
   description:
-    "Check live availability and reserve your SuiteSavvy boutique suite or private villa with instant confirmation.",
+    "Vérifiez les disponibilités en direct et réservez votre chambre King Size, formule petit-déjeuner ou salle de réunion au King's Bed Hotel.",
 };
 
 export default function ReservationPage() {

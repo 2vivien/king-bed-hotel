@@ -48,7 +48,7 @@ export function DialogModal({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close modal"
+            aria-label="Fermer la fenêtre"
             className="w-10 h-10 rounded-full bg-white border border-[#111111]/10 flex items-center justify-center text-[#111111] hover:bg-[#F4F1EA] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" strokeWidth={1.5} />

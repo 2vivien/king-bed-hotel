@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const room = roomsMock.find((r) => r.slug === slug);
-  if (!room) return { title: "Suite Not Found" };
+  if (!room) return { title: "Chambre Introuvable" };
   return {
     title: room.name,
     description: room.tagline,

@@ -2,40 +2,42 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Terms & Cancellation",
+  title: "Conditions & Annulation",
   description:
-    "SuiteSavvy reservation terms, flexible cancellation windows, and check-in guidelines.",
+    "Conditions de réservation du King's Bed Hotel, délais d'annulation flexible et consignes d'arrivée.",
 };
 
 export default function TermsPage() {
   return (
     <article className="max-w-[720px] mx-auto px-6 pt-14 pb-24 space-y-8">
       <div className="space-y-3">
-        <p className="text-[13px] text-[#5F5F5A]">Legal</p>
+        <p className="text-[13px] text-[#5F5F5A]">Informations Légales</p>
         <h1 className="text-[clamp(2.25rem,4vw,3.25rem)] font-light leading-[1.08] tracking-[-0.03em] text-[#111111]">
-          Terms &amp; Cancellation
+          Conditions &amp; Annulation
         </h1>
       </div>
 
       <div className="space-y-6 text-[16px] leading-[1.7] text-[#5F5F5A]">
         <p>
-          All {siteConfig.name} reservations include transparent nightly rates and a 12%
-          sanctuary tax calculated at checkout with zero surprise resort fees.
+          Toutes les réservations chez {siteConfig.name} incluent des tarifs transparents et une
+          taxe de séjour de 10 % calculée lors du règlement, sans aucun frais caché pour vos
+          chambres, petits-déjeuners ou réservations de salles de conférence.
         </p>
         <h2 className="text-[22px] font-normal text-[#111111] pt-2">
-          1. Flexible Cancellation Windows
+          1. Conditions d&apos;Annulation Flexible
         </h2>
         <p>
-          Deluxe Rooms may be cancelled without penalty up to 48 hours before check-in.
-          Suites offer free cancellation up to 72 hours prior, and Private Villas up to 7
-          days prior to arrival.
+          Les Chambres Deluxe peuvent être annulées sans frais jusqu&apos;à 48 heures avant
+          l&apos;arrivée. Les Suites offrent l&apos;annulation gratuite jusqu&apos;à 72 heures
+          avant, et les Suites Royales ou privatisations de salles de conférence jusqu&apos;à 7
+          jours avant la date prévue.
         </p>
         <h2 className="text-[22px] font-normal text-[#111111] pt-2">
-          2. Check-In &amp; Check-Out
+          2. Arrivée, Départ &amp; Réception
         </h2>
         <p>
-          {siteConfig.hours}. Early arrivals and late departures are accommodated whenever
-          possible via our 24/7 concierge team.
+          {siteConfig.hours}. Les arrivées anticipées et départs tardifs sont organisés selon
+          disponibilité par notre réception ouverte 24h/24.
         </p>
       </div>
     </article>

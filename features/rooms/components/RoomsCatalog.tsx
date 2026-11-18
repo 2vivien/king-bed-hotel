@@ -9,9 +9,9 @@ import { roomsMock } from "@/mocks/rooms";
 type FilterType = "all" | "suites" | "villas";
 
 const filterOptions: readonly SegmentedOption<FilterType>[] = [
-  { value: "all", label: "All Rooms" },
+  { value: "all", label: "Toutes les Chambres" },
   { value: "suites", label: "Suites" },
-  { value: "villas", label: "Villas" },
+  { value: "villas", label: "Villas & Résidences" },
 ];
 
 function RoomsCatalogInner() {
@@ -38,10 +38,10 @@ function RoomsCatalogInner() {
           options={filterOptions}
           value={activeType}
           onChange={handleChange}
-          ariaLabel="Filter accommodations by type"
+          ariaLabel="Filtrer les hébergements par catégorie"
         />
         <p className="text-[14px] text-[#5F5F5A] tabular-nums">
-          {filteredRooms.length} {filteredRooms.length === 1 ? "residence" : "residences"}
+          {filteredRooms.length} {filteredRooms.length === 1 ? "hébergement" : "hébergements"}
         </p>
       </div>
 

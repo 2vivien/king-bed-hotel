@@ -12,7 +12,7 @@ export function AvatarStack() {
       {avatarSamples.map((item) => (
         <span
           key={item.initials}
-          className={`w-9 h-9 rounded-full border-2 border-[#FAF9F6] flex items-center justify-center text-[11px] font-medium tracking-tight ${item.bg}`}
+          className={`w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-[11px] font-medium tracking-tight ${item.bg}`}
         >
           {item.initials}
         </span>

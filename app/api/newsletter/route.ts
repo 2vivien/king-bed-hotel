@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const rate = checkRateLimit(`newsletter:${ip}`, 10);
   if (!rate.allowed) {
     return NextResponse.json(
-      { code: "RATE_LIMITED", message: "Please wait before subscribing again." },
+      { code: "RATE_LIMITED", message: "Veuillez patienter avant de vous inscrire à nouveau." },
       { status: 429 }
     );
   }
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         code: "VALIDATION_ERROR",
-        message: parsed.error.issues[0]?.message ?? "Please provide a valid email address.",
+        message: parsed.error.issues[0]?.message ?? "Veuillez saisir une adresse e-mail valide.",
       },
       { status: 400 }
     );
@@ -27,6 +27,6 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: "Welcome to SuiteSavvy. Exclusive seasonal invitations are on their way.",
+    message: "Bienvenue au King's Bed Hôtel. Nos offres exclusives arrivent bientôt.",
   });
 }

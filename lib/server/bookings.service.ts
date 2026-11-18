@@ -38,7 +38,7 @@ function generateBookingCode(): string {
   for (let i = 0; i < 6; i += 1) {
     suffix += chars[Math.floor(Math.random() * chars.length)];
   }
-  return `SS-${suffix}`;
+  return `KB-${suffix}`;
 }
 
 /**
@@ -98,7 +98,7 @@ export function createBookingServer(input: CreateBookingInput): {
   const room = roomsMock.find((r) => r.slug === input.roomSlug);
   if (!room) {
     return {
-      error: { code: "ROOM_NOT_FOUND", message: "Selected suite could not be found.", status: 404 },
+      error: { code: "ROOM_NOT_FOUND", message: "L'hébergement ou la salle sélectionnée est introuvable.", status: 404 },
     };
   }
 
@@ -107,7 +107,7 @@ export function createBookingServer(input: CreateBookingInput): {
     return {
       error: {
         code: "INVALID_DATES",
-        message: "Stay duration must be between 1 and 30 nights.",
+        message: "La durée du séjour doit être comprise entre 1 et 30 nuits.",
         status: 400,
       },
     };
@@ -117,7 +117,7 @@ export function createBookingServer(input: CreateBookingInput): {
     return {
       error: {
         code: "CAPACITY_EXCEEDED",
-        message: `${room.name} accommodates up to ${room.maxGuests} guests.`,
+        message: `${room.name} accueille jusqu'à ${room.maxGuests} personnes.`,
         status: 400,
       },
     };
@@ -133,7 +133,7 @@ export function createBookingServer(input: CreateBookingInput): {
     return {
       error: {
         code: "DATES_UNAVAILABLE",
-        message: "This suite has just been reserved for the selected dates.",
+        message: "Cet espace vient tout juste d'être réservé aux dates sélectionnées.",
         status: 409,
       },
     };
@@ -148,7 +148,9 @@ export function createBookingServer(input: CreateBookingInput): {
 
   const normalizedPromo = input.promoCode?.trim().toUpperCase();
   const discount =
-    normalizedPromo === "SAVVYVIP" || normalizedPromo === "PRIVILEGE" ? 20000 : 0;
+    normalizedPromo === "KINGSBED" || normalizedPromo === "SAVVYVIP" || normalizedPromo === "PRIVILEGE"
+      ? 20000
+      : 0;
 
   const adjustedSubtotal = pricing.subtotal;
   const taxes = Math.round((adjustedSubtotal + addOnsTotal) * 0.1);

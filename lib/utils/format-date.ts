@@ -1,4 +1,5 @@
 import { addDays, format, isValid, parseISO } from "date-fns";
+import { fr } from "date-fns/locale";
 
 /**
  * Formate une date ISO (YYYY-MM-DD) pour l'affichage éditorial (ex. 18.06.2027).
@@ -10,12 +11,12 @@ export function formatDisplayDate(isoDate: string): string {
 }
 
 /**
- * Formate une date ISO en libellé lisible long (ex. Jun 18, 2027).
+ * Formate une date ISO en libellé lisible long en français (ex. 18 juin 2027).
  */
 export function formatReadableDate(isoDate: string): string {
   const parsed = parseISO(isoDate);
   if (!isValid(parsed)) return isoDate;
-  return format(parsed, "MMM dd, yyyy");
+  return format(parsed, "dd MMM yyyy", { locale: fr });
 }
 
 /**

@@ -29,12 +29,12 @@ export function BrandMark({ tone = "dark", className }: BrandMarkProps) {
             "w-4 h-4 rounded-full -ml-2 border-[1.5px]",
             isLight
               ? "border-white bg-white/25"
-              : "border-[#111111] bg-[#FAF9F6]/80"
+              : "border-[#111111] bg-white/80"
           )}
         />
       </span>
       <span className="text-[16px] font-semibold tracking-[-0.02em]">
-        SuiteSavvy
+        King&apos;s Bed Hotel
       </span>
     </Link>
   );

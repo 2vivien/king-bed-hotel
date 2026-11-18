@@ -2,24 +2,24 @@ import { z } from "zod";
 
 export const BookingSearchSchema = z
   .object({
-    checkIn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid check-in date"),
-    checkOut: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid check-out date"),
+    checkIn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date d'arrivée invalide"),
+    checkOut: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date de départ invalide"),
     guests: z.number().int().min(1).max(8),
     roomSlug: z.string().optional(),
   })
   .refine((v) => v.checkOut > v.checkIn, {
     path: ["checkOut"],
-    message: "Check-out date must be after check-in date",
+    message: "La date de départ doit être postérieure à la date d'arrivée",
   });
 
 export const GuestDetailsSchema = z.object({
-  firstName: z.string().trim().min(1, "First name is required").max(60),
-  lastName: z.string().trim().min(1, "Last name is required").max(60),
-  email: z.string().trim().email("Please enter a valid email address"),
-  phone: z.string().trim().min(6, "Phone number is required").max(20),
+  firstName: z.string().trim().min(1, "Le prénom est requis").max(60),
+  lastName: z.string().trim().min(1, "Le nom est requis").max(60),
+  email: z.string().trim().email("Veuillez saisir une adresse e-mail valide"),
+  phone: z.string().trim().min(6, "Le numéro de téléphone est requis").max(20),
   notes: z.string().trim().max(500).optional(),
   acceptTerms: z.boolean().refine((val) => val === true, {
-    message: "Please accept the booking terms",
+    message: "Veuillez accepter les conditions de réservation",
   }),
 });
 
@@ -36,14 +36,14 @@ export const CreateBookingInputSchema = z.object({
 });
 
 export const ContactFormSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(80),
-  email: z.string().trim().email("Please enter a valid email address"),
-  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1500),
+  name: z.string().trim().min(2, "Veuillez saisir votre nom").max(80),
+  email: z.string().trim().email("Veuillez saisir une adresse e-mail valide"),
+  message: z.string().trim().min(10, "Votre message doit contenir au moins 10 caractères").max(1500),
   website: z.string().max(0).optional(), // honeypot
 });
 
 export const NewsletterSchema = z.object({
-  email: z.string().trim().email("Please enter a valid email address"),
+  email: z.string().trim().email("Veuillez saisir une adresse e-mail valide"),
   company: z.string().max(0).optional(), // honeypot
 });
 

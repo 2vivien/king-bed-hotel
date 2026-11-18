@@ -3,32 +3,32 @@ import type { FaqItem, Testimonial } from "@/types/hotel.types";
 export const testimonialsMock: readonly Testimonial[] = [
   {
     id: "t-1",
-    name: "Sarah Johnson",
-    location: "New York, USA",
+    name: "Sarah Martin",
+    location: "Lyon, France",
     quote:
-      "Every detail felt quietly effortless—from the sunlit travertine suite overlooking the palms to the private evening dining under the stars. SuiteSavvy transformed our getaway into something unforgettable.",
-    stayTitle: "Stayed in Royal Villa · Bali",
-    avatarLabel: "SJ",
+      "Chaque détail était parfait : la literie King Size incroyable, le buffet de petit-déjeuner frais et généreux, et la qualité de nos salles de réunion pour notre comité de direction.",
+    stayTitle: "Séjour & Séminaire · Suite Royale",
+    avatarLabel: "SM",
     image: "/images/destinations/maldives.jpg",
   },
   {
     id: "t-2",
-    name: "Henrik Lindqvist",
-    location: "Stockholm, Sweden",
+    name: "Henri Laurent",
+    location: "Genève, Suisse",
     quote:
-      "Rarely does hospitality feel both architecturally inspiring and deeply personal. Waking up above the lagoon in the Maldives felt like living inside a tranquil dream.",
-    stayTitle: "Stayed in Lagoon Water Villa · Maldives",
+      "Rarement un hôtel parvient à combiner autant de sérénité pour dormir et une telle efficacité pour organiser des conférences de 80 personnes avec déjeuners et pauses café.",
+    stayTitle: "Conférence Annuelle · Suite Exécutive",
     avatarLabel: "HL",
     image: "/images/destinations/santorini.jpg",
   },
   {
     id: "t-3",
-    name: "Amélie Laurent",
+    name: "Amélie Moreau",
     location: "Paris, France",
     quote:
-      "The restraint, calm materials, and intuitive concierge made our Amalfi stay extraordinary. Our private boat excursion and terrace dinners were handled before we even thought to ask.",
-    stayTitle: "Stayed in Terrace Garden Room · Positano",
-    avatarLabel: "AL",
+      "Le petit-déjeuner servi sur la terrasse, l'attention discrète de la réception 24h/24 et le calme absolu des chambres font du King's Bed Hotel notre adresse favorite.",
+    stayTitle: "Week-end Détente · Chambre Deluxe",
+    avatarLabel: "AM",
     image: "/images/destinations/positano.jpg",
   },
 ];
@@ -36,38 +36,38 @@ export const testimonialsMock: readonly Testimonial[] = [
 export const faqMock: readonly FaqItem[] = [
   {
     id: "check-in",
-    question: "What are the standard check-in and check-out times?",
+    question: "Quels sont les horaires d'arrivée, de départ et du petit-déjeuner ?",
     answer:
-      "Standard check-in begins at 15:00 and check-out is until 12:00. Early arrival or late departure may be arranged through your dedicated concierge subject to suite availability.",
+      "Les arrivées s'effectuent à partir de 15h00 et les départs jusqu'à 12h00. Le petit-déjeuner est servi tous les jours de 06h30 à 10h30 en salle ou directement dans votre chambre.",
+  },
+  {
+    id: "conferences",
+    question: "Comment réserver une salle de réunion ou un espace de conférence ?",
+    answer:
+      "King's Bed Hotel dispose de salles modulables de 8 à 180 participants équipées en 4K et fibre très haut débit. Contactez notre équipe événements ou sélectionnez l'option lors de votre demande pour recevoir un devis sous 2 heures.",
+  },
+  {
+    id: "breakfast",
+    question: "Le petit-déjeuner est-il inclus dans les chambres ?",
+    answer:
+      "Oui, nos formules incluent un petit-déjeuner buffet artisanal (viennoiseries, œufs à la minute, fruits frais, jus pressés) ou un service en chambre sans frais cachés.",
   },
   {
     id: "cancellation",
-    question: "What is SuiteSavvy's cancellation policy?",
+    question: "Quelle est la politique d'annulation du King's Bed Hotel ?",
     answer:
-      "Deluxe Rooms may be cancelled free of charge up to 48 hours prior to arrival. Suites allow free cancellation up to 72 hours prior, and Villas up to 7 days before check-in.",
-  },
-  {
-    id: "transfers",
-    question: "Are private airport transfers included with my stay?",
-    answer:
-      "Complimentary private transfers are included with all Premium Suite and Royal Villa reservations. Deluxe Room guests may request seamless chauffeured pickup during booking.",
-  },
-  {
-    id: "children",
-    question: "Are families and children welcome at SuiteSavvy properties?",
-    answer:
-      "Yes, families are warmly welcomed across our Bali, Lisbon, and Maldives residences, with multi-bedroom villas and bespoke family excursions available upon request.",
+      "Les Chambres Deluxe sont annulables gratuitement jusqu'à 48h avant l'arrivée, les Suites jusqu'à 72h avant, et les Résidences & privatisations de conférences jusqu'à 7 jours avant la date prévue.",
   },
   {
     id: "payment",
-    question: "Which payment methods are accepted?",
+    question: "Quels moyens de paiement sont acceptés ?",
     answer:
-      "We support Apple Pay, major international credit cards, and instant confirmation receipts. All totals include applicable sanctuary taxes with zero hidden resort fees.",
+      "Nous acceptons Apple Pay, toutes les cartes bancaires internationales ainsi que la facturation entreprise sur bon de commande pour les séminaires et conférences.",
   },
   {
     id: "parking",
-    question: "Is private valet parking or EV charging available?",
+    question: "Disposez-vous d'un parking privé et de bornes de recharge électrique ?",
     answer:
-      "Complimentary valet parking and high-speed electric vehicle charging stations are available at all mainland properties in Bali, Lisbon, and Positano.",
+      "Oui, un parking souterrain sécurisé avec service voiturier et bornes de recharge rapide pour véhicules électriques est mis à la disposition de nos clients et participants aux conférences.",
   },
 ];

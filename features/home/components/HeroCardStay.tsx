@@ -32,7 +32,7 @@ export function HeroCardStay() {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-2 text-[12px]">
-            <span className="text-white/75">Your stay:</span>
+            <span className="text-white/75">Votre séjour :</span>
             <span className="font-medium truncate">{destination.name}</span>
           </div>
           <div className="flex items-center justify-between gap-2 mt-0.5">
@@ -40,7 +40,7 @@ export function HeroCardStay() {
               href={`/rooms/${room.slug}`}
               className="text-[11px] underline underline-offset-2 text-white/85 hover:text-white"
             >
-              Get Directions
+              Voir la suite
             </Link>
             <span className="text-[11px] text-white/75 truncate">
               {siteConfig.shortAddress}
@@ -52,7 +52,7 @@ export function HeroCardStay() {
       <div className="mt-3 h-10 rounded-full bg-white px-3 flex items-center justify-between text-[#111111]">
         <span className="text-[12px] font-medium px-2">Apple Pay</span>
         <span className="h-7 px-3 rounded-full bg-[#111111] text-white text-[11px] font-medium inline-flex items-center">
-          {activeBooking ? "Confirmed" : "Instant Pay"}
+          {activeBooking ? "Confirmé" : "Paiement Direct"}
         </span>
       </div>
 
@@ -61,13 +61,13 @@ export function HeroCardStay() {
           href={detailsHref}
           className="h-9 rounded-full bg-white text-[#111111] text-[12px] font-medium flex items-center justify-center hover:bg-[#EFE6D6] transition-colors whitespace-nowrap px-3"
         >
-          Booking details
+          Détails du séjour
         </Link>
         <Link
           href="/reservation"
           className="h-9 rounded-full border border-white/35 bg-white/10 text-white text-[12px] font-medium flex items-center justify-center hover:bg-white/20 transition-colors whitespace-nowrap px-3"
         >
-          Edit information
+          Modifier
         </Link>
       </div>
     </div>

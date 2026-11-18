@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const rate = checkRateLimit(`contact:${ip}`, 10);
   if (!rate.allowed) {
     return NextResponse.json(
-      { code: "RATE_LIMITED", message: "Please wait a minute before sending another message." },
+      { code: "RATE_LIMITED", message: "Veuillez patienter une minute avant d'envoyer un autre message." },
       { status: 429 }
     );
   }
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         code: "VALIDATION_ERROR",
-        message: parsed.error.issues[0]?.message ?? "Please check your inquiry fields.",
+        message: parsed.error.issues[0]?.message ?? "Veuillez vérifier les champs de votre demande.",
       },
       { status: 400 }
     );
@@ -27,6 +27,6 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: "Thank you. Our concierge team will respond within 2 hours.",
+    message: "Merci. Notre équipe de réception et événements vous répondra sous 2 heures.",
   });
 }

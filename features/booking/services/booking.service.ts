@@ -14,7 +14,7 @@ interface ApiErrorPayload {
 async function parseJson<T>(res: Response): Promise<T> {
   const data = (await res.json().catch(() => ({}))) as T & ApiErrorPayload;
   if (!res.ok) {
-    throw new Error(data.message ?? "Unable to complete request. Please try again.");
+    throw new Error(data.message ?? "Impossible d'effectuer la demande. Veuillez réessayer.");
   }
   return data;
 }

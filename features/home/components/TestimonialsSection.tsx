@@ -27,8 +27,8 @@ export function TestimonialsSection() {
       <Reveal>
         <div className="mb-12">
           <SectionHeading
-            eyebrow="What Our Guests Say"
-            title="Trusted by Travelers Worldwide"
+            eyebrow="Témoignages"
+            title="Plébiscité par Nos Clients & Entreprises"
           />
         </div>
       </Reveal>
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  aria-label="Previous testimonial"
+                  aria-label="Témoignage précédent"
                   className="w-11 h-11 rounded-full bg-[#FAF9F6] border border-[#111111]/10 flex items-center justify-center text-[#111111] hover:bg-[#EFE6D6] transition-colors cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
@@ -70,7 +70,7 @@ export function TestimonialsSection() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  aria-label="Next testimonial"
+                  aria-label="Témoignage suivant"
                   className="w-11 h-11 rounded-full bg-[#FAF9F6] border border-[#111111]/10 flex items-center justify-center text-[#111111] hover:bg-[#EFE6D6] transition-colors cursor-pointer"
                 >
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />

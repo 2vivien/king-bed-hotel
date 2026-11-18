@@ -20,7 +20,9 @@ export function FooterGazetteForm() {
       setEmail("");
     } catch (err) {
       setStatus("error");
-      setFeedback(err instanceof Error ? err.message : "Unable to join right now.");
+      setFeedback(
+        err instanceof Error ? err.message : "Inscription impossible pour le moment."
+      );
     }
   };
 
@@ -31,7 +33,7 @@ export function FooterGazetteForm() {
         className="flex items-center bg-[#e3e2e0] rounded-full p-1 pl-4 shadow-inner"
       >
         <label htmlFor="footer-gazette-email" className="sr-only">
-          Enter your email
+          Votre adresse e-mail
         </label>
         <input
           id="footer-gazette-email"
@@ -39,7 +41,7 @@ export function FooterGazetteForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
+          placeholder="Votre adresse e-mail"
           className="w-full bg-transparent border-0 text-[13px] text-[#1a1c1a] placeholder:text-[#414846] focus:outline-none"
         />
         <button
@@ -47,7 +49,7 @@ export function FooterGazetteForm() {
           disabled={status === "loading"}
           className="px-5 py-2 rounded-full bg-[#001510] text-white text-[12px] font-medium hover:bg-[#0d2b24] transition-colors shrink-0 cursor-pointer disabled:opacity-60"
         >
-          {status === "loading" ? "..." : "Join"}
+          {status === "loading" ? "..." : "Rejoindre"}
         </button>
       </form>
       {feedback ? (

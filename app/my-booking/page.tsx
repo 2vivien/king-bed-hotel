@@ -4,8 +4,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { MyBookingLookup } from "@/features/booking/components/MyBookingLookup";
 
 export const metadata: Metadata = {
-  title: "My Booking",
-  description: "View, export to calendar, or manage your SuiteSavvy reservation.",
+  title: "Ma Réservation",
+  description: "Consultez, exportez dans votre agenda ou gérez votre réservation au King's Bed Hotel.",
 };
 
 export default function MyBookingPage() {
@@ -13,9 +13,9 @@ export default function MyBookingPage() {
     <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-14 pb-20 space-y-12">
       <SectionHeading
         as="h1"
-        eyebrow="Manage Stay"
-        title="My Booking"
-        subtitle="Access your confirmed reservation, download calendar invites, or update your stay."
+        eyebrow="Gérer Mon Séjour"
+        title="Ma Réservation"
+        subtitle="Accédez à votre réservation confirmée, téléchargez votre invitation calendrier ou modifiez votre séjour."
       />
       <Suspense
         fallback={

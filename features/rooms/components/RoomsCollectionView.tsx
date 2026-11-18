@@ -34,11 +34,11 @@ type CapacityFilter = "any" | "1-2" | "3-4" | "5+";
 type ExperienceFilter = "all" | RoomExperienceTag;
 
 const CATEGORY_TABS: readonly { id: CategoryFilter; label: string }[] = [
-  { id: "all", label: "All Sanctuaries" },
-  { id: "rooms", label: "Deluxe Rooms" },
-  { id: "suites", label: "Executive Suites" },
-  { id: "villas", label: "Ocean Villas" },
-  { id: "penthouses", label: "Presidential Penthouses" },
+  { id: "all", label: "Toutes les Chambres" },
+  { id: "rooms", label: "Chambres Deluxe" },
+  { id: "suites", label: "Suites Exécutives" },
+  { id: "villas", label: "Villas & Salons" },
+  { id: "penthouses", label: "Suites Présidentielles" },
 ];
 
 const CURATED_FOUR_SLUGS = [
@@ -52,30 +52,30 @@ const FAQ_ITEMS = [
   {
     id: "bedding",
     icon: BedDouble,
-    question: "What is the SuiteSavvy Bedding Menu & Pillow Bar?",
+    question: "En quoi consiste la literie King Size et le Bar à Oreillers ?",
     answer:
-      "Upon reservation, guests choose from 8 specialized pillow profiles (hypoallergenic Siberian goose down, cooling charcoal memory foam, buckwheat hulls, or organic lavender-infused silk). All suites feature 600-thread-count Egyptian sateen linens pressed daily.",
+      "Dès votre réservation au King's Bed Hotel, choisissez parmi 8 profils d'oreillers (duvet naturel, mousse à mémoire de forme rafraîchissante, sarrasin ou soie). Toutes nos chambres sont équipées de draps en satin de coton égyptien 600 fils.",
   },
   {
     id: "dining",
     icon: Utensils,
-    question: "How does private in-room and poolside dining work?",
+    question: "Comment fonctionnent le petit-déjeuner et le service en chambre ?",
     answer:
-      "Our Michelin-trained culinary brigade provides 24-hour à la carte service delivered directly to your terrace or private dining gazebo. For villas and penthouses, you may commission an exclusive private chef tasting menu prepared live in your residence kitchen.",
+      "Le petit-déjeuner artisanal est servi chaque matin de 06h30 à 11h00 au salon de l'Orangerie ou directement en chambre sans supplément de plateau. Nos équipes préparent également des pauses café et plateaux pour vos réunions.",
   },
   {
     id: "policies",
     icon: Clock,
-    question: "What are the check-in and checkout policies?",
+    question: "Quels sont les horaires d'arrivée, de départ et d'accès aux salles ?",
     answer:
-      "Guaranteed check-in begins at 15:00 and checkout is at 12:00 noon. Guests reserving suites and villas receive complimentary flexible early check-in and late departure privileges subject to availability, alongside full access to our private arrival lounge and sea spas.",
+      "L'enregistrement est garanti dès 15h00 et le départ s'effectue jusqu'à 12h00. Un départ tardif jusqu'à 14h00 est offert selon disponibilité, et nos salons de réunion restent accessibles sur réservation de 07h30 à 22h00.",
   },
   {
     id: "transfers",
     icon: Plane,
-    question: "Are private helicopter or luxury car transfers included?",
+    question: "Proposez-vous des transferts privés et un accueil séminaire ?",
     answer:
-      "Penthouse and Ocean Villa reservations include complimentary private Mercedes Maybach or Range Rover airport chauffeur service. Direct rooftop helipad transfers are coordinated upon request through our aviation desk.",
+      "Oui, nos suites et forfaits conférence incluent la coordination de transferts privés depuis la gare ou l'aéroport, ainsi qu'un accueil dédié pour vos intervenants et invités.",
   },
 ] as const;
 
@@ -154,45 +154,45 @@ export function RoomsCollectionView() {
   };
 
   return (
-    <div className="bg-[#faf9f6] text-[#1a1c1a]">
+    <div className="bg-white text-[#1a1c1a]">
       {/* Top Banner & Editorial Hero Header */}
       <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-8 pb-10">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#bce9d9]/50 text-[#416b5d] text-[12px] font-medium tracking-[0.03em]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#3d6659]" />
-                Tailored Residential Collection 2025
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e9e8e5] text-[#001510] text-[12px] font-medium tracking-[0.02em]">
+                <BedDouble className="w-3.5 h-3.5 text-[#3d6659]" strokeWidth={1.75} />
+                <span>Collection Hôtelière King&apos;s Bed 2025</span>
               </div>
               <h1 className="text-[40px] sm:text-[52px] lg:text-[56px] leading-[1.1] font-semibold tracking-[-0.03em] text-[#001510]">
-                Find Your Perfect Stay
+                Trouvez Votre Chambre Idéale
               </h1>
               <p className="text-[17px] sm:text-[18px] leading-[1.55] text-[#414846]">
-                Curated sanctuaries, private suites, and architectural villas
-                designed for uncompromised luxury and rest. Experience seamless
-                tactile comfort with elevated ocean horizons.
+                Chambres King Size, suites exécutives et hébergements avec
+                petit-déjeuner inclus et accès privilégié à nos salles de
+                réunion et de conférences.
               </p>
             </div>
 
             {/* Quick Trust Indicators */}
             <div className="flex items-center gap-4 pb-1 shrink-0">
               <div className="flex -space-x-2">
-                <div className="w-10 h-10 rounded-full bg-[#e9e8e5] flex items-center justify-center text-[11px] font-semibold text-[#001510] shadow-sm ring-2 ring-[#faf9f6]">
-                  SS
+                <div className="w-10 h-10 rounded-full bg-[#e9e8e5] flex items-center justify-center text-[11px] font-semibold text-[#001510] shadow-sm ring-2 ring-white">
+                  KB
                 </div>
-                <div className="w-10 h-10 rounded-full bg-[#bce9d9] flex items-center justify-center text-[11px] font-semibold text-[#416b5d] shadow-sm ring-2 ring-[#faf9f6]">
-                  9.9
+                <div className="w-10 h-10 rounded-full bg-[#bce9d9] flex items-center justify-center text-[11px] font-semibold text-[#416b5d] shadow-sm ring-2 ring-white">
+                  4.9
                 </div>
-                <div className="w-10 h-10 rounded-full bg-[#0d2b24] text-white flex items-center justify-center text-[11px] font-semibold shadow-sm ring-2 ring-[#faf9f6]">
+                <div className="w-10 h-10 rounded-full bg-[#0d2b24] text-white flex items-center justify-center text-[11px] font-semibold shadow-sm ring-2 ring-white">
                   <Star className="w-3.5 h-3.5 fill-current" />
                 </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-[14px] font-semibold text-[#001510]">
-                  Top 1% Global Escapes
+                  King&apos;s Bed Hotel Paris
                 </span>
                 <span className="text-[13px] text-[#414846]">
-                  Michelin Key &amp; LHW Certified
+                  Clef Michelin &amp; Affaires Certifié
                 </span>
               </div>
             </div>
@@ -229,16 +229,16 @@ export function RoomsCollectionView() {
               <div className="bg-[#f4f3f0] p-3 px-4 rounded-2xl flex flex-col justify-center">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider">
-                    Nightly Budget
+                    Budget par Nuit
                   </span>
                   <span className="text-[12px] font-semibold text-[#001510]">
                     {maxBudget >= 1500
-                      ? "$400 - $1,500+"
-                      : `$400 - $${maxBudget.toLocaleString()}`}
+                      ? "400 € - 1 500 €+"
+                      : `400 € - ${maxBudget.toLocaleString("fr-FR")} €`}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-[12px] text-[#414846]">$400</span>
+                  <span className="text-[12px] text-[#414846]">400 €</span>
                   <input
                     type="range"
                     min={400}
@@ -246,10 +246,10 @@ export function RoomsCollectionView() {
                     step={50}
                     value={maxBudget}
                     onChange={(e) => setMaxBudget(Number(e.target.value))}
-                    aria-label="Nightly Budget"
+                    aria-label="Budget par Nuit"
                     className="w-full h-1.5 bg-[#e3e2e0] rounded-lg appearance-none cursor-pointer accent-[#001510]"
                   />
-                  <span className="text-[12px] text-[#414846]">$1.5k</span>
+                  <span className="text-[12px] text-[#414846]">1,5k €</span>
                 </div>
               </div>
 
@@ -259,7 +259,7 @@ export function RoomsCollectionView() {
                   htmlFor="capacitySelect"
                   className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider mb-1"
                 >
-                  Guests / Capacity
+                  Hôtes / Capacité
                 </label>
                 <div className="relative flex items-center justify-between">
                   <select
@@ -270,10 +270,10 @@ export function RoomsCollectionView() {
                     }
                     className="bg-transparent text-[15px] font-medium text-[#1a1c1a] focus:outline-none w-full cursor-pointer appearance-none pr-6"
                   >
-                    <option value="any">Any Capacity</option>
-                    <option value="1-2">1 - 2 Guests (Solo / Couples)</option>
-                    <option value="3-4">3 - 4 Guests (Small Families)</option>
-                    <option value="5+">5+ Guests (Extended Parties)</option>
+                    <option value="any">Toute Capacité</option>
+                    <option value="1-2">1 - 2 Hôtes (Solo / Duo)</option>
+                    <option value="3-4">3 - 4 Hôtes (Famille / Équipe)</option>
+                    <option value="5+">5+ Hôtes (Suites &amp; Groupes)</option>
                   </select>
                   <ChevronDown className="w-4 h-4 text-[#414846] pointer-events-none shrink-0" />
                 </div>
@@ -285,7 +285,7 @@ export function RoomsCollectionView() {
                   htmlFor="amenitySelect"
                   className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider mb-1"
                 >
-                  Key Experience
+                  Prestation Clé
                 </label>
                 <div className="relative flex items-center justify-between">
                   <select
@@ -296,11 +296,11 @@ export function RoomsCollectionView() {
                     }
                     className="bg-transparent text-[15px] font-medium text-[#1a1c1a] focus:outline-none w-full cursor-pointer appearance-none pr-6"
                   >
-                    <option value="all">All Amenities</option>
-                    <option value="pool">Private Plunge Pool</option>
-                    <option value="ocean">Panoramic Ocean View</option>
-                    <option value="butler">Personal Butler Service</option>
-                    <option value="spa">Marble Soaking Tub</option>
+                    <option value="all">Toutes les Prestations</option>
+                    <option value="pool">Bassin ou Piscine Privée</option>
+                    <option value="ocean">Vue Panoramique</option>
+                    <option value="butler">Service Majordome &amp; Bureau</option>
+                    <option value="spa">Baignoire Balnéo / Marbre</option>
                   </select>
                   <SlidersHorizontal className="w-4 h-4 text-[#414846] pointer-events-none shrink-0" />
                 </div>
@@ -313,13 +313,13 @@ export function RoomsCollectionView() {
                   className="flex-1 py-3 px-5 rounded-2xl bg-[#001510] text-white text-[14px] font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-[#0d2b24] transition-colors"
                 >
                   <Search className="w-4 h-4" />
-                  Filter Suites
+                  Filtrer
                 </a>
                 <button
                   type="button"
                   onClick={handleReset}
-                  aria-label="Reset Filters"
-                  title="Reset Filters"
+                  aria-label="Réinitialiser les filtres"
+                  title="Réinitialiser les filtres"
                   className="p-3.5 rounded-2xl bg-[#e9e8e5] text-[#414846] hover:text-[#1a1c1a] hover:bg-[#e3e2e0] transition-colors cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
@@ -352,10 +352,10 @@ export function RoomsCollectionView() {
               <div className="absolute top-4 left-4 z-10 flex gap-2">
                 <span className="px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#001510] text-[11px] font-semibold flex items-center gap-1.5 shadow-sm">
                   <Star className="w-3.5 h-3.5 text-[#416b5d] fill-current" />
-                  Signature Suite
+                  Suite Signature
                 </span>
                 <span className="px-3.5 py-1.5 rounded-full bg-[#001510]/85 backdrop-blur-md text-white text-[11px] font-semibold">
-                  Villa 04B
+                  Chambre 04B
                 </span>
               </div>
 
@@ -365,7 +365,7 @@ export function RoomsCollectionView() {
                   <button
                     key={idx}
                     type="button"
-                    aria-label={`View featured suite photo ${idx + 1}`}
+                    aria-label={`Voir la photo ${idx + 1} de la suite`}
                     onClick={() => setHeroSlide(idx)}
                     className={`rounded-full transition-all cursor-pointer ${
                       heroSlide === idx
@@ -385,12 +385,12 @@ export function RoomsCollectionView() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-[12px] font-semibold text-[#3d6659] uppercase tracking-widest">
-                    Available Immediately
+                    Disponible Immédiatement
                   </span>
                   <div className="flex items-center text-[#416b5d]">
                     <BadgeCheck className="w-4 h-4" />
                     <span className="text-[11px] font-semibold ml-1">
-                      Verified Sanctum
+                      King&apos;s Bed Certifié
                     </span>
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export function RoomsCollectionView() {
                   <div className="bg-[#f4f3f0] p-3 rounded-2xl text-center">
                     <Maximize2 className="w-4 h-4 text-[#001510] mx-auto mb-1" />
                     <p className="text-[11px] font-semibold text-[#414846]">
-                      Size
+                      Surface
                     </p>
                     <p className="text-[14px] font-semibold text-[#001510]">
                       {featuredSuite.sizeSqm} m²
@@ -420,19 +420,19 @@ export function RoomsCollectionView() {
                   <div className="bg-[#f4f3f0] p-3 rounded-2xl text-center">
                     <Users className="w-4 h-4 text-[#001510] mx-auto mb-1" />
                     <p className="text-[11px] font-semibold text-[#414846]">
-                      Guests
+                      Hôtes
                     </p>
                     <p className="text-[14px] font-semibold text-[#001510]">
-                      {featuredSuite.maxGuests} Adults
+                      {featuredSuite.maxGuests} Adultes
                     </p>
                   </div>
                   <div className="bg-[#f4f3f0] p-3 rounded-2xl text-center">
                     <Waves className="w-4 h-4 text-[#001510] mx-auto mb-1" />
                     <p className="text-[11px] font-semibold text-[#414846]">
-                      Pool
+                      Bien-Être
                     </p>
                     <p className="text-[14px] font-semibold text-[#001510]">
-                      Infinity Plunge
+                      Bassin Privé
                     </p>
                   </div>
                 </div>
@@ -440,10 +440,10 @@ export function RoomsCollectionView() {
                 {/* Amenity Pills */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {[
-                    "King Sateen Bedding",
-                    "Private Teak Sun Deck",
-                    "Dyson Supersonic Bar",
-                    "24h Valet Concierge",
+                    "Literie King Size Satin",
+                    "Petit-Déjeuner Inclus",
+                    "Bureau & Wi-Fi Pro",
+                    "Conciergerie 24h/24",
                   ].map((pill) => (
                     <span
                       key={pill}
@@ -460,12 +460,12 @@ export function RoomsCollectionView() {
                 <div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[36px] leading-none font-semibold tracking-[-0.02em] text-[#001510]">
-                      ${Math.round(featuredSuite.pricePerNight / 100)}
+                      {Math.round(featuredSuite.pricePerNight / 100)} €
                     </span>
-                    <span className="text-[13px] text-[#414846]">/ night</span>
+                    <span className="text-[13px] text-[#414846]">/ nuit</span>
                   </div>
                   <span className="text-[11px] font-semibold text-[#414846]">
-                    Excl. local eco-tax ($14)
+                    Hors taxe de séjour (14 €)
                   </span>
                 </div>
 
@@ -473,8 +473,8 @@ export function RoomsCollectionView() {
                   <button
                     type="button"
                     onClick={() => setHeroSaved((v) => !v)}
-                    aria-label="Bookmark Suite"
-                    title={heroSaved ? "Saved to Portfolio" : "Bookmark Suite"}
+                    aria-label="Enregistrer cette suite"
+                    title={heroSaved ? "Enregistrée" : "Enregistrer cette suite"}
                     className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
                       heroSaved
                         ? "bg-[#bce9d9] text-[#001510]"
@@ -489,7 +489,7 @@ export function RoomsCollectionView() {
                     href={`/reservation?room=${featuredSuite.slug}`}
                     className="px-6 py-3 rounded-full bg-[#0d2b24] text-white text-[14px] font-semibold hover:bg-[#001510] transition-all duration-200 shadow-sm inline-flex items-center gap-2 whitespace-nowrap"
                   >
-                    <span>Reserve Suite</span>
+                    <span>Réserver</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -507,32 +507,32 @@ export function RoomsCollectionView() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-2">
           <div>
             <span className="text-[12px] font-medium text-[#3d6659] uppercase tracking-widest">
-              Handcrafted Living Quarters
+              Hébergements &amp; Confort Royal
             </span>
             <h2 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium tracking-[-0.02em] text-[#001510]">
-              All Available Suites &amp; Villas
+              Toutes nos Chambres &amp; Suites
             </h2>
           </div>
           <div className="text-[13px] text-[#414846]">
-            Showing <strong>{displayedRooms.length}</strong> of{" "}
-            <strong>12</strong> properties worldwide
+            <strong>{displayedRooms.length}</strong> sur{" "}
+            <strong>{roomsMock.length}</strong> chambres présentées
           </div>
         </div>
 
         {displayedRooms.length === 0 ? (
           <div className="bg-white rounded-3xl p-12 text-center space-y-4 shadow-sm">
             <p className="text-[18px] font-medium text-[#001510]">
-              No sanctuaries match your current filter selection.
+              Aucune chambre ne correspond à vos critères actuels.
             </p>
             <p className="text-[14px] text-[#414846]">
-              Broaden your nightly budget or clear the experience filter to explore all curated stays.
+              Élargissez votre budget par nuit ou réinitialisez les filtres pour afficher l&apos;ensemble de nos chambres.
             </p>
             <button
               type="button"
               onClick={handleReset}
               className="px-6 py-2.5 rounded-full bg-[#001510] text-white text-[14px] font-semibold hover:bg-[#0d2b24] transition-colors cursor-pointer"
             >
-              Reset All Filters
+              Réinitialiser les Filtres
             </button>
           </div>
         ) : (
@@ -541,7 +541,7 @@ export function RoomsCollectionView() {
               const nightlyUsd = Math.round(room.pricePerNight / 100);
               const isWished = Boolean(wishlist[room.slug]);
               const badgeColor =
-                room.badgeSublabel === "Estate Living"
+                room.badgeSublabel === "Résidence Privée"
                   ? "bg-[#ffdcbd] text-[#2c1600]"
                   : "bg-[#bce9d9]/90 text-[#416b5d]";
 
@@ -573,7 +573,7 @@ export function RoomsCollectionView() {
                         <button
                           type="button"
                           onClick={() => toggleWishlist(room.slug)}
-                          aria-label={`Save ${room.name} to wishlist`}
+                          aria-label={`Ajouter ${room.name} aux favoris`}
                           className={`absolute top-4 right-4 w-9 h-9 rounded-full backdrop-blur-md flex items-center justify-center transition-colors shadow-sm cursor-pointer ${
                             isWished
                               ? "bg-[#001510] text-white"
@@ -598,7 +598,7 @@ export function RoomsCollectionView() {
                               {room.sizeSqm} m²
                             </span>
                             <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[#efeeeb] text-[#414846]">
-                              {room.maxGuests} Guests
+                              {room.maxGuests} Hôtes
                             </span>
                             <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[#efeeeb] text-[#414846]">
                               {room.bedType.split("·")[0].trim()}
@@ -636,12 +636,12 @@ export function RoomsCollectionView() {
                     <div className="px-5 sm:px-6 py-4 flex items-center justify-between border-t border-[#efeeeb]">
                       <div>
                         <span className="text-[12px] text-[#414846] block">
-                          From
+                          À partir de
                         </span>
                         <span className="text-[20px] font-semibold text-[#001510]">
-                          ${nightlyUsd.toLocaleString()}{" "}
+                          {nightlyUsd.toLocaleString("fr-FR")} €{" "}
                           <span className="text-[13px] text-[#414846] font-normal">
-                            / night
+                            / nuit
                           </span>
                         </span>
                       </div>
@@ -650,13 +650,13 @@ export function RoomsCollectionView() {
                           href={`/rooms/${room.slug}`}
                           className="px-4 py-2 rounded-full text-[12px] font-semibold text-[#414846] hover:text-[#1a1c1a] transition-colors"
                         >
-                          View Details
+                          Voir les Détails
                         </Link>
                         <Link
                           href={`/reservation?room=${room.slug}`}
                           className="px-5 py-2.5 rounded-full bg-[#0d2b24] text-white text-[12px] font-semibold hover:bg-[#001510] transition-all"
                         >
-                          Book Now
+                          Réserver
                         </Link>
                       </div>
                     </div>
@@ -675,18 +675,18 @@ export function RoomsCollectionView() {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-3">
               <div>
                 <span className="text-[12px] font-medium text-[#3d6659] uppercase tracking-widest">
-                  Side-By-Side Evaluation
+                  Comparatif Détaillé
                 </span>
                 <h2 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium tracking-[-0.02em] text-[#001510]">
-                  Suite Comparison Matrix
+                  Tableau Comparatif des Suites
                 </h2>
                 <p className="text-[15px] text-[#414846] mt-1">
-                  Review key architectural dimensions, pool configurations, and
-                  bespoke inclusions across our prime residences.
+                  Comparez les surfaces, capacités, prestations petit-déjeuner et
+                  services inclus dans nos catégories phares.
                 </p>
               </div>
               <div className="flex items-center gap-2 text-[11px] font-semibold text-[#414846] shrink-0">
-                <span>Guaranteed Direct Booking Privileges</span>
+                <span>Meilleur Tarif Direct Garanti</span>
                 <BadgeCheck className="w-4 h-4 text-[#3d6659]" />
               </div>
             </div>
@@ -695,13 +695,13 @@ export function RoomsCollectionView() {
               <table className="w-full text-left border-collapse min-w-[780px]">
                 <thead>
                   <tr className="bg-[#f4f3f0] text-[#001510] text-[13px] font-semibold">
-                    <th className="p-4 rounded-l-2xl">Property &amp; Suite</th>
-                    <th className="p-4">Living Area</th>
-                    <th className="p-4">Max Occupancy</th>
-                    <th className="p-4">Horizon View</th>
-                    <th className="p-4">Water Feature</th>
-                    <th className="p-4">Artisan Breakfast</th>
-                    <th className="p-4 rounded-r-2xl">Private Chauffeur</th>
+                    <th className="p-4 rounded-l-2xl">Chambre &amp; Suite</th>
+                    <th className="p-4">Surface</th>
+                    <th className="p-4">Capacité Max</th>
+                    <th className="p-4">Vue &amp; Espace</th>
+                    <th className="p-4">Bien-Être</th>
+                    <th className="p-4">Petit-Déjeuner</th>
+                    <th className="p-4 rounded-r-2xl">Chauffeur / Transfert</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#efeeeb] text-[#1a1c1a] text-[14px]">
@@ -709,7 +709,7 @@ export function RoomsCollectionView() {
                     const sqft = Math.round(row.sizeSqm * 10.764);
                     const chauffeurHighlighted =
                       row.chauffeurInfo?.includes("VIP") ||
-                      row.chauffeurInfo?.includes("Included");
+                      row.chauffeurInfo?.includes("Inclus");
                     return (
                       <tr
                         key={row.slug}
@@ -729,19 +729,19 @@ export function RoomsCollectionView() {
                           </Link>
                         </td>
                         <td className="p-4 text-[13px] font-medium text-[#1a1c1a]">
-                          {row.sizeSqm} m² ({sqft.toLocaleString()} sq ft)
+                          {row.sizeSqm} m² ({sqft.toLocaleString("fr-FR")} sq ft)
                         </td>
                         <td className="p-4">
-                          {row.maxGuests} {row.maxGuests === 2 ? "Adults" : "Guests"}
+                          {row.maxGuests} {row.maxGuests === 2 ? "Adultes" : "Hôtes"}
                         </td>
                         <td className="p-4 text-[#416b5d] font-medium text-[13px]">
-                          {row.horizonView ?? "Scenic Panorama"}
+                          {row.horizonView ?? "Vue Panoramique"}
                         </td>
-                        <td className="p-4">{row.waterFeature ?? "Private Bath"}</td>
+                        <td className="p-4">{row.waterFeature ?? "Salle de Bain Privée"}</td>
                         <td className="p-4">
                           <span className="inline-flex items-center gap-1.5 text-[#3d6659] font-medium text-[13px]">
                             <CheckCircle2 className="w-4 h-4 shrink-0" />
-                            {row.breakfastIncluded ?? "Included Daily"}
+                            {row.breakfastIncluded ?? "Inclus tous les matins"}
                           </span>
                         </td>
                         <td className="p-4">
@@ -752,7 +752,7 @@ export function RoomsCollectionView() {
                             </span>
                           ) : (
                             <span className="text-[#414846] text-[13px]">
-                              {row.chauffeurInfo ?? "Available on Request"}
+                              {row.chauffeurInfo ?? "Sur demande"}
                             </span>
                           )}
                         </td>
@@ -771,31 +771,32 @@ export function RoomsCollectionView() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-4">
             <span className="text-[12px] font-medium text-[#3d6659] uppercase tracking-widest">
-              Thoughtful Hospitality
+              Hospitalité &amp; Services
             </span>
             <h2 className="text-[32px] sm:text-[40px] leading-[1.15] font-medium tracking-[-0.02em] text-[#001510]">
-              Amenities &amp; Guest Care
+              Équipements &amp; Attentions
             </h2>
             <p className="text-[15px] leading-[1.6] text-[#414846]">
-              Every stay includes access to our bespoke bedding vault, private
-              culinary team, and around-the-clock digital concierge.
+              Chaque séjour au King&apos;s Bed Hotel inclut notre literie sur mesure,
+              l&apos;accès au petit-déjeuner artisanal et l&apos;accompagnement de notre
+              réception 24h/24.
             </p>
             <div className="bg-[#f4f3f0] p-5 rounded-3xl space-y-2 mt-4">
               <div className="flex items-center gap-3">
                 <Headphones className="w-5 h-5 text-[#3d6659]" />
                 <span className="text-[14px] font-semibold text-[#001510]">
-                  Need bespoke arrangements?
+                  Besoin d&apos;un aménagement ou d&apos;une salle ?
                 </span>
               </div>
               <p className="text-[13px] text-[#414846]">
-                Our senior estate managers tailor every arrival, pillow
-                firmness, and private transit.
+                Notre équipe prépare votre arrivée, vos préférences de literie ou
+                votre salle de réunion privée.
               </p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#001510] hover:underline pt-1"
               >
-                Speak to Villa Concierge
+                Contacter la Conciergerie
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

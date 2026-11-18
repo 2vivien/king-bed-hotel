@@ -23,24 +23,24 @@ const siteUrl = process.env.APP_URL || process.env.NEXT_PUBLIC_SITE_URL || "http
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "SuiteSavvy – Luxury Boutique Suites & Private Villas",
-    template: "%s | SuiteSavvy",
+    default: "King's Bed Hotel – Chambres, Petit-Déjeuner & Salles de Conférence",
+    template: "%s | King's Bed Hotel",
   },
   description:
-    "Discover curated architectural suites and private villas across Bali, Maldives, Santorini, Positano, and Lisbon with instant booking.",
+    "Découvrez King's Bed Hotel : chambres et suites raffinées, petit-déjeuner gastronomique inclus et salles de réunion et conférence entièrement équipées.",
   openGraph: {
-    title: "SuiteSavvy – Luxury Boutique Suites & Private Villas",
+    title: "King's Bed Hotel – Chambres, Petit-Déjeuner & Salles de Conférence",
     description:
-      "Discover curated architectural suites and private villas across Bali, Maldives, Santorini, Positano, and Lisbon with instant booking.",
+      "Chambres et suites d'exception, formule petit-déjeuner artisanal et espaces de réunion et conférence sur mesure au King's Bed Hotel.",
     type: "website",
-    siteName: "SuiteSavvy",
+    siteName: "King's Bed Hotel",
     images: [{ url: "/images/hero/hero-pool.jpg", width: 1440, height: 810 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SuiteSavvy – Luxury Boutique Suites & Private Villas",
+    title: "King's Bed Hotel – Chambres, Petit-Déjeuner & Conférences",
     description:
-      "Discover curated architectural suites and private villas across Bali, Maldives, Santorini, Positano, and Lisbon.",
+      "Chambres et suites d'exception, petit-déjeuner gastronomique et salles de réunion et de conférence au King's Bed Hotel.",
     images: ["/images/hero/hero-pool.jpg"],
   },
 };
@@ -55,9 +55,9 @@ const hotelJsonLd = {
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.shortAddress,
-    addressLocality: "Ubud",
-    addressRegion: "Bali",
-    addressCountry: "ID",
+    addressLocality: siteConfig.city,
+    addressRegion: siteConfig.city,
+    addressCountry: "FR",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -68,7 +68,7 @@ const hotelJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
+    <html lang="fr" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"

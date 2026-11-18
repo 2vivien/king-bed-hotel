@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 
 @theme {
-  --color-bg: #FAF9F6;
+  --color-bg: #FFFFFF;
   --color-surface: #FFFFFF;
   --color-surface-muted: #F4F1EA;
   --color-sand: #EFE6D6;
@@ -27,13 +27,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #FAF9F6;
+    background-color: #FFFFFF;
     color: #111111;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #FAF9F6;
+    background-color: #FFFFFF;
     color: #111111;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -60,7 +60,7 @@ export const useBookingStore = create<BookingDraftState>()(
       },
     }),
     {
-      name: "suitesavvy-booking-draft",
+      name: "kingsbed-booking-draft",
       storage: createJSONStorage(() => sessionStorage),
     }
   )

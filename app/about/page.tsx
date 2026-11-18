@@ -6,14 +6,14 @@ import { AboutPillarsSection } from "@/features/about/components/AboutPillarsSec
 import { AboutSustainabilityAndCta } from "@/features/about/components/AboutSustainabilityAndCta";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "À propos",
   description:
-    "Curating unmatched private sanctuaries, architectural purity, and carbon-neutral luxury stays since 2019.",
+    "King's Bed Hotel : chambres d'exception, petit-déjeuner artisanal et salles de réunion et de conférences sur mesure.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col w-full bg-[#faf9f6]">
+    <div className="flex flex-col w-full bg-white">
       <AboutHeroMosaic />
       <AboutGenesisSection />
       <AboutPillarsSection />

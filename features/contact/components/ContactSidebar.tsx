@@ -1,5 +1,6 @@
 import {
   Building2,
+  Clock,
   Landmark,
   Lock,
   Mail,
@@ -17,7 +18,7 @@ export function ContactSidebar() {
         <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#0d2b24]">
           <SuiteImage
             src="/images/contact/concierge-desk.jpg"
-            alt="SuiteSavvy Master Concierge Desk"
+            alt="Réception et conciergerie du King's Bed Hotel"
             sizes="(max-width: 1024px) 100vw, 520px"
             className="group-hover:scale-105 transition-transform duration-700"
           />
@@ -25,16 +26,16 @@ export function ContactSidebar() {
             className="absolute inset-0 bg-gradient-to-t from-[#001510]/85 via-[#001510]/20 to-transparent"
             aria-hidden="true"
           />
-          <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#faf9f6]/92 backdrop-blur-md text-[11px] font-semibold text-[#001510] flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#3d6659]" />
-            On Duty
+          <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-semibold text-[#001510] flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#3d6659]" strokeWidth={1.75} />
+            En Service
           </div>
           <div className="absolute bottom-4 left-4 right-4 text-white">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-[#bfecdc]">
-              Master Concierge Desk
+              Réception &amp; Conciergerie
             </span>
             <h3 className="text-[24px] font-semibold leading-tight">
-              Personalized Hospitality Advisory
+              Conseil Séjours &amp; Événements
             </h3>
           </div>
         </div>
@@ -47,15 +48,15 @@ export function ContactSidebar() {
               </div>
               <div>
                 <span className="text-[11px] font-semibold text-[#727975] block">
-                  VIP Direct Line
+                  Ligne Directe Hôtel
                 </span>
                 <span className="text-[18px] font-semibold text-[#001510] tabular-nums">
-                  +41 22 819 9000
+                  +33 1 42 68 90 00
                 </span>
               </div>
             </div>
             <span className="text-[11px] font-semibold text-[#3d6659] bg-[#bfecdc]/50 px-2.5 py-1 rounded-full">
-              Toll Free
+              24h/24
             </span>
           </div>
 
@@ -66,10 +67,10 @@ export function ContactSidebar() {
               </div>
               <div className="min-w-0">
                 <span className="text-[11px] font-semibold text-[#727975] block">
-                  Confidential Inquiries
+                  Réservations &amp; Devis
                 </span>
                 <span className="text-[14px] font-semibold text-[#001510] truncate block">
-                  inquiries@suitesavvy.luxury
+                  concierge@kingsbedhotel.com
                 </span>
               </div>
             </div>
@@ -83,28 +84,28 @@ export function ContactSidebar() {
               </div>
               <div>
                 <span className="text-[11px] font-semibold text-[#727975] block">
-                  Private Messaging Liaison
+                  Messagerie Instantanée
                 </span>
                 <span className="text-[14px] font-semibold text-[#001510]">
-                  WhatsApp VIP Concierge
+                  WhatsApp King&apos;s Bed Hôtel
                 </span>
               </div>
             </div>
             <span className="text-[11px] font-semibold text-[#416b5d] bg-[#bce9d9] px-2.5 py-0.5 rounded-full">
-              Priority
+              Prioritaire
             </span>
           </div>
         </div>
       </div>
 
-      {/* Worldwide Offices */}
+      {/* Nos Pôles Hôteliers */}
       <div className="p-5 rounded-2xl bg-white shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-[20px] font-semibold text-[#001510]">
-            Worldwide Offices
+            Nos Services sur Place
           </h3>
           <span className="text-[11px] font-semibold text-[#414846]">
-            3 Global Nodes
+            3 Pôles Dédiés
           </span>
         </div>
 
@@ -113,16 +114,16 @@ export function ContactSidebar() {
             <Building2 className="w-5 h-5 text-[#001510] mt-0.5 shrink-0" strokeWidth={1.5} />
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[14px] font-semibold text-[#001510]">Zurich</span>
+                <span className="text-[14px] font-semibold text-[#001510]">Accueil Principal</span>
                 <span className="text-[11px] font-semibold text-[#727975]">
-                  • Headquarters &amp; European Liaison
+                  • Chambres &amp; Suites
                 </span>
               </div>
               <p className="text-[13px] text-[#414846] mt-0.5">
-                Bahnhofstrasse 45, 8001 Zürich, Switzerland
+                25 Avenue Royale, 75008 Paris, France
               </p>
               <span className="text-[11px] font-semibold text-[#3d6659]">
-                CET (GMT+1) • Active Now
+                Réception ouverte • 24h/24 &amp; 7j/7
               </span>
             </div>
           </div>
@@ -131,16 +132,16 @@ export function ContactSidebar() {
             <Palmtree className="w-5 h-5 text-[#001510] mt-0.5 shrink-0" strokeWidth={1.5} />
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[14px] font-semibold text-[#001510]">Bali</span>
+                <span className="text-[14px] font-semibold text-[#001510]">Salon Petit-Déjeuner</span>
                 <span className="text-[11px] font-semibold text-[#727975]">
-                  • Southeast Asia Liaison
+                  • Orangerie &amp; Terrasse
                 </span>
               </div>
               <p className="text-[13px] text-[#414846] mt-0.5">
-                Jalan Raya Ubud No. 25, Gianyar, Bali 80571
+                Rez-de-jardin, King&apos;s Bed Hotel
               </p>
               <span className="text-[11px] font-semibold text-[#3d6659]">
-                WITA (GMT+8) • Active Now
+                Servi tous les jours • 06h30 – 11h00
               </span>
             </div>
           </div>
@@ -149,16 +150,16 @@ export function ContactSidebar() {
             <Landmark className="w-5 h-5 text-[#001510] mt-0.5 shrink-0" strokeWidth={1.5} />
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[14px] font-semibold text-[#001510]">New York</span>
+                <span className="text-[14px] font-semibold text-[#001510]">Centre de Conférences</span>
                 <span className="text-[11px] font-semibold text-[#727975]">
-                  • Americas Advisory
+                  • Réunions &amp; Séminaires
                 </span>
               </div>
               <p className="text-[13px] text-[#414846] mt-0.5">
-                740 Park Avenue, Suite 12B, New York, NY 10021
+                Aile Exécutive, 1er Étage — 6 Salons Modulables
               </p>
               <span className="text-[11px] font-semibold text-[#3d6659]">
-                EST (GMT-5) • Active Now
+                Sur réservation • 07h30 – 22h00
               </span>
             </div>
           </div>

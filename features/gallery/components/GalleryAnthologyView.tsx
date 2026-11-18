@@ -53,125 +53,125 @@ const FILTER_TABS: readonly {
   label: string;
   count: number;
 }[] = [
-  { id: "all", label: "All Curations", count: 38 },
-  { id: "villas", label: "Villas & Suites", count: 14 },
-  { id: "architecture", label: "Architecture & Design", count: 9 },
-  { id: "pools", label: "Secluded Pools", count: 6 },
-  { id: "gastronomy", label: "Gastronomy", count: 5 },
-  { id: "spa", label: "Holistic Spa", count: 4 },
+  { id: "all", label: "Toutes les Vues", count: 38 },
+  { id: "villas", label: "Chambres & Suites", count: 14 },
+  { id: "architecture", label: "Salles de Conférence", count: 9 },
+  { id: "pools", label: "Piscine & Patio", count: 6 },
+  { id: "gastronomy", label: "Petit-Déjeuner", count: 5 },
+  { id: "spa", label: "Spa & Détente", count: 4 },
 ];
 
 const GALLERY_PLATES: readonly GalleryPlate[] = [
   {
     id: "villa-twilight",
-    plateLabel: "Curator's Choice • Plate No. 01",
+    plateLabel: "Sélection Maison • Planche 01",
     category: "pools",
-    badge: "Private Reserve",
-    location: "Bali, Indonesia",
-    title: "Ubud Sanctuary, Bali — Villa 04B",
-    subtitle: "35mm • f/1.4 · Twilight 18:42 WITA · Photo: Markos V.",
+    badge: "Patio & Piscine",
+    location: "King's Bed Hotel",
+    title: "Patio Paysager & Bassin du Soir",
+    subtitle: "35mm • f/1.4 · Crépuscule 18h42 · Photo : Markos V.",
     description:
-      "Sunset over the cascading infinity reflection pool, anchored by hand-chiseled volcanic basalt masonry and fragrant Frangipani garden terraces.",
+      "Le bassin miroir et les terrasses en pierre naturelle du King's Bed Hotel, accessibles après vos réunions ou au réveil.",
     image: "/images/hero/hero-pool.jpg",
-    specs: "Infinity Terrace Pool",
+    specs: "Bassin & Terrasses Calmes",
     lens: "Leica Noctilux-M 50mm f/0.95",
-    altitude: "Altitude: 420m above sea level",
+    altitude: "Cœur de l'hôtel • Accès direct",
     roomHref: "/rooms/royal-villa",
   },
   {
     id: "ocean-suite",
-    plateLabel: "Plate 02",
+    plateLabel: "Planche 02",
     category: "villas",
-    badge: "Architecture & Interior",
-    location: "Ubud & Cliffside Horizons",
-    title: "The Oceanfront Sanctuary Suite",
-    subtitle: "85 m² Master Space · King Sized Teak Frame · 180° Panoramic Horizon",
+    badge: "Chambres & Literie",
+    location: "Aile Prestige · 4e Étage",
+    title: "La Suite King Panorama",
+    subtitle: "85 m² d'Espace · Lit King Size · Lumière Naturelle",
     description:
-      "Organic minimalist luxury bedroom suite with oak woodwork, hand-loomed cane accents, and 180° ocean horizon glazing.",
+      "Suite lumineuse avec boiseries en chêne, matelas King Size haute densité, coin bureau et terrasse panoramique.",
     image: "/images/rooms/oceanfront-sanctuary.jpg",
-    specs: "85 m² Master Space",
+    specs: "85 m² · Lit King Size",
     lens: "Hasselblad X2D · 38mm f/2.5",
-    altitude: "Cliffside Tier 04",
+    altitude: "Aile Prestige · Étage 04",
     roomHref: "/rooms/oceanfront-sanctuary-suite",
   },
   {
     id: "stone-bath",
-    plateLabel: "Plate 03",
+    plateLabel: "Planche 03",
     category: "spa",
-    badge: "Holistic Rituals",
-    location: "Ayung River Gorge",
-    title: "Balinese Herbal Sanctuary Bath",
-    subtitle: "River Stone Monolith · Ayung River Gorge View",
+    badge: "Bien-Être",
+    location: "Espace Spa Privatif",
+    title: "Bain Minéral & Soin Botanique",
+    subtitle: "Pierre Naturelle · Vue Jardin Calme",
     description:
-      "Hand-chiseled monolith stone soaking tub adorned with fresh hibiscus petals facing the misty Ayung River gorge.",
+      "Baignoire sculptée dans la pierre et infusions florales pour décompresser après une journée de conférence ou de voyage.",
     image: "/images/rooms/stone-spa-bath.jpg",
-    specs: "River Stone Monolith",
+    specs: "Espace Bien-Être Privatif",
     lens: "Leica SL3 · 50mm APO",
-    altitude: "Gorge Elevation 310m",
+    altitude: "Niveau Jardin · Accès Hôtes",
     roomHref: "/rooms/palm-horizon-suite",
   },
   {
     id: "riva",
-    plateLabel: "Plate 04",
+    plateLabel: "Planche 04",
     category: "pools",
-    badge: "Experiences",
-    location: "Positano Coastline",
-    title: "Private Riva Charter",
-    subtitle: "Aquarama 33ft Tender",
+    badge: "Service Transferts",
+    location: "Conciergerie Hôtel",
+    title: "Transfert Privé & Accueil VIP",
+    subtitle: "Chauffeur Dédié",
     description:
-      "Bespoke Amalfi coastal yacht charter aboard a restored mahogany Riva Aquarama with private skipper and champagne chilled cellar.",
+      "Prise en charge personnalisée pour vos invités d'honneur, intervenants de conférence et séjours en suite.",
     image: "/images/gallery/riva-charter.jpg",
-    specs: "Aquarama 33ft Tender",
+    specs: "Transferts sur Demande",
     lens: "Leica M11 · 35mm Summilux",
-    altitude: "Tyrrhenian Sea Level",
+    altitude: "Accueil Gare & Aéroport",
     roomHref: "/rooms/penthouse-horizon-retreat",
   },
   {
     id: "gastronomy",
-    plateLabel: "Plate 05",
+    plateLabel: "Planche 05",
     category: "gastronomy",
-    badge: "Gastronomy",
-    location: "Highland Organic Farm",
-    title: "Chef's Botanic Tasting",
-    subtitle: "Michelin-Inspired Craft",
+    badge: "Petit-Déjeuner",
+    location: "Salon de l'Orangerie",
+    title: "Petit-Déjeuner & Pauses Séminaires",
+    subtitle: "Produits Frais de Saison",
     description:
-      "Hyper-seasonal culinary curation served by candlelight using biodynamic herbs and artisanal coastal harvests.",
+      "Viennoiseries artisanales, pains au levain, jus pressés et pauses gourmandes servies en salle ou entre deux sessions de réunion.",
     image: "/images/gallery/chef-tasting.jpg",
-    specs: "Michelin-Inspired Craft",
+    specs: "Buffet & Service à la Carte",
     lens: "Sony A1 · 50mm f/1.2 GM",
-    altitude: "Terrace Sanctuary 480m",
+    altitude: "06h30 – 11h00 tous les jours",
     roomHref: "/rooms/royal-garden-villa",
   },
   {
     id: "amalfi",
-    plateLabel: "Plate 06",
+    plateLabel: "Planche 06",
     category: "architecture",
-    badge: "Architecture",
-    location: "Amalfi Solitude",
-    title: "Cliffside Villa Palazzina",
-    subtitle: "Vertical Heritage Garden",
+    badge: "Conférences",
+    location: "Aile Exécutive · 1er Étage",
+    title: "Salons de Réunion & Séminaires",
+    subtitle: "Lumière Naturelle & Équipement Pro",
     description:
-      "Historic vertical Mediterranean architecture carved directly into the sunlit limestone cliffs above Positano.",
+      "Espaces acoustiques modulables pour comités de direction, ateliers d'équipe et conférences jusqu'à 140 personnes.",
     image: "/images/destinations/positano.jpg",
-    specs: "Vertical Heritage Garden",
+    specs: "6 Salons Modulables",
     lens: "Hasselblad X2D · 55mm V",
-    altitude: "Cliffside 140m",
+    altitude: "Fibre Dédiée & Écrans 4K",
     roomHref: "/rooms/terrace-garden-room",
   },
   {
     id: "lisbon",
-    plateLabel: "Plate 07",
+    plateLabel: "Planche 07",
     category: "architecture",
-    badge: "Historic Haven",
-    location: "Alfama District",
-    title: "Old Town Miradouro",
-    subtitle: "18th-Century Azulejos",
+    badge: "Salon Exécutif",
+    location: "Étage Direction",
+    title: "Lounge Affaires & Terrasse",
+    subtitle: "Espace Calme & Travail",
     description:
-      "Restored heritage palacete in Lisbon overlooking sunlit terracotta rooftops and historic limestone courtyards.",
+      "Salon feutré ouvert aux participants de conférences et hôtes des suites pour échanger autour d'un café.",
     image: "/images/destinations/lisbon.jpg",
-    specs: "18th-Century Azulejos",
+    specs: "Lounge & Pauses Café",
     lens: "Leica Q3 · 28mm Summilux",
-    altitude: "Alfama Ridge 95m",
+    altitude: "Accès Exécutif Inclus",
     roomHref: "/rooms/caldera-cliff-suite",
   },
 ];
@@ -206,22 +206,22 @@ export function GalleryAnthologyView() {
   };
 
   return (
-    <div className="bg-[#faf9f6] text-[#1a1c1a]">
+    <div className="bg-white text-[#1a1c1a]">
       {/* Top Editorial Header & Curated Title Area */}
       <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-10 pb-8">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e9e8e5] text-[#414846] text-[11px] font-semibold tracking-widest uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#3d6659]" />
-                <span>Bespoke Visual Anthology — Volume IX</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e9e8e5] text-[#001510] text-[12px] font-medium tracking-[0.02em]">
+                <Camera className="w-3.5 h-3.5 text-[#3d6659]" strokeWidth={1.75} />
+                <span>Anthologie Visuelle — King&apos;s Bed Hotel</span>
               </div>
               <h1 className="text-[40px] sm:text-[52px] lg:text-[56px] leading-[1.1] text-[#001510] tracking-[-0.03em] font-semibold">
-                Explore the Beauty of Every Stay
+                Explorez Chaque Espace de l&apos;Hôtel
               </h1>
               <p className="text-[17px] sm:text-[18px] leading-[1.55] text-[#414846] max-w-2xl">
-                A visual anthology of barefoot elegance, master craftsmanship,
-                and secluded natural horizons across our global sanctuaries.
+                Un regard en images sur nos chambres King Size, notre salon petit-déjeuner,
+                nos salles de réunion et de conférence ainsi que nos espaces bien-être.
               </p>
             </div>
 
@@ -229,12 +229,12 @@ export function GalleryAnthologyView() {
               <div className="flex items-center gap-2">
                 <Camera className="w-4 h-4 text-[#3d6659]" />
                 <span className="text-[12px] text-[#1a1c1a] font-semibold">
-                  38 High-Resolution Plates
+                  38 Vues Haute Définition
                 </span>
               </div>
               <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
               <span className="text-[12px] text-[#414846] font-medium">
-                Archived 2024–2025
+                Collection 2024–2025
               </span>
             </div>
           </div>
@@ -318,9 +318,9 @@ export function GalleryAnthologyView() {
                         35mm • f/1.4
                       </span>
                       <span className="w-1 h-1 rounded-full bg-white/50" />
-                      <span>Twilight 18:42 WITA</span>
+                      <span>Crépuscule 18h42</span>
                       <span className="w-1 h-1 rounded-full bg-white/50" />
-                      <span>Photo: Markos V.</span>
+                      <span>Photo : Markos V.</span>
                     </div>
                   </div>
                 </div>
@@ -365,21 +365,21 @@ export function GalleryAnthologyView() {
                     <div className="flex flex-wrap items-center gap-3 text-[#414846] text-[13px]">
                       <span className="flex items-center gap-1.5">
                         <Maximize2 className="w-3.5 h-3.5 text-[#3d6659]" />
-                        85 m² Master Space
+                        85 m² d&apos;Espace
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
                       <span className="flex items-center gap-1.5">
                         <BedDouble className="w-3.5 h-3.5 text-[#3d6659]" />
-                        King Sized Teak Frame
+                        Lit King Size en Teck
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
-                      <span>180° Panoramic Horizon</span>
+                      <span>Petit-Déjeuner Inclus</span>
                     </div>
                     <Link
                       href={oceanPlate.roomHref ?? "/rooms"}
                       className="text-[12px] text-[#001510] font-semibold flex items-center gap-1 hover:text-[#3d6659] shrink-0"
                     >
-                      View Details
+                      Voir les Détails
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -422,16 +422,16 @@ export function GalleryAnthologyView() {
                     <div className="flex flex-wrap items-center gap-3 text-[#414846] text-[13px]">
                       <span className="flex items-center gap-1.5">
                         <Sparkles className="w-3.5 h-3.5 text-[#3d6659]" />
-                        River Stone Monolith
+                        Pierre Naturelle
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
-                      <span>Ayung River Gorge View</span>
+                      <span>Vue Jardin &amp; Calme</span>
                     </div>
                     <Link
                       href={bathPlate.roomHref ?? "/rooms"}
                       className="text-[12px] text-[#001510] font-semibold flex items-center gap-1 hover:text-[#3d6659] shrink-0"
                     >
-                      Ritual Notes
+                      Découvrir le Spa
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -518,7 +518,7 @@ export function GalleryAnthologyView() {
                         {plate.specs}
                       </span>
                       <span className="text-[12px] font-semibold text-[#001510] inline-flex items-center gap-1">
-                        Inspect Plate
+                        Agrandir
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
@@ -533,21 +533,20 @@ export function GalleryAnthologyView() {
       {/* Curated Storytelling & Architectural Essay Strip */}
       <section className="max-w-[1280px] mx-auto px-6 lg:px-10 my-14">
         <Reveal>
-          <div className="bg-[#f4f3f0] rounded-3xl p-6 md:p-12 relative overflow-hidden shadow-sm">
+          <div className="bg-white border border-[#EDEDEA] rounded-3xl p-6 md:p-12 relative overflow-hidden shadow-[0_8px_30px_rgba(13,43,36,0.04)]">
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-4 space-y-3">
                 <div className="inline-flex items-center gap-2 text-[#3d6659] text-[11px] uppercase tracking-widest font-semibold">
                   <BookOpen className="w-4 h-4" />
-                  <span>Curatorial Perspective</span>
+                  <span>Regard Architectural</span>
                 </div>
                 <h2 className="text-[28px] md:text-[36px] leading-[1.15] text-[#001510] tracking-tight font-medium">
-                  Architectural Light, Stone &amp; Timeless Silence
+                  Lumière Naturelle, Pierre &amp; Sérénité
                 </h2>
                 <p className="text-[15px] leading-[1.6] text-[#414846]">
-                  Every SuiteSavvy retreat is photographed exclusively during
-                  the transitional thresholds of morning dew and evening
-                  nautical twilight. No staged lighting sets — only genuine
-                  spatial geometry.
+                  Chaque espace du King&apos;s Bed Hotel est photographié en lumière
+                  naturelle réelle : des chambres King Size jusqu&apos;à la salle de
+                  petit-déjeuner et aux salons de conférence.
                 </p>
 
                 <div className="pt-2 flex items-center gap-3">
@@ -563,7 +562,7 @@ export function GalleryAnthologyView() {
                       Elena De Smet
                     </p>
                     <p className="text-[13px] text-[#414846]">
-                      Director of Spatial Curation, Antwerp
+                      Directrice Artistique, King&apos;s Bed Hotel
                     </p>
                   </div>
                 </div>
@@ -576,11 +575,10 @@ export function GalleryAnthologyView() {
                     <Aperture className="w-5 h-5" />
                   </div>
                   <p className="text-[24px] text-[#001510] font-bold">
-                    100% Raw
+                    100% Réel
                   </p>
                   <p className="text-[13px] text-[#414846]">
-                    True-to-life color grading calibrated for real atmospheric
-                    daylight rendition.
+                    Prises de vues authentiques en lumière naturelle, sans retouche artificielle.
                   </p>
                 </div>
 
@@ -589,11 +587,10 @@ export function GalleryAnthologyView() {
                     <Compass className="w-5 h-5" />
                   </div>
                   <p className="text-[24px] text-[#001510] font-bold">
-                    1:1 Proportion
+                    Proportions 1:1
                   </p>
                   <p className="text-[13px] text-[#414846]">
-                    Architectural floor-plan parity verified before inclusion
-                    into the private portfolio.
+                    Plans et capacités exacts vérifiés pour chaque chambre et salle de réunion.
                   </p>
                 </div>
 
@@ -602,11 +599,10 @@ export function GalleryAnthologyView() {
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <p className="text-[24px] text-[#001510] font-bold">
-                    Physical Audit
+                    Contrôle Qualité
                   </p>
                   <p className="text-[13px] text-[#414846]">
-                    Every sanctuary is personally inspected by our hospitality
-                    council bi-annually.
+                    Audit semestriel de la literie, de la table du matin et de l&apos;équipement AV.
                   </p>
                 </div>
               </div>
@@ -623,15 +619,14 @@ export function GalleryAnthologyView() {
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
               <div className="space-y-2 max-w-xl">
                 <span className="text-[11px] text-[#bfecdc] uppercase tracking-wider font-semibold">
-                  Reserve Your Private Horizon
+                  Réservez Votre Séjour ou Séminaire
                 </span>
                 <h2 className="text-[28px] md:text-[40px] leading-[1.15] text-white font-medium tracking-tight">
-                  Capture Your Own Unforgettable Memories
+                  Vivez l&apos;Expérience King&apos;s Bed Hotel
                 </h2>
                 <p className="text-[15px] text-[#e9e8e5]">
-                  Connect with our private guest ambassadors to schedule a
-                  bespoke consultation or request private aviation routing for
-                  your upcoming escape.
+                  Réservez votre chambre avec petit-déjeuner ou contactez notre équipe pour
+                  visiter nos salles de réunion et de conférences.
                 </p>
               </div>
 
@@ -640,14 +635,14 @@ export function GalleryAnthologyView() {
                   href="/rooms"
                   className="px-7 py-3.5 rounded-full bg-white text-[#001510] hover:bg-[#efeeeb] text-[13px] font-semibold text-center transition-all shadow-md inline-flex items-center justify-center gap-2 whitespace-nowrap"
                 >
-                  <span>Explore All Sanctuaries</span>
+                  <span>Voir Toutes les Chambres</span>
                   <Compass className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/contact"
                   className="px-7 py-3.5 rounded-full border border-white/25 bg-transparent text-white hover:bg-white/10 text-[13px] font-semibold text-center transition-all inline-flex items-center justify-center gap-2 whitespace-nowrap"
                 >
-                  <span>Reserve a Private Consultation</span>
+                  <span>Demander un Devis Séminaire</span>
                   <Headphones className="w-4 h-4" />
                 </Link>
               </div>
@@ -679,7 +674,7 @@ export function GalleryAnthologyView() {
               </div>
               <button
                 type="button"
-                aria-label="Close lightbox"
+                aria-label="Fermer la galerie"
                 onClick={() => setLightboxId(null)}
                 className="w-9 h-9 rounded-full bg-[#efeeeb] flex items-center justify-center text-[#414846] hover:text-[#1a1c1a] transition-colors cursor-pointer"
               >
@@ -696,7 +691,7 @@ export function GalleryAnthologyView() {
               />
               <button
                 type="button"
-                aria-label="Previous plate"
+                aria-label="Photo précédente"
                 onClick={() => cycleLightbox(-1)}
                 className="absolute left-4 w-11 h-11 rounded-full bg-[#001510]/60 text-white hover:bg-[#001510] transition-all flex items-center justify-center backdrop-blur-sm shadow cursor-pointer"
               >
@@ -704,7 +699,7 @@ export function GalleryAnthologyView() {
               </button>
               <button
                 type="button"
-                aria-label="Next plate"
+                aria-label="Photo suivante"
                 onClick={() => cycleLightbox(1)}
                 className="absolute right-4 w-11 h-11 rounded-full bg-[#001510]/60 text-white hover:bg-[#001510] transition-all flex items-center justify-center backdrop-blur-sm shadow cursor-pointer"
               >
@@ -719,12 +714,12 @@ export function GalleryAnthologyView() {
                   {activePlate.description}
                 </p>
                 <div className="flex flex-wrap items-center gap-3 text-[11px] text-[#414846]">
-                  <span>Lens: {activePlate.lens}</span>
+                  <span>Optique : {activePlate.lens}</span>
                   <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
                   <span>{activePlate.altitude}</span>
                   <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />
                   <span className="text-[#3d6659] font-semibold">
-                    Available for Private Booking
+                    Disponible à la Réservation
                   </span>
                 </div>
               </div>
@@ -733,7 +728,7 @@ export function GalleryAnthologyView() {
                 className="px-6 py-2.5 rounded-full bg-[#0d2b24] text-white text-[13px] font-semibold shadow-sm hover:bg-[#001510] transition-colors inline-flex items-center gap-2 shrink-0"
               >
                 <Calendar className="w-4 h-4" />
-                <span>Inquire About This Sanctuary</span>
+                <span>Réserver cet Espace</span>
               </Link>
             </div>
           </div>

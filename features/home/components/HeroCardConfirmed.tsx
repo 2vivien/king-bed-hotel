@@ -23,7 +23,7 @@ export function HeroCardConfirmed() {
 
   const handleDownloadIcs = () => {
     const content = buildBookingIcs({
-      bookingId: activeBooking?.id ?? "SS-PREVIEW",
+      bookingId: activeBooking?.id ?? "KB-PREVIEW",
       roomName: displayRoom.name,
       location: displayRoom.destinationName,
       checkIn: activeCheckIn,
@@ -33,13 +33,13 @@ export function HeroCardConfirmed() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `suitesavvy-${activeCheckIn}.ics`;
+    link.download = `kingsbed-${activeCheckIn}.ics`;
     link.click();
     URL.revokeObjectURL(url);
   };
 
   const googleUrl = buildGoogleCalendarUrl({
-    bookingId: activeBooking?.id ?? "SS-PREVIEW",
+    bookingId: activeBooking?.id ?? "KB-PREVIEW",
     roomName: displayRoom.name,
     location: displayRoom.destinationName,
     checkIn: activeCheckIn,
@@ -57,7 +57,7 @@ export function HeroCardConfirmed() {
             <Asterisk className="w-4 h-4 text-[#111111]/70" strokeWidth={1.5} />
           </div>
           <p className="text-[19px] leading-[1.15] font-normal tracking-[-0.02em]">
-            {activeBooking ? "Booking is confirmed!" : "Stay ready to book"}
+            {activeBooking ? "Réservation confirmée !" : "Prêt pour votre séjour"}
           </p>
         </div>
 
@@ -72,32 +72,32 @@ export function HeroCardConfirmed() {
 
       <div className="mt-4 pt-3.5 border-t border-[#111111]/8 space-y-2 text-[13px]">
         <div className="flex items-center justify-between">
-          <span className="text-[#5F5F5A]">Check In</span>
+          <span className="text-[#5F5F5A]">Arrivée</span>
           <span className="font-medium tabular-nums">
             {formatDisplayDate(activeCheckIn)}
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-[#5F5F5A]">Check Out</span>
+          <span className="text-[#5F5F5A]">Départ</span>
           <span className="font-medium tabular-nums">
             {formatDisplayDate(activeCheckOut)}
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-[#5F5F5A]">Guests</span>
+          <span className="text-[#5F5F5A]">Voyageurs</span>
           <span className="font-medium tabular-nums">
-            {activeGuests} {activeGuests === 1 ? "guest" : "people"}
+            {activeGuests} {activeGuests === 1 ? "personne" : "personnes"}
           </span>
         </div>
       </div>
 
       <div className="mt-4 pt-3 border-t border-[#111111]/8">
-        <p className="text-[12px] text-[#5F5F5A] mb-2">Add to Calendar</p>
+        <p className="text-[12px] text-[#5F5F5A] mb-2">Ajouter au calendrier</p>
         <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={handleDownloadIcs}
-            aria-label="Add to Apple Calendar"
+            aria-label="Ajouter au calendrier Apple"
             className="h-8 rounded-full bg-white/85 hover:bg-white border border-[#111111]/10 text-[12px] font-medium flex items-center justify-center transition-colors cursor-pointer"
           >
             Apple
@@ -106,7 +106,7 @@ export function HeroCardConfirmed() {
             href={googleUrl}
             target="_blank"
             rel="noreferrer"
-            aria-label="Add to Google Calendar"
+            aria-label="Ajouter à Google Agenda"
             className="h-8 rounded-full bg-white/85 hover:bg-white border border-[#111111]/10 text-[12px] font-medium flex items-center justify-center transition-colors"
           >
             Google
@@ -114,7 +114,7 @@ export function HeroCardConfirmed() {
           <button
             type="button"
             onClick={handleDownloadIcs}
-            aria-label="Download calendar invite"
+            aria-label="Télécharger l'invitation calendrier"
             className="h-8 rounded-full bg-white/85 hover:bg-white border border-[#111111]/10 flex items-center justify-center transition-colors cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5" strokeWidth={1.5} />

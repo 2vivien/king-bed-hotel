@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   const rate = checkRateLimit(`book:${ip}`, 15);
   if (!rate.allowed) {
     return NextResponse.json(
-      { code: "RATE_LIMITED", message: "Too many booking attempts. Please wait a moment." },
+      { code: "RATE_LIMITED", message: "Trop de tentatives de réservation. Veuillez patienter quelques instants." },
       { status: 429 }
     );
   }
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         code: "VALIDATION_ERROR",
-        message: parsed.error.issues[0]?.message ?? "Please review your booking details.",
+        message: parsed.error.issues[0]?.message ?? "Veuillez vérifier les détails de votre réservation.",
       },
       { status: 400 }
     );
