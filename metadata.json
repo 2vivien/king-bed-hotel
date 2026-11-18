@@ -1,0 +1,6 @@
+{
+  "name": "SuiteSavvy",
+  "description": "Luxury boutique hotel and private villa reservations across Bali, Maldives, Santorini, Positano, and Lisbon.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

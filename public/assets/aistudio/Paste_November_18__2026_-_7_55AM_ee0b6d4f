@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-surface": "#1a1c1a", "surface-container-highest": "#e3e2e0", "on-tertiary": "#ffffff", "on-primary-fixed": "#02201a", "primary": "#001510", "on-primary": "#ffffff", "surface-dim": "#dbdad7", "surface-bright": "#faf9f6", "on-surface-variant": "#414846", "on-secondary-fixed": "#002018", "on-secondary-fixed-variant": "#244e42", "on-secondary": "#ffffff", "surface-container-low": "#f4f3f0", "on-error": "#ffffff", "error": "#ba1a1a", "on-tertiary-fixed-variant": "#623f18", "error-container": "#ffdad6", "outline": "#727975", "on-tertiary-container": "#b18456", "on-secondary-container": "#416b5d", "inverse-surface": "#2f312f", "on-primary-fixed-variant": "#2f4c44", "surface-container": "#efeeeb", "primary-fixed-dim": "#adcdc3", "surface-variant": "#e3e2e0", "surface": "#faf9f6", "tertiary-fixed-dim": "#f0bd8b", "surface-tint": "#47645c", "tertiary": "#1d0d00", "on-error-container": "#93000a", "secondary-container": "#bce9d9", "primary-container": "#0d2b24", "secondary-fixed-dim": "#a3d0c0", "inverse-primary": "#adcdc3", "secondary-fixed": "#bfecdc", "tertiary-container": "#3b1f00", "background": "#faf9f6", "surface-container-lowest": "#ffffff", "primary-fixed": "#c9eade", "on-primary-container": "#75948a", "outline-variant": "#c1c8c4", "secondary": "#3d6659", "inverse-on-surface": "#f2f1ee", "on-tertiary-fixed": "#2c1600", "tertiary-fixed": "#ffdcbd", "on-background": "#1a1c1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1.25rem", "gutter": "1.5rem", "margin-mobile": "1.25rem", "margin": "2.5rem", "space-sm": "0.75rem", "space-lg": "2rem", "space-xl": "3.5rem", "space-xs": "0.375rem", "gutter-sm": "1rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(13,43,36,0.04)]"><div class="h-20 max-w-[1440px] mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-sm"><img alt="SuiteSavvy Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOryGiamU7ALxsrtqc6MwcZlh95F-_f5hQRoXrbB8gpinqmVwfrP-psU51PfW40FTbyys_h_curx1IEWPSR0isU7O7-LLypwf6wH_ECBjiHn-opgqd6Ce0baV1Ft2qTWtxaLGlkDpOzJ9Cs1VUSh-HuoL070JNGijze38zhK5mhbW6iXOQXOXaxAY14-dPjHC_ZbeEY4LllBr1Zpj7nuonmv92p07b0_ipCQAz_Qg"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">SuiteSavvy</span></div><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="text-primary font-bold"><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="about-us" href="#">About Us</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="rooms" href="#">Rooms</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="destinations" href="#">Destinations</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="services" href="#">Services</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="gallery" href="#">Gallery</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="experiences" href="#">Experiences</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-sm"><button aria-label="Search Suites" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button aria-label="Guest Settings" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">tune</span></button><a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary transition-all duration-200" data-path="booking" href="#">Booking</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full max-w-[1440px] mx-auto px-margin pt-space-md pb-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-lg">
+<div class="max-w-2xl">
+<span class="inline-flex items-center gap-2 font-label-md text-label-md text-secondary tracking-widest uppercase mb-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+          Our Philosophy &amp; Heritage
+        </span>
+<h1 class="font-display text-display text-primary tracking-tight mt-1">
+          Curating Sanctuaries for the Discerning Traveler
+        </h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg pb-2">
+        Founded on the belief that true luxury resides in absolute serenity, bespoke architectural harmony, and untamed natural beauty.
+      </p>
+</div>
+<!-- Hero Visual Mosaic -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-xl">
+<div class="relative h-[480px] md:h-[580px] w-full bg-cover bg-center" data-alt="A tranquil stone-arched luxury boutique hotel lobby in southern Europe with a central reflective pool lined with smooth dark pebbles, surrounded by terracotta pots filled with ancient olive trees, lush monstera and tropical palms, soft afternoon sunlight glowing through open limestone arches, modern plush armchairs, and guests lounging peacefully in absolute serene elegance" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTHDUWegDT5DVLes7tmK8YwSDxGVaikXViuBB7Jkfm7NZ5snYyeQUvZLOuGUPLZVFEfniJJCKjsoqJIu-1hQv2nQ-EBHHeU_T0SVjoxdPuia1Is3fVYhczTbt7J3PjzAqhtOTlZG8691lfCdajXqOPRwRpjIdMe0FUx0HJx8ZMs8Gw9yrXrNrMwpq1SYAe-hZlQwGw20U_m6-O3B3ztjuJN1DlmePPpZibr318fW4')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<!-- Floating Badges Layer -->
+<div class="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Badge 1 -->
+<div class="px-5 py-3 rounded-full bg-surface/90 backdrop-blur-md shadow-md flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]">workspace_premium</span>
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Accreditation</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Michelin Key Certified 2025</p>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="px-5 py-3 rounded-full bg-surface/90 backdrop-blur-md shadow-md flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]">hotel_class</span>
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Affiliation</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Leading Hotels Patron</p>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="px-5 py-3 rounded-full bg-surface/90 backdrop-blur-md shadow-md hidden sm:flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]">eco</span>
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Commitment</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold">100% Carbon-Neutral Stays</p>
+</div>
+</div>
+</div>
+<!-- Quick Stat Callout -->
+<div class="px-6 py-4 rounded-xl bg-primary-container text-on-primary shadow-lg backdrop-blur-sm flex items-center gap-4">
+<span class="font-display text-[32px] leading-none text-secondary-fixed">06</span>
+<div class="text-left">
+<p class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Years of Curation</p>
+<p class="font-body-sm text-body-sm text-on-primary">Refining the Art of Solitude</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: GENESIS & VISION -->
+<section class="w-full bg-surface-container-low py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Story Text -->
+<div class="lg:col-span-6 space-y-space-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">history_edu</span>
+            Our Narrative
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            The SuiteSavvy Genesis — From 2019 to Global Sanctuaries
+          </h2>
+<div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+<p>
+              In 2019, SuiteSavvy began not as a hospitality brand, but as a deliberate critique of standardized five-star monotony. High-end global travel had become reproducible: identical marbled atriums, scripted concierges, and an inescapable sense of hurry.
+            </p>
+<p>
+              We set out to assemble the antithesis: authentic private estates where architecture serves as an invisible frame for nature. From the clifftop pergolas of Positano to the restorative mangrove lagoons of Ubud and the wind-sculpted shorelines of the Algarve, every SuiteSavvy destination is hand-vetted through over 240 stringent spatial, culinary, and acoustic benchmarks.
+            </p>
+</div>
+<!-- Highlight Metrix Bar -->
+<div class="grid grid-cols-3 gap-space-sm pt-space-sm">
+<div class="p-4 rounded-xl bg-surface shadow-sm">
+<span class="block font-headline-lg text-headline-lg text-primary font-bold">24</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Private Sanctuaries</span>
+</div>
+<div class="p-4 rounded-xl bg-surface shadow-sm">
+<span class="block font-headline-lg text-headline-lg text-primary font-bold">99.4%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Guest Contentment</span>
+</div>
+<div class="p-4 rounded-xl bg-surface shadow-sm">
+<span class="block font-headline-lg text-headline-lg text-primary font-bold">24/7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dedicated Valet &amp; Host</span>
+</div>
+</div>
+</div>
+<!-- Visual Pair -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-space-md">
+<div class="space-y-space-md">
+<div class="h-64 rounded-2xl overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="Close up architectural detail of hand-carved warm limestone columns, sunlit minimalist clay vessels, and handwoven raw linen textiles in a Mediterranean luxury courtyard at golden hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWGVVOlVOURow12ys-0pBippv1OJebukqNzG3_DoPTsGpf0U9btDy50IQCmbkddpiEPefkB6nzdjxOCZZ56cQKxbQgw3UygKCVbCKkzISEBAc-Tonf05QWrh-G8Bt5_DDX-lKqRcEKmE3NTcICbc-FRWiIyKU85HBP4d3QWDRGg1obYh37MTVIOBLVrMbiFCblOQ9T30VJS3p3mTZ0p7Nw5Lg8ewGMSMfTZyCwZKg"/>
+</div>
+<div class="p-6 rounded-2xl bg-surface shadow-sm space-y-2">
+<span class="material-symbols-outlined text-secondary text-[28px]">design_services</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Uncompromising Craft</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every estate incorporates indigenous masonry, century-old timber, and acoustic geometry tailored for utter quietude.</p>
+</div>
+</div>
+<div class="space-y-space-md pt-space-lg">
+<div class="p-6 rounded-2xl bg-primary-container text-on-primary shadow-sm space-y-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[28px]">villa</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Intimate Footprint</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container">We strictly cap each territory at 3 properties globally to guarantee uncompromised exclusivity.</p>
+</div>
+<div class="h-64 rounded-2xl overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="An expansive panoramic vista of a tranquil infinity pool overlooking lush tropical palm valleys in Ubud Bali during early morning dawn mist, with steam rising gracefully from heated emerald water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6c3lzQW_CCDQ1AD73JtOcAdq9sgjY2NsQOOln4jP6ZLmqXYD9kkEaVroCdO5XnfjdDb9kKSjrtp1cPLRG3uhbt1KO1FTq0fiTHzk4CBNyS0N-eoNjhHPV-pXvJluaS5VuEVFCN3J-MC_Xut-rHXoANwmiUvkyJUrQUQyJcAsmkJIeBZ8g14EH5jBNWiXOdfZ5XeGaGrfvuy3KSVGEafcZ4uKElodMSUta933oqxs"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: 4 HOSPITALITY PILLARS -->
+<section class="w-full max-w-[1440px] mx-auto px-margin py-space-xl">
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase">The SuiteSavvy Standard</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Our Four Cornerstones of Hospitality</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+        Every encounter, architectural contour, and morning scent is calibrated around four non-negotiable principles.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Pillar 1 -->
+<div class="p-8 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors duration-200 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary shadow-sm mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">architecture</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Pillar 01</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-2 mb-3">Architectural Purity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Organic structures bridging warm Japandi restraint and timeless regional vernaculars. Our suites breathe naturally, inviting external landscapes directly indoors.
+          </p>
+</div>
+<div class="mt-8 pt-4 flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span>Explore design codes</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="p-8 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors duration-200 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary shadow-sm mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Pillar 02</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-2 mb-3">Tailored Solitude</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Radical privacy engineered into master floorplans. Private access paths, sheltered terraces, and uninterrupted visual horizons preserve sacred decompression.
+          </p>
+</div>
+<div class="mt-8 pt-4 flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span>Spatial seclusion</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="p-8 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors duration-200 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary shadow-sm mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Pillar 03</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-2 mb-3">Gastronomic Soul</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Direct partnerships with biodynamic family vineyards and artisan foragers. Bespoke in-suite chef tastings inspired by centuries-old regional cooking traditions.
+          </p>
+</div>
+<div class="mt-8 pt-4 flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span>Culinary manifests</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Pillar 4 -->
+<div class="p-8 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors duration-200 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary shadow-sm mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">concierge</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Pillar 04</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-2 mb-3">Invisible Precision</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Attentive hosts who anticipate needs before they are voiced, operating with discreet grace so guests never feel observed, only effortlessly supported.
+          </p>
+</div>
+<div class="mt-8 pt-4 flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span>Concierge standards</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: LEADERSHIP & TERRITORY CURATORS -->
+<section class="w-full bg-surface-container py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<!-- Founder Quote Card -->
+<div class="rounded-3xl bg-surface p-8 md:p-12 shadow-sm mb-space-xl flex flex-col md:flex-row items-center gap-space-lg">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden shrink-0 shadow-md">
+<img class="w-full h-full object-cover" data-alt="Portrait of an elegant Scandinavian man in his forties with gentle eyes, dressed in an unstructured linen blazer against a minimalist warm stone wall in natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZHyFidjY7It68_C8sgZytU5_0SzVetrhTBVXaJqwqfJUKC9u0mxXUgm6P0T7L_DKCOAKkjpOgt7gKyZoV9MI6uobjFQBMNvz0z5m0tEg9i9_jESZ94-YpWhFmygtmq5EbnZFdBGUS0dPvGL7kduqlb2M9JNOi0ITtjhs9i7iWN7nbfQut2kp4EQCV83e7GRTPnwl5B_e7EdnhZSxo6rnIA4BxSz6RnYdZ2QqwVsU"/>
+</div>
+<div class="space-y-3">
+<span class="material-symbols-outlined text-secondary text-[36px]">format_quote</span>
+<p class="font-body-lg text-body-lg text-primary italic max-w-3xl">
+            "We do not build rooms; we assemble stages for memories that linger for decades. In an over-connected era, the supreme luxury is the luxury of absolute peace."
+          </p>
+<div class="pt-2">
+<h4 class="font-headline-sm text-headline-sm text-primary">Henrik Valdemar</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Founder &amp; Chief Creative Curator — Zurich</p>
+</div>
+</div>
+</div>
+<!-- Territory Curators Grid -->
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Territory Leadership</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Our Resident Curators</h3>
+</div>
+<span class="hidden sm:inline-block font-body-sm text-body-sm text-on-surface-variant">Guiding selections across four continents</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Curator 1 -->
+<div class="rounded-2xl bg-surface p-5 shadow-sm space-y-4">
+<div class="h-64 rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sophisticated woman in her late thirties with effortless Parisian style standing in a warm limestone gallery holding architectural sketches, bright diffused lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxPtjShs9-mkcCb6zZBXNHA6jEtD0wM-H39IN2LNB0SxmGNz4bmWt3kYcSOFeA7DXfKN4ANy0bx3WmrdbXcJpVPLnntA8xNsu8NDajPG7wlF_NoiKoZL6tduIDhnUPbhFwjoJheL6hT3gjkQjxv63mvGH_Cgjp50vJG8Vxz6hN58hzZwC2ZWyeeh_MRPIpVDD-C1cZRMSoyQVGO-V2LM68sK-902X7d-JU4eIB6zE"/>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">Camille Laurent</p>
+<p class="font-label-sm text-label-sm text-secondary font-medium">Southern Europe &amp; Mediterranean</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Former director of heritage conservations in Aix-en-Provence and Amalfi.</p>
+</div>
+</div>
+<!-- Curator 2 -->
+<div class="rounded-2xl bg-surface p-5 shadow-sm space-y-4">
+<div class="h-64 rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Handsome Japanese architect in minimalist dark charcoal clothing, standing thoughtfully beside a serene bamboo garden screen with soft natural shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEEmbXIdUdhnAlFgSXepSsYwbzp-KVUlt7Wf21MEANHbYv5ABzZYMLwxsd6L3f1O7lA2jPxzWpn_PjaXjNuJH4jS9aSiSlr-Rzg-17cywI1qZAod1CEzZXAK1h5axA-jXH4VDn33TrvIzPFgen11rj8i0BxBo3OB75xVh6txCv2WHX2tD2O4mXj-sU-MUDHWf5JZEkWENjfUPZz-R3P5idtO4wA3PLYXoDVYdMaG0"/>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">Kenji Takahashi</p>
+<p class="font-label-sm text-label-sm text-secondary font-medium">Asia-Pacific Archipelagos</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Specialist in sustainable tropical biomimicry and Zen spatial sanctuaries.</p>
+</div>
+</div>
+<!-- Curator 3 -->
+<div class="rounded-2xl bg-surface p-5 shadow-sm space-y-4">
+<div class="h-64 rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Warm smiling Mediterranean hospitality curator woman with tied dark hair and olive tunic standing in an Italian coastal estate garden under olive trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0V5C9IsxfZeK7gwNiEyCBCmjLnVzpmxWgE5DkSeqQOWZ4PXk_XnMr36sKzgsPD_onkkMEhyrsv82fyZuIMWNb3WcQdun4cMDosBZqsVJCZq_D2Ft3NimeX9EqreelIkciq5qWlReSfvFInj5DwlAbcFqVc07TAIQ2aoTFWTiA-GhVGcCt_pBQzNlTsc8xq2sYux3T1W2UOkR2lsbSis3gpSHjwhZy4SxsoHz31Q"/>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">Elena Moretti</p>
+<p class="font-label-sm text-label-sm text-secondary font-medium">Adriatic &amp; Tyrrhenian Coast</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Master sommelier and curator of historical private country manors.</p>
+</div>
+</div>
+<!-- Curator 4 -->
+<div class="rounded-2xl bg-surface p-5 shadow-sm space-y-4">
+<div class="h-64 rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Distinguished Swiss hotelier with salt and pepper hair in tailored navy knitwear against an alpine pine vista viewed through floor-to-ceiling glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP23usiJ-sTVs54_ZTXf7agTdO8cbJnN7AijQ1U9h9K_TY6FTzhn5RAt96bkJwv4xBwNt_6kghOfF7ErPabbJLRU4Ofeb-xnptb8uUpSi5FcDAdnRFBOdyMquT6k6ZaEHd8XM_N4EsROvybgtTYRiMMBp4OivUPrncT20k97sbQAUkKFzNmtWsIrPI2ICA5ORKEZIweQKGEaiFYdJFdp4hNKN303Z-Qcs55_bnPyA"/>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">Julian Von Berg</p>
+<p class="font-label-sm text-label-sm text-secondary font-medium">Alpine &amp; Nordic High-Sanctuaries</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Expert in high-altitude luxury architecture and discreet aviation routes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: SUSTAINABILITY & BIOTOPE STEWARDSHIP -->
+<section class="w-full max-w-[1440px] mx-auto px-margin py-space-xl">
+<div class="rounded-3xl bg-primary-container text-on-primary p-8 md:p-16 relative overflow-hidden shadow-xl">
+<!-- Background Ambient Glow -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<div class="lg:col-span-7 space-y-space-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">nature_people</span>
+            Environmental Sovereignty
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-on-primary tracking-tight">
+            Protecting the Fragile Horizons We Inhabit
+          </h2>
+<p class="font-body-md text-body-md text-on-primary-container max-w-xl">
+            We operate with the reverent understanding that our destinations exist as guests of the earth. SuiteSavvy commits 3.5% of all global booking revenue directly to regional biome restoration, marine sanctuaries, and indigenous artisan guild endowments.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="p-4 rounded-xl bg-primary/60 backdrop-blur-sm">
+<span class="font-headline-sm text-headline-sm text-secondary-fixed">Zero-Plastic</span>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-1">100% circular glass, stoneware, and linen guest amenities.</p>
+</div>
+<div class="p-4 rounded-xl bg-primary/60 backdrop-blur-sm">
+<span class="font-headline-sm text-headline-sm text-secondary-fixed">Geothermal</span>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-1">Passive climatic cooling and solar-assisted hydrology.</p>
+</div>
+<div class="p-4 rounded-xl bg-primary/60 backdrop-blur-sm">
+<span class="font-headline-sm text-headline-sm text-secondary-fixed">Guild Fund</span>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-1">Preserving traditional stone masons and weavers locally.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex justify-center">
+<!-- Circular Diagram Visual Card -->
+<div class="p-8 rounded-2xl bg-surface text-on-surface shadow-2xl w-full max-w-sm space-y-6">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Ecological Index</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Tier 1 Elite</span>
+</div>
+<!-- Custom Clean SVG Ring -->
+<div class="flex items-center justify-center relative py-2">
+<svg class="w-40 h-40 transform -rotate-90" viewbox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="50" stroke="#efeeeb" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="50" stroke="#3d6659" stroke-dasharray="314" stroke-dashoffset="40" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">94%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Renewable Energy</span>
+</div>
+</div>
+<div class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between items-center py-1">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span> Rainwater Harvesting</span>
+<span class="font-semibold text-primary">88%</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span> Native Reforestation</span>
+<span class="font-semibold text-primary">100%</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span> Zero Single-Use Waste</span>
+<span class="font-semibold text-primary">Achieved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: INVITATION / CTA BANNER -->
+<section class="w-full max-w-[1440px] mx-auto px-margin pb-space-xl">
+<div class="rounded-3xl bg-surface-container-highest p-8 md:p-14 text-center flex flex-col items-center justify-center relative overflow-hidden">
+<div class="max-w-2xl mx-auto space-y-space-sm relative z-10">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Your Private Horizon Awaits</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Begin Your Unforgettable Journey
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+          Contact our personal travel curators for discreet portfolio previews, bespoke flight arrangements, and dedicated in-suite itineraries.
+        </p>
+<div class="pt-space-md flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+<a class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all duration-200 text-center flex items-center justify-center gap-2" data-path="rooms" href="#">
+<span>Explore Our Sanctuaries</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</a>
+<a class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-surface text-primary font-label-lg text-label-lg shadow-sm hover:bg-surface-container-high transition-all duration-200 text-center flex items-center justify-center gap-2" data-path="contact" href="#">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Reserve a Private Consultation</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl pt-space-xl pb-space-lg shadow-[0_-1px_12px_rgba(13,43,36,0.03)]"><div class="max-w-[1440px] mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="SuiteSavvy Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFwVOFG40tPIZGs7MD_FBQUlDoGrRp6HvMVhKU_WP6Q2v4fvfsytNZ6BpbjvSG0qq_unaHdGc5UGb-ytFNlqSH1KwUo2nOgQ08f0WVfA59Od5UDuewqymkSQ5EocX9c6cLNjJbKAAtFbjoOdgsb25Okd2_4M4cf4Mj0mZjnft_jOEZm3si_t17ytqPbyGcZPWf5a0DSX1diDKx2SCwp4CRZMolrTvU570wQ6e0sVU"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">SuiteSavvy</span></div><p class="font-body-md text-body-md text-on-surface-variant">Curating unmatched private sanctuaries, premier penthouses, and bespoke coastal estates for the world's most discerning travelers.</p><div class="flex items-center gap-space-sm pt-space-xs"><span class="material-symbols-outlined text-on-surface-variant text-[20px]">verified</span><span class="font-label-md text-label-md text-on-surface-variant">Verified Global Luxury Portfolio</span></div></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Explore Portfolios</span><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Private Island Villas</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Architectural Penthouses</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Alpine Sky Chalets</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Historic Country Manors</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Secluded Desert Retreats</li></ul></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Concierge &amp; Guest</span><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">24/7 Bespoke Concierge</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Private Aviation Charter</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">In-Suite Michelin Dining</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Yacht &amp; Tender Access</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Bespoke Itinerary Planning</li></ul></div><div class="space-y-space-md"><span class="block font-headline-sm text-headline-sm text-primary">Private Gazette</span><p class="font-body-sm text-body-sm text-on-surface-variant">Receive confidential access to newly debuted suites and seasonal retreats.</p><form class="flex items-center bg-surface-container-highest rounded-full p-1 pl-4 shadow-inner"><input class="w-full bg-transparent border-0 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Enter your email" type="email"/><button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors" type="button">Join</button></form><div class="pt-space-xs space-y-1"><p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">mail</span> inquiries@suitesavvy.luxury</p><p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">call</span> +41 22 819 9000</p></div></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-label-sm text-label-sm text-on-surface-variant">© 2025 SuiteSavvy International Hospitality Ltd. All rights reserved.</p><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Privacy Policy</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Terms of Service</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Security &amp; Integrity</span><span class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Cookie Preferences</span></div></div></div></footer></body></html>
