@@ -37,7 +37,7 @@ export function HeroSection() {
             </div>
 
             {/* Subtitle + cercle CTA sur la même ligne */}
-            <div className="mt-16 sm:mt-20 lg:mt-24 grid grid-cols-12 items-center gap-4">
+            <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-12 items-center gap-4">
               <p className="col-span-7 sm:col-span-5 text-[13px] sm:text-[14px] text-white/85 leading-relaxed max-w-[280px]">
                 King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
               </p>
@@ -64,7 +64,7 @@ export function HeroSection() {
                 au King&apos;s Bed Hotel
               </h1>
 
-              <div className="lg:col-span-4 flex flex-col gap-3.5 max-w-sm lg:ml-auto w-full">
+              <div className="lg:col-span-6 flex flex-col gap-3.5 max-w-sm lg:ml-auto w-full">
                 <HeroCardConfirmed />
                 <HeroCardStay />
               </div>
