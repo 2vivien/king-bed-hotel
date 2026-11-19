@@ -2,14 +2,13 @@ import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactFaqSection } from "@/features/contact/components/ContactFaqSection";
-import { ContactFormCard } from "@/features/contact/components/ContactFormCard";
 import { ContactHero } from "@/features/contact/components/ContactHero";
 import { ContactSidebar } from "@/features/contact/components/ContactSidebar";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Réservez une chambre, demandez un devis pour votre salle de réunion ou conférence, et contactez la conciergerie du King's Bed Hotel 24h/24.",
+    "Contactez la conciergerie du King's Bed Hotel à Savalou, Bénin : réception 24h/24, devis événements et séminaires.",
 };
 
 export default function ContactPage() {
@@ -17,15 +16,8 @@ export default function ContactPage() {
     <div className="flex flex-col w-full bg-white">
       <ContactHero />
 
-      <section className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          <div className="lg:col-span-7">
-            <ContactFormCard />
-          </div>
-          <div className="lg:col-span-5">
-            <ContactSidebar />
-          </div>
-        </div>
+      <section className="w-full max-w-[720px] mx-auto px-6 lg:px-10 py-14">
+        <ContactSidebar />
       </section>
 
       <ContactFaqSection />
