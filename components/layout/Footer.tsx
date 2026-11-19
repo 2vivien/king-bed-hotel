@@ -23,7 +23,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-white border-t border-[#EDEDEA] mt-14 pt-14 pb-8">
+    <footer className="site-footer w-full bg-white border-t border-[#EDEDEA] pt-14 pb-8">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-14">
           {/* Column 1: Brand & Portfolio Trust */}
