@@ -2,7 +2,7 @@ import { ConferenceHallsShowcase } from "@/features/home/components/ConferenceHa
 import { ContactFaqSection } from "@/features/contact/components/ContactFaqSection";
 import { DestinationTeaserRow } from "@/features/home/components/DestinationTeaserRow";
 import { HeroSection } from "@/features/home/components/HeroSection";
-import { NewsletterBanner } from "@/features/home/components/NewsletterBanner";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SuitesShowcase } from "@/features/home/components/SuitesShowcase";
 import { TestimonialsSection } from "@/features/home/components/TestimonialsSection";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
       <ConferenceHallsShowcase />
       <TestimonialsSection />
       <ContactFaqSection />
-      <NewsletterBanner />
+      <LeavesCta />
     </>
   );
 }
