@@ -55,7 +55,7 @@ export function HeroSection() {
             </div>
 
             {/* Right column */}
-            <div className="hidden md:flex md:col-span-6 lg:col-span-6 flex-col items-end gap-4">
+            <div className="hidden md:flex md:col-span-6 lg:col-span-6 flex-col items-end justify-end gap-4">
               <p className="text-[12px] text-white/85 text-right leading-tight max-w-[16rem]">
                 Chambres,<br />Petit-Déjeuner &amp; Salles de Conférence
               </p>
