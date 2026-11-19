@@ -34,9 +34,7 @@ import {
   RefreshCw,
   Shield,
   Star,
-  Ticket,
   UtensilsCrossed,
-  Zap,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -148,10 +146,6 @@ export function ReservationFlow() {
   const [children, setChildren] = useState(0);
   const [suitesCount, setSuitesCount] = useState(1);
 
-  const [promoInput, setPromoInput] = useState("");
-  const [appliedPromo, setAppliedPromo] = useState("");
-  const [promoFeedback, setPromoFeedback] = useState("");
-
   const [addOns, setAddOns] = useState<Record<AddOnKey, boolean>>({
     chauffeur: true,
     breakfast: true,
@@ -160,7 +154,6 @@ export function ReservationFlow() {
   const [availability, setAvailability] = useState<AvailabilityResult[] | null>(
     null
   );
-  const [checking, setChecking] = useState(true);
   const [bookingError, setBookingError] = useState("");
   const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
 
@@ -172,7 +165,7 @@ export function ReservationFlow() {
 
   const idempotencyKey = useMemo(
     () =>
-      `ss-${selectedRoomSlug}-${checkIn}-${checkOut}-${totalGuests}-${addOns.chauffeur}-${addOns.breakfast}-${appliedPromo}`,
+      `ss-${selectedRoomSlug}-${checkIn}-${checkOut}-${totalGuests}-${addOns.chauffeur}-${addOns.breakfast}`,
     [
       selectedRoomSlug,
       checkIn,
@@ -180,7 +173,6 @@ export function ReservationFlow() {
       totalGuests,
       addOns.chauffeur,
       addOns.breakfast,
-      appliedPromo,
     ]
   );
 
@@ -198,9 +190,6 @@ export function ReservationFlow() {
       .catch(() => {
         // Keep graceful fallback
       })
-      .finally(() => {
-        if (active) setChecking(false);
-      });
     return () => {
       active = false;
     };
@@ -217,13 +206,9 @@ export function ReservationFlow() {
   const breakfastXof = addOns.breakfast ? 30000 * totalGuests * nights : 0;
   const addOnsTotalXof = chauffeurXof + breakfastXof;
   const taxXof = Math.round((roomSubtotalXof + addOnsTotalXof) * 0.1);
-  const discountXof =
-    appliedPromo === "KINGSBED" || appliedPromo === "SAVVYVIP" || appliedPromo === "PRIVILEGE"
-      ? 130000
-      : 0;
   const grandTotalXof = Math.max(
     0,
-    roomSubtotalXof + addOnsTotalXof + taxXof - discountXof
+    roomSubtotalXof + addOnsTotalXof + taxXof
   );
 
   const selectedAvailability = availability?.find(
@@ -272,20 +257,6 @@ export function ReservationFlow() {
       setPickingPhase("start");
     }
     setActiveStep(1);
-  };
-
-  const handleApplyPromo = () => {
-    const code = promoInput.trim().toUpperCase();
-    if (code === "KINGSBED" || code === "SAVVYVIP" || code === "PRIVILEGE") {
-      setAppliedPromo(code);
-      setPromoFeedback("Avantage Membre appliqué (-130 000 F CFA)");
-    } else if (!code) {
-      setAppliedPromo("");
-      setPromoFeedback("");
-    } else {
-      setAppliedPromo("");
-      setPromoFeedback("Code invalide — essayez KINGSBED pour -130 000 F CFA d'avantage.");
-    }
   };
 
   const toggleAddOn = (key: AddOnKey) => {
@@ -351,7 +322,6 @@ export function ReservationFlow() {
         guests: totalGuests,
         guest: guestValues,
         addOns: activeAddOns,
-        promoCode: appliedPromo || undefined,
         idempotencyKey,
       });
 
@@ -469,10 +439,6 @@ export function ReservationFlow() {
                       Affinez Votre Programme
                     </h2>
                   </div>
-                  <span className="px-3 py-1.5 rounded-full bg-[#bce9d9] text-[#244e42] text-[11px] font-semibold flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5" />
-                    {checking ? "Vérification en cours..." : "Disponibilité en Temps Réel"}
-                  </span>
                 </div>
 
                 {/* Parameters Grid */}
@@ -725,37 +691,6 @@ export function ReservationFlow() {
                   </div>
                 </div>
 
-                {/* VIP Promo Code Row */}
-                <div className="pt-1 space-y-2">
-                  <div className="flex flex-col sm:flex-row items-center gap-3">
-                    <div className="relative w-full">
-                      <Ticket className="w-4 h-4 text-[#3d6659] absolute left-4 top-1/2 -translate-y-1/2" />
-                      <input
-                        type="text"
-                        value={promoInput}
-                        onChange={(e) => setPromoInput(e.target.value)}
-                        placeholder="Code privilège ou tarif entreprise (ex. KINGSBED)"
-                        className="w-full bg-[#f4f3f0] pl-11 pr-4 py-3 rounded-full text-[14px] text-[#1a1c1a] placeholder:text-[#414846]/70 focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40 transition-all"
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleApplyPromo}
-                      className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#e9e8e5] text-[#001510] text-[14px] font-semibold hover:bg-[#001510] hover:text-white transition-all shrink-0 cursor-pointer"
-                    >
-                      Appliquer
-                    </button>
-                  </div>
-                  {promoFeedback && (
-                    <p
-                      className={`text-[12px] font-medium px-2 ${
-                        appliedPromo ? "text-[#3d6659]" : "text-[#ba1a1a]"
-                      }`}
-                    >
-                      {promoFeedback}
-                    </p>
-                  )}
-                </div>
               </div>
 
               {/* STEP 2: Select your space (chambre ou salle de conférence) */}
@@ -1230,12 +1165,6 @@ export function ReservationFlow() {
                       {formatCurrencyXof(taxXof)}
                     </span>
                   </div>
-                  {discountXof > 0 && (
-                    <div className="flex justify-between items-center text-[13px] text-[#3d6659] font-medium">
-                      <span>Avantage Membre</span>
-                      <span>-{formatCurrencyXof(discountXof)}</span>
-                    </div>
-                  )}
 
                   <div className="pt-3 mt-2 border-t border-[#e9e8e5] flex items-baseline justify-between">
                     <div>
