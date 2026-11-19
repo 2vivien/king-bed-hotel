@@ -22,7 +22,7 @@ export function ReservationModal() {
             <div className="h-[420px] rounded-3xl bg-[#f4f3f0] animate-pulse" />
           }
         >
-          <ReservationFlow />
+          <ReservationFlow wizard />
         </Suspense>
       </div>
     </DialogModal>

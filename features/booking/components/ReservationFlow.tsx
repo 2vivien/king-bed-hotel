@@ -99,7 +99,7 @@ function formatCurrencyXof(amount: number): string {
   return `${Math.round(amount).toLocaleString("fr-FR")} F CFA`;
 }
 
-export function ReservationFlow() {
+export function ReservationFlow({ wizard = false }: { wizard?: boolean }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const draft = useBookingStore();
@@ -140,7 +140,7 @@ export function ReservationFlow() {
     null
   );
   const [bookingError, setBookingError] = useState("");
-  const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
+  const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4 | 5>(1);
 
 
   const selectedRoom = findSpace(selectedRoomSlug) ?? roomsMock[0];
@@ -249,11 +249,11 @@ export function ReservationFlow() {
     setActiveStep(4);
   };
 
-  const scrollToSection = (id: string, step: 1 | 2 | 3 | 4) => {
+  const scrollToSection = (id: string, step: 1 | 2 | 3 | 4 | 5) => {
     setActiveStep(step);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!wizard) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -327,10 +327,10 @@ export function ReservationFlow() {
               className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1"
             >
               {[
-                { num: 1 as const, label: "Dates & Formule", target: "step-1" },
-                { num: 2 as const, label: "Choix de la Chambre", target: "step-2" },
-                { num: 3 as const, label: "Coordonnées", target: "step-3" },
-                { num: 4 as const, label: "Options & Affaires", target: "step-4" },
+                { num: 1 as const, label: wizard ? "📅 Dates" : "Dates & Formule", target: "step-1" },
+                { num: 2 as const, label: wizard ? "🛏️ Chambre" : "Choix de la Chambre", target: "step-2" },
+                { num: 3 as const, label: wizard ? "👤 Coordonnées" : "Coordonnées", target: "step-3" },
+                { num: 4 as const, label: wizard ? "✨ Options" : "Options & Affaires", target: "step-4" },
               ].map((step) => {
                 const isPrimary = activeStep === step.num;
                 const isHighlighted = step.num === 2 && activeStep === 1;
@@ -366,14 +366,24 @@ export function ReservationFlow() {
                   </div>
                 );
               })}
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#efeeeb] text-[#414846] shrink-0">
+              <button
+                type="button"
+                onClick={() => wizard && setActiveStep(5)}
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-full shrink-0 ${
+                  wizard && activeStep === 5
+                    ? "bg-[#0d2b24] text-white"
+                    : wizard
+                      ? "bg-[#efeeeb] text-[#414846] cursor-pointer hover:bg-[#e9e8e5]"
+                      : "bg-[#efeeeb] text-[#414846]"
+                }`}
+              >
                 <span className="w-5 h-5 rounded-full bg-[#dbdad7] text-[#414846] text-[11px] font-bold flex items-center justify-center">
                   5
                 </span>
                 <span className="text-[12px] font-medium whitespace-nowrap">
-                  Confirmation
+                  {wizard ? "✅ Confirmation" : "Confirmation"}
                 </span>
-              </div>
+              </button>
             </nav>
           </div>
         </div>
@@ -385,6 +395,8 @@ export function ReservationFlow() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* LEFT BOOKING INTERACTIVE FORM & SUITES */}
             <div className="lg:col-span-7 xl:col-span-8 space-y-10">
+              {!wizard || activeStep === 1 ? (
+              <>
               {/* STEP 1: Refine Your Itinerary */}
               <div
                 id="step-1"
@@ -661,6 +673,12 @@ export function ReservationFlow() {
 
               </div>
 
+
+              </>
+              ) : null}
+
+              {!wizard || activeStep === 2 ? (
+              <>
               {/* STEP 2: Select your space (chambre ou salle de conférence) */}
               <div id="step-2" className="space-y-4">
                 <div className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_12px_36px_-6px_rgba(13,43,36,0.06)] border border-[#1a1c1a]/5 space-y-6">
@@ -779,6 +797,12 @@ export function ReservationFlow() {
                 </div>
               </div>
 
+
+              </>
+              ) : null}
+
+              {!wizard || activeStep === 3 ? (
+              <>
               {/* STEP 3: Guest Details */}
               <div
                 id="step-3"
@@ -935,6 +959,12 @@ export function ReservationFlow() {
                 )}
               </div>
 
+
+              </>
+              ) : null}
+
+              {!wizard || activeStep === 4 ? (
+              <>
               {/* STEP 4: Elevate Your Itinerary (Bespoke Add-ons) */}
               <div
                 id="step-4"
@@ -1027,9 +1057,12 @@ export function ReservationFlow() {
 
                 </div>
               </div>
+              </>
+              ) : null}
             </div>
 
             {/* RIGHT FLOATING BOOKING BREAKDOWN PANEL */}
+            {(!wizard || activeStep === 5) ? (
             <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24 space-y-5">
               <div className="bg-white rounded-3xl p-6 md:p-7 shadow-[0_20px_48px_-8px_rgba(13,43,36,0.12)] border border-[#1a1c1a]/5 space-y-5">
                 {/* Header */}
@@ -1232,8 +1265,31 @@ export function ReservationFlow() {
                 </div>
               </div>
             </div>
+            ) : null}
           </div>
         </section>
+
+        {wizard ? (
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-10 pb-10 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => setActiveStep((s) => (Math.max(1, s - 1) as 1 | 2 | 3 | 4 | 5))}
+              disabled={activeStep === 1}
+              className="h-11 px-6 rounded-full border border-[#EDEDEA] bg-white text-[#414846] text-[13px] font-semibold disabled:opacity-40 cursor-pointer hover:bg-[#faf9f6]"
+            >
+              ← Retour
+            </button>
+            {activeStep < 5 ? (
+              <button
+                type="button"
+                onClick={() => setActiveStep((s) => (Math.min(5, s + 1) as 1 | 2 | 3 | 4 | 5))}
+                className="h-11 px-6 rounded-full bg-[#001510] text-white text-[13px] font-semibold cursor-pointer hover:bg-[#0d2b24]"
+              >
+                Continuer →
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </form>
 
       {/* Destination Quick Switch Strip */}
