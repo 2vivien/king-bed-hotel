@@ -15,7 +15,7 @@ import {
   Headphones,
   Maximize2,
   ShieldCheck,
-  Sparkles,
+  Gift,
   X,
   ZoomIn,
 } from "lucide-react";
@@ -419,7 +419,7 @@ export function GalleryAnthologyView() {
                   <div className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-2 bg-white">
                     <div className="flex flex-wrap items-center gap-3 text-[#414846] text-[13px]">
                       <span className="flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-[#3d6659]" />
+                        <Gift className="w-3.5 h-3.5 text-[#3d6659]" />
                         Pierre Naturelle
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#c1c8c4]" />

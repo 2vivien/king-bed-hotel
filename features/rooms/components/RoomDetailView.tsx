@@ -25,7 +25,7 @@ import {
   PawPrint,
   Share2,
   Shield,
-  Sparkles,
+  Gift,
   Star,
   Trees,
   Users,
@@ -277,7 +277,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     </p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
+                    <Gift className="w-4 h-4 text-white" />
                   </div>
                 </div>
               </div>

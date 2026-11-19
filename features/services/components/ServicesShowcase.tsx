@@ -12,7 +12,7 @@ import {
   Headphones,
   MapPin,
   Presentation,
-  Sparkles,
+  Gift,
   UtensilsCrossed,
   Wifi,
 } from "lucide-react";
@@ -427,7 +427,7 @@ export function ServicesShowcase() {
                     />
                     <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-white/92 backdrop-blur-md shadow-sm">
                       <span className="text-[12px] text-[#001510] font-bold flex items-center gap-1.5">
-                        <Sparkles className="w-4 h-4 text-[#3d6659]" strokeWidth={1.75} />
+                        <Gift className="w-4 h-4 text-[#3d6659]" strokeWidth={1.75} />
                         Mobilité &amp; Accueil
                       </span>
                     </div>
@@ -533,7 +533,7 @@ export function ServicesShowcase() {
             <div className="bg-white border border-[#EDEDEA] p-8 rounded-3xl space-y-6 shadow-[0_8px_30px_rgba(13,43,36,0.04)] flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#bce9d9] flex items-center justify-center text-[#0d2b24]">
-                  <Sparkles className="w-6 h-6" strokeWidth={1.75} />
+                  <Gift className="w-6 h-6" strokeWidth={1.75} />
                 </div>
                 <h3 className="text-[20px] font-semibold text-[#001510]">
                   Conciergerie &amp; Assistance

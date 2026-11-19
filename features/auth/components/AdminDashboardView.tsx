@@ -24,7 +24,7 @@ import {
   Printer,
   Search,
   ShieldCheck,
-  Sparkles,
+  Gift,
   TrendingUp,
   UserCheck,
   Utensils,
@@ -89,7 +89,7 @@ function RequestIcon({ icon }: { icon: ManagedBookingRequest["icon"] }) {
     case "ban":
       return <Ban className="w-4 h-4 text-[#5F5F5A] shrink-0 mt-0.5" />;
     default:
-      return <Sparkles className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />;
+      return <Gift className="w-4 h-4 text-[#3d6659] shrink-0 mt-0.5" />;
   }
 }
 

@@ -22,7 +22,7 @@ import {
   RotateCcw,
   ShieldCheck,
   SlidersHorizontal,
-  Sparkles,
+  Gift,
   User,
   Utensils,
   X,
@@ -366,7 +366,7 @@ export function UserDashboardView() {
 
             <div className="flex items-center gap-2.5">
               <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#e9e8e5] text-[#111111] text-[12px] font-medium">
-                <Sparkles className="w-3.5 h-3.5 text-[#0d2b24]" />
+                <Gift className="w-3.5 h-3.5 text-[#0d2b24]" />
                 {currentUser.title}
               </span>
               <Link
