@@ -37,9 +37,9 @@ export function HeroSection() {
   };
 
   return (
-    <section className="px-2 sm:px-2.5 lg:px-3 pt-2.5">
-      <div className="max-w-none mx-auto relative">
-        <div className="relative rounded-[18px] overflow-hidden min-h-[640px] lg:min-h-[690px] bg-[#1F3A2C]">
+    <section className="px-4 sm:px-6 lg:px-10 pt-6">
+      <div className="max-w-[1280px] mx-auto relative">
+        <div className="relative rounded-[36px] overflow-hidden min-h-[640px] lg:min-h-[690px] bg-[#1F3A2C]">
           <SuiteImage
             src="/images/hero/hero-pool.jpg"
             alt="Piscine et terrasses architecturales du King's Bed Hotel"

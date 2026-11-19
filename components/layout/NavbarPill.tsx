@@ -53,7 +53,7 @@ export function NavbarPill() {
 
   return (
     <>
-      <header className="site-navbar sticky top-0 z-40 w-full bg-[#FFFFFF] border-b border-[#EDEDEA]">
+      <header className="sticky top-0 z-40 w-full bg-[#FFFFFF] border-b border-[#EDEDEA]">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between gap-4 lg:gap-8">
           <BrandMark />
 
