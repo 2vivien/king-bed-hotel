@@ -23,6 +23,18 @@ export function HeroSection() {
             aria-hidden="true"
           />
 
+          {/* Bouton Réserver — centré dans le hero */}
+          <Link
+            href="/account/reservation"
+            className="absolute left-1/2 top-[45%] z-20 hidden sm:flex w-24 h-24 lg:w-28 lg:h-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
+            aria-label="Réserver votre séjour"
+          >
+            <span className="text-[10px] sm:text-[11px] lg:text-[12px] font-medium leading-tight">
+              Réserver votre séjour
+            </span>
+            <ArrowDownRight className="w-4 h-4 mt-1" strokeWidth={1.5} />
+          </Link>
+
           <div className="relative z-10 p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch h-full min-h-[620px] lg:min-h-[800px]">
             {/* Left column */}
             <div className="lg:col-span-6 flex flex-col">
@@ -31,16 +43,16 @@ export function HeroSection() {
                 <p className="text-[13px] font-medium">Bénin, Savalou</p>
               </div>
 
-              <div className="mt-28 flex items-center gap-5 sm:gap-7">
+              <div className="mt-28 mb-6 flex items-center gap-5 sm:gap-7">
                 <p className="text-[13px] sm:text-[14px] text-white/85 leading-relaxed max-w-[240px]">
                   King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
                 </p>
                 <Link
                   href="/account/reservation"
-                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-24 lg:h-24 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300 shrink-0"
+                  className="sm:hidden w-20 h-20 shrink-0 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-2 hover:scale-105 transition-transform duration-300"
                   aria-label="Réserver votre séjour"
                 >
-                  <span className="text-[10px] sm:text-[11px] font-medium leading-tight">
+                  <span className="text-[10px] font-medium leading-tight">
                     Réserver votre séjour
                   </span>
                   <ArrowDownRight className="w-4 h-4 mt-1" strokeWidth={1.5} />
