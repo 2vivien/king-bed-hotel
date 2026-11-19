@@ -9,9 +9,9 @@ import {
 
 export function ContactSidebar() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
       {/* Clone gauche — Ligne directe & messagerie */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white border border-[#EDEDEA] shadow-sm space-y-4">
+      <div className="h-full p-5 sm:p-6 rounded-3xl bg-white border border-[#EDEDEA] shadow-sm space-y-4 flex flex-col">
         <h3 className="text-[20px] font-semibold text-[#001510]">
           Ligne Directe &amp; Messagerie
         </h3>
@@ -74,7 +74,7 @@ export function ContactSidebar() {
       </div>
 
       {/* Clone droit — Nos services sur place */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white border border-[#EDEDEA] shadow-sm space-y-4">
+      <div className="h-full p-5 sm:p-6 rounded-3xl bg-white border border-[#EDEDEA] shadow-sm space-y-4 flex flex-col">
         <div className="flex items-center justify-between">
           <h3 className="text-[20px] font-semibold text-[#001510]">
             Nos Services sur Place

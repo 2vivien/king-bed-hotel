@@ -16,7 +16,7 @@ export default function ContactPage() {
     <div className="flex flex-col w-full bg-white">
       <ContactHero />
 
-      <section className="w-full max-w-[720px] mx-auto px-6 lg:px-10 py-14">
+      <section className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-14">
         <ContactSidebar />
       </section>
 
