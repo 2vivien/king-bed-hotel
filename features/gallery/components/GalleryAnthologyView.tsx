@@ -206,7 +206,7 @@ export function GalleryAnthologyView() {
   return (
     <div className="bg-white text-[#1a1c1a]">
       {/* Top Editorial Header & Curated Title Area */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-10 pb-8">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-10 pb-8">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
@@ -270,7 +270,7 @@ export function GalleryAnthologyView() {
       </section>
 
       {/* Editorial Masonry / Visual Grid */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 space-y-6">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
         {filter === "all" ? (
           <>
             {/* Hero Showcase: Featured Large Wide Frame */}
@@ -529,7 +529,7 @@ export function GalleryAnthologyView() {
       </section>
 
       {/* Curated Storytelling & Architectural Essay Strip */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 my-14">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 my-14">
         <Reveal>
           <div className="bg-white border border-[#EDEDEA] rounded-3xl p-6 md:p-12 relative overflow-hidden shadow-[0_8px_30px_rgba(13,43,36,0.04)]">
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -610,7 +610,7 @@ export function GalleryAnthologyView() {
       </section>
 
       {/* Bottom Visual Call to Action Banner */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pb-20">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pb-20">
         <Reveal>
           <div className="relative rounded-3xl overflow-hidden shadow-lg bg-[#0d2b24] text-white p-8 md:p-12">
             <div className="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#3d6659]/25 blur-3xl pointer-events-none" />

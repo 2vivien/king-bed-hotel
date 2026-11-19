@@ -111,7 +111,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
   return (
     <div className="bg-white text-[#1a1c1a]">
       {/* Top Breadcrumb & Page Meta Anchor */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-6 pb-4">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-6 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <nav
             aria-label="Fil d'Ariane"
@@ -189,7 +189,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       </section>
 
       {/* Photographic Gallery Header (Asymmetric Layout) */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-2 pb-8">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-2 pb-8">
         <Reveal>
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-4 rounded-3xl overflow-hidden shadow-[0_12px_36px_rgba(13,43,36,0.06)] bg-[#f4f3f0] p-2">
             {/* Main Large Frame */}
@@ -300,7 +300,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       </section>
 
       {/* Two-Column Main Content & Lateral Booking Panel Layout */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pb-16">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* LEFT COLUMN */}
           <div className="lg:col-span-8 space-y-6">
@@ -957,7 +957,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
 
       {/* Similar Sanctuaries Carousel Section */}
       <section className="w-full bg-white border-t border-[#EDEDEA] py-14">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 space-y-8">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-widest text-[#3d6659] block mb-1">

@@ -97,7 +97,7 @@ export function RoomsCollectionView() {
   return (
     <div className="bg-white text-[#1a1c1a]">
       {/* Top Banner & Editorial Hero Header */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-8 pb-10">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-8 pb-10">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
             <div className="max-w-2xl space-y-3">
@@ -143,7 +143,7 @@ export function RoomsCollectionView() {
       </section>
 
       {/* Featured / Hero Suite Showcase */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 py-4">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 py-4">
         <Reveal delay={0.08}>
           <div className="relative bg-white rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(13,43,36,0.08)] grid grid-cols-1 lg:grid-cols-12 border border-[#1a1c1a]/5">
             {/* Media Left Column */}
@@ -314,7 +314,7 @@ export function RoomsCollectionView() {
       {/* Complete Catalogue Grid */}
       <section
         id="catalogue-grid"
-        className="max-w-[1280px] mx-auto px-6 lg:px-10 py-10"
+        className="max-w-[1440px] mx-auto px-6 lg:px-10 py-10"
       >
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-2">
           <div>
@@ -462,7 +462,7 @@ export function RoomsCollectionView() {
       </section>
 
       {/* Suite Comparison Matrix */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 py-10">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 py-10">
         <Reveal>
           <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-sm border border-[#1a1c1a]/5">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-3">
@@ -560,7 +560,7 @@ export function RoomsCollectionView() {
       </section>
 
       {/* Interactive Amenities & Comfort Accordion FAQ */}
-      <section className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-4 pb-20">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-4">
             <span className="text-[12px] font-medium text-[#3d6659] uppercase tracking-widest">
