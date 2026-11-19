@@ -25,12 +25,12 @@ export function TestimonialsSection() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         {/* Texte à gauche */}
-        <Reveal className="lg:col-span-4 space-y-6">
+        <Reveal className="lg:col-span-3 space-y-6">
           <div>
             <span className="text-[11px] uppercase tracking-[0.14em] text-[#3d6659] font-semibold">
               Avis Clients
             </span>
-            <h2 className="mt-2 text-[clamp(2rem,4.5vw,2.75rem)] leading-[1.12] font-medium tracking-[-0.02em] text-[#001510]">
+            <h2 className="mt-2 text-[clamp(2rem,4vw,2.5rem)] leading-[1.12] font-medium tracking-[-0.02em] text-[#001510]">
               Plébiscité par
               <br />
               Nos Voyageurs
@@ -42,13 +42,13 @@ export function TestimonialsSection() {
           </p>
         </Reveal>
 
-        {/* Témoignage + image à droite */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+        {/* Carte + image paysage à droite */}
+        <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
           <Reveal delay={0.06} className="md:col-span-7 flex">
             <figure className="w-full rounded-[28px] bg-white border border-[#111111]/8 p-7 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col justify-between gap-8">
               <div className="space-y-5">
                 <Quote className="w-8 h-8 text-[#5F5F5A]" strokeWidth={1.5} aria-hidden="true" />
-                <blockquote className="text-[19px] sm:text-[22px] font-light leading-[1.4] tracking-[-0.01em] text-[#111111]">
+                <blockquote className="text-[18px] sm:text-[20px] font-light leading-[1.42] tracking-[-0.01em] text-[#111111]">
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
               </div>
@@ -87,11 +87,11 @@ export function TestimonialsSection() {
           </Reveal>
 
           <Reveal delay={0.12} className="md:col-span-5 flex">
-            <div className="relative w-full min-h-[240px] md:min-h-0 rounded-[28px] overflow-hidden bg-[#EFE6D6]">
+            <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-full rounded-[28px] overflow-hidden bg-[#EFE6D6]">
               <SuiteImage
                 src={current.image}
                 alt={current.stayTitle}
-                sizes="(max-width: 768px) 100vw, 400px"
+                sizes="(max-width: 768px) 100vw, 420px"
               />
             </div>
           </Reveal>

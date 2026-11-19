@@ -15,7 +15,7 @@ export function ConferenceHallsShowcase() {
             <Reveal key={hall.slug} delay={idx * 0.06}>
               <Link
                 href={`/account/reservation?destination=maldives&room=${hall.slug}`}
-                className="group relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
+                className="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
               >
                 <SuiteImage
                   src={hall.image}
