@@ -7,7 +7,7 @@ import {
 } from "@/features/booking/types/booking.types";
 import { calculateNights, computeBookingPricing } from "@/lib/utils/nights";
 import { initialBookingsMock } from "@/mocks/bookings";
-import { roomsMock } from "@/mocks/rooms";
+import { findSpace, spacesMock } from "@/lib/utils/space-lookup";
 
 interface BookingStoreGlobal {
   bookings: Booking[];
@@ -57,8 +57,8 @@ export function checkAvailabilityServer(params: {
 
   const store = getStore();
   const candidates = params.roomSlug
-    ? roomsMock.filter((r) => r.slug === params.roomSlug)
-    : roomsMock;
+    ? spacesMock.filter((r) => r.slug === params.roomSlug)
+    : spacesMock;
 
   return candidates.map((room) => {
     const fitsGuests = params.guests <= room.maxGuests;
@@ -95,7 +95,7 @@ export function createBookingServer(input: CreateBookingInput): {
     return { booking: store.idempotencyMap.get(input.idempotencyKey) };
   }
 
-  const room = roomsMock.find((r) => r.slug === input.roomSlug);
+  const room = findSpace(input.roomSlug);
   if (!room) {
     return {
       error: { code: "ROOM_NOT_FOUND", message: "L'hébergement ou la salle sélectionnée est introuvable.", status: 404 },
