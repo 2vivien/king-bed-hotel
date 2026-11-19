@@ -62,27 +62,15 @@ type AddOnKey = "chauffeur" | "breakfast";
 const DESTINATION_OPTIONS = [
   {
     slug: "bali",
-    label: "Chambres & Petit-Déjeuner · King's Bed Hotel",
-    address: "Savalou, Bénin",
-    shortLabel: "King's Bed · Aile Royale",
-  },
-  {
-    slug: "positano",
-    label: "Suite Exécutive & Salon Privé",
-    address: "Niveau Panorama, Aile Royale · Savalou",
-    shortLabel: "Niveau Panorama · Savalou",
-  },
-  {
-    slug: "lisbon",
-    label: "Forfait Séminaire & Réunion (8–30 pers.)",
-    address: "Centre d'Affaires, 1er Étage · Savalou",
-    shortLabel: "Espace Réunion · 1er Étage",
+    label: "Chambres & Suites",
+    address: "King's Bed Hotel · Savalou, Bénin",
+    shortLabel: "Chambres",
   },
   {
     slug: "maldives",
-    label: "Conférence & Congrès (40–180 pers.)",
-    address: "Grand Auditorium, Aile Est · Savalou",
-    shortLabel: "Auditorium · Aile Est",
+    label: "Salles de Conférence",
+    address: "Centre d'Affaires · Savalou, Bénin",
+    shortLabel: "Conférences",
   },
 ] as const;
 
@@ -447,15 +435,23 @@ export function ReservationFlow() {
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[11px] uppercase text-[#414846] flex items-center gap-1.5 font-semibold">
                         <MapPin className="w-3.5 h-3.5 text-[#3d6659]" />
-                        Formule / Aile
-                      </span>
-                      <span className="text-[11px] text-[#3d6659] font-semibold">
-                        Modifier
+                        Formule
                       </span>
                     </div>
                     <select
                       value={destinationSlug}
-                      onChange={(e) => setDestinationSlug(e.target.value)}
+                      onChange={(e) => {
+                        const slug = e.target.value;
+                        setDestinationSlug(slug);
+                        const first =
+                          slug === "maldives"
+                            ? conferenceHallsMock[0]?.slug
+                            : roomsMock[0]?.slug;
+                        if (first) {
+                          setSelectedRoomSlug(first);
+                          setActiveStep(2);
+                        }
+                      }}
                       className="w-full bg-transparent text-[18px] text-[#001510] font-semibold focus:outline-none cursor-pointer"
                     >
                       {DESTINATION_OPTIONS.map((dest) => (
