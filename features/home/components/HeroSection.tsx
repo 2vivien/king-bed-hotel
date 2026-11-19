@@ -36,35 +36,34 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Main hero grid */}
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-6 text-white flex flex-col items-start text-left gap-9">
-                <p className="text-[14px] text-white/85 max-w-xs leading-relaxed">
-                  King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
-                </p>
-
-                <h1 className="text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance">
-                  Réservez Votre Séjour
-                  <br />
-                  au King&apos;s Bed Hotel
-                </h1>
-              </div>
-
-              {/* Center circular CTA */}
-              <div className="hidden lg:flex lg:col-span-2 justify-center pb-12">
+            {/* Subtitle + cercle CTA sur la même ligne */}
+            <div className="grid grid-cols-12 items-center gap-4">
+              <p className="col-span-7 sm:col-span-5 text-[13px] sm:text-[14px] text-white/85 leading-relaxed max-w-[280px]">
+                King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
+              </p>
+              <div className="col-span-5 sm:col-span-2 flex justify-center">
                 <Link
                   href="/account/reservation"
-                  className="w-28 h-28 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
+                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
                   aria-label="Réserver votre séjour"
                 >
-                  <span className="text-[12px] font-medium leading-tight">
+                  <span className="text-[10px] sm:text-[11px] lg:text-[12px] font-medium leading-tight">
                     Réserver votre séjour
                   </span>
-                  <ArrowDownRight className="w-4 h-4 mt-1.5" strokeWidth={1.5} />
+                  <ArrowDownRight className="w-4 h-4 mt-1" strokeWidth={1.5} />
                 </Link>
               </div>
+              <div className="hidden md:block md:col-span-5" />
+            </div>
 
-              {/* Right floating glass cards */}
+            {/* Bottom row: Title + Floating cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+              <h1 className="lg:col-span-6 text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
+                Réservez Votre Séjour
+                <br />
+                au King&apos;s Bed Hotel
+              </h1>
+
               <div className="lg:col-span-4 flex flex-col gap-3.5 max-w-sm lg:ml-auto w-full">
                 <HeroCardConfirmed />
                 <HeroCardStay />
@@ -73,7 +72,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }
