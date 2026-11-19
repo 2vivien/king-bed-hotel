@@ -7,6 +7,7 @@ import { useBookingStore } from "@/features/booking/store/booking.store";
 import { formatMoney } from "@/lib/utils/format-money";
 import { calculateNights, computeBookingPricing } from "@/lib/utils/nights";
 import { destinationsMock } from "@/mocks/destinations";
+import { findSpace } from "@/lib/utils/space-lookup";
 import { roomsMock } from "@/mocks/rooms";
 
 export function HeroCardStay() {
@@ -27,8 +28,7 @@ export function HeroCardStay() {
     destinationsMock.find((d) => d.slug === destinationSlug) ??
     destinationsMock[3];
   const room =
-    roomsMock.find((r) => r.slug === (activeBooking?.roomSlug ?? roomSlug)) ??
-    roomsMock[2];
+    findSpace(activeBooking?.roomSlug ?? roomSlug) ?? roomsMock[2];
 
   const activeCheckIn = activeBooking?.checkIn ?? checkIn;
   const activeCheckOut = activeBooking?.checkOut ?? checkOut;

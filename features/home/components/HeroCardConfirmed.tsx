@@ -5,6 +5,8 @@ import { SuiteImage } from "@/components/shared/SuiteImage";
 import { useBookingStore } from "@/features/booking/store/booking.store";
 import { formatMoney } from "@/lib/utils/format-money";
 import { calculateNights, computeBookingPricing } from "@/lib/utils/nights";
+import { findSpace, spacesMock } from "@/lib/utils/space-lookup";
+import { conferenceHallsMock } from "@/mocks/halls";
 import { roomsMock } from "@/mocks/rooms";
 
 export function HeroCardConfirmed() {
@@ -22,8 +24,7 @@ export function HeroCardConfirmed() {
     : undefined;
 
   const displayRoom =
-    roomsMock.find((r) => r.slug === (activeBooking?.roomSlug ?? roomSlug)) ??
-    roomsMock[2];
+    findSpace(activeBooking?.roomSlug ?? roomSlug) ?? roomsMock[2];
   const activeCheckIn = activeBooking?.checkIn ?? checkIn;
   const activeCheckOut = activeBooking?.checkOut ?? checkOut;
   const activeGuests = activeBooking?.guests ?? guests;
@@ -69,11 +70,20 @@ export function HeroCardConfirmed() {
             aria-label="Choisir une chambre"
             className="mt-1 h-11 w-full rounded-2xl border border-[#EDEDEA] bg-[#faf9f6] px-3.5 text-[13px] font-medium text-[#111111] outline-none cursor-pointer focus:border-[#111111]"
           >
-            {roomsMock.map((room) => (
-              <option key={room.slug} value={room.slug}>
-                {room.name} — {formatMoney(room.pricePerNight)} / nuit
-              </option>
-            ))}
+            <optgroup label="Chambres & Suites">
+              {roomsMock.map((room) => (
+                <option key={room.slug} value={room.slug}>
+                  {room.name} — {formatMoney(room.pricePerNight)} / nuit
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Salles de Conférence">
+              {conferenceHallsMock.map((hall) => (
+                <option key={hall.slug} value={hall.slug}>
+                  {hall.name} — {formatMoney(hall.pricePerNight)} / jour
+                </option>
+              ))}
+            </optgroup>
           </select>
         </label>
 
