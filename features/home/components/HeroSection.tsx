@@ -47,7 +47,7 @@ export function HeroSection() {
                 </Link>
               </div>
 
-              <h1 className="mt-auto -translate-y-[5px] text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
+              <h1 className="mt-auto -translate-y-[15px] text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
                 Réservez Votre Séjour
                 <br />
                 au King&apos;s Bed Hotel
