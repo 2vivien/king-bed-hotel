@@ -34,6 +34,9 @@ export function BrandMark({ tone = "dark", className }: BrandMarkProps) {
           )}
         />
       </span>
+      <span className="text-[16px] font-semibold tracking-[-0.02em]">
+        King&apos;s Bed Hotel
+      </span>
     </Link>
   );
 }
