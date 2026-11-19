@@ -10,7 +10,7 @@ export const initialBookingsMock: Booking[] = [
     roomSlug: "royal-villa",
     roomName: "Suite Pavillon Royal",
     destinationName: "King's Bed Hotel · Savalou",
-    address: "25 Avenue des Rois, Savalou",
+    address: "Savalou, Bénin",
     image: "/images/rooms/royal-villa.jpg",
     checkIn,
     checkOut,

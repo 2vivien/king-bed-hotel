@@ -63,7 +63,7 @@ const DESTINATION_OPTIONS = [
   {
     slug: "bali",
     label: "Chambres & Petit-Déjeuner · King's Bed Hotel",
-    address: "25 Avenue des Rois, Savalou, Bénin",
+    address: "Savalou, Bénin",
     shortLabel: "King's Bed · Aile Royale",
   },
   {

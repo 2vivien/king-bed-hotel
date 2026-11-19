@@ -120,7 +120,7 @@ export function ContactSidebar() {
                 </span>
               </div>
               <p className="text-[13px] text-[#414846] mt-0.5">
-                25 Avenue des Rois, Savalou, Bénin
+                Savalou, Bénin
               </p>
               <span className="text-[11px] font-semibold text-[#3d6659]">
                 Réception ouverte • 24h/24 &amp; 7j/7
