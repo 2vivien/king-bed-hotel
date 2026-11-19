@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section className="px-2 sm:px-2.5 lg:px-3 pt-2.5">
       <div className="max-w-none mx-auto relative">
-        <div className="relative rounded-[18px] overflow-hidden min-h-[640px] lg:min-h-[690px] bg-[#1F3A2C]">
+        <div className="relative rounded-[18px] overflow-hidden min-h-[580px] lg:min-h-[620px] bg-[#1F3A2C]">
           <SuiteImage
             src="/images/hero/hero-pool.jpg"
             alt="Piscine et terrasses architecturales du King's Bed Hotel"
@@ -23,7 +23,7 @@ export function HeroSection() {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 p-6 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[640px] lg:min-h-[690px]">
+          <div className="relative z-10 p-6 sm:p-10 lg:p-12 flex flex-col justify-start min-h-[580px] lg:min-h-[620px]">
             {/* Top utility row inside hero */}
             <div className="flex items-center justify-between gap-4">
               <div className="h-11 px-4 rounded-full bg-white text-[#111111] flex items-center gap-2.5 shadow-sm whitespace-nowrap">
@@ -37,7 +37,7 @@ export function HeroSection() {
             </div>
 
             {/* Subtitle + cercle CTA sur la même ligne */}
-            <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-12 items-center gap-4">
+            <div className="mt-14 sm:mt-16 lg:mt-20 grid grid-cols-12 items-center gap-4">
               <p className="col-span-7 sm:col-span-5 text-[13px] sm:text-[14px] text-white/85 leading-relaxed max-w-[280px]">
                 King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
               </p>
@@ -57,7 +57,7 @@ export function HeroSection() {
             </div>
 
             {/* Bottom row: Title + Floating cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <h1 className="lg:col-span-6 text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
                 Réservez Votre Séjour
                 <br />
