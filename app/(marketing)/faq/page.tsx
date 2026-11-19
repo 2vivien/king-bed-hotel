@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { FaqAccordion } from "@/features/faq/components/FaqAccordion";
 import { faqMock } from "@/mocks/testimonials";
@@ -36,6 +37,7 @@ export default function FaqPage() {
         subtitle="Tout ce qu'il faut savoir avant votre arrivée pour votre séjour, petit-déjeuner ou conférence au King's Bed Hotel."
       />
       <FaqAccordion />
+      <LeavesCta />
     </section>
   );
 }

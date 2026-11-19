@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
+    <>
     <article className="max-w-[720px] mx-auto px-6 pt-14 pb-24 space-y-8">
       <div className="space-y-3">
         <p className="text-[13px] text-[#5F5F5A]">Informations Légales</p>
@@ -41,5 +43,7 @@ export default function TermsPage() {
         </p>
       </div>
     </article>
+    <LeavesCta />
+    </>
   );
 }

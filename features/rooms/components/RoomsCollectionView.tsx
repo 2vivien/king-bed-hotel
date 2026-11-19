@@ -22,6 +22,7 @@ import {
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Reveal } from "@/components/shared/Reveal";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { roomsMock } from "@/mocks/rooms";
 import type { Room } from "@/types/hotel.types";
@@ -633,6 +634,8 @@ export function RoomsCollectionView() {
           </div>
         </div>
       </section>
+
+      <LeavesCta />
     </div>
   );
 }

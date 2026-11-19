@@ -37,6 +37,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Reveal } from "@/components/shared/Reveal";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { DialogModal } from "@/components/ui/DialogModal";
 import { useBookingStore } from "@/features/booking/store/booking.store";
@@ -1159,6 +1160,8 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
           </div>
         </div>
       </DialogModal>
+
+      <LeavesCta />
     </div>
   );
 }

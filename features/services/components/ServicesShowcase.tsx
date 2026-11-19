@@ -19,6 +19,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/shared/Reveal";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { cn } from "@/lib/utils";
 
@@ -637,45 +638,7 @@ export function ServicesShowcase() {
         </div>
       </section>
 
-      {/* Bottom CTA Banner — feuillage */}
-      <section className="w-full px-6 lg:px-10 pb-16 bg-white">
-        <div className="max-w-[1440px] mx-auto rounded-3xl overflow-hidden shadow-lg relative">
-          <SuiteImage
-            src="/images/Call-toaction/call-to-action.jpg"
-            alt="Feuillage luxuriant du King's Bed Hotel"
-            sizes="(max-width: 1440px) 100vw, 1440px"
-            className="absolute inset-0"
-          />
-          <div className="relative p-10 md:p-16 max-w-2xl space-y-6">
-            <span className="text-[12px] text-[#3d6659] uppercase tracking-widest font-bold block">
-              Votre Séjour Commence Ici
-            </span>
-            <h2 className="text-[36px] md:text-[52px] leading-[1.1] font-semibold tracking-tight text-[#001510] text-balance">
-              Prêt à Réserver Votre Chambre ou Séminaire ?
-            </h2>
-            <p className="text-[17px] leading-[1.6] text-[#414846] max-w-xl">
-              Contactez notre équipe dédiée pour organiser un séjour avec
-              petit-déjeuner ou recevoir une proposition sur mesure pour vos réunions et
-              conférences.
-            </p>
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <Link
-                href="/account/reservation"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#001510] text-white text-[14px] font-bold shadow-md hover:bg-[#0d2b24] transition-all whitespace-nowrap"
-              >
-                Réserver Maintenant
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/80 backdrop-blur-sm border border-[#001510]/10 text-[#001510] text-[14px] font-semibold hover:bg-white transition-all whitespace-nowrap"
-              >
-                <Headphones className="w-4 h-4" strokeWidth={1.75} />
-                Contacter la Conciergerie
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LeavesCta />
     </div>
   );
 }

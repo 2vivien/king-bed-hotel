@@ -22,6 +22,7 @@ import {
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Reveal } from "@/components/shared/Reveal";
+import { LeavesCta } from "@/components/shared/LeavesCta";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 
 type GalleryFilterId =
@@ -609,50 +610,7 @@ export function GalleryAnthologyView() {
         </Reveal>
       </section>
 
-      {/* Bottom Visual Call to Action Banner */}
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-10 pb-20">
-        <Reveal>
-          <div className="relative rounded-3xl overflow-hidden shadow-lg">
-            <SuiteImage
-              src="/images/Call-toaction/call-to-action.jpg"
-              alt="Feuillage luxuriant du King's Bed Hotel"
-              sizes="(max-width: 1440px) 100vw, 1440px"
-              className="absolute inset-0"
-            />
-            <div className="relative flex flex-col lg:flex-row lg:items-center justify-between gap-8 p-8 md:p-12">
-              <div className="space-y-2 max-w-xl">
-                <span className="text-[11px] text-[#3d6659] uppercase tracking-wider font-semibold">
-                  Réservez Votre Séjour ou Séminaire
-                </span>
-                <h2 className="text-[28px] md:text-[40px] leading-[1.15] text-[#001510] font-medium tracking-tight">
-                  Vivez l&apos;Expérience King&apos;s Bed Hotel
-                </h2>
-                <p className="text-[15px] text-[#414846]">
-                  Réservez votre chambre avec petit-déjeuner ou contactez notre équipe pour
-                  visiter nos salles de réunion et de conférences.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                <Link
-                  href="/rooms"
-                  className="px-7 py-3.5 rounded-full bg-[#001510] text-white hover:bg-[#0d2b24] text-[13px] font-semibold text-center transition-all shadow-md inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                >
-                  <span>Voir Toutes les Chambres</span>
-                  <Compass className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-7 py-3.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#001510]/10 text-[#001510] hover:bg-white text-[13px] font-semibold text-center transition-all inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                >
-                  <span>Demander un Devis Séminaire</span>
-                  <Headphones className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      <LeavesCta />
 
       {/* Interactive Lightbox Modal */}
       {activePlate && (
