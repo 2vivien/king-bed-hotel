@@ -1,4 +1,9 @@
-export type RoomCategory = "rooms" | "suites" | "villas" | "penthouses";
+export type RoomCategory =
+  | "rooms"
+  | "suites"
+  | "villas"
+  | "penthouses"
+  | "conference";
 
 export type RoomExperienceTag = "pool" | "ocean" | "butler";
 
