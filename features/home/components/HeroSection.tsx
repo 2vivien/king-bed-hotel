@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight, Asterisk, MapPin } from "lucide-react";
+import { ArrowDownRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { HeroCardConfirmed } from "./HeroCardConfirmed";
@@ -38,23 +38,16 @@ export function HeroSection() {
 
             {/* Main hero grid */}
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-6 text-white space-y-6">
-                <p className="text-[13px] text-white/85 max-w-xs leading-relaxed">
-                  King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec
-                  petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
+              <div className="lg:col-span-6 text-white flex flex-col items-start text-left gap-9">
+                <p className="text-[14px] text-white/85 max-w-xs leading-relaxed">
+                  King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
                 </p>
 
-                <div className="flex items-start gap-3">
-                  <Asterisk
-                    className="w-9 h-9 sm:w-11 sm:h-11 text-white shrink-0 mt-1"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
-                  <h1 className="text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance">
-                    Réservez Votre Séjour au King&apos;s Bed Hotel
-                  </h1>
-                </div>
-
+                <h1 className="text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance">
+                  Réservez Votre Séjour
+                  <br />
+                  au King&apos;s Bed Hotel
+                </h1>
               </div>
 
               {/* Center circular CTA */}
@@ -62,6 +55,7 @@ export function HeroSection() {
                 <Link
                   href="/account/reservation"
                   className="w-28 h-28 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
+                  aria-label="Réserver votre séjour"
                 >
                   <span className="text-[12px] font-medium leading-tight">
                     Réserver votre séjour

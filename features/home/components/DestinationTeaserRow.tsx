@@ -1,4 +1,4 @@
-import { ArrowUpRight, Asterisk, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
 import { AvatarStack } from "@/components/shared/AvatarStack";
 import { Reveal } from "@/components/shared/Reveal";
@@ -15,7 +15,7 @@ export function DestinationTeaserRow() {
       className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-10 lg:pt-12 pb-12"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-        {/* Left: 3 Teaser Tiles + Title & Arrows/Asterisk disposition */}
+        {/* Left: 3 tuiles + titre + navigation */}
         <div className="lg:col-span-7 space-y-10">
           <Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -57,7 +57,7 @@ export function DestinationTeaserRow() {
                 </p>
               </div>
 
-              <div className="flex sm:flex-col items-center sm:items-end justify-between gap-5 text-[#111111] shrink-0 pt-1">
+              <div className="flex sm:flex-col items-center sm:items-end justify-end gap-5 text-[#111111] shrink-0 pt-1 sm:sticky sm:top-8">
                 <div className="flex items-center gap-2.5">
                   <Link
                     href="/rooms"
@@ -74,7 +74,6 @@ export function DestinationTeaserRow() {
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
                   </Link>
                 </div>
-                <Asterisk className="w-6 h-6 text-[#111111]" strokeWidth={1.5} aria-hidden="true" />
               </div>
             </div>
           </Reveal>
