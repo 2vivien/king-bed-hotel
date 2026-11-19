@@ -1,7 +1,6 @@
 import { BadgeCheck, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { BrandMark } from "./BrandMark";
-import { FooterGazetteForm } from "./FooterGazetteForm";
 
 const portfolioLinks = [
   { label: "Chambres Deluxe & Confort", href: "/rooms?type=rooms" },
@@ -79,15 +78,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Private Gazette */}
+          {/* Column 4: Contact */}
           <div className="space-y-4">
             <span className="block text-[20px] font-semibold text-[#001510]">
-              Gazette Privée
+              Contact
             </span>
-            <p className="text-[13px] leading-[1.55] text-[#414846]">
-              Recevez nos offres séjours, formules petit-déjeuner et disponibilités de salles de conférence.
-            </p>
-            <FooterGazetteForm />
             <div className="pt-1 space-y-1.5 text-[13px] text-[#414846]">
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" strokeWidth={1.5} />
