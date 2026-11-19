@@ -1,34 +1,15 @@
 "use client";
 
-import { Calendar, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { useBookingStore } from "@/features/booking/store/booking.store";
 import { formatReadableDate } from "@/lib/utils/format-date";
 import { formatMoney } from "@/lib/utils/format-money";
-import { buildBookingIcs, buildGoogleCalendarUrl } from "@/lib/utils/ics";
 
 export function ConfirmationView({ bookingId }: { bookingId: string }) {
   const { confirmedBookings } = useBookingStore();
   const booking = confirmedBookings[bookingId.toUpperCase()];
-
-  const handleDownloadIcs = () => {
-    if (!booking) return;
-    const content = buildBookingIcs({
-      bookingId: booking.id,
-      roomName: booking.roomName,
-      location: booking.destinationName,
-      checkIn: booking.checkIn,
-      checkOut: booking.checkOut,
-    });
-    const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `kingsbed-${booking.id}.ics`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
 
   const myBookingHref = "/account";
 
@@ -92,32 +73,6 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
           Voir Ma Réservation
         </Link>
 
-        {booking ? (
-          <>
-            <button
-              type="button"
-              onClick={handleDownloadIcs}
-              className="h-11 px-5 rounded-full bg-[#FAF9F6] border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center gap-2 hover:bg-[#EFE6D6] transition-colors cursor-pointer"
-            >
-              <Calendar className="w-4 h-4" strokeWidth={1.5} />
-              Télécharger .ics
-            </button>
-            <a
-              href={buildGoogleCalendarUrl({
-                bookingId: booking.id,
-                roomName: booking.roomName,
-                location: booking.destinationName,
-                checkIn: booking.checkIn,
-                checkOut: booking.checkOut,
-              })}
-              target="_blank"
-              rel="noreferrer"
-              className="h-11 px-5 rounded-full bg-[#FAF9F6] border border-[#111111]/12 text-[#111111] text-[14px] font-medium inline-flex items-center hover:bg-[#EFE6D6] transition-colors"
-            >
-              Google Agenda
-            </a>
-          </>
-        ) : null}
       </div>
     </div>
   );
