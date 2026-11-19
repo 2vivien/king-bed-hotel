@@ -67,7 +67,11 @@ const hotelJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="fr"
+      suppressHydrationWarning
+      className={`${jakarta.variable} ${jetbrainsMono.variable}`}
+    >
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"
