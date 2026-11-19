@@ -1,6 +1,6 @@
 export type RoomCategory = "rooms" | "suites" | "villas" | "penthouses";
 
-export type RoomExperienceTag = "pool" | "ocean" | "butler" | "spa";
+export type RoomExperienceTag = "pool" | "ocean" | "butler";
 
 export interface Room {
   slug: string;
@@ -8,7 +8,7 @@ export interface Room {
   category: RoomCategory;
   destinationSlug: string;
   destinationName: string;
-  pricePerNight: number; // unités mineures (centimes)
+  pricePerNight: number; // XOF (francs CFA), entiers — pas de centimes
   originalPricePerNight?: number;
   maxGuests: number;
   sizeSqm: number;

@@ -40,6 +40,7 @@ import type { ManagedBooking } from "@/features/auth/types/auth.types";
 import { useBookingStore } from "@/features/booking/store/booking.store";
 import { useIsMounted } from "@/lib/hooks/use-is-mounted";
 import { cn } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils/format-money";
 
 type ClientSidebarSection =
   | "overview"
@@ -49,14 +50,6 @@ type ClientSidebarSection =
   | "documents";
 
 type ClientTab = "all" | "confirmed" | "pending" | "history";
-
-function formatEur(amount: number) {
-  return new Intl.NumberFormat("fr-FR", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
 
 function downloadTextFile(filename: string, content: string) {
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
@@ -139,7 +132,7 @@ export function UserDashboardView() {
       breakfastOrHallLabel: "Petit-Déjeuner Inclus",
       serviceIncluded: "Réception 24h/24",
       butlerName: "Henri de Saint-Germain",
-      amountEur: b.total,
+      amount: b.total,
       image: b.image || "/images/rooms/oceanfront-sanctuary.jpg",
       perkTitle: "Réservation directe confirmée",
       perkSubtitle:
@@ -166,9 +159,9 @@ export function UserDashboardView() {
       history: clientBookings.filter(
         (b) => b.status === "history" || b.status === "declined"
       ).length,
-      totalSpentEur: clientBookings
+      totalSpent: clientBookings
         .filter((b) => b.status !== "declined")
-        .reduce((acc, b) => acc + b.amountEur, 0),
+        .reduce((acc, b) => acc + b.amount, 0),
     };
   }, [clientBookings]);
 
@@ -249,7 +242,7 @@ export function UserDashboardView() {
       icon: Utensils,
     },
     { id: "preferences", label: "Préférences Séjour", icon: SlidersHorizontal },
-    { id: "documents", label: "Factures & Vouchers", icon: FileText },
+    { id: "documents", label: "Factures & Reçus", icon: FileText },
   ];
 
   const sectionTitleMap: Record<ClientSidebarSection, string> = {
@@ -257,7 +250,7 @@ export function UserDashboardView() {
     bookings: "Mes Réservations",
     "breakfast-halls": "Petit-Déjeuner & Salles de Conférence",
     preferences: "Préférences Séjour",
-    documents: "Factures & Vouchers 2025",
+    documents: "Factures & Reçus 2025",
   };
 
   const sidebarContent = (
@@ -333,7 +326,7 @@ export function UserDashboardView() {
           </div>
           <p className="text-[13px] font-medium">Henri de Saint-Germain</p>
           <p className="text-[11px] text-[#adcdc3] leading-relaxed">
-            Ligne directe réception : +33 1 42 68 90 00
+            Ligne directe réception : +229 01 42 68 90 00
           </p>
           <Link
             href="/contact"
@@ -375,9 +368,9 @@ export function UserDashboardView() {
 
   return (
     <div className="w-full bg-white text-[#111111] border-t border-transparent">
-      <div className="max-w-[1440px] mx-auto flex min-h-[calc(100vh-72px)] bg-white">
+      <div className="max-w-[1440px] mx-auto flex min-h-[calc(100vh-64px)] bg-white">
         {/* Desktop Persistent Left Sidebar (260px) */}
-        <aside className="hidden lg:block w-[264px] shrink-0 border-r border-[#EDEDEA] bg-white sticky top-[72px] h-[calc(100vh-72px)] overflow-y-auto">
+        <aside className="hidden lg:block w-[264px] shrink-0 border-r border-[#EDEDEA] bg-white sticky top-[64px] h-[calc(100vh-64px)] overflow-y-auto">
           {sidebarContent}
         </aside>
 
@@ -456,7 +449,7 @@ export function UserDashboardView() {
             {section === "overview" && (
               <>
                 {/* KPI Cards Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-5 rounded-2xl border border-[#EDEDEA] bg-white space-y-1">
                     <p className="text-[11px] font-semibold text-[#5F5F5A] uppercase tracking-wider">
                       Séjours confirmés
@@ -477,28 +470,6 @@ export function UserDashboardView() {
                     </p>
                     <p className="text-[12px] text-[#5F5F5A]">
                       Validation sous 2 heures
-                    </p>
-                  </div>
-                  <div className="p-5 rounded-2xl border border-[#EDEDEA] bg-white space-y-1">
-                    <p className="text-[11px] font-semibold text-[#5F5F5A] uppercase tracking-wider">
-                      Crédits Fidélité
-                    </p>
-                    <p className="text-[30px] font-semibold text-[#0d2b24] tabular-nums">
-                      3 450 €
-                    </p>
-                    <p className="text-[12px] text-[#5F5F5A]">
-                      Utilisables sur vos séjours
-                    </p>
-                  </div>
-                  <div className="p-5 rounded-2xl border border-[#EDEDEA] bg-white space-y-1">
-                    <p className="text-[11px] font-semibold text-[#5F5F5A] uppercase tracking-wider">
-                      Volume cumulé
-                    </p>
-                    <p className="text-[30px] font-semibold text-[#111111] tabular-nums">
-                      {formatEur(counts.totalSpentEur)}
-                    </p>
-                    <p className="text-[12px] text-[#5F5F5A]">
-                      Petit-déjeuner verrière inclus
                     </p>
                   </div>
                 </div>
@@ -568,29 +539,12 @@ export function UserDashboardView() {
                               Total TTC
                             </p>
                             <p className="text-[14px] font-semibold text-[#111111] mt-0.5 tabular-nums">
-                              {formatEur(clientBookings[0].amountEur)}
+                              {formatMoney(clientBookings[0].amount)}
                             </p>
                           </div>
                         </div>
 
                         <div className="flex flex-wrap items-center justify-between gap-3">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              downloadTextFile(
-                                `Voucher-${clientBookings[0].id}.txt`,
-                                `KING'S BED HOTEL — VOUCHER\nRéf: ${clientBookings[0].ref}\nClient: ${currentUser.name}\nChambre: ${clientBookings[0].roomTitle}\nDates: ${clientBookings[0].dateRange}\n`
-                              );
-                              showToast(
-                                "Voucher téléchargé",
-                                `Billet ${clientBookings[0].ref} enregistré.`
-                              );
-                            }}
-                            className="px-5 py-2.5 rounded-full bg-[#111111] hover:bg-[#2A2A28] text-white text-[13px] font-medium inline-flex items-center gap-2 transition-colors cursor-pointer"
-                          >
-                            <Download className="w-4 h-4" />
-                            Télécharger Voucher
-                          </button>
                           <button
                             type="button"
                             onClick={() => setSection("bookings")}
@@ -660,7 +614,7 @@ export function UserDashboardView() {
                               </span>
                             </td>
                             <td className="py-3.5 px-6 text-right font-semibold text-[#111111] tabular-nums">
-                              {formatEur(b.amountEur)}
+                              {formatMoney(b.amount)}
                             </td>
                           </tr>
                         ))}
@@ -780,30 +734,13 @@ export function UserDashboardView() {
                               Montant TTC
                             </p>
                             <p className="text-[20px] font-semibold text-[#111111] tabular-nums">
-                              {formatEur(booking.amountEur)}
+                              {formatMoney(booking.amount)}
                             </p>
                           </div>
                         </div>
 
                         <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#EDEDEA]">
                           <div className="flex flex-wrap items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                downloadTextFile(
-                                  `Voucher-${booking.id}.txt`,
-                                  `KING'S BED HOTEL — VOUCHER\nRéférence: ${booking.ref}\nClient: ${booking.guestName}\nPrestation: ${booking.roomTitle}\nDates: ${booking.dateRange}\nFormule: ${booking.breakfastOrHallLabel}\nTotal: ${formatEur(booking.amountEur)}\n`
-                                );
-                                showToast(
-                                  "Voucher téléchargé",
-                                  `Document ${booking.ref} enregistré.`
-                                );
-                              }}
-                              className="px-4 py-2 rounded-full bg-[#111111] text-white text-[12px] font-medium inline-flex items-center gap-1.5 hover:bg-[#2A2A28] cursor-pointer"
-                            >
-                              <Download className="w-3.5 h-3.5" />
-                              Voucher
-                            </button>
                             <button
                               type="button"
                               onClick={() => {
@@ -1005,7 +942,7 @@ export function UserDashboardView() {
               <div className="rounded-2xl border border-[#EDEDEA] bg-white overflow-hidden">
                 <div className="px-6 py-4 border-b border-[#EDEDEA] flex items-center justify-between">
                   <h2 className="text-[16px] font-semibold text-[#111111]">
-                    Factures, Reçus Fiscaux &amp; Vouchers
+                    Factures &amp; Reçus Fiscaux
                   </h2>
                   <span className="text-[12px] text-[#5F5F5A]">
                     Compte {currentUser.memberNumber}
@@ -1021,10 +958,10 @@ export function UserDashboardView() {
                         <FileText className="w-5 h-5 text-[#3d6659]" />
                         <div>
                           <p className="text-[14px] font-semibold text-[#111111]">
-                            Voucher &amp; Facture {b.ref} — {b.roomTitle}
+                            Facture {b.ref} — {b.roomTitle}
                           </p>
                           <p className="text-[12px] text-[#5F5F5A] tabular-nums">
-                            {b.dateRange} • {formatEur(b.amountEur)} TTC
+                            {b.dateRange} • {formatMoney(b.amount)} TTC
                           </p>
                         </div>
                       </div>
@@ -1033,7 +970,7 @@ export function UserDashboardView() {
                         onClick={() => {
                           downloadTextFile(
                             `Facture-${b.id}.txt`,
-                            `KING'S BED HOTEL — FACTURE\nClient: ${currentUser.name} (${currentUser.email})\nRéf: ${b.ref}\nPrestation: ${b.roomTitle}\nDates: ${b.dateRange}\nMontant TTC: ${formatEur(b.amountEur)}\n`
+                            `KING'S BED HOTEL — FACTURE\nClient: ${currentUser.name} (${currentUser.email})\nRéf: ${b.ref}\nPrestation: ${b.roomTitle}\nDates: ${b.dateRange}\nMontant TTC: ${formatMoney(b.amount)}\n`
                           );
                           showToast(
                             "Facture téléchargée",

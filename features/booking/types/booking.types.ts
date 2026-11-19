@@ -29,9 +29,8 @@ export const CreateBookingInputSchema = z.object({
   checkOut: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   guests: z.number().int().min(1).max(8),
   guest: GuestDetailsSchema,
-  addOns: z.array(z.enum(["chauffeur", "breakfast", "spa"])).optional(),
+  addOns: z.array(z.enum(["chauffeur", "breakfast"])).optional(),
   promoCode: z.string().trim().max(32).optional(),
-  paymentMethod: z.enum(["Apple Pay", "Card"]).optional(),
   idempotencyKey: z.string().min(8).max(120).optional(),
 });
 
@@ -74,7 +73,6 @@ export interface Booking {
   total: number;
   currency: "USD" | "EUR" | "XOF";
   status: BookingStatus;
-  paymentMethod: "Apple Pay" | "Card";
   guest: Omit<GuestDetails, "acceptTerms">;
   createdAt: string;
 }

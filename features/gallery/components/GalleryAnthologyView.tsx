@@ -29,8 +29,7 @@ type GalleryFilterId =
   | "villas"
   | "architecture"
   | "pools"
-  | "gastronomy"
-  | "spa";
+  | "gastronomy";
 
 interface GalleryPlate {
   id: string;
@@ -58,7 +57,6 @@ const FILTER_TABS: readonly {
   { id: "architecture", label: "Salles de Conférence", count: 9 },
   { id: "pools", label: "Piscine & Patio", count: 6 },
   { id: "gastronomy", label: "Petit-Déjeuner", count: 5 },
-  { id: "spa", label: "Spa & Détente", count: 4 },
 ];
 
 const GALLERY_PLATES: readonly GalleryPlate[] = [
@@ -97,17 +95,17 @@ const GALLERY_PLATES: readonly GalleryPlate[] = [
   {
     id: "stone-bath",
     plateLabel: "Planche 03",
-    category: "spa",
-    badge: "Bien-Être",
-    location: "Espace Spa Privatif",
-    title: "Bain Minéral & Soin Botanique",
+    category: "villas",
+    badge: "Chambres & Literie",
+    location: "Aile des Palmiers · 2e Étage",
+    title: "Bain Minéral & Pierre Naturelle",
     subtitle: "Pierre Naturelle · Vue Jardin Calme",
     description:
-      "Baignoire sculptée dans la pierre et infusions florales pour décompresser après une journée de conférence ou de voyage.",
+      "Baignoire sculptée dans la pierre pour décompresser après une journée de conférence ou de voyage.",
     image: "/images/rooms/stone-spa-bath.jpg",
-    specs: "Espace Bien-Être Privatif",
+    specs: "Suite King · 65 m²",
     lens: "Leica SL3 · 50mm APO",
-    altitude: "Niveau Jardin · Accès Hôtes",
+    altitude: "Niveau Jardin · Aile Palmiers",
     roomHref: "/rooms/palm-horizon-suite",
   },
   {
@@ -221,7 +219,7 @@ export function GalleryAnthologyView() {
               </h1>
               <p className="text-[17px] sm:text-[18px] leading-[1.55] text-[#414846] max-w-2xl">
                 Un regard en images sur nos chambres King Size, notre salon petit-déjeuner,
-                nos salles de réunion et de conférence ainsi que nos espaces bien-être.
+                nos salles de réunion et de conférence ainsi que nos chambres &amp; suites.
               </p>
             </div>
 
@@ -386,7 +384,7 @@ export function GalleryAnthologyView() {
                 </div>
               </Reveal>
 
-              {/* Right 5-col: Holistic Spa & Stone Bath */}
+              {/* Right 5-col: Salle de bain en pierre */}
               <Reveal delay={0.1} className="lg:col-span-5">
                 <div className="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col group border border-[#1a1c1a]/5 h-full">
                   <div
@@ -431,7 +429,7 @@ export function GalleryAnthologyView() {
                       href={bathPlate.roomHref ?? "/rooms"}
                       className="text-[12px] text-[#001510] font-semibold flex items-center gap-1 hover:text-[#3d6659] shrink-0"
                     >
-                      Découvrir le Spa
+                      Découvrir la Suite
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>

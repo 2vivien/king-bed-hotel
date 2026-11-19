@@ -4,7 +4,7 @@ import { ServicesShowcase } from "@/features/services/components/ServicesShowcas
 export const metadata: Metadata = {
   title: "Nos Services",
   description:
-    "Chambres King Size, petit-déjeuner artisanal, salles de réunion et de conférences équipées, spa bien-être et transferts privés au King's Bed Hotel.",
+    "Chambres King Size, petit-déjeuner artisanal, salles de réunion et de conférences équipées, transferts privés et conciergerie 24h/24 au King's Bed Hotel.",
 };
 
 export default function ServicesPage() {

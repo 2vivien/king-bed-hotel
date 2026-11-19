@@ -34,7 +34,7 @@ const SERVICE_FILTERS: readonly FilterOption[] = [
   { id: "conferences", label: "Réunions & Conférences" },
   { id: "dining", label: "Petit-Déjeuner" },
   { id: "rooms", label: "Chambres & Suites" },
-  { id: "wellness", label: "Bien-Être & Transferts" },
+  { id: "wellness", label: "Transferts & Conciergerie" },
 ];
 
 export function ServicesShowcase() {
@@ -202,7 +202,7 @@ export function ServicesShowcase() {
                           À partir de
                         </span>
                         <span className="text-[24px] text-[#001510] font-bold tabular-nums">
-                          490 €{" "}
+                          321 000 F CFA{" "}
                           <span className="text-[13px] font-normal text-[#414846]">
                             / demi-journée
                           </span>
@@ -247,7 +247,7 @@ export function ServicesShowcase() {
                         </span>
                       </div>
                       <div className="absolute bottom-5 right-5 px-4 py-2 rounded-full bg-white shadow-sm flex items-center gap-1 tabular-nums">
-                        <span className="text-[16px] text-[#001510] font-bold">28 €</span>
+                        <span className="text-[16px] text-[#001510] font-bold">18 000 F CFA</span>
                         <span className="text-[13px] text-[#414846]">/ personne</span>
                       </div>
                     </div>
@@ -314,7 +314,7 @@ export function ServicesShowcase() {
                         </span>
                       </div>
                       <div className="absolute bottom-5 right-5 px-4 py-2 rounded-full bg-white shadow-sm flex items-center gap-1 tabular-nums">
-                        <span className="text-[16px] text-[#001510] font-bold">299 €</span>
+                        <span className="text-[16px] text-[#001510] font-bold">196 000 F CFA</span>
                         <span className="text-[13px] text-[#414846]">/ nuit</span>
                       </div>
                     </div>
@@ -366,7 +366,7 @@ export function ServicesShowcase() {
             </div>
           ) : null}
 
-          {/* Card 4: Spa Bien-Être & Transferts Chauffeur (Wide Landscape Reversed) */}
+          {/* Card 4: Transferts Chauffeur & Conciergerie (Wide Landscape Reversed) */}
           {showWellness ? (
             <Reveal>
               <div className="group relative bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(13,43,36,0.06)] border border-[#1a1c1a]/5 transition-all duration-300 hover:shadow-xl">
@@ -376,23 +376,23 @@ export function ServicesShowcase() {
                       <div className="flex items-center gap-2">
                         <MapPin className="w-4 h-4 text-[#3d6659]" strokeWidth={1.75} />
                         <span className="text-[12px] font-medium text-[#414846] uppercase tracking-wider">
-                          Espace Bien-Être &amp; Parvis Privé
+                          Accueil Gare &amp; Aéroport · 24h/24
                         </span>
                       </div>
                       <h2 className="text-[32px] lg:text-[40px] leading-[1.15] font-medium text-[#001510] tracking-tight">
-                        Spa Bien-Être &amp; Transferts Chauffeur
+                        Transferts Chauffeur &amp; Conciergerie
                       </h2>
                       <p className="text-[15px] leading-[1.6] text-[#414846]">
-                        Détendez-vous après une journée de conférence dans notre bassin
-                        chauffé et nos cabines de soins botaniques, puis rejoignez gares et
-                        aéroports à bord de nos berlines avec chauffeur privé.
+                Rejoignez gares et aéroports à bord de nos berlines avec chauffeur
+                        privé, ou laissez notre conciergerie 24h/24 organiser vos
+                        transferts et accueils pour vos séminaires.
                       </p>
                       <div className="flex flex-wrap items-center gap-2 pt-2 text-[12px] font-medium text-[#414846]">
-                        <span>Bassin Chauffé</span>
-                        <span aria-hidden="true">·</span>
-                        <span>Soins Sur Mesure</span>
-                        <span aria-hidden="true">·</span>
                         <span>Chauffeur Privé</span>
+                        <span aria-hidden="true">·</span>
+                        <span>Accueil VIP</span>
+                        <span aria-hidden="true">·</span>
+                        <span>Conciergerie 24h/24</span>
                       </div>
                     </div>
 
@@ -402,7 +402,7 @@ export function ServicesShowcase() {
                           Transfert dès
                         </span>
                         <span className="text-[24px] text-[#001510] font-bold tabular-nums">
-                          85 €{" "}
+                          56 000 F CFA{" "}
                           <span className="text-[13px] font-normal text-[#414846]">
                             / trajet
                           </span>
@@ -420,15 +420,15 @@ export function ServicesShowcase() {
 
                   <div className="lg:col-span-7 relative h-80 lg:h-auto overflow-hidden order-1 lg:order-2 bg-[#EFE6D6]">
                     <SuiteImage
-                      src="/images/services/spa-towels.jpg"
-                      alt="Espace bien-être et spa du King's Bed Hotel"
+                      src="/images/contact/concierge-desk.jpg"
+                      alt="Berline avec chauffeur privé et conciergerie du King's Bed Hotel"
                       sizes="(max-width: 1024px) 100vw, 840px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-white/92 backdrop-blur-md shadow-sm">
                       <span className="text-[12px] text-[#001510] font-bold flex items-center gap-1.5">
                         <Sparkles className="w-4 h-4 text-[#3d6659]" strokeWidth={1.75} />
-                        Détente &amp; Mobilité
+                        Mobilité &amp; Accueil
                       </span>
                     </div>
                   </div>
@@ -536,11 +536,11 @@ export function ServicesShowcase() {
                   <Sparkles className="w-6 h-6" strokeWidth={1.75} />
                 </div>
                 <h3 className="text-[20px] font-semibold text-[#001510]">
-                  Bien-Être &amp; Conciergerie
+                  Conciergerie &amp; Assistance
                 </h3>
                 <p className="text-[13px] leading-[1.55] text-[#414846]">
-                  Accès privilégié au bassin chauffé, soins relaxants en fin de journée
-                  et conciergerie attentive 24 heures sur 24.
+                  Accueil personnalisé, coordination de vos transferts et suivi de vos
+                  événements par une conciergerie attentive 24 heures sur 24.
                 </p>
               </div>
               <div className="pt-2">

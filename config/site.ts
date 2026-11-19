@@ -4,11 +4,11 @@ export const siteConfig = {
   description:
     "Hôtel de caractère alliant chambres et suites d'exception, petit-déjeuner gastronomique et salles de réunion et de conférence entièrement équipées.",
   foundedYear: 2019,
-  address: "25 Avenue Royale, Quartier des Jardins, Paris 75008",
-  shortAddress: "25 Avenue Royale",
-  city: "Paris",
-  country: "France",
-  phone: "+33 1 42 68 90 00",
+  address: "25 Avenue des Rois, Quartier des Jardins, Savalou, Bénin",
+  shortAddress: "25 Avenue des Rois",
+  city: "Savalou",
+  country: "Bénin",
+  phone: "+229 01 42 68 90 00",
   email: "concierge@kingsbedhotel.com",
   hours: "Réception 24h/24 · Arrivée 15h00 · Départ 12h00",
   stats: {

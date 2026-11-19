@@ -142,14 +142,13 @@ export function createBookingServer(input: CreateBookingInput): {
   const pricing = computeBookingPricing(room.pricePerNight, nights);
   const selectedAddOns = new Set(input.addOns ?? []);
   let addOnsTotal = 0;
-  if (selectedAddOns.has("chauffeur")) addOnsTotal += 12000;
-  if (selectedAddOns.has("breakfast")) addOnsTotal += 4500 * input.guests * nights;
-  if (selectedAddOns.has("spa")) addOnsTotal += 22000;
+  if (selectedAddOns.has("chauffeur")) addOnsTotal += 80000;
+  if (selectedAddOns.has("breakfast")) addOnsTotal += 30000 * input.guests * nights;
 
   const normalizedPromo = input.promoCode?.trim().toUpperCase();
   const discount =
     normalizedPromo === "KINGSBED" || normalizedPromo === "SAVVYVIP" || normalizedPromo === "PRIVILEGE"
-      ? 20000
+      ? 130000
       : 0;
 
   const adjustedSubtotal = pricing.subtotal;
@@ -175,7 +174,6 @@ export function createBookingServer(input: CreateBookingInput): {
     total,
     currency: env.NEXT_PUBLIC_CURRENCY,
     status: "confirmed",
-    paymentMethod: input.paymentMethod ?? "Apple Pay",
     guest: {
       firstName: input.guest.firstName,
       lastName: input.guest.lastName,

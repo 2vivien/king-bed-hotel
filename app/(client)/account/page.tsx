@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageShell } from "@/components/layout/PageShell";
 import { UserDashboardView } from "@/features/auth/components/UserDashboardView";
 
 export const metadata: Metadata = {
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 
 export default function AccountPage() {
   return (
-    <PageShell>
-      <UserDashboardView />
-    </PageShell>
+    <UserDashboardView />
   );
 }

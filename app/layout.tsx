@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import { PageShell } from "@/components/layout/PageShell";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -56,8 +55,8 @@ const hotelJsonLd = {
     "@type": "PostalAddress",
     streetAddress: siteConfig.shortAddress,
     addressLocality: siteConfig.city,
-    addressRegion: siteConfig.city,
-    addressCountry: "FR",
+    addressRegion: "Collines",
+    addressCountry: "BJ",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -74,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelJsonLd) }}
         />
-        <PageShell>{children}</PageShell>
+        {children}
       </body>
     </html>
   );

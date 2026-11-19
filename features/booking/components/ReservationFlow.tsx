@@ -17,6 +17,7 @@ import { fr } from "date-fns/locale";
 import {
   ArrowRight,
   BadgeCheck,
+  Banknote,
   Calendar,
   CalendarPlus,
   Car,
@@ -24,8 +25,6 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Coffee,
-  CreditCard,
   Download,
   Headphones,
   Lock,
@@ -37,9 +36,7 @@ import {
   Sparkles,
   Star,
   Ticket,
-  Trees,
   UtensilsCrossed,
-  Wallet,
   Waves,
   Wifi,
   Zap,
@@ -63,31 +60,31 @@ import { buildBookingIcs, buildGoogleCalendarUrl } from "@/lib/utils/ics";
 import { calculateNights } from "@/lib/utils/nights";
 import { roomsMock } from "@/mocks/rooms";
 
-type AddOnKey = "chauffeur" | "breakfast" | "spa";
+type AddOnKey = "chauffeur" | "breakfast";
 
 const DESTINATION_OPTIONS = [
   {
     slug: "bali",
     label: "Chambres & Petit-Déjeuner · King's Bed Hotel",
-    address: "25 Avenue Royale, 75008 Paris",
+    address: "25 Avenue des Rois, Savalou, Bénin",
     shortLabel: "King's Bed · Aile Royale",
   },
   {
     slug: "positano",
     label: "Suite Exécutive & Salon Privé",
-    address: "25 Avenue Royale, Niveau Panorama",
-    shortLabel: "Niveau Panorama · Paris",
+    address: "Niveau Panorama, Aile Royale · Savalou",
+    shortLabel: "Niveau Panorama · Savalou",
   },
   {
     slug: "lisbon",
     label: "Forfait Séminaire & Réunion (8–30 pers.)",
-    address: "Centre d'Affaires, 1er Étage",
+    address: "Centre d'Affaires, 1er Étage · Savalou",
     shortLabel: "Espace Réunion · 1er Étage",
   },
   {
     slug: "maldives",
     label: "Conférence & Congrès (40–180 pers.)",
-    address: "Grand Auditorium, Aile Est",
+    address: "Grand Auditorium, Aile Est · Savalou",
     shortLabel: "Auditorium · Aile Est",
   },
 ] as const;
@@ -104,7 +101,7 @@ const GLOBAL_SANCTUARIES = [
     slug: "lisbon",
     country: "Chambres & Suites",
     title: "Literie King Size",
-    price: "À partir de 299 € / nuit",
+    price: "À partir de 196 000 F CFA / nuit",
     image: "/images/destinations/lisbon.jpg",
   },
   {
@@ -123,11 +120,8 @@ const GLOBAL_SANCTUARIES = [
   },
 ] as const;
 
-function formatCurrencyEur(cents: number): string {
-  return `${(cents / 100).toLocaleString("fr-FR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })} €`;
+function formatCurrencyXof(amount: number): string {
+  return `${Math.round(amount).toLocaleString("fr-FR")} F CFA`;
 }
 
 export function ReservationFlow() {
@@ -169,12 +163,8 @@ export function ReservationFlow() {
   const [addOns, setAddOns] = useState<Record<AddOnKey, boolean>>({
     chauffeur: true,
     breakfast: true,
-    spa: false,
   });
 
-  const [paymentMethod, setPaymentMethod] = useState<"Apple Pay" | "Card">(
-    "Apple Pay"
-  );
   const [availability, setAvailability] = useState<AvailabilityResult[] | null>(
     null
   );
@@ -186,7 +176,7 @@ export function ReservationFlow() {
 
   const idempotencyKey = useMemo(
     () =>
-      `ss-${selectedRoomSlug}-${checkIn}-${checkOut}-${totalGuests}-${addOns.chauffeur}-${addOns.breakfast}-${addOns.spa}-${appliedPromo}`,
+      `ss-${selectedRoomSlug}-${checkIn}-${checkOut}-${totalGuests}-${addOns.chauffeur}-${addOns.breakfast}-${appliedPromo}`,
     [
       selectedRoomSlug,
       checkIn,
@@ -194,7 +184,6 @@ export function ReservationFlow() {
       totalGuests,
       addOns.chauffeur,
       addOns.breakfast,
-      addOns.spa,
       appliedPromo,
     ]
   );
@@ -241,19 +230,18 @@ export function ReservationFlow() {
     DESTINATION_OPTIONS[0];
 
   const nights = Math.max(1, calculateNights(checkIn, checkOut) || 5);
-  const roomSubtotalCents = selectedRoom.pricePerNight * nights * suitesCount;
-  const chauffeurCents = addOns.chauffeur ? 12000 : 0;
-  const breakfastCents = addOns.breakfast ? 4500 * totalGuests * nights : 0;
-  const spaCents = addOns.spa ? 22000 : 0;
-  const addOnsTotalCents = chauffeurCents + breakfastCents + spaCents;
-  const taxCents = Math.round((roomSubtotalCents + addOnsTotalCents) * 0.1);
-  const discountCents =
+  const roomSubtotalXof = selectedRoom.pricePerNight * nights * suitesCount;
+  const chauffeurXof = addOns.chauffeur ? 80000 : 0;
+  const breakfastXof = addOns.breakfast ? 30000 * totalGuests * nights : 0;
+  const addOnsTotalXof = chauffeurXof + breakfastXof;
+  const taxXof = Math.round((roomSubtotalXof + addOnsTotalXof) * 0.1);
+  const discountXof =
     appliedPromo === "KINGSBED" || appliedPromo === "SAVVYVIP" || appliedPromo === "PRIVILEGE"
-      ? 20000
+      ? 130000
       : 0;
-  const grandTotalCents = Math.max(
+  const grandTotalXof = Math.max(
     0,
-    roomSubtotalCents + addOnsTotalCents + taxCents - discountCents
+    roomSubtotalXof + addOnsTotalXof + taxXof - discountXof
   );
 
   const selectedAvailability = availability?.find(
@@ -308,13 +296,13 @@ export function ReservationFlow() {
     const code = promoInput.trim().toUpperCase();
     if (code === "KINGSBED" || code === "SAVVYVIP" || code === "PRIVILEGE") {
       setAppliedPromo(code);
-      setPromoFeedback("Avantage Membre appliqué (-200,00 €)");
+      setPromoFeedback("Avantage Membre appliqué (-130 000 F CFA)");
     } else if (!code) {
       setAppliedPromo("");
       setPromoFeedback("");
     } else {
       setAppliedPromo("");
-      setPromoFeedback("Code invalide — essayez KINGSBED pour -200,00 € d'avantage.");
+      setPromoFeedback("Code invalide — essayez KINGSBED pour -130 000 F CFA d'avantage.");
     }
   };
 
@@ -382,7 +370,6 @@ export function ReservationFlow() {
         guest: guestValues,
         addOns: activeAddOns,
         promoCode: appliedPromo || undefined,
-        paymentMethod,
         idempotencyKey,
       });
 
@@ -802,7 +789,7 @@ export function ReservationFlow() {
                 <div className="space-y-4">
                   {displayedRooms.map((room) => {
                     const isSelected = room.slug === selectedRoom.slug;
-                    const nightlyUsd = Math.round(room.pricePerNight / 100);
+                    const nightlyUsd = room.pricePerNight;
                     const availItem = availability?.find(
                       (a) => a.roomSlug === room.slug
                     );
@@ -899,7 +886,7 @@ export function ReservationFlow() {
                               <div>
                                 <div className="flex items-baseline gap-1">
                                   <span className="text-[24px] text-[#001510] font-bold">
-                                    {nightlyUsd.toLocaleString("fr-FR")} €
+                                    {nightlyUsd.toLocaleString("fr-FR")} F CFA
                                   </span>
                                   <span className="text-[13px] text-[#414846]">
                                     / nuit
@@ -1035,7 +1022,7 @@ export function ReservationFlow() {
                     <input
                       id="guest-phone"
                       type="tel"
-                      placeholder="+33 6 12 34 56 78"
+                      placeholder="+229 01 62 34 56 78"
                       onFocus={() => setActiveStep(3)}
                       className="w-full h-12 rounded-2xl bg-[#f4f3f0] px-4 text-[14px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40"
                       {...register("phone")}
@@ -1142,7 +1129,7 @@ export function ReservationFlow() {
                     </div>
                     <div className="text-right pl-4 shrink-0">
                       <span className="text-[18px] text-[#001510] font-bold">
-                        +120 €
+                        +80 000 F CFA
                       </span>
                       <span className="block text-[11px] text-[#414846]">
                         Trajet simple
@@ -1178,7 +1165,7 @@ export function ReservationFlow() {
                     </div>
                     <div className="text-right pl-4 shrink-0">
                       <span className="text-[18px] text-[#001510] font-bold">
-                        +45 €
+                        +30 000 F CFA
                       </span>
                       <span className="block text-[11px] text-[#414846]">
                         par pers. / jour
@@ -1186,41 +1173,6 @@ export function ReservationFlow() {
                     </div>
                   </label>
 
-                  <label className="flex items-center justify-between p-4 rounded-2xl bg-[#f4f3f0] hover:bg-[#e9e8e5]/70 transition-colors cursor-pointer">
-                    <div className="flex items-center gap-4">
-                      <input
-                        type="checkbox"
-                        checked={addOns.spa}
-                        onChange={() => toggleAddOn("spa")}
-                        className="w-5 h-5 rounded accent-[#001510]"
-                      />
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
-                          addOns.spa
-                            ? "bg-[#bce9d9] text-[#002018]"
-                            : "bg-[#e3e2e0] text-[#1a1c1a]"
-                        }`}
-                      >
-                        <Trees className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="text-[14px] font-bold text-[#001510]">
-                          Accès Spa &amp; Salon de Réunion Privé
-                        </h4>
-                        <p className="text-[13px] text-[#414846]">
-                          Soin bien-être 90 min ou accès demi-journée à un salon de réunion équipé 4K
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right pl-4 shrink-0">
-                      <span className="text-[18px] text-[#001510] font-bold">
-                        +220 €
-                      </span>
-                      <span className="block text-[11px] text-[#414846]">
-                        par prestation
-                      </span>
-                    </div>
-                  </label>
                 </div>
               </div>
             </div>
@@ -1298,18 +1250,18 @@ export function ReservationFlow() {
                 <div className="space-y-2 pt-1">
                   <div className="flex justify-between items-center text-[13px] text-[#414846]">
                     <span>
-                      {Math.round(selectedRoom.pricePerNight / 100)} € × {nights}{" "}
+                      {selectedRoom.pricePerNight.toLocaleString("fr-FR")} F CFA × {nights}{" "}
                       {nights > 1 ? "Nuits" : "Nuit"}{suitesCount > 1 ? ` × ${suitesCount}` : ""}
                     </span>
                     <span className="font-semibold text-[#001510]">
-                      {formatCurrencyEur(roomSubtotalCents)}
+                      {formatCurrencyXof(roomSubtotalXof)}
                     </span>
                   </div>
                   {addOns.chauffeur && (
                     <div className="flex justify-between items-center text-[13px] text-[#414846]">
                       <span>Transfert avec Chauffeur</span>
                       <span className="font-semibold text-[#001510]">
-                        {formatCurrencyEur(chauffeurCents)}
+                        {formatCurrencyXof(chauffeurXof)}
                       </span>
                     </div>
                   )}
@@ -1319,28 +1271,20 @@ export function ReservationFlow() {
                         Petit-Déjeuner ({totalGuests} pers. × {nights} j.)
                       </span>
                       <span className="font-semibold text-[#001510]">
-                        {formatCurrencyEur(breakfastCents)}
-                      </span>
-                    </div>
-                  )}
-                  {addOns.spa && (
-                    <div className="flex justify-between items-center text-[13px] text-[#414846]">
-                      <span>Spa &amp; Salon Réunion Privé</span>
-                      <span className="font-semibold text-[#001510]">
-                        {formatCurrencyEur(spaCents)}
+                        {formatCurrencyXof(breakfastXof)}
                       </span>
                     </div>
                   )}
                   <div className="flex justify-between items-center text-[13px] text-[#414846]">
                     <span>Taxes de séjour &amp; Services (10%)</span>
                     <span className="font-semibold text-[#001510]">
-                      {formatCurrencyEur(taxCents)}
+                      {formatCurrencyXof(taxXof)}
                     </span>
                   </div>
-                  {discountCents > 0 && (
+                  {discountXof > 0 && (
                     <div className="flex justify-between items-center text-[13px] text-[#3d6659] font-medium">
                       <span>Avantage Membre</span>
-                      <span>-{formatCurrencyEur(discountCents)}</span>
+                      <span>-{formatCurrencyXof(discountXof)}</span>
                     </div>
                   )}
 
@@ -1354,7 +1298,7 @@ export function ReservationFlow() {
                       </p>
                     </div>
                     <span className="text-[24px] text-[#001510] font-bold">
-                      {formatCurrencyEur(grandTotalCents)}
+                      {formatCurrencyXof(grandTotalXof)}
                     </span>
                   </div>
                 </div>
@@ -1410,35 +1354,15 @@ export function ReservationFlow() {
                     <span>
                       {isSubmitting
                         ? "Confirmation en cours..."
-                        : `Confirmer la Réservation • ${formatCurrencyEur(grandTotalCents)}`}
+                        : `Confirmer la Réservation • ${formatCurrencyXof(grandTotalXof)}`}
                     </span>
                   </button>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("Apple Pay")}
-                      className={`py-3 px-4 rounded-full text-[12px] font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
-                        paymentMethod === "Apple Pay"
-                          ? "bg-[#0d2b24] text-white"
-                          : "bg-[#e9e8e5] text-[#001510] hover:bg-[#e3e2e0]"
-                      }`}
-                    >
-                      <Wallet className="w-3.5 h-3.5" />
-                      Apple Pay
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("Card")}
-                      className={`py-3 px-4 rounded-full text-[12px] font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
-                        paymentMethod === "Card"
-                          ? "bg-[#0d2b24] text-white"
-                          : "bg-[#e9e8e5] text-[#001510] hover:bg-[#e3e2e0]"
-                      }`}
-                    >
-                      <CreditCard className="w-3.5 h-3.5" />
-                      Carte Bancaire
-                    </button>
+                  <div className="flex items-center justify-center gap-2 rounded-2xl border border-[#e3e2e0] bg-[#faf9f6] px-4 py-3 text-center">
+                    <Banknote className="w-4 h-4 text-[#3d6659] shrink-0" strokeWidth={1.75} />
+                    <span className="text-[12px] font-medium text-[#414846]">
+                      Règlement à l&apos;arrivée — espèces, carte bancaire ou Mobile Money
+                    </span>
                   </div>
                 </div>
 
@@ -1490,7 +1414,7 @@ export function ReservationFlow() {
                     href="/contact"
                     className="text-[12px] text-[#3d6659] font-bold inline-flex items-center gap-1 mt-1 hover:underline"
                   >
-                    Appeler le +33 1 42 68 90 00
+                    Appeler le +229 01 42 68 90 00
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

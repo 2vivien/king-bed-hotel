@@ -19,10 +19,10 @@ export const galleryMock: readonly GalleryItem[] = [
   },
   {
     id: "g-03",
-    title: "Espace Spa & Bien-Être",
-    caption: "Linge biologique, huiles essentielles botaniques et soins relaxants.",
-    category: "Wellness",
-    image: "/images/services/spa-towels.jpg",
+    title: "Petit-Déjeuner en Verrière",
+    caption: "Buffet artisanal servi chaque matin sous la verrière, chaud ou en chambre.",
+    category: "Dining",
+    image: "/images/about/about-lounge.jpg",
     span: "square",
   },
   {

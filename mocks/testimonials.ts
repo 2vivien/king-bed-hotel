@@ -4,7 +4,7 @@ export const testimonialsMock: readonly Testimonial[] = [
   {
     id: "t-1",
     name: "Sarah Martin",
-    location: "Lyon, France",
+    location: "Cotonou, Bénin",
     quote:
       "Chaque détail était parfait : la literie King Size incroyable, le buffet de petit-déjeuner frais et généreux, et la qualité de nos salles de réunion pour notre comité de direction.",
     stayTitle: "Séjour & Séminaire · Suite Royale",
@@ -19,12 +19,12 @@ export const testimonialsMock: readonly Testimonial[] = [
       "Rarement un hôtel parvient à combiner autant de sérénité pour dormir et une telle efficacité pour organiser des conférences de 80 personnes avec déjeuners et pauses café.",
     stayTitle: "Conférence Annuelle · Suite Exécutive",
     avatarLabel: "HL",
-    image: "/images/destinations/santorini.jpg",
+    image: "/images/destinations/maldives.jpg",
   },
   {
     id: "t-3",
     name: "Amélie Moreau",
-    location: "Paris, France",
+    location: "Savalou, Bénin",
     quote:
       "Le petit-déjeuner servi sur la terrasse, l'attention discrète de la réception 24h/24 et le calme absolu des chambres font du King's Bed Hotel notre adresse favorite.",
     stayTitle: "Week-end Détente · Chambre Deluxe",
@@ -62,7 +62,7 @@ export const faqMock: readonly FaqItem[] = [
     id: "payment",
     question: "Quels moyens de paiement sont acceptés ?",
     answer:
-      "Nous acceptons Apple Pay, toutes les cartes bancaires internationales ainsi que la facturation entreprise sur bon de commande pour les séminaires et conférences.",
+      "La réservation se règle directement à l'hôtel à l'arrivée : espèces en francs CFA, carte bancaire, Mobile Money ou virement entreprise pour les séminaires et conférences.",
   },
   {
     id: "parking",

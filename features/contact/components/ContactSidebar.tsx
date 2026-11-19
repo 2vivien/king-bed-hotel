@@ -51,7 +51,7 @@ export function ContactSidebar() {
                   Ligne Directe Hôtel
                 </span>
                 <span className="text-[18px] font-semibold text-[#001510] tabular-nums">
-                  +33 1 42 68 90 00
+                  +229 01 42 68 90 00
                 </span>
               </div>
             </div>
@@ -120,7 +120,7 @@ export function ContactSidebar() {
                 </span>
               </div>
               <p className="text-[13px] text-[#414846] mt-0.5">
-                25 Avenue Royale, 75008 Paris, France
+                25 Avenue des Rois, Savalou, Bénin
               </p>
               <span className="text-[11px] font-semibold text-[#3d6659]">
                 Réception ouverte • 24h/24 &amp; 7j/7

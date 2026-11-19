@@ -58,7 +58,7 @@ export const destinationsMock: readonly Destination[] = [
   {
     slug: "bali",
     name: "King's Bed Hotel",
-    country: "Paris · France",
+    country: "Savalou · Bénin",
     regionLabel: "King's Bed Hotel",
     summary: "Chambres & suites raffinées, petit-déjeuner inclus et centre de conférences.",
     description:
@@ -70,24 +70,6 @@ export const destinationsMock: readonly Destination[] = [
       "Chambres & Suites King Size",
       "Petit-déjeuner artisanal inclus",
       "Salles de réunion & conférences",
-    ],
-    featuredHome: false,
-  },
-  {
-    slug: "santorini",
-    name: "Espace Bien-Être",
-    country: "Spa & Détente",
-    regionLabel: "Spa & Détente",
-    summary: "Piscine intérieure, sauna et soins botaniques réservés aux résidents.",
-    description:
-      "Prolongez vos journées de travail ou de visite dans notre spa apaisant avec piscine chauffée et soins sur mesure.",
-    bestTime: "08h00 – 21h00",
-    climate: "Piscine · Sauna · Soins",
-    image: "/images/destinations/santorini.jpg",
-    activities: [
-      "Bassin chauffé toute l'année",
-      "Massages et soins sur réservation",
-      "Salon tisanerie au calme",
     ],
     featuredHome: false,
   },

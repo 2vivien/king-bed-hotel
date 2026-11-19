@@ -14,7 +14,7 @@ const categoryOptions: readonly SegmentedOption<GalleryCategory>[] = [
   { value: "Rooms", label: "Chambres" },
   { value: "Pool", label: "Piscine & Détente" },
   { value: "Dining", label: "Petit-Déjeuner" },
-  { value: "Wellness", label: "Conférences & Spa" },
+  { value: "Wellness", label: "Conférences & Événements" },
 ];
 
 const categoryLabels: Record<GalleryCategory, string> = {
@@ -22,7 +22,7 @@ const categoryLabels: Record<GalleryCategory, string> = {
   Rooms: "Chambres",
   Pool: "Piscine & Détente",
   Dining: "Petit-Déjeuner",
-  Wellness: "Conférences & Spa",
+  Wellness: "Conférences & Événements",
 };
 
 export function GalleryGrid() {

@@ -22,7 +22,6 @@ import {
   Phone,
   Presentation,
   Printer,
-  RefreshCw,
   Search,
   ShieldCheck,
   Sparkles,
@@ -34,7 +33,6 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useAuthStore } from "@/features/auth/store/auth.store";
@@ -45,6 +43,7 @@ import type {
 import { useBookingStore } from "@/features/booking/store/booking.store";
 import { useIsMounted } from "@/lib/hooks/use-is-mounted";
 import { cn } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils/format-money";
 
 type AdminSidebarSection =
   | "overview"
@@ -61,14 +60,6 @@ const STAFF_BUTLERS = [
   "Elena Moretti",
   "Sophie Castiglione",
 ];
-
-function formatEur(amount: number) {
-  return new Intl.NumberFormat("fr-FR", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
 
 function downloadTextFile(
   filename: string,
@@ -169,7 +160,7 @@ export function AdminDashboardView() {
       breakfastOrHallLabel: "Formule Petit-Déjeuner",
       serviceIncluded: "Réception 24h/24",
       butlerName: "Julian Vance",
-      amountEur: b.total,
+      amount: b.total,
       image: b.image || "/images/rooms/oceanfront-sanctuary.jpg",
       perkTitle: "Réservation en ligne enregistrée",
       perkSubtitle: b.guest.notes || "Aucune note additionnelle.",
@@ -194,9 +185,9 @@ export function AdminDashboardView() {
       declined: allBookings.filter(
         (b) => b.status === "declined" || b.status === "history"
       ).length,
-      volumeEur: allBookings
+      volume: allBookings
         .filter((b) => b.status !== "declined")
-        .reduce((acc, cur) => acc + cur.amountEur, 0),
+        .reduce((acc, cur) => acc + cur.amount, 0),
     };
   }, [allBookings]);
 
@@ -229,11 +220,11 @@ export function AdminDashboardView() {
   }, [allBookings, filteredBookings, selectedId]);
 
   const handleExportCsv = () => {
-    const csvHeader = "Reference,Client,Prestation,Dates,Statut,Montant_EUR\n";
+    const csvHeader = "Reference,Client,Prestation,Dates,Statut,Montant_XOF\n";
     const csvBody = allBookings
       .map(
         (b) =>
-          `"${b.ref}","${b.guestName}","${b.roomTitle}","${b.dateRange}","${b.statusLabel}",${b.amountEur}`
+          `"${b.ref}","${b.guestName}","${b.roomTitle}","${b.dateRange}","${b.statusLabel}",${b.amount}`
       )
       .join("\n");
     downloadTextFile(
@@ -332,21 +323,6 @@ export function AdminDashboardView() {
   const sidebarContent = (
     <div className="flex flex-col h-full justify-between p-5 bg-white">
       <div className="space-y-6">
-        {/* Admin Google Identity Card */}
-        <div className="p-3.5 rounded-2xl bg-[#001510] text-white flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#bce9d9] text-[#0d2b24] flex items-center justify-center text-[13px] font-bold shrink-0">
-            {currentUser.initials}
-          </div>
-          <div className="min-w-0">
-            <p className="text-[13px] font-semibold text-white truncate">
-              {currentUser.name}
-            </p>
-            <p className="text-[11px] text-[#adcdc3] truncate">
-              {currentUser.email}
-            </p>
-          </div>
-        </div>
-
         {/* Navigation */}
         <div className="space-y-1">
           <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#9A9A93] mb-2">
@@ -391,34 +367,10 @@ export function AdminDashboardView() {
           })}
         </div>
 
-        {/* Quick Volume Mini Widget */}
-        <div className="p-4 rounded-2xl border border-[#EDEDEA] bg-[#faf9f6] space-y-2">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#5F5F5A]">
-            Volume géré actif
-          </p>
-          <p className="text-[22px] font-semibold text-[#111111] tabular-nums">
-            {formatEur(counts.volumeEur)}
-          </p>
-          <p className="text-[11px] text-[#3d6659] flex items-center gap-1">
-            <TrendingUp className="w-3.5 h-3.5" />
-            {counts.confirmed} dossiers confirmés
-          </p>
-        </div>
       </div>
 
       {/* Bottom Controls */}
       <div className="pt-5 border-t border-[#EDEDEA] space-y-2">
-        <button
-          type="button"
-          onClick={() => openAuthModal("user")}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] text-[12px] font-medium flex items-center justify-between transition-colors cursor-pointer"
-        >
-          <span className="flex items-center gap-2">
-            <RefreshCw className="w-3.5 h-3.5 text-[#111111]" />
-            Vue Client Google
-          </span>
-          <ChevronRight className="w-3.5 h-3.5 text-[#5F5F5A]" />
-        </button>
         <button
           type="button"
           onClick={() => {
@@ -612,7 +564,7 @@ export function AdminDashboardView() {
                         Montant TTC
                       </span>
                       <span className="text-[15px] font-semibold text-[#111111] block mt-0.5 tabular-nums">
-                        {formatEur(booking.amountEur)}
+                        {formatMoney(booking.amount)}
                       </span>
                       <span className="text-[12px] text-[#3d6659]">
                         {booking.butlerName}
@@ -826,7 +778,7 @@ export function AdminDashboardView() {
                 onClick={() => {
                   downloadTextFile(
                     `Feuille-de-Route-${selectedBooking.id}.txt`,
-                    `KING'S BED HOTEL — FEUILLE DE ROUTE CONCIERGERIE\nRéférence : ${selectedBooking.ref}\nClient : ${selectedBooking.guestName} (${selectedBooking.guestPhone})\nChambre / Salle : ${selectedBooking.roomTitle}\nDates : ${selectedBooking.dateRange} (${selectedBooking.durationLabel})\nFormule : ${selectedBooking.breakfastOrHallLabel}\nResponsable assigné : ${selectedBooking.butlerName}\nMontant : ${formatEur(selectedBooking.amountEur)} TTC\nNote interne : ${selectedBooking.internalNote}\n`
+                    `KING'S BED HOTEL — FEUILLE DE ROUTE CONCIERGERIE\nRéférence : ${selectedBooking.ref}\nClient : ${selectedBooking.guestName} (${selectedBooking.guestPhone})\nChambre / Salle : ${selectedBooking.roomTitle}\nDates : ${selectedBooking.dateRange} (${selectedBooking.durationLabel})\nFormule : ${selectedBooking.breakfastOrHallLabel}\nResponsable assigné : ${selectedBooking.butlerName}\nMontant : ${formatMoney(selectedBooking.amount)} TTC\nNote interne : ${selectedBooking.internalNote}\n`
                   );
                   showToast(
                     "Feuille de route générée",
@@ -836,7 +788,7 @@ export function AdminDashboardView() {
                 className="w-full py-2.5 rounded-full border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] text-[13px] font-medium transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Printer className="w-4 h-4" />
-                Générer Feuille de Route &amp; Vouchers
+                Générer Feuille de Route
               </button>
             </div>
           </aside>
@@ -847,9 +799,9 @@ export function AdminDashboardView() {
 
   return (
     <div className="w-full bg-white text-[#111111]">
-      <div className="max-w-[1440px] mx-auto flex min-h-[calc(100vh-72px)] bg-white">
+      <div className="max-w-[1440px] mx-auto flex min-h-[calc(100vh-64px)] bg-white">
         {/* Desktop Persistent Left Sidebar (264px) */}
-        <aside className="hidden lg:block w-[264px] shrink-0 border-r border-[#EDEDEA] bg-white sticky top-[72px] h-[calc(100vh-72px)] overflow-y-auto">
+        <aside className="hidden lg:block w-[264px] shrink-0 border-r border-[#EDEDEA] bg-white sticky top-[64px] h-[calc(100vh-64px)] overflow-y-auto">
           {sidebarContent}
         </aside>
 
@@ -916,12 +868,6 @@ export function AdminDashboardView() {
                 <Download className="w-4 h-4" />
                 Export Audit CSV
               </button>
-              <Link
-                href="/rooms"
-                className="h-10 px-5 rounded-full bg-[#0d2b24] hover:bg-[#001510] text-white text-[13px] font-medium inline-flex items-center gap-2 transition-colors whitespace-nowrap"
-              >
-                Catalogue Chambres
-              </Link>
             </div>
           </div>
 
@@ -929,36 +875,6 @@ export function AdminDashboardView() {
             {/* OVERVIEW SECTION */}
             {section === "overview" && (
               <>
-                {/* Compact Atmospheric Banner */}
-                <div className="relative w-full rounded-3xl overflow-hidden bg-[#001510] shadow-sm">
-                  <Image
-                    src="/images/contact/concierge-desk.jpg"
-                    alt="Poste conciergerie King's Bed Hotel"
-                    fill
-                    referrerPolicy="no-referrer"
-                    className="object-cover opacity-30 mix-blend-luminosity"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#001510] via-[#001510]/95 to-[#0d2b24]/85" />
-                  <div className="relative z-10 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-white">
-                    <div className="space-y-1.5">
-                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#bce9d9]/20 text-[#bfecdc] text-[11px] font-semibold">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                        Poste Conciergerie • Terminal Privé Actif
-                      </span>
-                      <h2 className="text-[24px] md:text-[30px] font-medium tracking-[-0.02em]">
-                        Pilotage King&apos;s Bed Hotel
-                      </h2>
-                      <p className="text-[13px] text-[#adcdc3] max-w-xl">
-                        Validation des chambres, coordination des petits-déjeuners
-                        et réservation des salons de conférence.
-                      </p>
-                    </div>
-                    <div className="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-[12px] font-medium text-[#bfecdc]">
-                      {counts.pending} demande(s) en attente
-                    </div>
-                  </div>
-                </div>
-
                 {/* 3 KPI Stat Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   <div className="bg-white border border-[#EDEDEA] p-6 rounded-2xl flex items-center justify-between">
@@ -1012,7 +928,7 @@ export function AdminDashboardView() {
                       </span>
                       <div className="flex items-baseline gap-2">
                         <span className="text-[34px] leading-none font-semibold text-[#111111] tabular-nums">
-                          {formatEur(counts.volumeEur)}
+                          {formatMoney(counts.volume)}
                         </span>
                       </div>
                       <p className="text-[12px] text-[#3d6659] flex items-center gap-1">
@@ -1252,7 +1168,7 @@ export function AdminDashboardView() {
                 <ul className="text-[12px] text-[#5F5F5A] space-y-1 list-disc list-inside">
                   <li>
                     Validation du montant de{" "}
-                    {formatEur(confirmTarget.amountEur)} TTC.
+                    {formatMoney(confirmTarget.amount)} TTC.
                   </li>
                   <li>
                     Envoi du voucher King&apos;s Bed Hotel à{" "}

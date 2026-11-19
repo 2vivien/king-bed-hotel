@@ -95,7 +95,7 @@ export function Footer() {
               </p>
               <p className="flex items-center gap-2 tabular-nums">
                 <Phone className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-                +33 1 42 68 90 00
+                +229 01 42 68 90 00
               </p>
             </div>
           </div>

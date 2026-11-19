@@ -38,7 +38,7 @@ export interface ManagedBooking {
   breakfastOrHallLabel: string;
   serviceIncluded: string;
   butlerName: string;
-  amountEur: number;
+  amount: number; // XOF (francs CFA), entiers
   image: string;
   perkTitle: string;
   perkSubtitle: string;

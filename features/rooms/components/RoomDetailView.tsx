@@ -64,15 +64,14 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
   const [activePhoto, setActivePhoto] = useState(0);
   const [blueprintOpen, setBlueprintOpen] = useState(false);
 
-  const nightlyUsd = Math.round(room.pricePerNight / 100);
-  const originalUsd = Math.round(
-    (room.originalPricePerNight ?? Math.round(room.pricePerNight * 1.12)) / 100
-  );
+  const nightlyXof = room.pricePerNight;
+  const originalXof =
+    room.originalPricePerNight ?? Math.round(room.pricePerNight * 1.12);
   const sqft = Math.round(room.sizeSqm * 10.764);
   const nights = Math.max(1, calculateNights(checkIn, checkOut) || 5);
-  const roomSubtotal = nightlyUsd * nights;
+  const roomSubtotal = nightlyXof * nights;
   const ecoTax = Math.round(roomSubtotal * 0.1);
-  const memberPrivilege = 150;
+  const memberPrivilege = 100000;
   const totalInvestment = Math.max(0, roomSubtotal + ecoTax - memberPrivilege);
 
   const handleShare = async () => {
@@ -263,7 +262,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               >
                 <SuiteImage
                   src={bottomSidePhoto}
-                  alt="Espace Spa en Pierre Naturelle"
+                  alt="Salle de Bain en Pierre Naturelle"
                   sizes="(max-width: 1024px) 50vw, 400px"
                   className="transition-transform duration-700 group-hover:scale-105"
                 />
@@ -271,7 +270,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                   <div>
                     <p className="text-[12px] font-semibold text-white">
-                      Salle de Bain &amp; Spa
+                      Salle de Bain
                     </p>
                     <p className="text-[12px] text-[#bce9d9]">
                       Soins botaniques &amp; douche pluie
@@ -579,7 +578,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   </h3>
                   <p className="text-[13px] text-[#414846]">
                     Agencement de plain-pied offrant espace nuit King Size, salle
-                    de bain spa et terrasse privée.
+                    de bain et terrasse privée.
                   </p>
                 </div>
                 <button
@@ -599,10 +598,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     Façade 14,2 Mètres
                   </div>
                   <div className="border-2 border-dashed border-[#414846]/35 rounded-xl p-3 grid grid-cols-12 gap-3 bg-white/40">
-                    {/* Stone Spa */}
+                    {/* Salle de Bain */}
                     <div className="col-span-4 border border-[#414846]/40 rounded-lg p-3 flex flex-col items-center justify-between min-h-[160px]">
                       <div className="w-16 h-24 rounded-full border border-[#414846]/45 flex items-center justify-center text-[9px] font-mono text-[#414846] text-center px-1">
-                        BAIN &amp; SPA
+                        BAIN
                       </div>
                       <span className="text-[9px] font-mono tracking-wider text-[#414846] uppercase">
                         Bain &amp; Dressing
@@ -644,7 +643,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#bce9d9]" />
-                    Salle de Bain &amp; Spa (18 m²)
+                    Salle de Bain (18 m²)
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#c1c8c4]" />
@@ -752,10 +751,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <span className="text-[#414846] line-through text-[13px] mr-1.5">
-                    {originalUsd.toLocaleString("fr-FR")} €
+                    {originalXof.toLocaleString("fr-FR")} F CFA
                   </span>
                   <span className="text-[36px] font-bold tracking-tight text-[#001510]">
-                    {nightlyUsd.toLocaleString("fr-FR")} €
+                    {nightlyXof.toLocaleString("fr-FR")} F CFA
                   </span>
                   <span className="text-[13px] text-[#414846]"> / nuit</span>
                 </div>
@@ -835,10 +834,10 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
               <div className="space-y-2.5 pt-1">
                 <div className="flex justify-between text-[13px] text-[#414846]">
                   <span>
-                    {nightlyUsd.toLocaleString("fr-FR")} € × {nights} {nights === 1 ? "Nuit" : "Nuits"}
+                    {nightlyXof.toLocaleString("fr-FR")} F CFA × {nights} {nights === 1 ? "Nuit" : "Nuits"}
                   </span>
                   <span className="font-medium text-[#001510]">
-                    {roomSubtotal.toLocaleString("fr-FR")} €
+                    {roomSubtotal.toLocaleString("fr-FR")} F CFA
                   </span>
                 </div>
                 <div className="flex justify-between text-[13px] text-[#414846]">
@@ -853,12 +852,12 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 <div className="flex justify-between text-[13px] text-[#414846]">
                   <span>Taxes de séjour &amp; éco-taxe (10 %)</span>
                   <span className="font-medium text-[#001510]">
-                    {ecoTax.toLocaleString("fr-FR")} €
+                    {ecoTax.toLocaleString("fr-FR")} F CFA
                   </span>
                 </div>
                 <div className="flex justify-between text-[13px] text-[#3d6659]">
                   <span>Avantage Réservation Directe</span>
-                  <span className="font-medium">-{memberPrivilege} €</span>
+                  <span className="font-medium">-{memberPrivilege.toLocaleString("fr-FR")} F CFA</span>
                 </div>
                 <div className="h-[1px] bg-[#e3e2e0] my-1" />
                 <div className="flex justify-between items-baseline pt-1">
@@ -871,7 +870,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                     </p>
                   </div>
                   <span className="text-[24px] font-bold text-[#001510]">
-                    {totalInvestment.toLocaleString("fr-FR")} €
+                    {totalInvestment.toLocaleString("fr-FR")} F CFA
                   </span>
                 </div>
               </div>
@@ -1022,7 +1021,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                   <div className="flex items-center justify-between pt-2">
                     <div>
                       <span className="text-[20px] font-semibold text-[#001510]">
-                        {Math.round(item.pricePerNight / 100).toLocaleString("fr-FR")} €
+                        {item.pricePerNight.toLocaleString("fr-FR")} F CFA
                       </span>
                       <span className="text-[13px] text-[#414846]"> / nuit</span>
                     </div>
@@ -1117,7 +1116,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
                 Zone 01 · 18 m²
               </p>
               <h4 className="text-[16px] font-semibold text-[#001510]">
-                Salle de Bain &amp; Spa en Pierre
+                Salle de Bain en Pierre
               </h4>
               <p className="text-[13px] text-[#414846]">
                 Baignoire îlot en pierre naturelle, double vasque travertin,

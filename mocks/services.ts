@@ -28,19 +28,6 @@ export const servicesMock: readonly HotelServiceItem[] = [
     ],
   },
   {
-    id: "spa",
-    title: "Spa & Espace Bien-Être",
-    subtitle: "Détente et soins relaxants après vos journées de séjour ou de travail.",
-    description:
-      "Installé dans nos pavillons en pierre naturelle, notre espace bien-être associe bassin chauffé, sauna, massages aux huiles essentielles bio et soins du corps.",
-    hours: "Tous les jours 08h00 – 21h00 · Soins en chambre sur demande",
-    highlights: [
-      "Massages signature aux pierres chaudes et huiles botaniques",
-      "Sauna, hammam et bassin de relaxation chauffé",
-      "Séances de remise en forme et réveil musculaire matinal",
-    ],
-  },
-  {
     id: "transfers",
     title: "Conciergerie & Transferts Privés",
     subtitle: "Accueil personnalisé 24h/24, voiturier et navettes gare ou aéroport.",

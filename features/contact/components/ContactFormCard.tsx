@@ -8,7 +8,7 @@ export function ContactFormCard() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phonePrefix, setPhonePrefix] = useState("+33");
+  const [phonePrefix, setPhonePrefix] = useState("+229");
   const [phone, setPhone] = useState("");
   const [privilegeType, setPrivilegeType] = useState("Réservation Chambre & Petit-Déjeuner");
   const [destination, setDestination] = useState("Chambre King Size & Petit-Déjeuner");
@@ -149,10 +149,11 @@ export function ContactFormCard() {
                 onChange={(e) => setPhonePrefix(e.target.value)}
                 className="bg-transparent text-[15px] text-[#1a1c1a] focus:outline-none pr-1 cursor-pointer"
               >
+                <option value="+229">+229 (BJ)</option>
                 <option value="+33">+33 (FR)</option>
-                <option value="+41">+41 (CH)</option>
-                <option value="+32">+32 (BE)</option>
-                <option value="+44">+44 (UK)</option>
+                <option value="+228">+228 (TG)</option>
+                <option value="+225">+225 (CI)</option>
+                <option value="+234">+234 (NG)</option>
                 <option value="+1">+1 (US)</option>
               </select>
               <div className="w-px h-6 bg-[#c1c8c4] mx-2" />

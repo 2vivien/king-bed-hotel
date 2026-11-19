@@ -6,13 +6,13 @@ const EnvSchema = z.object({
     .enum(["true", "false"])
     .default("true")
     .transform((v) => v === "true"),
-  NEXT_PUBLIC_CURRENCY: z.enum(["USD", "EUR", "XOF"]).default("EUR"),
+  NEXT_PUBLIC_CURRENCY: z.enum(["USD", "EUR", "XOF"]).default("XOF"),
   PAYMENT_PROVIDER: z.enum(["mock", "stripe", "kkiapay", "fedapay"]).default("mock"),
 });
 
 export const env = EnvSchema.parse({
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   NEXT_PUBLIC_USE_MOCK: process.env.NEXT_PUBLIC_USE_MOCK || "true",
-  NEXT_PUBLIC_CURRENCY: process.env.NEXT_PUBLIC_CURRENCY || "EUR",
+  NEXT_PUBLIC_CURRENCY: process.env.NEXT_PUBLIC_CURRENCY || "XOF",
   PAYMENT_PROVIDER: process.env.PAYMENT_PROVIDER || "mock",
 });

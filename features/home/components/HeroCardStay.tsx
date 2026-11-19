@@ -50,9 +50,9 @@ export function HeroCardStay() {
       </div>
 
       <div className="mt-3 h-10 rounded-full bg-white px-3 flex items-center justify-between text-[#111111]">
-        <span className="text-[12px] font-medium px-2">Apple Pay</span>
+        <span className="text-[12px] font-medium px-2">Règlement à l&apos;arrivée</span>
         <span className="h-7 px-3 rounded-full bg-[#111111] text-white text-[11px] font-medium inline-flex items-center">
-          {activeBooking ? "Confirmé" : "Paiement Direct"}
+          {activeBooking ? "Confirmé" : "En attente"}
         </span>
       </div>
 
