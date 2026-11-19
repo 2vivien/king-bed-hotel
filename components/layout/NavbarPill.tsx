@@ -102,11 +102,6 @@ export function NavbarPill() {
                   >
                     {activeUser.initials}
                   </span>
-                  <span>
-                    {activeUser.role === "admin"
-                      ? "Admin"
-                      : activeUser.name.split(" ")[0]}
-                  </span>
                   <ChevronDown className="w-3.5 h-3.5 text-[#5F5F5A]" />
                 </button>
 
