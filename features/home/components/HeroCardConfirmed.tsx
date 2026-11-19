@@ -38,7 +38,7 @@ export function HeroCardConfirmed() {
   };
 
   return (
-    <div className="rounded-[24px] border border-black/5 bg-white p-5 text-[#111111] shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
+    <div className="w-full max-w-sm rounded-[24px] border border-black/5 bg-white p-5 text-[#111111] shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col justify-between gap-3">
           <span className="w-8 h-8 rounded-full border border-[#111111]/15 bg-white flex items-center justify-center">

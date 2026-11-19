@@ -42,7 +42,7 @@ export function HeroCardStay() {
     : "/account";
 
   return (
-    <div className="rounded-[24px] border border-white/70 bg-transparent p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
+    <div className="w-full max-w-sm rounded-[24px] border border-white/70 bg-transparent p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
       <div className="flex items-center gap-3">
         <div className="relative w-12 h-12 rounded-[14px] overflow-hidden shrink-0 border border-white/30">
           <SuiteImage src={room.image} alt={room.name} sizes="48px" />
