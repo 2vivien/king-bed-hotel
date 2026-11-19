@@ -19,16 +19,16 @@ export function AboutSustainabilityAndCta() {
               <p className="text-[15px] leading-[1.6] text-[#c9eade] max-w-xl">
                 Au King&apos;s Bed Hotel, chaque nuitée et chaque séminaire s&apos;inscrivent
                 dans une démarche durable : circuits courts pour le petit-déjeuner, gestion
-                sobre de l&apos;énergie et suppression totale du plastique à usage unique.
+                sobre de l&apos;énergie et lutte active contre le gaspillage alimentaire.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-4 rounded-xl bg-[#001510]/60 backdrop-blur-sm">
                   <span className="text-[19px] font-semibold text-[#bfecdc]">
-                    Zéro Plastique
+                    Zéro Gaspillage
                   </span>
                   <p className="text-[13px] text-[#c9eade] mt-1">
-                    Flacons en verre rechargeable, céramique et linge certifié biologique.
+                    Portions ajustées au buffet et invendus redistribués aux associations.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-[#001510]/60 backdrop-blur-sm">
@@ -96,7 +96,7 @@ export function AboutSustainabilityAndCta() {
                   <div className="flex justify-between items-center py-1">
                     <span className="flex items-center gap-2">
                       <Check className="w-3.5 h-3.5 text-[#3d6659]" strokeWidth={2} />
-                      Zéro Déchet Plastique
+                      Zéro Gaspillage Alimentaire
                     </span>
                     <span className="font-semibold text-[#001510]">Atteint</span>
                   </div>

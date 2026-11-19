@@ -14,9 +14,6 @@ import {
   Heart,
   Maximize2,
   Plane,
-  RotateCcw,
-  Search,
-  SlidersHorizontal,
   Star,
   Users,
   Utensils,
@@ -27,19 +24,7 @@ import { useMemo, useState } from "react";
 import { Reveal } from "@/components/shared/Reveal";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { roomsMock } from "@/mocks/rooms";
-import type { Room, RoomCategory, RoomExperienceTag } from "@/types/hotel.types";
-
-type CategoryFilter = "all" | RoomCategory;
-type CapacityFilter = "any" | "1-2" | "3-4" | "5+";
-type ExperienceFilter = "all" | RoomExperienceTag;
-
-const CATEGORY_TABS: readonly { id: CategoryFilter; label: string }[] = [
-  { id: "all", label: "Toutes les Chambres" },
-  { id: "rooms", label: "Chambres Deluxe" },
-  { id: "suites", label: "Suites Exécutives" },
-  { id: "villas", label: "Villas & Salons" },
-  { id: "penthouses", label: "Suites Présidentielles" },
-];
+import type { Room } from "@/types/hotel.types";
 
 const CURATED_FOUR_SLUGS = [
   "oceanfront-sanctuary-suite",
@@ -79,18 +64,7 @@ const FAQ_ITEMS = [
   },
 ] as const;
 
-function matchesCapacity(room: Room, capacity: CapacityFilter): boolean {
-  if (capacity === "any") return true;
-  if (capacity === "1-2") return room.maxGuests <= 2;
-  if (capacity === "3-4") return room.maxGuests >= 3 && room.maxGuests <= 4;
-  return room.maxGuests >= 5;
-}
-
 export function RoomsCollectionView() {
-  const [category, setCategory] = useState<CategoryFilter>("all");
-  const [maxBudget, setMaxBudget] = useState<number>(1500);
-  const [capacity, setCapacity] = useState<CapacityFilter>("any");
-  const [experience, setExperience] = useState<ExperienceFilter>("all");
   const [heroSlide, setHeroSlide] = useState(0);
   const [heroSaved, setHeroSaved] = useState(false);
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
@@ -99,33 +73,7 @@ export function RoomsCollectionView() {
   const featuredSuite =
     roomsMock.find((r) => r.slug === "oceanfront-sanctuary-suite") ?? roomsMock[0];
 
-  const hasCustomFilter =
-    category !== "all" ||
-    maxBudget < 1500 ||
-    capacity !== "any" ||
-    experience !== "all";
-
-  const displayedRooms = useMemo(() => {
-    if (!hasCustomFilter) {
-      return CURATED_FOUR_SLUGS.map((slug) =>
-        roomsMock.find((r) => r.slug === slug)
-      ).filter((r): r is Room => Boolean(r));
-    }
-
-    return roomsMock.filter((room) => {
-      if (category !== "all" && room.category !== category) return false;
-      const nightlyUsd = Math.round(room.pricePerNight / 100);
-      if (maxBudget < 1500 && nightlyUsd > maxBudget) return false;
-      if (!matchesCapacity(room, capacity)) return false;
-      if (
-        experience !== "all" &&
-        !(room.experienceTags ?? []).includes(experience)
-      ) {
-        return false;
-      }
-      return true;
-    });
-  }, [category, maxBudget, capacity, experience, hasCustomFilter]);
+  const displayedRooms = roomsMock;
 
   const comparisonRows = useMemo(
     () =>
@@ -141,13 +89,6 @@ export function RoomsCollectionView() {
     "bg-[#a3d0c0]",
     "bg-[#1d0d00]",
   ];
-
-  const handleReset = () => {
-    setCategory("all");
-    setMaxBudget(1500);
-    setCapacity("any");
-    setExperience("all");
-  };
 
   const toggleWishlist = (slug: string) => {
     setWishlist((prev) => ({ ...prev, [slug]: !prev[slug] }));
@@ -189,7 +130,7 @@ export function RoomsCollectionView() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[14px] font-semibold text-[#001510]">
-                  King&apos;s Bed Hotel Paris
+                  King&apos;s Bed Hotel Savalou
                 </span>
                 <span className="text-[13px] text-[#414846]">
                   Clef Michelin &amp; Affaires Certifié
@@ -199,135 +140,6 @@ export function RoomsCollectionView() {
           </div>
         </Reveal>
 
-        {/* Interactive Filter & Segment Bar */}
-        <Reveal delay={0.05}>
-          <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(13,43,36,0.06)] border border-[#1a1c1a]/5">
-            {/* Category Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-4 border-b border-[#e9e8e5]">
-              {CATEGORY_TABS.map((tab) => {
-                const active = category === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setCategory(tab.id)}
-                    className={`px-5 py-2.5 rounded-full text-[12px] font-medium tracking-[0.02em] transition-all whitespace-nowrap cursor-pointer ${
-                      active
-                        ? "bg-[#001510] text-white shadow-sm"
-                        : "bg-[#efeeeb] text-[#1a1c1a] hover:bg-[#e9e8e5]"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Segmented Selectors Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-4 items-center">
-              {/* Nightly Budget Slider */}
-              <div className="bg-[#f4f3f0] p-3 px-4 rounded-2xl flex flex-col justify-center">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider">
-                    Budget par Nuit
-                  </span>
-                  <span className="text-[12px] font-semibold text-[#001510]">
-                    {maxBudget >= 1500
-                      ? "400 € - 1 500 €+"
-                      : `400 € - ${maxBudget.toLocaleString("fr-FR")} €`}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-[12px] text-[#414846]">400 €</span>
-                  <input
-                    type="range"
-                    min={400}
-                    max={1500}
-                    step={50}
-                    value={maxBudget}
-                    onChange={(e) => setMaxBudget(Number(e.target.value))}
-                    aria-label="Budget par Nuit"
-                    className="w-full h-1.5 bg-[#e3e2e0] rounded-lg appearance-none cursor-pointer accent-[#001510]"
-                  />
-                  <span className="text-[12px] text-[#414846]">1,5k €</span>
-                </div>
-              </div>
-
-              {/* Capacity Selector */}
-              <div className="bg-[#f4f3f0] p-3 px-4 rounded-2xl flex flex-col justify-center">
-                <label
-                  htmlFor="capacitySelect"
-                  className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider mb-1"
-                >
-                  Hôtes / Capacité
-                </label>
-                <div className="relative flex items-center justify-between">
-                  <select
-                    id="capacitySelect"
-                    value={capacity}
-                    onChange={(e) =>
-                      setCapacity(e.target.value as CapacityFilter)
-                    }
-                    className="bg-transparent text-[15px] font-medium text-[#1a1c1a] focus:outline-none w-full cursor-pointer appearance-none pr-6"
-                  >
-                    <option value="any">Toute Capacité</option>
-                    <option value="1-2">1 - 2 Hôtes (Solo / Duo)</option>
-                    <option value="3-4">3 - 4 Hôtes (Famille / Équipe)</option>
-                    <option value="5+">5+ Hôtes (Suites &amp; Groupes)</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 text-[#414846] pointer-events-none shrink-0" />
-                </div>
-              </div>
-
-              {/* Key Experience Selector */}
-              <div className="bg-[#f4f3f0] p-3 px-4 rounded-2xl flex flex-col justify-center">
-                <label
-                  htmlFor="amenitySelect"
-                  className="text-[11px] font-semibold text-[#414846] uppercase tracking-wider mb-1"
-                >
-                  Prestation Clé
-                </label>
-                <div className="relative flex items-center justify-between">
-                  <select
-                    id="amenitySelect"
-                    value={experience}
-                    onChange={(e) =>
-                      setExperience(e.target.value as ExperienceFilter)
-                    }
-                    className="bg-transparent text-[15px] font-medium text-[#1a1c1a] focus:outline-none w-full cursor-pointer appearance-none pr-6"
-                  >
-                    <option value="all">Toutes les Prestations</option>
-                    <option value="pool">Bassin ou Piscine Privée</option>
-                    <option value="ocean">Vue Panoramique</option>
-                    <option value="butler">Service Majordome &amp; Bureau</option>
-                    <option value="spa">Baignoire Balnéo / Marbre</option>
-                  </select>
-                  <SlidersHorizontal className="w-4 h-4 text-[#414846] pointer-events-none shrink-0" />
-                </div>
-              </div>
-
-              {/* Action & Reset */}
-              <div className="flex items-center gap-2">
-                <a
-                  href="#catalogue-grid"
-                  className="flex-1 py-3 px-5 rounded-2xl bg-[#001510] text-white text-[14px] font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-[#0d2b24] transition-colors"
-                >
-                  <Search className="w-4 h-4" />
-                  Filtrer
-                </a>
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  aria-label="Réinitialiser les filtres"
-                  title="Réinitialiser les filtres"
-                  className="p-3.5 rounded-2xl bg-[#e9e8e5] text-[#414846] hover:text-[#1a1c1a] hover:bg-[#e3e2e0] transition-colors cursor-pointer"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* Featured / Hero Suite Showcase */}
@@ -460,12 +272,12 @@ export function RoomsCollectionView() {
                 <div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[36px] leading-none font-semibold tracking-[-0.02em] text-[#001510]">
-                      {Math.round(featuredSuite.pricePerNight / 100)} €
+                      {featuredSuite.pricePerNight.toLocaleString("fr-FR")} F CFA
                     </span>
                     <span className="text-[13px] text-[#414846]">/ nuit</span>
                   </div>
                   <span className="text-[11px] font-semibold text-[#414846]">
-                    Hors taxe de séjour (14 €)
+                    Hors taxe de séjour (9 000 F CFA)
                   </span>
                 </div>
 
@@ -513,32 +325,14 @@ export function RoomsCollectionView() {
               Toutes nos Chambres &amp; Suites
             </h2>
           </div>
-          <div className="text-[13px] text-[#414846]">
-            <strong>{displayedRooms.length}</strong> sur{" "}
-            <strong>{roomsMock.length}</strong> chambres présentées
+          <div className="text-[13px] text-[#414846] font-medium">
+            {roomsMock.length} chambres &amp; suites affichées
           </div>
         </div>
 
-        {displayedRooms.length === 0 ? (
-          <div className="bg-white rounded-3xl p-12 text-center space-y-4 shadow-sm">
-            <p className="text-[18px] font-medium text-[#001510]">
-              Aucune chambre ne correspond à vos critères actuels.
-            </p>
-            <p className="text-[14px] text-[#414846]">
-              Élargissez votre budget par nuit ou réinitialisez les filtres pour afficher l&apos;ensemble de nos chambres.
-            </p>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="px-6 py-2.5 rounded-full bg-[#001510] text-white text-[14px] font-semibold hover:bg-[#0d2b24] transition-colors cursor-pointer"
-            >
-              Réinitialiser les Filtres
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {displayedRooms.map((room, idx) => {
-              const nightlyUsd = Math.round(room.pricePerNight / 100);
+              const nightlyXof = room.pricePerNight;
               const isWished = Boolean(wishlist[room.slug]);
               const badgeColor =
                 room.badgeSublabel === "Résidence Privée"
@@ -639,7 +433,7 @@ export function RoomsCollectionView() {
                           À partir de
                         </span>
                         <span className="text-[20px] font-semibold text-[#001510]">
-                          {nightlyUsd.toLocaleString("fr-FR")} €{" "}
+                          {nightlyXof.toLocaleString("fr-FR")} F CFA{" "}
                           <span className="text-[13px] text-[#414846] font-normal">
                             / nuit
                           </span>
@@ -664,8 +458,7 @@ export function RoomsCollectionView() {
                 </Reveal>
               );
             })}
-          </div>
-        )}
+        </div>
       </section>
 
       {/* Suite Comparison Matrix */}

@@ -6,6 +6,7 @@ import {
   Menu,
   RefreshCw,
   ShieldCheck,
+  SquareUserRound,
   User,
 } from "lucide-react";
 import Link from "next/link";
@@ -167,10 +168,11 @@ export function NavbarPill() {
               <button
                 type="button"
                 onClick={() => openAuthModal()}
-                className="hidden sm:inline-flex h-10 px-4 rounded-full border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] text-[14px] font-medium whitespace-nowrap shrink-0 items-center justify-center gap-2 transition-colors cursor-pointer"
+                aria-label="Connexion"
+                title="Connexion"
+                className="hidden sm:inline-flex h-10 w-10 rounded-full border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] items-center justify-center transition-colors cursor-pointer"
               >
-                <User className="w-4 h-4" strokeWidth={1.75} />
-                Connexion
+                <SquareUserRound className="w-5 h-5" strokeWidth={1.75} />
               </button>
             )}
 
