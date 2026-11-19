@@ -31,7 +31,7 @@ export function HeroSection() {
                 <p className="text-[13px] font-medium">Bénin, Savalou</p>
               </div>
 
-              <div className="mt-16 flex items-center gap-5 sm:gap-7">
+              <div className="mt-28 flex items-center gap-5 sm:gap-7">
                 <p className="text-[13px] sm:text-[14px] text-white/85 leading-relaxed max-w-[240px]">
                   King&apos;s Bed Hotel vous accueille pour vos séjours en chambre avec petit-déjeuner, ainsi que vos réunions et conférences sur mesure.
                 </p>
@@ -47,7 +47,7 @@ export function HeroSection() {
                 </Link>
               </div>
 
-              <h1 className="mt-auto -mt-1.5 lg:-mt-2 text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
+              <h1 className="mt-auto -translate-y-[5px] text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
                 Réservez Votre Séjour
                 <br />
                 au King&apos;s Bed Hotel
@@ -55,9 +55,9 @@ export function HeroSection() {
             </div>
 
             {/* Right column */}
-            <div className="hidden md:flex md:col-span-6 lg:col-span-6 flex-col items-end gap-4">
-              <p className="text-[12px] text-white/85 text-right leading-tight max-w-[16rem]">
-                Chambres,<br />Petit-Déjeuner &amp; Salles de Conférence
+            <div className="hidden md:flex md:col-span-6 lg:col-span-6 flex-col items-end justify-end gap-4 mb-12">
+              <p className="text-[12px] text-white/85 text-right leading-tight whitespace-nowrap">
+                Chambres, Petit-Déjeuner &amp; Salles de Conférence
               </p>
               <HeroCardConfirmed />
               <HeroCardStay />
