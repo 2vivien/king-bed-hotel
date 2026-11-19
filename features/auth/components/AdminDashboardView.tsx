@@ -27,7 +27,6 @@ import {
   Sparkles,
   TrendingUp,
   UserCheck,
-  Users,
   Utensils,
   Wallet,
   X,
@@ -48,10 +47,7 @@ import { formatMoney } from "@/lib/utils/format-money";
 
 type AdminSidebarSection =
   | "overview"
-  | "reservations"
-  | "rooms-breakfast"
-  | "conference-halls"
-  | "team";
+  | "reservations";
 
 type AdminFilter = "all" | "pending" | "confirmed" | "declined";
 
@@ -303,21 +299,11 @@ export function AdminDashboardView() {
       icon: ClipboardList,
       badge: counts.pending,
     },
-    { id: "rooms-breakfast", label: "Chambres & Petit-Déj.", icon: BedDouble },
-    {
-      id: "conference-halls",
-      label: "Salles de Conférence",
-      icon: Presentation,
-    },
-    { id: "team", label: "Équipe & Majordomes", icon: Users },
   ];
 
   const sectionTitleMap: Record<AdminSidebarSection, string> = {
     overview: "Bureau de Conciergerie & Vue Globale",
     reservations: "Registre des Réservations & Validations",
-    "rooms-breakfast": "Planning Chambres & Petits-Déjeuners",
-    "conference-halls": "Centres de Conférences & Salons",
-    team: "Équipe Conciergerie & Affectations",
   };
 
   const sidebarContent = (
@@ -949,181 +935,6 @@ export function AdminDashboardView() {
             {/* RESERVATIONS SECTION */}
             {section === "reservations" && renderLedgerAndDossier()}
 
-            {/* ROOMS & BREAKFAST SECTION */}
-            {section === "rooms-breakfast" && (
-              <div className="rounded-2xl border border-[#EDEDEA] bg-white overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#EDEDEA] flex items-center justify-between">
-                  <h2 className="text-[16px] font-semibold text-[#111111]">
-                    Registre Chambres &amp; Service Petit-Déjeuner
-                  </h2>
-                  <span className="text-[12px] text-[#5F5F5A]">
-                    Mise à jour temps réel
-                  </span>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-[#EDEDEA] text-[11px] font-semibold uppercase tracking-wider text-[#5F5F5A]">
-                        <th className="py-3 px-6">Hôte</th>
-                        <th className="py-3 px-4">Chambre / Suite</th>
-                        <th className="py-3 px-4">Formule Breakfast</th>
-                        <th className="py-3 px-4">Responsable</th>
-                        <th className="py-3 px-6 text-right">Statut</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#EDEDEA] text-[13px]">
-                      {allBookings.map((b) => (
-                        <tr
-                          key={b.id}
-                          onClick={() => {
-                            setSelectedId(b.id);
-                            setSection("reservations");
-                          }}
-                          className="hover:bg-[#faf9f6] transition-colors cursor-pointer"
-                        >
-                          <td className="py-3.5 px-6 font-medium text-[#111111]">
-                            {b.guestName}
-                          </td>
-                          <td className="py-3.5 px-4 text-[#111111]">
-                            {b.roomTitle}
-                          </td>
-                          <td className="py-3.5 px-4 text-[#5F5F5A]">
-                            {b.breakfastOrHallLabel}
-                          </td>
-                          <td className="py-3.5 px-4 text-[#3d6659] font-medium">
-                            {b.butlerName}
-                          </td>
-                          <td className="py-3.5 px-6 text-right">
-                            <span
-                              className={cn(
-                                "inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold",
-                                b.status === "confirmed"
-                                  ? "bg-[#bce9d9] text-[#002018]"
-                                  : b.status === "pending"
-                                    ? "bg-[#ffdcbd] text-[#2c1600]"
-                                    : "bg-[#e9e8e5] text-[#414846]"
-                              )}
-                            >
-                              {b.perkBadge}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
-
-            {/* CONFERENCE HALLS SECTION */}
-            {section === "conference-halls" && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {[
-                  {
-                    name: "Salon Conférence Haussmann",
-                    capacity: "18 à 35 personnes",
-                    equipment: "Écran 4K interactif, micros sans fil, fibre dédiée",
-                    status: "Demande en attente (#KB-9931)",
-                    badgeClass: "bg-[#ffdcbd] text-[#2c1600]",
-                  },
-                  {
-                    name: "Salle Royale Vendôme",
-                    capacity: "24 à 60 personnes",
-                    equipment:
-                      "Visioconférence Polycom, pauses café & déjeuner privé",
-                    status: "En cours d'approbation (#KB-9104)",
-                    badgeClass: "bg-[#ffdcbd] text-[#2c1600]",
-                  },
-                  {
-                    name: "Grand Auditorium King's Bed",
-                    capacity: "Jusqu'à 140 personnes",
-                    equipment: "Régie complète, acoustique isolée, scène",
-                    status: "Disponible fin décembre",
-                    badgeClass: "bg-[#bce9d9] text-[#002018]",
-                  },
-                ].map((hall) => (
-                  <div
-                    key={hall.name}
-                    className="rounded-2xl border border-[#EDEDEA] bg-white p-6 space-y-4"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="w-10 h-10 rounded-full bg-[#e9e8e5] flex items-center justify-center text-[#111111]">
-                        <Presentation className="w-5 h-5" />
-                      </div>
-                      <span
-                        className={cn(
-                          "px-2.5 py-0.5 rounded-full text-[11px] font-semibold",
-                          hall.badgeClass
-                        )}
-                      >
-                        {hall.status}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="text-[17px] font-semibold text-[#111111]">
-                        {hall.name}
-                      </h3>
-                      <p className="text-[12px] text-[#3d6659] font-medium mt-0.5">
-                        Capacité : {hall.capacity}
-                      </p>
-                    </div>
-                    <p className="text-[13px] text-[#5F5F5A] leading-relaxed">
-                      {hall.equipment}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setSection("reservations")}
-                      className="text-[13px] font-medium text-[#111111] hover:text-[#3d6659] inline-flex items-center gap-1 cursor-pointer"
-                    >
-                      Voir les dossiers liés
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* TEAM SECTION */}
-            {section === "team" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {STAFF_BUTLERS.map((staff) => {
-                  const assignedCount = allBookings.filter(
-                    (b) => b.butlerName === staff
-                  ).length;
-                  return (
-                    <div
-                      key={staff}
-                      className="rounded-2xl border border-[#EDEDEA] bg-white p-6 flex items-center justify-between gap-4"
-                    >
-                      <div className="flex items-center gap-3.5">
-                        <div className="w-12 h-12 rounded-full bg-[#0d2b24] text-[#bfecdc] flex items-center justify-center text-[14px] font-semibold">
-                          {staff
-                            .split(" ")
-                            .map((w) => w[0])
-                            .join("")}
-                        </div>
-                        <div>
-                          <h3 className="text-[16px] font-semibold text-[#111111]">
-                            {staff}
-                          </h3>
-                          <p className="text-[12px] text-[#5F5F5A]">
-                            Équipe Conciergerie &amp; Coordination Séminaires
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[20px] font-semibold text-[#111111] tabular-nums">
-                          {assignedCount}
-                        </p>
-                        <p className="text-[11px] text-[#5F5F5A]">
-                          dossier(s) actif(s)
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
           </div>
         </div>
       </div>

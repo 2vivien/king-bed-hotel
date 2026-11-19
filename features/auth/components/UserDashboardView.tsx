@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
-  ConciergeBell,
   CreditCard,
   Download,
   FileText,
@@ -19,9 +18,7 @@ import {
   LogOut,
   MapPin,
   Menu,
-  MessageSquare,
   Presentation,
-  RefreshCw,
   RotateCcw,
   ShieldCheck,
   SlidersHorizontal,
@@ -44,10 +41,7 @@ import { formatMoney } from "@/lib/utils/format-money";
 
 type ClientSidebarSection =
   | "overview"
-  | "bookings"
-  | "breakfast-halls"
-  | "preferences"
-  | "documents";
+  | "bookings";
 
 type ClientTab = "all" | "confirmed" | "pending" | "history";
 
@@ -78,16 +72,13 @@ export function UserDashboardView() {
 
   const currentUser = useAuthStore((s) => s.currentUser);
   const managedBookings = useAuthStore((s) => s.managedBookings);
-  const userPreferences = useAuthStore((s) => s.userPreferences);
   const openAuthModal = useAuthStore((s) => s.openAuthModal);
   const loginQuickRole = useAuthStore((s) => s.loginQuickRole);
   const logout = useAuthStore((s) => s.logout);
   const updateBookingStatus = useAuthStore((s) => s.updateBookingStatus);
   const updateBookingNote = useAuthStore((s) => s.updateBookingNote);
-  const updateUserPreferences = useAuthStore((s) => s.updateUserPreferences);
 
   const confirmedSessionBookings = useBookingStore((s) => s.confirmedBookings);
-  const [prefDraft, setPrefDraft] = useState(userPreferences);
 
   const showToast = (title: string, subtitle: string) => {
     setToast({ title, subtitle });
@@ -238,41 +229,16 @@ export function UserDashboardView() {
       icon: CalendarCheck,
       badge: counts.all,
     },
-    {
-      id: "breakfast-halls",
-      label: "Petit-Déjeuner & Salles",
-      icon: Utensils,
-    },
-    { id: "preferences", label: "Préférences Séjour", icon: SlidersHorizontal },
-    { id: "documents", label: "Factures & Reçus", icon: FileText },
   ];
 
   const sectionTitleMap: Record<ClientSidebarSection, string> = {
     overview: "Vue d'ensemble",
     bookings: "Mes Réservations",
-    "breakfast-halls": "Petit-Déjeuner & Salles de Conférence",
-    preferences: "Préférences Séjour",
-    documents: "Factures & Reçus 2025",
   };
 
   const sidebarContent = (
     <div className="flex flex-col h-full justify-between p-5 bg-white">
       <div className="space-y-6">
-        {/* User Google Identity Card */}
-        <div className="p-3.5 rounded-2xl border border-[#EDEDEA] bg-[#faf9f6] flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#111111] text-white flex items-center justify-center text-[13px] font-semibold shrink-0">
-            {currentUser.initials}
-          </div>
-          <div className="min-w-0">
-            <p className="text-[13px] font-semibold text-[#111111] truncate">
-              {currentUser.name}
-            </p>
-            <p className="text-[11px] text-[#5F5F5A] truncate">
-              {currentUser.email}
-            </p>
-          </div>
-        </div>
-
         {/* Navigation Links */}
         <div className="space-y-1">
           <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#9A9A93] mb-2">
@@ -286,9 +252,6 @@ export function UserDashboardView() {
                 key={item.id}
                 type="button"
                 onClick={() => {
-                  if (item.id === "preferences") {
-                    setPrefDraft(userPreferences);
-                  }
                   setSection(item.id);
                   setMobileSidebarOpen(false);
                 }}
@@ -320,39 +283,10 @@ export function UserDashboardView() {
           })}
         </div>
 
-        {/* Concierge Mini Box */}
-        <div className="p-4 rounded-2xl bg-[#0d2b24] text-white space-y-3">
-          <div className="flex items-center gap-2 text-[11px] font-semibold text-[#bfecdc]">
-            <ConciergeBell className="w-3.5 h-3.5" />
-            Majordome 24/7
-          </div>
-          <p className="text-[13px] font-medium">Henri de Saint-Germain</p>
-          <p className="text-[11px] text-[#adcdc3] leading-relaxed">
-            Ligne directe réception : +229 01 42 68 90 00
-          </p>
-          <Link
-            href="/contact"
-            className="w-full py-2 rounded-full bg-white/15 hover:bg-white/25 text-white text-[12px] font-medium flex items-center justify-center gap-1.5 transition-colors"
-          >
-            <MessageSquare className="w-3.5 h-3.5" />
-            Contacter la réception
-          </Link>
-        </div>
       </div>
 
       {/* Sidebar Bottom Controls */}
       <div className="pt-5 border-t border-[#EDEDEA] space-y-2">
-        <button
-          type="button"
-          onClick={() => openAuthModal("admin")}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] text-[12px] font-medium flex items-center justify-between transition-colors cursor-pointer"
-        >
-          <span className="flex items-center gap-2">
-            <RefreshCw className="w-3.5 h-3.5 text-[#0d2b24]" />
-            Compte Google Admin
-          </span>
-          <ChevronRight className="w-3.5 h-3.5 text-[#5F5F5A]" />
-        </button>
         <button
           type="button"
           onClick={() => {
@@ -791,215 +725,6 @@ export function UserDashboardView() {
               </div>
             )}
 
-            {/* BREAKFAST & CONFERENCE HALLS SECTION */}
-            {section === "breakfast-halls" && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="rounded-2xl border border-[#EDEDEA] bg-white p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#bce9d9] text-[#002018] flex items-center justify-center">
-                      <Utensils className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h2 className="text-[18px] font-semibold text-[#111111]">
-                        Formule Petit-Déjeuner Verrière
-                      </h2>
-                      <p className="text-[12px] text-[#5F5F5A]">
-                        Inclus avec votre séjour • 07h00 — 10h30
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] text-[#5F5F5A] leading-relaxed">
-                    Buffet artisanal de viennoiseries tièdes, jus pressés à
-                    froid, œufs préparés à la minute et option sans gluten
-                    préparée selon votre profil Google Client.
-                  </p>
-                  <div className="p-4 rounded-xl bg-[#faf9f6] border border-[#EDEDEA] text-[13px] text-[#111111] space-y-1">
-                    <p>
-                      <strong>Préférence active :</strong>{" "}
-                      {userPreferences.dietary}
-                    </p>
-                    <p className="text-[#5F5F5A]">
-                      Table réservée sous la verrière pour vos séjours confirmés.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-[#EDEDEA] bg-white p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#e9e8e5] text-[#111111] flex items-center justify-center">
-                      <Presentation className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h2 className="text-[18px] font-semibold text-[#111111]">
-                        Salles de Réunion &amp; Conférences
-                      </h2>
-                      <p className="text-[12px] text-[#5F5F5A]">
-                        Salons Haussmann &amp; Vendôme • Équipement 4K
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] text-[#5F5F5A] leading-relaxed">
-                    Espaces modulables en U ou théâtre avec fibre optique dédiée,
-                    visioconférence et pauses café gastronomiques.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Link
-                      href="/services"
-                      className="px-4 py-2 rounded-full bg-[#111111] text-white text-[12px] font-medium"
-                    >
-                      Découvrir nos salons affaires
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="px-4 py-2 rounded-full border border-[#EDEDEA] bg-white text-[#111111] text-[12px] font-medium"
-                    >
-                      Demander un devis sur mesure
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* PREFERENCES SECTION */}
-            {section === "preferences" && (
-              <div className="max-w-2xl rounded-2xl border border-[#EDEDEA] bg-white p-6 sm:p-8 space-y-6">
-                <div>
-                  <h2 className="text-[20px] font-semibold text-[#111111]">
-                    Préférences d&apos;Accueil Personnalisées
-                  </h2>
-                  <p className="text-[13px] text-[#5F5F5A] mt-1">
-                    Ces réglages sont transmis automatiquement aux équipes
-                    d&apos;étage avant votre arrivée.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-[#5F5F5A] mb-1.5">
-                      <BedDouble className="w-4 h-4 text-[#3d6659]" />
-                      Literie &amp; Menu Oreillers
-                    </label>
-                    <input
-                      type="text"
-                      value={prefDraft.bedding}
-                      onChange={(e) =>
-                        setPrefDraft((p) => ({ ...p, bedding: e.target.value }))
-                      }
-                      className="w-full h-11 px-4 rounded-xl border border-[#EDEDEA] bg-white text-[14px] text-[#111111] focus:outline-none focus:border-[#111111]"
-                    />
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-[#5F5F5A] mb-1.5">
-                      <Utensils className="w-4 h-4 text-[#3d6659]" />
-                      Petit-Déjeuner &amp; Régime
-                    </label>
-                    <input
-                      type="text"
-                      value={prefDraft.dietary}
-                      onChange={(e) =>
-                        setPrefDraft((p) => ({ ...p, dietary: e.target.value }))
-                      }
-                      className="w-full h-11 px-4 rounded-xl border border-[#EDEDEA] bg-white text-[14px] text-[#111111] focus:outline-none focus:border-[#111111]"
-                    />
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-[#5F5F5A] mb-1.5">
-                      <Car className="w-4 h-4 text-[#3d6659]" />
-                      Transferts &amp; Voiturier
-                    </label>
-                    <input
-                      type="text"
-                      value={prefDraft.transfer}
-                      onChange={(e) =>
-                        setPrefDraft((p) => ({
-                          ...p,
-                          transfer: e.target.value,
-                        }))
-                      }
-                      className="w-full h-11 px-4 rounded-xl border border-[#EDEDEA] bg-white text-[14px] text-[#111111] focus:outline-none focus:border-[#111111]"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-2 flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateUserPreferences(prefDraft);
-                      showToast(
-                        "Préférences enregistrées",
-                        "Votre profil d'accueil King's Bed a été mis à jour."
-                      );
-                    }}
-                    className="px-6 py-2.5 rounded-full bg-[#111111] hover:bg-[#2A2A28] text-white text-[13px] font-medium cursor-pointer"
-                  >
-                    Enregistrer mes préférences
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* DOCUMENTS SECTION */}
-            {section === "documents" && (
-              <div className="rounded-2xl border border-[#EDEDEA] bg-white overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#EDEDEA] flex items-center justify-between">
-                  <h2 className="text-[16px] font-semibold text-[#111111]">
-                    Factures &amp; Reçus Fiscaux
-                  </h2>
-                  <span className="text-[12px] text-[#5F5F5A]">
-                    Compte {currentUser.memberNumber}
-                  </span>
-                </div>
-                <div className="divide-y divide-[#EDEDEA]">
-                  {clientBookings.map((b) => (
-                    <div
-                      key={b.id}
-                      className="px-6 py-4 flex flex-wrap items-center justify-between gap-4 hover:bg-[#faf9f6] transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-[#3d6659]" />
-                        <div>
-                          <p className="text-[14px] font-semibold text-[#111111]">
-                            Facture {b.ref} — {b.roomTitle}
-                          </p>
-                          <p className="text-[12px] text-[#5F5F5A] tabular-nums">
-                            {b.dateRange} • {formatMoney(b.amount)} TTC
-                          </p>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          downloadTextFile(
-                            `Facture-${b.id}.txt`,
-                            `KING'S BED HOTEL — FACTURE\nClient: ${currentUser.name} (${currentUser.email})\nRéf: ${b.ref}\nPrestation: ${b.roomTitle}\nDates: ${b.dateRange}\nMontant TTC: ${formatMoney(b.amount)}\n`
-                          );
-                          showToast(
-                            "Facture téléchargée",
-                            `Le document ${b.ref} a été généré.`
-                          );
-                        }}
-                        className="px-4 py-2 rounded-full border border-[#EDEDEA] bg-white hover:bg-[#111111] hover:text-white text-[#111111] text-[12px] font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Télécharger
-                      </button>
-                    </div>
-                  ))}
-                  <div className="px-6 py-4 flex items-center justify-between bg-[#faf9f6]">
-                    <div className="flex items-center gap-2.5 text-[13px] text-[#111111]">
-                      <Award className="w-4 h-4 text-[#3d6659]" />
-                      Attestation Membre Privilège &amp; Garantie Annulation
-                      48h
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-[12px] font-medium text-[#3d6659]">
-                      <ShieldCheck className="w-4 h-4" />
-                      Active
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
