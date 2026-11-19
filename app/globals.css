@@ -27,13 +27,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #FFFFFF;
+    background-color: #EFEAE1;
     color: #111111;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #FFFFFF;
+    background-color: #EFEAE1;
     color: #111111;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -64,5 +64,59 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* ————— Framed presentation — big white frame floating on soft beige ————— */
+.site-frame {
+  width: 96vw;
+  max-width: 1440px;
+  margin: 18px auto 24px;
+  background: #FFFFFF;
+  border: 10px solid #FFFFFF;
+  border-radius: 22px;
+  overflow: clip;
+  box-shadow: 0 24px 60px rgba(16, 44, 36, 0.18);
+  padding: 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+.site-navbar {
+  margin: -12px -12px 0;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #FFFFFF;
+  border-bottom: 1px solid #EDEDEA;
+}
+
+.site-footer {
+  margin: 0 -12px 0;
+}
+
+@media (max-width: 900px) {
+  .site-frame {
+    width: 96%;
+    max-width: 96%;
+    margin: 14px auto 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-frame {
+    width: 96%;
+    max-width: 96%;
+    margin: 8px auto 12px;
+    border: 6px solid #FFFFFF;
+    border-radius: 16px;
+    padding: 8px 8px 0;
+  }
+  .site-navbar {
+    margin: -8px -8px 0;
+  }
+  .site-footer {
+    margin: 0 -8px 0;
   }
 }
