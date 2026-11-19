@@ -54,7 +54,7 @@ export function TestimonialsSection() {
               </div>
 
               <figcaption className="flex items-center justify-between gap-4 pt-4 border-t border-[#111111]/8">
-                <div className="flex items-center gap-3.5 min-w-0">
+                <div className="flex items-center gap-2.5 min-w-0">
                   <span className="w-10 h-10 rounded-full bg-[#EFE6D6] text-[#111111] text-[12px] font-medium flex items-center justify-center shrink-0">
                     {current.avatarLabel}
                   </span>

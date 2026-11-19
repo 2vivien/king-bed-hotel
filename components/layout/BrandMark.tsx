@@ -14,7 +14,7 @@ export function BrandMark({ tone = "dark", className }: BrandMarkProps) {
       href="/"
       aria-label="King's Bed Hotel — accueil"
       className={cn(
-        "inline-flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] rounded-full",
+        "inline-flex items-center gap-2.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] rounded-full",
         isLight ? "text-white" : "text-[#111111]",
         className
       )}
@@ -27,7 +27,7 @@ export function BrandMark({ tone = "dark", className }: BrandMarkProps) {
         priority
         className="h-11 w-11 object-contain"
       />
-      <span className="text-[16px] font-semibold tracking-[-0.02em]">
+      <span className="text-[19px] font-semibold tracking-[-0.02em]">
         King&apos;s Bed Hotel
       </span>
     </Link>
