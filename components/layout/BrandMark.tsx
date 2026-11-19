@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -18,22 +19,14 @@ export function BrandMark({ tone = "dark", className }: BrandMarkProps) {
         className
       )}
     >
-      <span className="relative flex items-center" aria-hidden="true">
-        <span
-          className={cn(
-            "w-4 h-4 rounded-full",
-            isLight ? "bg-white" : "bg-[#111111]"
-          )}
-        />
-        <span
-          className={cn(
-            "w-4 h-4 rounded-full -ml-2 border-[1.5px]",
-            isLight
-              ? "border-white bg-white/25"
-              : "border-[#111111] bg-white/80"
-          )}
-        />
-      </span>
+      <Image
+        src="/images/hero/logo_noir_kings_bed.png"
+        alt="King's Bed Hotel"
+        width={44}
+        height={44}
+        priority
+        className="h-11 w-11 object-contain"
+      />
       <span className="text-[16px] font-semibold tracking-[-0.02em]">
         King&apos;s Bed Hotel
       </span>

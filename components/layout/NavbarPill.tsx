@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ChevronDown,
   LogOut,
   Menu,
   RefreshCw,
@@ -102,7 +101,6 @@ export function NavbarPill() {
                   >
                     {activeUser.initials}
                   </span>
-                  <ChevronDown className="w-3.5 h-3.5 text-[#5F5F5A]" />
                 </button>
 
                 {accountMenuOpen && (
