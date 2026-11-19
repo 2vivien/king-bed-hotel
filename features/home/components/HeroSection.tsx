@@ -47,7 +47,7 @@ export function HeroSection() {
                 </Link>
               </div>
 
-              <h1 className="mt-auto -mt-3 sm:-mt-4 lg:-mt-4 text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
+              <h1 className="mt-auto -mt-1.5 lg:-mt-2 text-[clamp(2.5rem,5.2vw,4.35rem)] font-light leading-[1.02] tracking-[-0.035em] text-balance text-white">
                 Réservez Votre Séjour
                 <br />
                 au King&apos;s Bed Hotel
@@ -59,10 +59,8 @@ export function HeroSection() {
               <p className="text-[12px] text-white/85 text-right leading-tight max-w-[16rem]">
                 Chambres,<br />Petit-Déjeuner &amp; Salles de Conférence
               </p>
-              <div className="w-full max-w-sm flex flex-col gap-3.5">
-                <HeroCardConfirmed />
-                <HeroCardStay />
-              </div>
+              <HeroCardConfirmed />
+              <HeroCardStay />
             </div>
 
             {/* Mobile: cards stack after text */}
