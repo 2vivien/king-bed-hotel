@@ -1,7 +1,8 @@
 import type { Booking } from "@/features/booking/types/booking.types";
-import { getDefaultFutureDates } from "@/lib/utils/format-date";
 
-const { checkIn, checkOut } = getDefaultFutureDates();
+// Date fixe lointaine pour éviter tout conflit de dispo avec le calendrier courant
+const checkIn = "2027-08-10";
+const checkOut = "2027-08-13";
 
 export const initialBookingsMock: Booking[] = [
   {
