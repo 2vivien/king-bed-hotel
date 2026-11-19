@@ -19,13 +19,11 @@ import {
   BadgeCheck,
   Banknote,
   Calendar,
-  CalendarPlus,
   Car,
   Check,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Download,
   Headphones,
   Lock,
   MapPin,
@@ -51,7 +49,6 @@ import {
   type AvailabilityResult,
   type GuestDetails,
 } from "@/features/booking/types/booking.types";
-import { buildBookingIcs, buildGoogleCalendarUrl } from "@/lib/utils/ics";
 import { calculateNights } from "@/lib/utils/nights";
 import { findSpace } from "@/lib/utils/space-lookup";
 import { conferenceHallsMock } from "@/mocks/halls";
@@ -259,31 +256,6 @@ export function ReservationFlow() {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
-  const calendarPayload = {
-    bookingId: "KB-PROJET",
-    roomName: selectedRoom.name,
-    location: destinationMeta.label,
-    checkIn,
-    checkOut,
-  };
-
-  const handleDownloadIcs = () => {
-    const icsContent = buildBookingIcs(calendarPayload);
-    const blob = new Blob([icsContent], {
-      type: "text/calendar;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `KingsBedHotel-${selectedRoom.slug}.ics`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-  };
-
-  const googleCalendarHref = buildGoogleCalendarUrl(calendarPayload);
 
   const onConfirmBooking = async (guestValues: GuestDetails) => {
     setBookingError("");
@@ -1174,40 +1146,6 @@ export function ReservationFlow() {
                     <span className="text-[24px] text-[#001510] font-bold">
                       {formatCurrencyXof(grandTotalXof)}
                     </span>
-                  </div>
-                </div>
-
-                {/* Add to Calendar Bar */}
-                <div className="space-y-2">
-                  <span className="text-[11px] text-[#414846] block">
-                    Ajouter à votre agenda :
-                  </span>
-                  <div className="grid grid-cols-3 gap-2">
-                    <button
-                      type="button"
-                      onClick={handleDownloadIcs}
-                      className="py-2.5 rounded-full bg-[#efeeeb] flex items-center justify-center hover:bg-[#e9e8e5] transition-colors text-[#001510] text-[12px] font-bold gap-1.5 cursor-pointer"
-                    >
-                      <Calendar className="w-3.5 h-3.5" />
-                      Apple
-                    </button>
-                    <a
-                      href={googleCalendarHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="py-2.5 rounded-full bg-[#efeeeb] flex items-center justify-center hover:bg-[#e9e8e5] transition-colors text-[#001510] text-[12px] font-bold gap-1.5"
-                    >
-                      <CalendarPlus className="w-3.5 h-3.5" />
-                      Google
-                    </a>
-                    <button
-                      type="button"
-                      onClick={handleDownloadIcs}
-                      className="py-2.5 rounded-full bg-[#efeeeb] flex items-center justify-center hover:bg-[#e9e8e5] transition-colors text-[#001510] text-[12px] font-bold gap-1.5 cursor-pointer"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      .ICS
-                    </button>
                   </div>
                 </div>
 
