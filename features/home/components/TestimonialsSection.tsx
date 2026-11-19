@@ -48,18 +48,18 @@ export function TestimonialsSection() {
             <figure className="w-full rounded-[28px] bg-white border border-[#111111]/8 p-7 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col justify-between gap-8">
               <div className="space-y-5">
                 <Quote className="w-8 h-8 text-[#5F5F5A]" strokeWidth={1.5} aria-hidden="true" />
-                <blockquote className="text-[18px] sm:text-[20px] font-light leading-[1.42] tracking-[-0.01em] text-[#111111]">
+                <blockquote className="text-[16px] sm:text-[17px] font-normal leading-[1.5] tracking-[-0.005em] text-[#111111]">
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
               </div>
 
               <figcaption className="flex items-center justify-between gap-4 pt-6 border-t border-[#111111]/8">
                 <div className="flex items-center gap-3.5 min-w-0">
-                  <span className="w-11 h-11 rounded-full bg-[#EFE6D6] text-[#111111] text-[13px] font-medium flex items-center justify-center shrink-0">
+                  <span className="w-10 h-10 rounded-full bg-[#EFE6D6] text-[#111111] text-[12px] font-medium flex items-center justify-center shrink-0">
                     {current.avatarLabel}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[15px] font-medium text-[#111111]">
+                    <p className="text-[14px] font-medium text-[#111111]">
                       {current.name}
                     </p>
                   </div>
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
           </Reveal>
 
           <Reveal delay={0.12} className="md:col-span-5 flex">
-            <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-full rounded-[28px] overflow-hidden bg-[#EFE6D6]">
+            <div className="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden bg-[#EFE6D6]">
               <SuiteImage
                 src={current.image}
                 alt={current.stayTitle}
