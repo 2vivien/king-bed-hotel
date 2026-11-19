@@ -3,11 +3,11 @@
 import {
   CheckCircle2,
   ShieldCheck,
-  Sparkles,
   User,
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { DEMO_USERS, useAuthStore } from "@/features/auth/store/auth.store";
@@ -93,23 +93,12 @@ function AuthModalContent({
         <div className="px-6 pt-6 pb-5 border-b border-[#EDEDEA] bg-white">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e9e8e5] text-[#111111] text-[11px] font-medium uppercase tracking-[0.06em]">
-                <Sparkles
-                  className="w-3.5 h-3.5 text-[#0d2b24]"
-                  strokeWidth={1.75}
-                />
-                King&apos;s Bed Hotel • Connexion Google
-              </span>
               <h2
                 id="auth-modal-title"
                 className="mt-3 text-[24px] font-semibold tracking-[-0.02em] text-[#111111]"
               >
                 Connexion avec Google
               </h2>
-              <p className="mt-1 text-[13px] text-[#5F5F5A] leading-relaxed">
-                Sélectionnez votre profil Google pour accéder à votre tableau de
-                bord Client ou Admin.
-              </p>
             </div>
             <button
               type="button"
@@ -213,8 +202,15 @@ function AuthModalContent({
           </button>
 
           <p className="text-center text-[11px] text-[#5F5F5A] leading-relaxed">
-            Connexion simplifiée uniquement via Google pour accéder à votre
-            tableau de bord King&apos;s Bed Hotel.
+            En vous connectant, vous acceptez nos{" "}
+            <Link href="/legal/terms" className="underline underline-offset-2 hover:text-[#111111]">
+              Conditions Générales
+            </Link>{" "}
+            et notre{" "}
+            <Link href="/legal/privacy" className="underline underline-offset-2 hover:text-[#111111]">
+              Politique de confidentialité
+            </Link>
+            .
           </p>
         </div>
       </motion.div>
