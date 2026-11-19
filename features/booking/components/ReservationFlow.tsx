@@ -33,12 +33,9 @@ import {
   Plus,
   RefreshCw,
   Shield,
-  Sparkles,
   Star,
   Ticket,
   UtensilsCrossed,
-  Waves,
-  Wifi,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -58,6 +55,8 @@ import {
 } from "@/features/booking/types/booking.types";
 import { buildBookingIcs, buildGoogleCalendarUrl } from "@/lib/utils/ics";
 import { calculateNights } from "@/lib/utils/nights";
+import { findSpace } from "@/lib/utils/space-lookup";
+import { conferenceHallsMock } from "@/mocks/halls";
 import { roomsMock } from "@/mocks/rooms";
 
 type AddOnKey = "chauffeur" | "breakfast";
@@ -87,13 +86,6 @@ const DESTINATION_OPTIONS = [
     address: "Grand Auditorium, Aile Est · Savalou",
     shortLabel: "Auditorium · Aile Est",
   },
-] as const;
-
-const FEATURED_BOOKING_SLUGS = [
-  "royal-villa",
-  "oceanfront-sanctuary-suite",
-  "premium-suite",
-  "deluxe-room",
 ] as const;
 
 const GLOBAL_SANCTUARIES = [
@@ -172,7 +164,11 @@ export function ReservationFlow() {
   const [bookingError, setBookingError] = useState("");
   const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
 
-  const totalGuests = Math.min(8, adults + children);
+
+  const selectedRoom = findSpace(selectedRoomSlug) ?? roomsMock[0];
+  const isHall = selectedRoom.category === "conference";
+  const maxSelectable = isHall ? selectedRoom.maxGuests : 8;
+  const totalGuests = Math.min(maxSelectable, adults + children);
 
   const idempotencyKey = useMemo(
     () =>
@@ -210,20 +206,6 @@ export function ReservationFlow() {
     };
   }, [checkIn, checkOut, totalGuests]);
 
-  const displayedRooms = useMemo(() => {
-    const base = FEATURED_BOOKING_SLUGS.map((slug) =>
-      roomsMock.find((r) => r.slug === slug)
-    ).filter((r): r is (typeof roomsMock)[number] => Boolean(r));
-
-    const urlRoom = roomsMock.find((r) => r.slug === selectedRoomSlug);
-    if (urlRoom && !base.some((b) => b.slug === urlRoom.slug)) {
-      return [urlRoom, ...base];
-    }
-    return base;
-  }, [selectedRoomSlug]);
-
-  const selectedRoom =
-    roomsMock.find((r) => r.slug === selectedRoomSlug) ?? displayedRooms[0];
 
   const destinationMeta =
     DESTINATION_OPTIONS.find((d) => d.slug === destinationSlug) ??
@@ -628,15 +610,17 @@ export function ReservationFlow() {
                   {/* Guest Configuration */}
                   <div className="md:col-span-5 bg-[#f4f3f0] rounded-2xl p-5 flex flex-col justify-between space-y-4">
                     <span className="text-[14px] font-bold text-[#001510]">
-                      Nombre de Voyageurs
+                      {isHall ? "Participants" : "Nombre de Voyageurs"}
                     </span>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
-                          Adultes
+                          {isHall ? "Participants" : "Adultes"}
                         </p>
-                        <p className="text-[12px] text-[#414846]">13 ans et +</p>
+                        <p className="text-[12px] text-[#414846]">
+                          {isHall ? `Capacité ${selectedRoom.maxGuests} personnes` : "13 ans et +"}
+                        </p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
@@ -654,7 +638,7 @@ export function ReservationFlow() {
                           type="button"
                           aria-label="Augmenter le nombre d'adultes"
                           onClick={() =>
-                            setAdults((a) => (adults + children < 8 ? a + 1 : a))
+                            setAdults((a) => (adults + children < maxSelectable ? a + 1 : a))
                           }
                           className="w-8 h-8 rounded-full bg-[#001510] text-white flex items-center justify-center hover:bg-[#0d2b24] transition-colors cursor-pointer"
                         >
@@ -663,6 +647,7 @@ export function ReservationFlow() {
                       </div>
                     </div>
 
+                    {!isHall && (
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
@@ -689,7 +674,7 @@ export function ReservationFlow() {
                           aria-label="Augmenter le nombre d'enfants"
                           onClick={() =>
                             setChildren((c) =>
-                              adults + children < 8 ? c + 1 : c
+                              adults + children < maxSelectable ? c + 1 : c
                             )
                           }
                           className="w-8 h-8 rounded-full bg-[#efeeeb] flex items-center justify-center text-[#1a1c1a] hover:bg-[#e3e2e0] transition-colors cursor-pointer"
@@ -699,6 +684,8 @@ export function ReservationFlow() {
                       </div>
                     </div>
 
+                    )}
+                    {!isHall && (
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-[13px] font-semibold text-[#001510]">
@@ -734,6 +721,7 @@ export function ReservationFlow() {
                         </button>
                       </div>
                     </div>
+                    )}
                   </div>
                 </div>
 
@@ -770,160 +758,121 @@ export function ReservationFlow() {
                 </div>
               </div>
 
-              {/* STEP 2: Select Your Private Sanctuary */}
+              {/* STEP 2: Select your space (chambre ou salle de conférence) */}
               <div id="step-2" className="space-y-4">
-                <div className="flex items-end justify-between">
+                <div className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_12px_36px_-6px_rgba(13,43,36,0.06)] border border-[#1a1c1a]/5 space-y-6">
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
                       Étape 2 sur 5
                     </span>
                     <h2 className="text-[24px] font-semibold text-[#001510]">
-                      Choisissez Votre Chambre ou Suite
+                      {isHall
+                        ? "Choisissez Votre Salle de Conférence"
+                        : "Choisissez Votre Chambre ou Suite"}
                     </h2>
                   </div>
-                  <span className="text-[13px] text-[#414846]">
-                    {displayedRooms.length} hébergements affichés
-                  </span>
-                </div>
 
-                <div className="space-y-4">
-                  {displayedRooms.map((room) => {
-                    const isSelected = room.slug === selectedRoom.slug;
-                    const nightlyUsd = room.pricePerNight;
-                    const availItem = availability?.find(
-                      (a) => a.roomSlug === room.slug
-                    );
-                    const canFitGuests = totalGuests <= room.maxGuests;
-                    const available = availItem
-                      ? availItem.available
-                      : canFitGuests;
+                  <label className="block">
+                    <span className="text-[11px] uppercase tracking-wider text-[#3d6659] font-semibold">
+                      {isHall ? "Votre salle" : "Votre chambre"}
+                    </span>
+                    <select
+                      value={selectedRoomSlug}
+                      onChange={(e) => {
+                        setSelectedRoomSlug(e.target.value);
+                        const found = findSpace(e.target.value);
+                        if (found) {
+                          setAdults((a) => Math.min(a, found.maxGuests));
+                          setChildren((c) => Math.min(c, found.maxGuests));
+                        }
+                        setActiveStep(2);
+                      }}
+                      aria-label="Choisir un espace"
+                      className="field mt-2 h-12 text-[15px] font-medium cursor-pointer"
+                    >
+                      <optgroup label="Chambres & Suites">
+                        {roomsMock.map((r) => (
+                          <option key={r.slug} value={r.slug}>
+                            {r.name} — {r.pricePerNight.toLocaleString("fr-FR")} F CFA / nuit
+                          </option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="Salles de Conférence">
+                        {conferenceHallsMock.map((h) => (
+                          <option key={h.slug} value={h.slug}>
+                            {h.name} — {h.pricePerNight.toLocaleString("fr-FR")} F CFA / jour
+                          </option>
+                        ))}
+                      </optgroup>
+                    </select>
+                  </label>
 
-                    return (
-                      <div
-                        key={room.slug}
-                        onClick={() => {
-                          setSelectedRoomSlug(room.slug);
-                          setActiveStep(2);
-                        }}
-                        className={`bg-white rounded-3xl p-6 relative overflow-hidden transition-all duration-300 cursor-pointer border ${
-                          isSelected
-                            ? "shadow-[0_12px_36px_-6px_rgba(13,43,36,0.12)] border-[#0d2b24]/30"
-                            : "shadow-sm hover:shadow-[0_12px_36px_-6px_rgba(13,43,36,0.06)] border-[#1a1c1a]/5"
-                        }`}
-                      >
-                        {isSelected && (
-                          <div className="absolute top-0 right-0 bg-[#0d2b24] text-white px-5 py-1.5 rounded-bl-2xl text-[11px] font-semibold flex items-center gap-1.5 z-10">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            Choix Actif
-                          </div>
-                        )}
+                  {/* Compact summary of the selected space */}
+                  <div className="rounded-2xl border border-[#efeeeb] bg-[#faf9f6] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-5">
+                    <div className="relative w-full sm:w-40 h-40 sm:h-36 shrink-0 rounded-2xl overflow-hidden bg-[#efeeeb]">
+                      <SuiteImage
+                        src={selectedRoom.image}
+                        alt={selectedRoom.name}
+                        sizes="(max-width: 640px) 100vw, 160px"
+                        className="object-cover"
+                      />
+                    </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                          <div className="md:col-span-5 h-52 rounded-2xl overflow-hidden relative group bg-[#efeeeb]">
-                            <SuiteImage
-                              src={room.image}
-                              alt={room.name}
-                              sizes="(max-width: 768px) 100vw, 320px"
-                              className="group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <span className="absolute bottom-3 left-3 bg-[#faf9f6]/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-[#001510]">
-                              {room.sizeSqm} m² •{" "}
-                              {room.bedType.split("·")[0].trim()}
-                            </span>
-                          </div>
-
-                          <div className="md:col-span-7 flex flex-col justify-between space-y-3.5">
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="text-[11px] uppercase text-[#3d6659] font-semibold">
-                                  {room.badgeLabel ?? "Suite Signature"}
-                                </span>
-                                <div className="flex items-center text-amber-500 text-[12px]">
-                                  <Star className="w-3.5 h-3.5 fill-current" />
-                                  <span className="text-[11px] font-bold text-[#1a1c1a] ml-1">
-                                    {(room.rating ?? 4.95)
-                                      .toFixed(2)
-                                      .replace(/\.00$/, ".0")}{" "}
-                                    ({room.reviewCount ?? 84} avis)
-                                  </span>
-                                </div>
-                              </div>
-                              <h3 className="text-[20px] font-bold text-[#001510]">
-                                {room.name}
-                              </h3>
-                              <p className="text-[13px] text-[#414846] mt-1">
-                                {room.tagline}
-                              </p>
-                            </div>
-
-                            <div className="flex flex-wrap gap-2">
-                              {room.amenities.slice(0, 3).map((amenity, idx) => (
-                                <span
-                                  key={amenity}
-                                  className="px-2.5 py-1 rounded-full bg-[#f4f3f0] text-[11px] text-[#414846] flex items-center gap-1"
-                                >
-                                  {idx === 0 ? (
-                                    <Waves className="w-3 h-3" />
-                                  ) : idx === 1 ? (
-                                    <Sparkles className="w-3 h-3" />
-                                  ) : (
-                                    <Wifi className="w-3 h-3" />
-                                  )}
-                                  {amenity}
-                                </span>
-                              ))}
-                            </div>
-
-                            {!available && (
-                              <p className="text-[12px] font-medium text-[#ba1a1a]">
-                                {!canFitGuests
-                                  ? `Capacité maximale : ${room.maxGuests} personnes.`
-                                  : "Indisponible pour ces dates."}
-                              </p>
-                            )}
-
-                            <div className="flex items-center justify-between pt-2">
-                              <div>
-                                <div className="flex items-baseline gap-1">
-                                  <span className="text-[24px] text-[#001510] font-bold">
-                                    {nightlyUsd.toLocaleString("fr-FR")} F CFA
-                                  </span>
-                                  <span className="text-[13px] text-[#414846]">
-                                    / nuit
-                                  </span>
-                                </div>
-                                <p className="text-[11px] text-[#3d6659] font-semibold">
-                                  Accueil chaleureux &amp; Wi-Fi fibre pro inclus
-                                </p>
-                              </div>
-
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedRoomSlug(room.slug);
-                                  setActiveStep(3);
-                                }}
-                                className={`px-6 py-2.5 rounded-full text-[13px] font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                                  isSelected
-                                    ? "bg-[#001510] text-white shadow-sm"
-                                    : "bg-[#e9e8e5] text-[#001510] hover:bg-[#001510] hover:text-white"
-                                }`}
-                              >
-                                {isSelected ? (
-                                  <>
-                                    Sélectionnée <Check className="w-4 h-4" />
-                                  </>
-                                ) : (
-                                  "Choisir"
-                                )}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[11px] uppercase text-[#3d6659] font-semibold">
+                          {selectedRoom.badgeLabel ?? "King's Bed Hotel"}
+                        </span>
+                        <span className="flex items-center gap-1 text-amber-500 text-[12px]">
+                          <Star className="w-3.5 h-3.5 fill-current" />
+                          <span className="text-[11px] font-bold text-[#1a1c1a]">
+                            {(selectedRoom.rating ?? 4.95)
+                              .toFixed(2)
+                              .replace(/\.00$/, ".0")}{" "}
+                            ({selectedRoom.reviewCount ?? 84} avis)
+                          </span>
+                        </span>
                       </div>
-                    );
-                  })}
+                      <h3 className="text-[19px] font-bold text-[#001510] mt-0.5 leading-snug">
+                        {selectedRoom.name}
+                      </h3>
+                      <p className="text-[12px] text-[#414846] mt-0.5 line-clamp-2">
+                        {selectedRoom.tagline}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 mt-2.5">
+                        {selectedRoom.amenities.slice(0, 3).map((amenity) => (
+                          <span
+                            key={amenity}
+                            className="px-2.5 py-1 rounded-full bg-white border border-[#efeeeb] text-[11px] text-[#414846]"
+                          >
+                            {amenity}
+                          </span>
+                        ))}
+                        <span className="px-2.5 py-1 rounded-full bg-white border border-[#efeeeb] text-[11px] text-[#414846] tabular-nums">
+                          {selectedRoom.sizeSqm} m² •{" "}
+                          {isHall
+                            ? `${selectedRoom.maxGuests} pers.`
+                            : selectedRoom.bedType.split("·")[0].trim()}
+                        </span>
+                      </div>
+                      {!isSelectedAvailable && (
+                        <p className="text-[12px] font-medium text-[#ba1a1a] mt-2">
+                          {totalGuests > selectedRoom.maxGuests
+                            ? `Capacité maximale : ${selectedRoom.maxGuests} personnes.`
+                            : "Indisponible pour ces dates."}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="shrink-0 sm:text-right">
+                      <p className="text-[22px] sm:text-[24px] text-[#001510] font-bold tabular-nums leading-none">
+                        {selectedRoom.pricePerNight.toLocaleString("fr-FR")} F CFA
+                      </p>
+                      <p className="text-[12px] text-[#414846] mt-1">
+                        {isHall ? "/ journée" : "/ nuit"}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1040,12 +989,12 @@ export function ReservationFlow() {
                     htmlFor="guest-notes"
                     className="text-[12px] font-medium text-[#414846] block ml-1"
                   >
-                    Préférences &amp; Demandes Spéciales (Optionnel)
+                    Détails &amp; Précisions (Optionnel)
                   </label>
                   <textarea
                     id="guest-notes"
                     rows={3}
-                    placeholder="Préférence d'oreillers, heure d'arrivée, allergies petit-déjeuner ou besoins de salle de réunion..."
+                    placeholder="Configuration souhaitée (U ou théâtre), horaires, matériel audiovisuel, allergies petit-déjeuner, demandes particulières..."
                     onFocus={() => setActiveStep(3)}
                     className="w-full rounded-2xl bg-[#f4f3f0] p-4 text-[14px] text-[#1a1c1a] placeholder:text-[#727975] focus:outline-none focus:ring-2 focus:ring-[#3d6659]/40"
                     {...register("notes")}
