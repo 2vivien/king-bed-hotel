@@ -1,16 +1,9 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/shared/Reveal";
 import { SuiteImage } from "@/components/shared/SuiteImage";
 import { formatMoney } from "@/lib/utils/format-money";
 import { conferenceHallsMock } from "@/mocks/halls";
-
-const featureItems = [
-  "Écran 4K interactif, fibre symétrique dédiée",
-  "Configuration U, théâtre ou conseil",
-  "Régie, captation & livestream sur demande",
-  "Pauses café & déjeuner d'affaires inclus",
-] as const;
 
 export function ConferenceHallsShowcase() {
   return (
@@ -22,7 +15,7 @@ export function ConferenceHallsShowcase() {
             <Reveal key={hall.slug} delay={idx * 0.06}>
               <Link
                 href={`/account/reservation?destination=maldives&room=${hall.slug}`}
-                className="group relative aspect-[4/5] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
+                className="group relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
               >
                 <SuiteImage
                   src={hall.image}
@@ -63,23 +56,9 @@ export function ConferenceHallsShowcase() {
             </h2>
           </div>
           <p className="text-[16px] leading-[1.6] text-[#414846] max-w-sm">
-            Trois espaces modulables, de 35 à 180 participants, pour vos comités,
-            séminaires et congrès, avec restauration et régie incluses.
+            Trois espaces modulables, de 35 à 180 participants, pour vos
+            réunions, séminaires et congrès, avec restauration et régie incluses.
           </p>
-          <ul className="space-y-2.5">
-            {featureItems.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[14px] text-[#414846]"
-              >
-                <CheckCircle2
-                  className="w-5 h-5 text-[#3d6659] shrink-0 mt-0.5"
-                  strokeWidth={1.75}
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
           <Link
             href="/account/reservation"
             className="inline-flex items-center gap-2 h-12 pl-6 pr-7 rounded-full bg-[#001510] text-white text-[14px] font-semibold hover:bg-[#0d2b24] transition-colors"

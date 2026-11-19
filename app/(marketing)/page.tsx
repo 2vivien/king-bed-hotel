@@ -1,6 +1,6 @@
 import { ConferenceHallsShowcase } from "@/features/home/components/ConferenceHallsShowcase";
+import { ContactFaqSection } from "@/features/contact/components/ContactFaqSection";
 import { DestinationTeaserRow } from "@/features/home/components/DestinationTeaserRow";
-import { FaqSection } from "@/features/home/components/FaqSection";
 import { HeroSection } from "@/features/home/components/HeroSection";
 import { NewsletterBanner } from "@/features/home/components/NewsletterBanner";
 import { SuitesShowcase } from "@/features/home/components/SuitesShowcase";
@@ -14,7 +14,7 @@ export default function HomePage() {
       <SuitesShowcase />
       <ConferenceHallsShowcase />
       <TestimonialsSection />
-      <FaqSection />
+      <ContactFaqSection />
       <NewsletterBanner />
     </>
   );

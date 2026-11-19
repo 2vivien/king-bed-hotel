@@ -66,7 +66,7 @@ export function RoomCard({ room, variant = "overlay" }: RoomCardProps) {
   return (
     <Link
       href={`/rooms/${room.slug}`}
-      className="group relative aspect-[4/5] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
+      className="group relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#EFE6D6] block"
     >
       <SuiteImage
         src={room.image}

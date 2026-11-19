@@ -16,14 +16,38 @@ const contactFaqs = [
     question:
       "Comment organiser une réunion, un séminaire ou une conférence à l'hôtel ?",
     answer:
-      "Indiquez la date, le nombre de participants (de 8 à 140 personnes) et la disposition souhaitée (en U, théâtre, classe ou conseil) via le formulaire ci-dessus. Notre coordinateur vous transmet un devis détaillé avec pauses café et restauration sous 2 heures.",
+      "Indiquez la date, le nombre de participants (de 35 à 180 personnes) et la disposition souhaitée (en U, théâtre ou conseil) lors de votre demande. Notre coordinateur vous transmet un devis détaillé avec pauses café et restauration sous 2 heures.",
   },
   {
     id: "faq-3",
     question:
       "Quelles sont vos conditions d'annulation pour les séjours et les salles ?",
     answer:
-      "Les réservations individuelles sont annulables sans frais jusqu'à 48 heures avant l'arrivée. Pour les séminaires et conférences, des modalités flexibles de report et d'ajustement du nombre de participants sont prévues.",
+      "Les réservations individuelles sont annulables sans frais jusqu'à 48 heures avant l'arrivée. Pour les séminaires et conférences, des modalités flexibles de report et d'ajustement du nombre de participants sont prévues jusqu'à 7 jours avant la date prévue.",
+  },
+  {
+    id: "faq-4",
+    question: "Quels sont les horaires d'arrivée, de départ et du petit-déjeuner ?",
+    answer:
+      "Les arrivées s'effectuent à partir de 15h00 et les départs jusqu'à 12h00. Le petit-déjeuner est servi tous les jours de 06h30 à 11h00 en salle ou directement dans votre chambre.",
+  },
+  {
+    id: "faq-5",
+    question: "Le petit-déjeuner est-il inclus dans le tarif de la chambre ?",
+    answer:
+      "Oui, nos formules incluent un petit-déjeuner buffet artisanal (viennoiseries, œufs à la minute, fruits frais, jus pressés) ou un service en chambre sans frais cachés.",
+  },
+  {
+    id: "faq-6",
+    question: "Quels moyens de paiement sont acceptés ?",
+    answer:
+      "La réservation se règle directement à l'hôtel à l'arrivée : espèces en francs CFA, carte bancaire, Mobile Money ou virement entreprise pour les séminaires et conférences.",
+  },
+  {
+    id: "faq-7",
+    question: "Disposez-vous d'un parking privé et de bornes de recharge électrique ?",
+    answer:
+      "Oui, un parking privé sécurisé avec service voiturier et des bornes de recharge rapide pour véhicules électriques sont mis à la disposition de nos clients et participants aux conférences.",
   },
 ] as const;
 

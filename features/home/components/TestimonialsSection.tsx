@@ -1,11 +1,9 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Quote, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { useState } from "react";
-import { AvatarStack } from "@/components/shared/AvatarStack";
 import { Reveal } from "@/components/shared/Reveal";
 import { SuiteImage } from "@/components/shared/SuiteImage";
-import { siteConfig } from "@/config/site";
 import { testimonialsMock } from "@/mocks/testimonials";
 
 export function TestimonialsSection() {
@@ -42,23 +40,6 @@ export function TestimonialsSection() {
             De vraies expériences, vécues par nos résidents à Savalou, au cœur du
             Bénin.
           </p>
-          <div className="flex items-center gap-4 pt-1">
-            <AvatarStack />
-            <div className="leading-tight">
-              <p className="text-[15px] font-semibold text-[#001510] tabular-nums">
-                {siteConfig.stats.happyGuests}
-              </p>
-              <p className="text-[12px] text-[#414846]">voyageurs heureux</p>
-            </div>
-            <a
-              href="#testimonials"
-              className="h-9 px-4 rounded-full border border-[#d9d9d4] inline-flex items-center gap-1.5 text-[13px] font-medium text-[#001510] hover:bg-[#f4f3f0] transition-colors whitespace-nowrap"
-            >
-              {siteConfig.stats.rating}
-              <Star className="w-3.5 h-3.5 fill-[#001510] text-[#001510]" strokeWidth={1.5} />
-              <span className="text-[#414846]">{siteConfig.stats.reviewLabel}</span>
-            </a>
-          </div>
         </Reveal>
 
         {/* Témoignage + image à droite */}
@@ -80,9 +61,6 @@ export function TestimonialsSection() {
                   <div className="min-w-0">
                     <p className="text-[15px] font-medium text-[#111111]">
                       {current.name}
-                    </p>
-                    <p className="text-[12px] text-[#5F5F5A] truncate">
-                      {current.location} · {current.stayTitle}
                     </p>
                   </div>
                 </div>
