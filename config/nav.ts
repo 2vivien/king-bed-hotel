@@ -19,6 +19,6 @@ export const footerNavItems: readonly NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "Galerie", href: "/gallery" },
   { label: "Contact", href: "/contact" },
-  { label: "Ma réservation", href: "/my-booking" },
+  { label: "Mon espace", href: "/account" },
   { label: "FAQ", href: "/faq" },
 ] as const;

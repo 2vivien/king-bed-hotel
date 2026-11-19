@@ -39,7 +39,7 @@ export function HeroCardStay() {
 
   const detailsHref = activeBooking
     ? `/reservation/confirmation/${activeBooking.id}`
-    : "/my-booking";
+    : "/account";
 
   return (
     <div className="rounded-[24px] border border-white/70 bg-transparent p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.22)]">

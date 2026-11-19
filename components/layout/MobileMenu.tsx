@@ -75,11 +75,11 @@ export function MobileMenu({ open, onClose, pathname }: MobileMenuProps) {
             );
           })}
           <Link
-            href="/my-booking"
+            href="/account"
             onClick={onClose}
             className="px-5 py-3 rounded-full text-[19px] font-light tracking-[-0.02em] text-[#5F5F5A] hover:bg-[#F4F1EA]"
           >
-            Ma réservation
+            Mon espace
           </Link>
         </nav>
       </div>

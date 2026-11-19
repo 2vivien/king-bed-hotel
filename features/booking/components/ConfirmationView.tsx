@@ -30,11 +30,7 @@ export function ConfirmationView({ bookingId }: { bookingId: string }) {
     URL.revokeObjectURL(url);
   };
 
-  const myBookingHref = booking
-    ? `/my-booking?ref=${encodeURIComponent(booking.id)}&email=${encodeURIComponent(
-        booking.guest.email
-      )}`
-    : `/my-booking?ref=${encodeURIComponent(bookingId)}`;
+  const myBookingHref = "/account";
 
   return (
     <div className="relative rounded-[36px] overflow-hidden bg-white border border-[#111111]/8 p-8 sm:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.08)] text-center max-w-2xl mx-auto">

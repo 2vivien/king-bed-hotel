@@ -113,8 +113,8 @@ export function Footer() {
             >
               Conditions Générales
             </Link>
-            <Link href="/my-booking" className="hover:text-[#1a1c1a] transition-colors">
-              Gérer ma réservation
+            <Link href="/account" className="hover:text-[#1a1c1a] transition-colors">
+              Mon espace
             </Link>
             <Link href="/faq" className="hover:text-[#1a1c1a] transition-colors">
               FAQ &amp; Protocole
