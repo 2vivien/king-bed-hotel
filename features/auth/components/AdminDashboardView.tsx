@@ -33,6 +33,7 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useAuthStore } from "@/features/auth/store/auth.store";
@@ -251,21 +252,9 @@ export function AdminDashboardView() {
       <section className="w-full bg-white py-16 md:py-24">
         <div className="max-w-[560px] mx-auto px-6 text-center">
           <div className="rounded-3xl border border-[#EDEDEA] bg-white p-8 md:p-10 shadow-[0_10px_30px_-10px_rgba(17,17,17,0.06)] space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e9e8e5] text-[#111111] text-[12px] font-medium">
-              <ShieldCheck
-                className="w-3.5 h-3.5 text-[#0d2b24]"
-                strokeWidth={1.75}
-              />
-              Dashboard Admin • Connexion Google
-            </span>
             <h1 className="text-[30px] md:text-[34px] font-medium tracking-[-0.02em] text-[#111111]">
               Accès réservé à la Direction &amp; Conciergerie
             </h1>
-            <p className="text-[14px] text-[#5F5F5A] leading-relaxed">
-              {currentUser
-                ? `Connecté avec le compte Google Client (${currentUser.email}). Basculez vers le compte Google Admin pour piloter les réservations, chambres et salles de conférence.`
-                : "Connectez-vous uniquement avec le compte Google Admin pour accéder au tableau de bord de conciergerie."}
-            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
               <button
                 type="button"
@@ -284,6 +273,17 @@ export function AdminDashboardView() {
                 Accès immédiat Sophie C.
               </button>
             </div>
+            <p className="text-[11px] text-[#5F5F5A] leading-relaxed">
+              En vous connectant, vous acceptez nos{" "}
+              <Link href="/legal/terms" className="underline underline-offset-2 hover:text-[#111111]">
+                Conditions Générales
+              </Link>{" "}
+              et notre{" "}
+              <Link href="/legal/privacy" className="underline underline-offset-2 hover:text-[#111111]">
+                Politique de confidentialité
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
