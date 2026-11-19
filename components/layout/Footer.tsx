@@ -15,7 +15,7 @@ const conciergeLinks = [
   { label: "Petit-Déjeuner Gastronomique", href: "/services" },
   { label: "Séminaires & Événements Pro", href: "/contact" },
   { label: "Transferts & Voiturier", href: "/services" },
-  { label: "Réservation en Ligne", href: "/reservation" },
+  { label: "Réservation en Ligne", href: "/account/reservation" },
 ] as const;
 
 export function Footer() {

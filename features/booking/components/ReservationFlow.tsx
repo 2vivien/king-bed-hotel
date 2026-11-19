@@ -333,7 +333,7 @@ export function ReservationFlow() {
         checkOut: created.checkOut,
         guests: created.guests,
       });
-      router.push(`/reservation/confirmation/${created.id}`);
+      router.push(`/account/reservation/confirmation/${created.id}`);
     } catch (err) {
       setBookingError(
         err instanceof Error

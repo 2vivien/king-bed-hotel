@@ -60,7 +60,7 @@ export function HeroSection() {
               {/* Center circular CTA */}
               <div className="hidden lg:flex lg:col-span-2 justify-center pb-12">
                 <Link
-                  href="/reservation"
+                  href="/account/reservation"
                   className="w-28 h-28 rounded-full bg-white text-[#111111] shadow-[0_14px_40px_rgba(0,0,0,0.22)] flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform duration-300"
                 >
                   <span className="text-[12px] font-medium leading-tight">

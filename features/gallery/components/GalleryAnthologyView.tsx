@@ -722,7 +722,7 @@ export function GalleryAnthologyView() {
                 </div>
               </div>
               <Link
-                href={activePlate.roomHref ?? "/reservation"}
+                href={activePlate.roomHref ?? "/account/reservation"}
                 className="px-6 py-2.5 rounded-full bg-[#0d2b24] text-white text-[13px] font-semibold shadow-sm hover:bg-[#001510] transition-colors inline-flex items-center gap-2 shrink-0"
               >
                 <Calendar className="w-4 h-4" />

@@ -38,7 +38,7 @@ export function HeroCardStay() {
   const totalLabel = formatMoney(pricing.total);
 
   const detailsHref = activeBooking
-    ? `/reservation/confirmation/${activeBooking.id}`
+    ? `/account/reservation/confirmation/${activeBooking.id}`
     : "/account";
 
   return (
@@ -82,7 +82,7 @@ export function HeroCardStay() {
           Détails du séjour
         </Link>
         <Link
-          href="/reservation"
+          href="/account/reservation"
           className="h-9 rounded-full border border-white/70 text-white text-[12px] font-medium flex items-center justify-center hover:bg-white/10 transition-colors whitespace-nowrap px-3"
         >
           Modifier

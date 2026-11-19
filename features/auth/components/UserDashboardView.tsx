@@ -370,7 +370,7 @@ export function UserDashboardView() {
                 {currentUser.title}
               </span>
               <Link
-                href="/reservation"
+                href="/account/reservation"
                 className="h-10 px-5 rounded-full bg-[#111111] hover:bg-[#2A2A28] text-white text-[13px] font-medium inline-flex items-center gap-2 transition-colors whitespace-nowrap"
               >
                 Nouvelle réservation
@@ -607,7 +607,7 @@ export function UserDashboardView() {
                       Aucune réservation dans ce filtre
                     </p>
                     <Link
-                      href="/reservation"
+                      href="/account/reservation"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#111111] text-white text-[13px] font-medium"
                     >
                       Réserver maintenant
@@ -710,7 +710,7 @@ export function UserDashboardView() {
                             </button>
                           ) : (
                             <Link
-                              href="/reservation"
+                              href="/account/reservation"
                               className="px-4 py-2 rounded-full border border-[#EDEDEA] bg-white hover:bg-[#faf9f6] text-[#111111] text-[12px] font-medium inline-flex items-center gap-1.5"
                             >
                               <RotateCcw className="w-3.5 h-3.5" />

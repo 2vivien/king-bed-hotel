@@ -22,7 +22,7 @@ export function DestinationTeaserRow() {
               {featured.map((dest) => (
                 <Link
                   key={dest.slug}
-                  href={`/reservation?destination=${dest.slug}`}
+                  href={`/account/reservation?destination=${dest.slug}`}
                   className="group relative aspect-[3/2] rounded-[20px] overflow-hidden bg-[#EFE6D6] block"
                 >
                   <SuiteImage

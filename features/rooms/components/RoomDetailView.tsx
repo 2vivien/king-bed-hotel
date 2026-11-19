@@ -101,7 +101,7 @@ export function RoomDetailView({ room, similarRooms }: RoomDetailViewProps) {
       checkOut,
       guests: String(guests),
     });
-    router.push(`/reservation?${params.toString()}`);
+    router.push(`/account/reservation?${params.toString()}`);
   };
 
   const mainPhoto = room.gallery[0] ?? room.image;

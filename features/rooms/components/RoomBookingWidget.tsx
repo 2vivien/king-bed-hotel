@@ -41,7 +41,7 @@ export function RoomBookingWidget({ room }: { room: Room }) {
       checkOut,
       guests: String(guests),
     });
-    router.push(`/reservation?${params.toString()}`);
+    router.push(`/account/reservation?${params.toString()}`);
   };
 
   return (

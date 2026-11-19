@@ -53,7 +53,7 @@ export function RoomCard({ room, variant = "overlay" }: RoomCardProps) {
           </div>
 
           <Link
-            href={`/reservation?room=${room.slug}`}
+            href={`/account/reservation?room=${room.slug}`}
             className="h-11 rounded-full bg-[#111111] text-white text-[14px] font-medium flex items-center justify-center hover:bg-[#2A2A28] transition-colors"
           >
             Réserver

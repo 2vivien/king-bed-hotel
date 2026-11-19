@@ -177,7 +177,7 @@ export function NavbarPill() {
             )}
 
             <Link
-              href="/reservation"
+              href="/account/reservation"
               className="h-10 px-5 rounded-full bg-[#111111] text-white text-[14px] font-medium whitespace-nowrap shrink-0 inline-flex items-center justify-center hover:bg-[#2A2A28] transition-colors"
             >
               Réserver

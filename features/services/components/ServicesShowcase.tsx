@@ -285,7 +285,7 @@ export function ServicesShowcase() {
                           Inclus sur les tarifs Petit-Déjeuner
                         </span>
                         <Link
-                          href="/reservation"
+                          href="/account/reservation"
                           aria-label="Réserver un séjour avec petit-déjeuner"
                           className="w-11 h-11 rounded-full bg-[#e9e8e5] flex items-center justify-center text-[#001510] hover:bg-[#001510] hover:text-white transition-colors"
                         >
@@ -409,7 +409,7 @@ export function ServicesShowcase() {
                         </span>
                       </div>
                       <Link
-                        href="/reservation"
+                        href="/account/reservation"
                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#001510] text-white text-[14px] font-semibold hover:bg-[#0d2b24] transition-colors shadow-sm whitespace-nowrap"
                       >
                         Réserver un Service
@@ -473,7 +473,7 @@ export function ServicesShowcase() {
               </div>
               <div className="pt-2">
                 <Link
-                  href="/reservation"
+                  href="/account/reservation"
                   className="text-[12px] text-[#3d6659] font-bold inline-flex items-center gap-1 hover:text-[#001510] transition-colors"
                 >
                   Accueil Gare &amp; Aéroport
@@ -497,7 +497,7 @@ export function ServicesShowcase() {
               </div>
               <div className="pt-2">
                 <Link
-                  href="/reservation"
+                  href="/account/reservation"
                   className="text-[12px] text-[#3d6659] font-bold inline-flex items-center gap-1 hover:text-[#001510] transition-colors"
                 >
                   Produits Frais du Jour
@@ -655,7 +655,7 @@ export function ServicesShowcase() {
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
-                href="/reservation"
+                href="/account/reservation"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-[#001510] text-[14px] font-bold shadow-md hover:bg-[#f4f3f0] transition-all whitespace-nowrap"
               >
                 Réserver Maintenant

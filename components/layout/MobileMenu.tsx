@@ -128,7 +128,7 @@ export function MobileMenu({ open, onClose, pathname }: MobileMenuProps) {
         )}
 
         <Link
-          href="/reservation"
+          href="/account/reservation"
           onClick={onClose}
           className="w-full h-12 rounded-full bg-[#111111] text-white text-[15px] font-medium flex items-center justify-center"
         >

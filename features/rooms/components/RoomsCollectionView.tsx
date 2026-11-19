@@ -298,7 +298,7 @@ export function RoomsCollectionView() {
                     />
                   </button>
                   <Link
-                    href={`/reservation?room=${featuredSuite.slug}`}
+                    href={`/account/reservation?room=${featuredSuite.slug}`}
                     className="px-6 py-3 rounded-full bg-[#0d2b24] text-white text-[14px] font-semibold hover:bg-[#001510] transition-all duration-200 shadow-sm inline-flex items-center gap-2 whitespace-nowrap"
                   >
                     <span>Réserver</span>
@@ -447,7 +447,7 @@ export function RoomsCollectionView() {
                           Voir les Détails
                         </Link>
                         <Link
-                          href={`/reservation?room=${room.slug}`}
+                          href={`/account/reservation?room=${room.slug}`}
                           className="px-5 py-2.5 rounded-full bg-[#0d2b24] text-white text-[12px] font-semibold hover:bg-[#001510] transition-all"
                         >
                           Réserver
