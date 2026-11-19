@@ -3,7 +3,6 @@
 import { ArrowDownRight, Asterisk, MapPin } from "lucide-react";
 import Link from "next/link";
 import { SuiteImage } from "@/components/shared/SuiteImage";
-import { siteConfig } from "@/config/site";
 import { HeroCardConfirmed } from "./HeroCardConfirmed";
 import { HeroCardStay } from "./HeroCardStay";
 
@@ -26,11 +25,15 @@ export function HeroSection() {
 
           <div className="relative z-10 p-6 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[640px] lg:min-h-[690px]">
             {/* Top utility row inside hero */}
-            <div className="flex items-center">
+            <div className="flex items-center justify-between gap-4">
               <div className="h-11 px-4 rounded-full bg-white text-[#111111] flex items-center gap-2.5 shadow-sm whitespace-nowrap">
                 <MapPin className="w-4 h-4 text-[#5F5F5A]" strokeWidth={1.5} />
-                <p className="text-[13px] font-medium">{siteConfig.shortAddress}</p>
+                <p className="text-[13px] font-medium">Bénin, Savalou</p>
               </div>
+
+              <p className="hidden md:block text-[12px] text-white/85 text-right max-w-[220px] leading-snug">
+                Chambres, Petit-Déjeuner &amp; Salles de Conférence
+              </p>
             </div>
 
             {/* Main hero grid */}
